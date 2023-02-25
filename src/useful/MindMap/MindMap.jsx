@@ -110,6 +110,7 @@ function MindMap(props) {
               className={`${styles.changeDarkModeButton} ${styles.miniButton}`}
               onClick={() => {
                 props.toggleDarkMode();
+                localStorage.setItem('isDarkMode', props.isDarkMode ? false : true);
               }}
               style={{ backgroundColor: props.isDarkMode ? '#f8f8f8' : '#201c1c' }}
             >
