@@ -120,7 +120,6 @@ function MindMap(props) {
               )}
             </div>
           </div>
-          {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
           <div className={styles.resetPositionButtonBox}>
             {/* <button onClick={() => zoomIn()}>+</button>
               <button onClick={() => zoomOut()}>-</button> */}
