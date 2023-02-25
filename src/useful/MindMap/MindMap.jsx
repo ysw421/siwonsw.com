@@ -102,7 +102,7 @@ function MindMap(props) {
             </div>
           </TransformComponent>
           <div className={styles.changeDarkModeButtonBox}>
-            <span style={{ color: props.isDarkMode ? '' : '' }} className={styles.difference}>
+            <span style={{ color: props.isDarkMode ? '' : '#f8f8f8' }} className={styles.difference}>
               {props.isDarkMode ? 'Dark Mode' : 'Light Mode'}
             </span>
             <div
