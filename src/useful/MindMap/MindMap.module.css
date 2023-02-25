@@ -1,0 +1,129 @@
+.mindMap {
+  /* background-color: #f8f8f8; */
+  /* background-color: #000000; */
+  /* width: 100vw;
+    height: 100vh; */
+  overflow: hidden;
+}
+
+.node {
+  align-items: center;
+  font-weight: 200;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* .node:hover {
+    color: #4442a8;
+    transform: scale(2);
+  } */
+
+.nodeCircle {
+  /* background-color: #201c1c; */
+  /* border: 1px solid #999; */
+  border-radius: 50%;
+  /* font-size: 12px; */
+  /* width: 30px;
+    height: 30px; */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.nodeCircle:hover {
+  border-radius: 40%;
+  color: #4442a8 !important;
+  /* transform: scale(2); */
+}
+
+.nodeValue {
+  white-space: nowrap;
+  font-family: 'font1';
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.miniButton {
+  /* position: absolute; */
+  width: 20px;
+  height: 20px;
+  z-index: 100;
+  /* background-color: #f8f8f8; */
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  /* mix-blend-mode: difference; */
+  transition: all 0.2s ease-in-out;
+}
+
+.changeDarkModeButton {
+  bottom: 20px;
+  right: 20px;
+}
+
+.resetPositionButton {
+  bottom: 60px;
+  right: 20px;
+  -webkit-text-stroke: 0.2px #999;
+}
+
+.resetPositionButtonBox {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  /* -webkit-text-stroke: 0.2px #fff; */
+}
+
+.difference {
+  mix-blend-mode: difference;
+}
+
+.changeDarkModeButtonBox {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  /* -webkit-text-stroke: 0.2px #fff; */
+  /* mix-blend-mode: difference; */
+}
+
+.profileBox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.myLogo {
+  border-radius: 50%;
+  width: 40px;
+}
+
+.nodeLink {
+  width: 100%;
+  height: 100%;
+}

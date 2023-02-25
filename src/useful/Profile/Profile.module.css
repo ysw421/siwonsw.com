@@ -1,0 +1,14 @@
+.profileBox {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.myLogo {
+  border-radius: 50%;
+  width: 40px;
+}
+
+.myLogo:hover {
+  cursor: pointer;
+}

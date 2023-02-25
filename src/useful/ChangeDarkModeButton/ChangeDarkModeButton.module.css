@@ -1,0 +1,35 @@
+.changeDarkModeButtonBox {
+  width: auto;
+  height: auto;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  /* -webkit-text-stroke: 0.2px #fff; */
+  /* mix-blend-mode: difference; */
+}
+
+.difference {
+  mix-blend-mode: difference;
+}
+
+.changeDarkModeButton {
+  bottom: 20px;
+  right: 20px;
+}
+.miniButton {
+  /* position: absolute; */
+  width: 20px;
+  height: 20px;
+  z-index: 100;
+  /* background-color: #f8f8f8; */
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  /* mix-blend-mode: difference; */
+  transition: all 0.2s ease-in-out;
+}
