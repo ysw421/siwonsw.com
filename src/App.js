@@ -23,24 +23,6 @@ function App() {
   }
 
   const [isDarkMode, setIsDarkMode] = useState(saved);
-  //   console.log('dark mode');
-  // } else {
-  // }
-
-  // const history = useNavigate();
-  // history('/home');
-  // const inputValue = history.location.inputValue;
-
-  ///useEffect() 활용하여 `name`이라는 키로 inputValue를 저장하였다.
-  // useEffect(() => {
-  // localStorage.setItem('name', JSON.stringify(inputValue));
-
-  /// 새로고침 시, localStorage에 id의 값이 있다면 그 값을 `setName`에 저장해준다.
-  // const saved = localStorage.getItem('isDarkMode');
-  // if (saved !== null) {
-  // setIsDarkMode(saved);
-  // } else localStorage.setItem('isDarkMode', false);
-  // }, [inputValue]);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -53,7 +35,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route
-              path="/machine-learning"
+              path="/mind-map/machine-learning"
               element={<MachineLearning isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
             />
             <Route path="/" element={<MainPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />

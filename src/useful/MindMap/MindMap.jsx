@@ -26,7 +26,7 @@ function MindMap(props) {
   };
   const movePage = useNavigate();
   function goTo(url) {
-    if (mousePos.x === saveMousePos.x && mousePos.y === saveMousePos.y) movePage('/paper/' + url);
+    if (mousePos.x === saveMousePos.x && mousePos.y === saveMousePos.y) movePage(url);
   }
   return (
     <div style={{ width: '100%', height: '100%' }} ref={mainRef}>
@@ -142,18 +142,22 @@ function MindMap(props) {
               >
                 {/* <button onClick={() => zoomIn()}>+</button>
               <button onClick={() => zoomOut()}>-</button> */}
-                <span
-                  style={
-                    props.setPos === true
-                      ? { color: props.isDarkMode ? '' : '#201c1c' }
-                      : { color: props.isDarkMode ? '' : '#f8f8f8' }
-                  }
-                  className={styles.difference}
-                >
-                  Reset
-                </span>
+                {props.setPos !== true && (
+                  <span
+                    style={
+                      props.setPos === true
+                        ? { color: props.isDarkMode ? '' : '#201c1c' }
+                        : { color: props.isDarkMode ? '' : '#f8f8f8' }
+                    }
+                    className={styles.difference}
+                  >
+                    Reset
+                  </span>
+                )}
                 <div
-                  className={`${styles.resetPositionButton} ${styles.miniButton}`}
+                  className={`${props.setPos !== true ? styles.resetPositionButton : styles.resetPositionButton2} ${
+                    styles.miniButton
+                  }`}
                   onClick={() => resetTransform()}
                   style={{ backgroundColor: props.isDarkMode ? '#f8f8f8' : '#201c1c' }}
                 >

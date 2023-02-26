@@ -1,9 +1,9 @@
-export const nodes = {
+export const machineLearningNodes = {
   'Machine Learning': {
     value: 'Machine Learning',
     x: 0,
     y: 0,
-    link: 'Machine-Learning',
+    link: '/paper/Machine-Learning',
     edges: ['b', 'c'],
     circleSize: 60,
   },
@@ -11,7 +11,7 @@ export const nodes = {
     value: '한글123English',
     x: -70,
     y: -50,
-    link: 'b',
+    link: '/paper/b',
     edges: ['d', 'e'],
     circleSize: 20,
   },
@@ -19,7 +19,7 @@ export const nodes = {
     value: '3',
     x: 60,
     y: 100,
-    link: 'c',
+    link: '/paper/c',
     edges: [],
     circleSize: 20,
   },
@@ -27,7 +27,7 @@ export const nodes = {
     value: '4',
     x: -140,
     y: -70,
-    link: 'd',
+    link: '/paper/d',
     edges: [],
     circleSize: 27,
   },
@@ -35,7 +35,26 @@ export const nodes = {
     value: '5',
     x: -20,
     y: -120,
-    link: 'e',
+    link: '/paper/e',
+    edges: [],
+    circleSize: 20,
+  },
+};
+
+export const mainNodes = {
+  'My Blog': {
+    value: 'My Blog',
+    x: 0,
+    y: 0,
+    link: '',
+    edges: ['Machine Learning'],
+    circleSize: 60,
+  },
+  'Machine Learning': {
+    value: 'Machine Learning',
+    x: -80,
+    y: -70,
+    link: '/mind-map/machine-learning',
     edges: [],
     circleSize: 20,
   },

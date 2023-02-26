@@ -2,7 +2,7 @@ import styles from './MachineLearning.module.css';
 import ChangeDarkModeButton from '../../useful/ChangeDarkModeButton/ChangeDarkModeButton';
 import Profile from '../../useful/Profile/Profile';
 import MindMap from '../../useful/MindMap/MindMap';
-import { nodes } from '../../parameters/nodes';
+import { machineLearningNodes } from '../../parameters/nodes';
 
 // class Node {
 //   constructor(value, x, y, link, edges = [], circleSize = 20) {
@@ -32,7 +32,7 @@ function MachineLearning(props) {
         overflow: 'hidden',
       }}
     >
-      <MindMap nodes={nodes} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
+      <MindMap nodes={machineLearningNodes} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
       {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
       <Profile />
       <span className={styles.topText} style={{ color: props.isDarkMode ? '' : '#f8f8f8' }}>

@@ -22,6 +22,7 @@
   /* background-color: rgb(76, 186, 107, 0.3); */
   width: 65%;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .avatar {
@@ -32,14 +33,14 @@
 }
 
 .introduceBox {
-  margin: 0 60px;
+  margin: 0 70px;
   margin-right: 0;
   text-align: left;
   margin-top: 39px;
 }
 
 .detailBox {
-  margin: 0px 60px;
+  margin: 0px 70px;
   margin-top: 75px;
   text-align: left;
   /* font-family: 'font2'; */
@@ -58,14 +59,6 @@
   border-radius: 1px;
 }
 
-.mindMapBox {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 28px;
-  border: 1px solid #ccc;
-}
-
 .topText {
   font-family: 'font1';
   position: fixed;
@@ -77,7 +70,7 @@
 .topBar {
   position: fixed;
   /* background-color: #f8f8f8; */
-  width: 100vw;
+  width: calc(100vw - 5px);
   height: 75px;
   top: 0;
   left: 0;
@@ -99,10 +92,11 @@ p {
 }
 
 .bottomBar {
+  word-spacing: 0.2rem;
   font-family: 'font1';
   position: absolute;
   bottom: 20px;
-  left: 60px;
+  left: 70px;
   height: auto;
   /* filter: brightness(0.7); */
   /* background-color: #f8f8f8; */
@@ -113,4 +107,108 @@ p {
 .linkToMyGit {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.headBox {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 65px;
+  aspect-ratio: 3.14 / 1;
+}
+
+.mindMapBox {
+  width: 60%;
+  height: 100%;
+  /* height: 300px; */
+  overflow: hidden;
+  border-radius: 28px;
+  border: 3px solid #ccc;
+  /* box-shadow: 0 0 5px #ccc; */
+  /* box-shadow: 0 2px 4px rgb(0 0 0 / 4%); */
+}
+
+.headBox2 {
+  width: 40%;
+  height: 100%;
+  /* height: 300px; */
+  overflow: hidden;
+  border-radius: 28px;
+  border: 3px solid #ccc;
+  /* box-shadow: 0 0 5px #ccc; */
+}
+
+.contactMe {
+  font-family: 'font1';
+  font-size: 2rem;
+  /* line-height: 150%; */
+  letter-spacing: 0.1rem;
+  word-spacing: 0.3rem;
+  margin: 0;
+}
+
+.contactBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 31px;
+  justify-content: center;
+}
+
+.contactMiniBox {
+  width: 141px;
+  height: 141px;
+  border-radius: 50%;
+  border-radius: 28px;
+  border: 3px solid #ccc;
+  overflow: hidden;
+  /* padding: 16px; */
+  transition: all 0.3s ease-in-out;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.contactMiniBox:hover {
+  /* background-color: #f8f8f8; */
+  transform: scale(1.02);
+  backdrop-filter: saturate(160%) blur(10px) opacity(0.9) brightness(1.2);
+  -webkit-backdrop-filter: saturate(160%) blur(10px) opacity(0.9) brightness(1.2);
+}
+
+.contactLogos {
+  /* position: relative; */
+  width: 45px;
+  height: 45px;
+  border-radius: 15px;
+  border: 2px solid rgb(125, 125, 125);
+  /* top: 16px;
+  left: 16px; */
+  margin: 16px;
+  margin-bottom: 3px;
+  overflow: hidden;
+  /* box-shadow: 0 0 5px #ccc; */
+}
+
+.contactTitle {
+  font-family: 'font2';
+  font-size: 0.9rem;
+  /* line-height: 150%; */
+  letter-spacing: 0.15rem;
+  word-spacing: 0.3rem;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 16px;
+}
+
+.contactSubTitle {
+  font-family: 'font2';
+  font-size: 0.7rem;
+  /* line-height: 150%; */
+  letter-spacing: 0.15rem;
+  word-spacing: 0.3rem;
+  margin: 0;
+  margin-top: 3px;
+  margin-left: 16px;
+  opacity: 0.7;
 }

@@ -81,6 +81,12 @@
   -webkit-text-stroke: 0.2px #999;
 }
 
+.resetPositionButton2 {
+  -webkit-text-stroke: 0.2px #999;
+  border-radius: 50% !important;
+  opacity: 0.8;
+}
+
 .resetPositionButtonBox {
   width: auto;
   height: auto;
