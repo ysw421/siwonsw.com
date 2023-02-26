@@ -17,9 +17,9 @@ const GlobalStyle = createGlobalStyle`
 //${reset}
 
 function App() {
-  const saved = localStorage.getItem('isDarkMode') === 'true' ? true : false;
+  const saved = localStorage.getItem('isDarkMode') === 'false' ? false : true;
   if (localStorage.getItem('isDarkMode') === null) {
-    localStorage.setItem('isDarkMode', false);
+    localStorage.setItem('isDarkMode', true);
   }
 
   const [isDarkMode, setIsDarkMode] = useState(saved);

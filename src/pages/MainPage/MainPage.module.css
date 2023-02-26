@@ -19,7 +19,7 @@
 }
 
 .detailGrid {
-  background-color: aquamarine;
+  /* background-color: rgb(76, 186, 107, 0.3); */
   width: 65%;
   height: 100%;
 }
@@ -33,11 +33,84 @@
 
 .introduceBox {
   margin: 0 60px;
+  margin-right: 0;
   text-align: left;
+  margin-top: 39px;
+}
+
+.detailBox {
+  margin: 0px 60px;
+  margin-top: 75px;
+  text-align: left;
+  /* font-family: 'font2'; */
 }
 
 .blogName {
   font-family: 'font1';
   font-size: 3rem;
   margin: 0;
+}
+
+.titleBar {
+  margin: 1rem 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.mindMapBox {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid #ccc;
+}
+
+.topText {
+  font-family: 'font1';
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  font-size: 30px;
+}
+
+.topBar {
+  position: fixed;
+  /* background-color: #f8f8f8; */
+  width: 100vw;
+  height: 75px;
+  top: 0;
+  left: 0;
+  /* border-radius: 1px; */
+  backdrop-filter: saturate(160%) blur(10px) opacity(0.5);
+  -webkit-backdrop-filter: saturate(160%) blur(10px) opacity(0.5);
+}
+
+.introduceMySelf {
+  font-family: 'font2';
+  font-size: 1.2rem;
+  line-height: 150%;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.3rem;
+}
+
+p {
+  margin: 0;
+}
+
+.bottomBar {
+  font-family: 'font1';
+  position: absolute;
+  bottom: 20px;
+  left: 60px;
+  height: auto;
+  /* filter: brightness(0.7); */
+  /* background-color: #f8f8f8; */
+  /* backdrop-filter: saturate(160%) blur(10px) opacity(0.5);
+  -webkit-backdrop-filter: saturate(160%) blur(10px) opacity(0.5); */
+}
+
+.linkToMyGit {
+  text-decoration: underline;
+  cursor: pointer;
 }
