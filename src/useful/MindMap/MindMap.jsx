@@ -175,7 +175,7 @@ function MindMap(props) {
       </div>
       {props.setPos === undefined && (
         <span className={styles.bottomBar} style={{ filter: props.isDarkMode ? 'brightness(0.7)' : 'brightness(1.1)' }}>
-          Made with 🔥by{' '}
+          Made with 🔥 by{' '}
           <span onClick={() => handleOpenNewTab('https://github.com/ysw421')} className={styles.linkToMyGit}>
             siwon
           </span>
