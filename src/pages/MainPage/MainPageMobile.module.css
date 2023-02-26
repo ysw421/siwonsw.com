@@ -81,14 +81,14 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 32px;
   justify-content: center;
   margin-bottom: 3px;
 }
 
 .contactMiniBox {
-  width: 140px;
-  height: 140px;
+  width: 135px;
+  height: 135px;
   border-radius: 50%;
   border-radius: 28px;
   border: 3px solid #ccc;
