@@ -6,7 +6,7 @@ import PaperPage from './pages/PaperPage/PaperPage.jsx';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 // import reset from 'styled-reset';
 import { darkTheme, lightTheme } from './theme';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const GlobalStyle = createGlobalStyle`
   body {        
@@ -28,6 +28,19 @@ function App() {
     setIsDarkMode((prev) => !prev);
   };
 
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setInnerWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
@@ -38,7 +51,9 @@ function App() {
               path="/mind-map/machine-learning"
               element={<MachineLearning isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
             />
-            <Route path="/" element={<MainPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+            {innerWidth > 1100 && (
+              <Route path="/" element={<MainPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+            )}
             <Route path="/paper/:id" element={<PaperPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
             <Route path="*" element={<div>404</div>} />
             <Route path="/*/*" element={<div>404</div>} />
