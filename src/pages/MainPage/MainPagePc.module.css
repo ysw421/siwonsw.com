@@ -105,7 +105,7 @@ p {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  gap: 65px;
+  gap: 42px;
   aspect-ratio: 3.14 / 1;
 }
 

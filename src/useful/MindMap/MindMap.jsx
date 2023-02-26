@@ -134,12 +134,10 @@ function MindMap(props) {
                     props.setPos === true
                       ? {
                           borderColor: props.isDarkMode ? '#f8f8f8' : '#201c1c',
-                          // top: props.pos.top,
-                          // left: props.pos.left,
                           float: 'right',
                           position: 'sticky',
-                          bottom: '20px',
-                          right: '20px',
+                          bottom: '12px',
+                          right: '14px',
                         }
                       : { borderColor: props.isDarkMode ? '#f8f8f8' : '#201c1c' }
                   }
@@ -165,7 +163,16 @@ function MindMap(props) {
                     onClick={() => resetTransform()}
                     style={{ backgroundColor: props.isDarkMode ? '#f8f8f8' : '#201c1c' }}
                   >
-                    <AiOutlineHome style={{ width: '100%', color: props.isDarkMode ? '#201c1c' : '#f8f8f8' }} />
+                    <AiOutlineHome
+                      style={{
+                        position: 'relative',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -58%)',
+                        width: '100%',
+                        color: props.isDarkMode ? '#201c1c' : '#f8f8f8',
+                      }}
+                    />
                   </div>
                 </div>
               </Fragment>

@@ -84,7 +84,9 @@
 .resetPositionButton2 {
   -webkit-text-stroke: 0.2px #999;
   border-radius: 50% !important;
-  opacity: 0.8;
+  opacity: 0.4;
+  width: 15px;
+  height: 15px;
 }
 
 .resetPositionButtonBox {
