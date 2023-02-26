@@ -5,28 +5,31 @@ import styles from './MainPage.module.css';
 
 function MainPage(props) {
   return (
-    <div className={styles.mainGrid}>
+    <>
       <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
       <Profile />
-      <div className={styles.introduceGrid}>
-        <div style={{ alignItems: 'center' }}>
-          <Avatar
-            avatarStyle="Circle"
-            topType="ShortHairShortWaved"
-            accessoriesType="Round"
-            hairColor="BrownDark"
-            facialHairType="Blank"
-            clotheType="BlazerSweater"
-            eyeType="Wink"
-            eyebrowType="UpDown"
-            mouthType="Default"
-            skinColor="Light"
-            className={styles.avatar}
-          />
+      <div className={styles.mainGrid}>
+        <div className={styles.introduceGrid}>
+          <div className={styles.introduceBox}>
+            <Avatar
+              avatarStyle="Circle"
+              topType="ShortHairShortWaved"
+              accessoriesType="Round"
+              hairColor="BrownDark"
+              facialHairType="Blank"
+              clotheType="BlazerSweater"
+              eyeType="Wink"
+              eyebrowType="UpDown"
+              mouthType="Default"
+              skinColor="Light"
+              className={styles.avatar}
+            />
+            <p className={styles.blogName}>SiWon's Blog</p>
+          </div>
         </div>
+        <div className={styles.detailGrid}></div>
       </div>
-      <div className={styles.detailGrid}></div>
-    </div>
+    </>
   );
 }
 
