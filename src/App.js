@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import MachineLearning from './pages/MachineLearning/MachineLearning.jsx';
-import MainPage from './pages/MainPage/MainPage.jsx';
+import MainPage from './pages/MainPage/MainPagePc.jsx';
 import PaperPage from './pages/PaperPage/PaperPage.jsx';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 // import reset from 'styled-reset';
 import { darkTheme, lightTheme } from './theme';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
   body {        
@@ -41,6 +41,7 @@ function App() {
             <Route path="/" element={<MainPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
             <Route path="/paper/:id" element={<PaperPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
             <Route path="*" element={<div>404</div>} />
+            <Route path="/*/*" element={<div>404</div>} />
           </Routes>
         </BrowserRouter>
       </div>

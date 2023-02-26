@@ -18,7 +18,9 @@ function GoBack(props) {
 
 function GoMindMaps(props) {
   // 여기!
-  return <div>{props.type === 'ml' && <GoBack url="machine-learning" text="Machine Learning Mind Map" />}</div>;
+  return (
+    <div>{props.type === 'ml' && <GoBack url="mind-map/machine-learning" text="Machine Learning Mind Map" />}</div>
+  );
 }
 
 export default GoMindMaps;

@@ -33,3 +33,21 @@
   /* mix-blend-mode: difference; */
   transition: all 0.2s ease-in-out;
 }
+
+.bottomBar {
+  word-spacing: 0.2rem;
+  font-family: 'font1';
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  height: auto;
+  /* filter: brightness(0.7); */
+  /* background-color: #f8f8f8; */
+  /* backdrop-filter: saturate(160%) blur(10px) opacity(0.5);
+  -webkit-backdrop-filter: saturate(160%) blur(10px) opacity(0.5); */
+}
+
+.linkToMyGit {
+  text-decoration: underline;
+  cursor: pointer;
+}

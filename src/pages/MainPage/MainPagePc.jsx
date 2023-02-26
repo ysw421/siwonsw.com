@@ -1,12 +1,12 @@
 import ChangeDarkModeButton from '../../useful/ChangeDarkModeButton/ChangeDarkModeButton';
 import Profile from '../../useful/Profile/Profile';
 import Avatar from 'avataaars';
-import styles from './MainPage.module.css';
+import styles from './MainPagePc.module.css';
 import MindMap from '../../useful/MindMap/MindMap';
 import { mainNodes } from '../../parameters/nodes';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createRef } from 'react';
 
-function MainPage(props) {
+function MainPagePC(props) {
   const handleOpenNewTab = (url) => {
     window.open(url, '_blank', 'noopener, noreferrer');
   };
@@ -14,6 +14,10 @@ function MainPage(props) {
   const [isWink, setIsWink] = useState(false);
   const [constWink, setConstWink] = useState(6);
 
+  const introduceGridRef = createRef(null);
+  const mainGridRef = createRef(null);
+
+  // console.log(isCanScroll);
   useEffect(() => {
     setTimeout(() => {
       if (constWink > 0) {
@@ -31,8 +35,9 @@ function MainPage(props) {
 
   return (
     <>
-      <div className={styles.mainGrid}>
-        <div className={styles.introduceGrid}>
+      <div ref={mainGridRef} className={styles.mainGrid}>
+        {/* //style={isCanScroll && { overflowY: 'scroll' }} */}
+        <div ref={introduceGridRef} className={styles.introduceGrid}>
           <div className={styles.introduceBox}>
             <Avatar
               avatarStyle="Circle"
@@ -56,19 +61,13 @@ function MainPage(props) {
               <p>안녕하세요,🖐️개발자 윤시원입니다 :)</p>
               <p>코드 한줄이 세상을 이롭게 만듭니다.</p>
               <div style={{ height: '4rem' }}></div>
-              <p>@KDMHS_21wp</p>
+              <p style={{ cursor: 'pointer' }} onClick={() => handleOpenNewTab('https://www.dimigo.hs.kr/')}>
+                @KDMHS_21wp
+              </p>
               <p>@Fregic_12th</p>
               <p>더 아름다운 미래를 꿈꾸며~💜</p>
             </span>
-            <span
-              className={styles.bottomBar}
-              style={{ filter: props.isDarkMode ? 'brightness(0.7)' : 'brightness(1.1)' }}
-            >
-              Made with 🔥by{' '}
-              <span onClick={() => handleOpenNewTab('https://github.com/ysw421')} className={styles.linkToMyGit}>
-                siwon
-              </span>
-            </span>
+            <div style={{ height: '4rem' }}></div>
           </div>
         </div>
         <div className={styles.detailGrid}>
@@ -98,7 +97,7 @@ function MainPage(props) {
                 }}
               ></div>
             </div>
-            <div style={{ height: '40px' }}></div>
+            <div style={{ height: '45px' }}></div>
             <span className={styles.contactMe}>Contact Me</span>
             <div style={{ height: '20px' }}></div>
             <div className={styles.contactBox}>
@@ -180,6 +179,32 @@ function MainPage(props) {
                   me@siwonsw.com
                 </p>
               </div>
+              {/* 내 블로그 */}
+              <div
+                className={styles.contactMiniBox}
+                onClick={() => handleOpenNewTab('https://blog.siwonsw.com')}
+                style={{
+                  borderColor: props.isDarkMode ? 'rgb(248, 248, 248, 0.6)' : 'rgb(40, 44, 53, 0.6)',
+                }}
+              >
+                <div className={styles.contactLogos}>
+                  <img
+                    style={{
+                      position: 'relative',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      borderRadius: '10px',
+                    }}
+                    src="/img/my-logo.png"
+                    alt="blog"
+                    width="75%"
+                    height="75%"
+                  />
+                </div>
+                <p className={styles.contactTitle}>My Blog</p>
+                <p className={styles.contactSubTitle}>바로 이곳!</p>
+              </div>
               {/* 디스코드 */}
               <div
                 className={styles.contactMiniBox}
@@ -212,32 +237,6 @@ function MainPage(props) {
                   3.141592#7499
                 </p>
               </div>
-              {/* 내 블로그 */}
-              <div
-                className={styles.contactMiniBox}
-                onClick={() => handleOpenNewTab('https://blog.siwonsw.com')}
-                style={{
-                  borderColor: props.isDarkMode ? 'rgb(248, 248, 248, 0.6)' : 'rgb(40, 44, 53, 0.6)',
-                }}
-              >
-                <div className={styles.contactLogos}>
-                  <img
-                    style={{
-                      position: 'relative',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      borderRadius: '11px',
-                    }}
-                    src="/img/my-logo.png"
-                    alt="blog"
-                    width="80%"
-                    height="80%"
-                  />
-                </div>
-                <p className={styles.contactTitle}>My Blog</p>
-                <p className={styles.contactSubTitle}>바로 이곳!</p>
-              </div>
               {/* <div
                 className={styles.contactMiniBox}
                 style={{
@@ -264,6 +263,7 @@ function MainPage(props) {
               ></div> */}
             </div>
           </div>
+          <div style={{ height: '50px' }}></div>
         </div>
       </div>
       <div
@@ -272,10 +272,10 @@ function MainPage(props) {
       >
         <span className={styles.topText}>SiWon's Blog</span>
       </div>
-      <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
+      <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} isMainPage={true} />
       <Profile />
     </>
   );
 }
 
-export default MainPage;
+export default MainPagePC;

@@ -3,27 +3,34 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 98vw;
+  height: auto;
+  overflow-x: hidden;
   gap: 0;
 }
 
 .introduceGrid {
   /* background-color: aqua; */
   /* width: calc(100% - 65%); */
-  width: 35%;
+  /* width: 35%; */
   height: 100%;
-  /* align-items: 'center'; */
-  /* padding: 0 50px; */
+  /* min-width: 425px; */
+  width: 425px;
+  overflow-x: hidden;
 }
 
 .detailGrid {
+  flex-grow: 0.8;
   /* background-color: rgb(76, 186, 107, 0.3); */
-  width: 65%;
+  /* width: 65%; */
+  width: calc(100% - 436px);
   height: 100%;
-  overflow-y: scroll;
+  overflow-x: hidden;
 }
+
+/* .detailGrid::-webkit-scrollbar {
+  display: none;
+} */
 
 .avatar {
   width: 200px;
@@ -37,13 +44,16 @@
   margin-right: 0;
   text-align: left;
   margin-top: 39px;
+  overflow-x: hidden;
+  position: sticky;
 }
 
 .detailBox {
   margin: 0px 70px;
+  margin-left: 90px;
   margin-top: 75px;
   text-align: left;
-  /* font-family: 'font2'; */
+  overflow: hidden;
 }
 
 .blogName {
@@ -91,24 +101,6 @@ p {
   margin: 0;
 }
 
-.bottomBar {
-  word-spacing: 0.2rem;
-  font-family: 'font1';
-  position: absolute;
-  bottom: 20px;
-  left: 70px;
-  height: auto;
-  /* filter: brightness(0.7); */
-  /* background-color: #f8f8f8; */
-  /* backdrop-filter: saturate(160%) blur(10px) opacity(0.5);
-  -webkit-backdrop-filter: saturate(160%) blur(10px) opacity(0.5); */
-}
-
-.linkToMyGit {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .headBox {
   display: flex;
   flex-wrap: nowrap;
@@ -151,13 +143,13 @@ p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 31px;
+  gap: 42px;
   justify-content: center;
 }
 
 .contactMiniBox {
-  width: 141px;
-  height: 141px;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
   border-radius: 28px;
   border: 3px solid #ccc;
