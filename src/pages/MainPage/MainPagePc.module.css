@@ -24,7 +24,7 @@
   /* background-color: rgb(76, 186, 107, 0.3); */
   /* width: 65%; */
   width: calc(100% - 436px);
-  height: 100%;
+  height: 105%;
   overflow-x: hidden;
 }
 
@@ -145,6 +145,7 @@ p {
   flex-wrap: wrap;
   gap: 42px;
   justify-content: center;
+  margin-bottom: 3px;
 }
 
 .contactMiniBox {
