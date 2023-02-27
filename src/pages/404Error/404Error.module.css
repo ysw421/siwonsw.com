@@ -50,7 +50,7 @@
 }
 
 .goHomeContainer {
-  position: absolute;
+  position: fixed;
   top: 68px;
   right: 30px;
   display: flex;
