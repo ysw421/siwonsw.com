@@ -5,6 +5,7 @@ import styles from './MainPagePc.module.css';
 import MindMap from '../../useful/MindMap/MindMap';
 import { mainNodes } from '../../parameters/nodes';
 import { useState, useEffect, createRef } from 'react';
+import { motion } from 'framer-motion';
 
 function MainPagePC(props) {
   const handleOpenNewTab = (url) => {
@@ -35,7 +36,13 @@ function MainPagePC(props) {
 
   return (
     <>
-      <div ref={mainGridRef} className={styles.mainGrid}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        ref={mainGridRef}
+        className={styles.mainGrid}
+      >
         {/* //style={isCanScroll && { overflowY: 'scroll' }} */}
         <div ref={introduceGridRef} className={styles.introduceGrid}>
           <div className={styles.introduceBox}>
@@ -265,7 +272,7 @@ function MainPagePC(props) {
           </div>
           <div style={{ height: '50px' }}></div>
         </div>
-      </div>
+      </motion.div>
       <div
         className={styles.topBar}
         style={{ backgroundColor: props.isDarkMode ? 'rgb(40, 44, 53, 0.5)' : 'rgb(248, 248, 248, 0.5)' }}

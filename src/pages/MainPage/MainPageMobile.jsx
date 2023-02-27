@@ -5,6 +5,7 @@ import ChangeDarkModeButton from '../../useful/ChangeDarkModeButton/ChangeDarkMo
 import Profile from '../../useful/Profile/Profile';
 import MindMap from '../../useful/MindMap/MindMap';
 import { mainNodes } from '../../parameters/nodes';
+import { motion } from 'framer-motion';
 
 function MainPageMobile(props) {
   const handleOpenNewTab = (url) => {
@@ -31,7 +32,7 @@ function MainPageMobile(props) {
 
   return (
     <>
-      <div className={styles.container}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={styles.container}>
         <Avatar
           avatarStyle="Circle"
           topType="ShortHairShortWaved"
@@ -211,7 +212,7 @@ function MainPageMobile(props) {
           </div>
         </div>
         <div style={{ height: '50px' }}></div>
-      </div>
+      </motion.div>
       <div
         className={styles.topBar}
         style={{ backgroundColor: props.isDarkMode ? 'rgb(40, 44, 53, 0.5)' : 'rgb(248, 248, 248, 0.5)' }}

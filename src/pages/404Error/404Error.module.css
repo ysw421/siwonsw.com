@@ -1,0 +1,68 @@
+.topText {
+  font-family: 'font1';
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  font-size: 30px;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.backImage {
+  position: absolute;
+  transform: translateY(-50%, -50%);
+}
+
+.image {
+  width: 204px;
+  /* position: relative; */
+  /* filter: brightness(20); */
+  /* transform: translate(102px, 2px); */
+  /* height: 100%; */
+  /* object-fit: cover; */
+  /* fill: black; */
+}
+
+.image2 {
+  width: 200px;
+  position: relative;
+  /* filter: brightness(20); */
+  transform: translateX(-100px);
+}
+
+.title {
+  font-family: 'font1';
+  font-size: 3rem;
+  margin-top: 0.7rem;
+}
+
+.subtitle {
+  font-family: 'font2';
+  font-size: 0.8rem;
+  /* margin-top: 0.2rem; */
+}
+
+.goHomeContainer {
+  position: absolute;
+  top: 68px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  font-family: 'font2';
+  font-size: 0.95rem;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.15rem;
+}
+
+.arrow {
+  transform: rotate(180deg) scaleX(-1);
+}

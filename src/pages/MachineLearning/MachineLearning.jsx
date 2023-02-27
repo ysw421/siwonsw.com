@@ -3,6 +3,7 @@ import ChangeDarkModeButton from '../../useful/ChangeDarkModeButton/ChangeDarkMo
 import Profile from '../../useful/Profile/Profile';
 import MindMap from '../../useful/MindMap/MindMap';
 import { machineLearningNodes } from '../../parameters/nodes';
+import { motion } from 'framer-motion';
 
 // class Node {
 //   constructor(value, x, y, link, edges = [], circleSize = 20) {
@@ -24,21 +25,36 @@ import { machineLearningNodes } from '../../parameters/nodes';
 // };
 
 function MachineLearning(props) {
+  const handleOpenNewTab = (url) => {
+    window.open(url, '_blank', 'noopener, noreferrer');
+  };
+
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        overflow: 'hidden',
-      }}
-    >
-      <MindMap nodes={machineLearningNodes} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
-      {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        <MindMap nodes={machineLearningNodes} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
+        {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
+      </motion.div>
       <Profile />
+      <span className={styles.bottomBar} style={{ filter: props.isDarkMode ? 'brightness(0.7)' : 'brightness(1.1)' }}>
+        Made with 🔥 by{' '}
+        <span onClick={() => handleOpenNewTab('https://github.com/ysw421')} className={styles.linkToMyGit}>
+          siwon
+        </span>
+      </span>
       <span className={styles.topText} style={{ color: props.isDarkMode ? '' : '#f8f8f8' }}>
         SiWon's Mind Map
       </span>
-    </div>
+    </>
   );
 }
 

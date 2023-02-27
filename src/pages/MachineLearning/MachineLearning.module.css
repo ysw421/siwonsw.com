@@ -105,3 +105,21 @@
   /* -webkit-text-stroke: 0.2px #fff; */
   mix-blend-mode: difference;
 }
+
+.bottomBar {
+  word-spacing: 0.2rem;
+  font-family: 'font1';
+  position: fixed;
+  bottom: 27px;
+  left: 20px;
+  height: auto;
+  /* filter: brightness(0.7); */
+  /* background-color: #f8f8f8; */
+  /* backdrop-filter: saturate(160%) blur(10px) opacity(0.5);
+  -webkit-backdrop-filter: saturate(160%) blur(10px) opacity(0.5); */
+}
+
+.linkToMyGit {
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -8,6 +8,8 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from './theme';
 import { useState, useEffect } from 'react';
 import MainPageMobile from './pages/MainPage/MainPageMobile';
+import Error404 from './pages/404Error/404Error';
+import { AnimatePresence } from 'framer-motion';
 
 const GlobalStyle = createGlobalStyle`
   body {        
@@ -47,21 +49,26 @@ function App() {
       <GlobalStyle />
       <div className="App">
         <BrowserRouter>
-          <Routes>
-            <Route
-              path="/mind-map/machine-learning"
-              element={<MachineLearning isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
-            />
-            {innerWidth > 1100 && (
-              <Route path="/" element={<MainPagePc isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
-            )}
-            {innerWidth <= 1100 && (
-              <Route path="/" element={<MainPageMobile isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
-            )}
-            <Route path="/paper/:id" element={<PaperPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
-            <Route path="*" element={<div>404</div>} />
-            <Route path="/*/*" element={<div>404</div>} />
-          </Routes>
+          <AnimatePresence>
+            <Routes>
+              <Route
+                path="/mind-map/machine-learning"
+                element={<MachineLearning isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+              />
+              {innerWidth > 1100 && (
+                <Route path="/" element={<MainPagePc isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+              )}
+              {innerWidth <= 1100 && (
+                <Route path="/" element={<MainPageMobile isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+              )}
+              <Route
+                path="/paper/:id"
+                element={<PaperPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+              />
+              <Route path="*" element={<Error404 isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+              <Route path="/*/*" element={<Error404 isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+            </Routes>
+          </AnimatePresence>
         </BrowserRouter>
       </div>
     </ThemeProvider>
