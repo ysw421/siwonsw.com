@@ -109,7 +109,7 @@
 
 .topText {
   font-family: 'font1';
-  position: absolute;
+  position: fixed;
   top: 18px;
   left: 20px;
   font-size: 30px;

@@ -30,13 +30,3 @@
   background-color: #999;
   border-radius: 5px;
 }
-
-.topText {
-  font-family: 'font1';
-  position: absolute;
-  top: 18px;
-  left: 20px;
-  font-size: 30px;
-  /* -webkit-text-stroke: 0.2px #fff; */
-  mix-blend-mode: difference;
-}
