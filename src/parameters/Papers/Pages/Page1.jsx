@@ -1,5 +1,5 @@
 import styles from './Pages.module.css';
-import MainText from './mainText';
+import { MainText } from './useful';
 
 export default function Page1(props) {
   return (

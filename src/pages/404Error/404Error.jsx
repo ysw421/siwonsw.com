@@ -125,7 +125,7 @@ function Error404(props) {
       </div>
       <span className={styles.topText}>SiWon's Blog</span>
       <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
-      <Profile />
+      <Profile isDarkMode={props.isDarkMode} />
     </div>
   );
 }

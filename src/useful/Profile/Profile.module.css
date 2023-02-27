@@ -7,6 +7,7 @@
 .myLogo {
   border-radius: 50%;
   width: 40px;
+  /* border: 1px solid #999; */
 }
 
 .myLogo:hover {

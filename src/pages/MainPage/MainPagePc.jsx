@@ -280,7 +280,7 @@ function MainPagePC(props) {
         <span className={styles.topText}>SiWon's Blog</span>
       </div>
       <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} isMainPage={true} />
-      <Profile />
+      <Profile isDarkMode={props.isDarkMode} />
     </>
   );
 }

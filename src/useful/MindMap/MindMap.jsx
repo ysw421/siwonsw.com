@@ -63,7 +63,7 @@ function MindMap(props) {
                                       props.nodes[edge].y + canvasSize.height / 2
                                     }`}
                                     stroke="#818181"
-                                    strokeWidth="0.5"
+                                    strokeWidth="1.2"
                                     fill="none"
                                     style={{ transition: 'all 0.5s ease-in-out' }}
                                   ></path>

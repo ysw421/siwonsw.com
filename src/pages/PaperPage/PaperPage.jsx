@@ -34,7 +34,7 @@ function PaperPage(props) {
         <span className={styles.topText}>SiWon's Paper</span>
       </div>
       <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
-      <Profile />
+      <Profile isDarkMode={props.isDarkMode} />
     </div>
   );
 }

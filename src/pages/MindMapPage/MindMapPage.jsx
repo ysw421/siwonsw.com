@@ -21,8 +21,6 @@ function MindMapPage(props) {
   const [findMindMap, setFindMindMap] = useState(null);
   useEffect(() => {
     setFindMindMap(mindMapNodes[id]);
-
-    console.log(findMindMap);
   });
   if (findMindMap === undefined) {
     return <Error404 isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />;
@@ -43,7 +41,7 @@ function MindMapPage(props) {
         <MindMap nodes={findMindMap} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
         {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
       </motion.div>
-      <Profile />
+      <Profile isDarkMode={props.isDarkMode} />
       <span className={styles.bottomBar} style={{ filter: props.isDarkMode ? 'brightness(0.7)' : 'brightness(1.1)' }}>
         Made with 🔥 by{' '}
         <span onClick={() => handleOpenNewTab('https://github.com/ysw421')} className={styles.linkToMyGit}>

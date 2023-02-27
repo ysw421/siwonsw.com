@@ -4,3 +4,23 @@
   letter-spacing: 0.1rem;
   word-spacing: 0.3rem;
 }
+
+.mindMapBox {
+  width: 100%;
+  /* max-width: 600px; */
+  aspect-ratio: 1.6;
+  /* height: 300px; */
+  overflow: hidden;
+  border-radius: 28px;
+  border: 3px solid #ccc;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin50 {
+  height: 50px;
+}

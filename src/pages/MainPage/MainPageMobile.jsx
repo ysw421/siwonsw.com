@@ -220,7 +220,7 @@ function MainPageMobile(props) {
         <span className={styles.topText}>SiWon's Blog</span>
       </div>
       <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
-      <Profile />
+      <Profile isDarkMode={props.isDarkMode} />
     </>
   );
 }
