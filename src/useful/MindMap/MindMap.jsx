@@ -108,7 +108,7 @@ function MindMap(props) {
                 </TransformComponent>
                 {props.isDarkModeBtnHidden !== true && (
                   <div className={styles.changeDarkModeButtonBox}>
-                    <span style={{ color: props.isDarkMode ? '' : '#f8f8f8' }} className={styles.difference}>
+                    <span style={{ color: props.isDarkMode ? '#f8f8f8' : '#201c1c' }} className={styles.difference}>
                       {props.isDarkMode ? 'Dark Mode' : 'Light Mode'}
                     </span>
                     <div
@@ -149,7 +149,7 @@ function MindMap(props) {
                       style={
                         props.setPos === true
                           ? { color: props.isDarkMode ? '' : '#201c1c' }
-                          : { color: props.isDarkMode ? '' : '#f8f8f8' }
+                          : { color: props.isDarkMode ? '#f8f8f8' : '#201c1c' }
                       }
                       className={styles.difference}
                     >

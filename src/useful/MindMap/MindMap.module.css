@@ -103,7 +103,7 @@
 }
 
 .difference {
-  mix-blend-mode: difference;
+  mix-blend-mode: difference !important;
 }
 
 .changeDarkModeButtonBox {
