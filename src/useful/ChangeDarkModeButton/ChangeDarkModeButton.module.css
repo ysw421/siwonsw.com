@@ -8,6 +8,9 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* -webkit-text-stroke: 0.2px #fff; */
   /* mix-blend-mode: difference; */
 }

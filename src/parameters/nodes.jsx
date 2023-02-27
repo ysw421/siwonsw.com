@@ -4,7 +4,7 @@ export const mainNodes = {
     x: 0,
     y: 0,
     link: '',
-    edges: ['Machine Learning', 'Math'],
+    edges: ['Machine Learning', 'Math', '나의 일상'],
     circleSize: 60,
   },
   'Machine Learning': {
@@ -17,11 +17,19 @@ export const mainNodes = {
   },
   Math: {
     value: 'Math',
-    x: 60,
-    y: 80,
+    x: 120,
+    y: 30,
     link: '/mind-map/math',
     edges: [],
     circleSize: 25,
+  },
+  '나의 일상': {
+    value: '나의 일상',
+    x: -70,
+    y: 80,
+    link: '/mind-map/나의-일상',
+    edges: [],
+    circleSize: 20,
   },
 };
 
@@ -83,6 +91,33 @@ export const mindMapNodes = {
       x: -70,
       y: -50,
       link: '/paper/선형-대수학',
+      edges: [],
+      circleSize: 20,
+    },
+  },
+
+  '나의-일상': {
+    '나의 일상': {
+      value: '나의 일상',
+      x: 0,
+      y: 0,
+      link: '/paper/나의-일상',
+      edges: ['디미고', '영화'],
+      circleSize: 60,
+    },
+    디미고: {
+      value: '디미고',
+      x: 30,
+      y: 100,
+      link: '/paper/디미고',
+      edges: [],
+      circleSize: 30,
+    },
+    영화: {
+      value: '영화',
+      x: -70,
+      y: -60,
+      link: '/paper/영화',
       edges: [],
       circleSize: 20,
     },
