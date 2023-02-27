@@ -32,11 +32,7 @@ function MindMapPage(props) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        style={{
-          width: '100vw',
-          height: '100vh',
-          overflow: 'hidden',
-        }}
+        className={styles.mainContainer}
       >
         <MindMap nodes={findMindMap} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
         {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
