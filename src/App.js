@@ -58,7 +58,14 @@ function App() {
               /> */}
               <Route
                 path="/mind-map/:id"
-                element={<MindMapPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+                element={
+                  <>
+                    <MindMapPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+                    <span className="topText" style={{ color: isDarkMode ? '' : '#f8f8f8' }}>
+                      SiWon's Mind Map
+                    </span>
+                  </>
+                }
               />
               {innerWidth > 1100 && (
                 <Route path="/" element={<MainPagePc isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />

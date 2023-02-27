@@ -44,9 +44,6 @@ function MindMapPage(props) {
           siwon
         </span>
       </span>
-      <span className={styles.topText} style={{ color: props.isDarkMode ? '' : '#f8f8f8' }}>
-        SiWon's Mind Map
-      </span>
     </>
   );
 }
