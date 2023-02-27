@@ -30,3 +30,7 @@
   background-color: #999;
   border-radius: 5px;
 }
+
+.App {
+  height: calc(var(--vh, 1vh) * 100);
+}

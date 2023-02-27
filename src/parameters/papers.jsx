@@ -23,4 +23,10 @@ export const papers = [
     title: '👋 디미고 21기 웹 프로그래밍과 윤시원입니다.',
     type: '일상',
   },
+  {
+    id: '영화',
+    numberId: 5,
+    title: '🎬 영화를 좋아하는 시원입니다.',
+    type: '일상',
+  },
 ];

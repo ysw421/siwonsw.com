@@ -15,20 +15,20 @@ function MainPageMobile(props) {
   const [isWink, setIsWink] = useState(false);
   const [constWink, setConstWink] = useState(6);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (constWink > 0) {
-        setConstWink((e) => e - 1);
-      } else {
-        setIsWink((e) => !e);
-        if (isWink) {
-          setConstWink(18);
-        } else {
-          setConstWink(0);
-        }
-      }
-    }, 200);
-  });
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (constWink > 0) {
+  //       setConstWink((e) => e - 1);
+  //     } else {
+  //       setIsWink((e) => !e);
+  //       if (isWink) {
+  //         setConstWink(18);
+  //       } else {
+  //         setConstWink(0);
+  //       }
+  //     }
+  //   }, 200);
+  // });
 
   return (
     <>
