@@ -1,33 +1,32 @@
-import styles from './MachineLearning.module.css';
-import ChangeDarkModeButton from '../../useful/ChangeDarkModeButton/ChangeDarkModeButton';
+import styles from './MindMapPage.module.css';
+import { motion } from 'framer-motion';
 import Profile from '../../useful/Profile/Profile';
 import MindMap from '../../useful/MindMap/MindMap';
-import { machineLearningNodes } from '../../parameters/nodes';
-import { motion } from 'framer-motion';
+import { useParams } from 'react-router-dom';
+import { mindMapNodes } from '../../parameters/nodes';
+import Error404 from '../../pages/404Error/404Error';
+import { useEffect, useState } from 'react';
 
-// class Node {
-//   constructor(value, x, y, link, edges = [], circleSize = 20) {
-//     this.value = value;
-//     this.x = x;
-//     this.y = y;
-//     this.link = link;
-//     this.edges = edges;
-//     this.circleSize = circleSize;
-//   }
-// }
-
-// const nodes = {
-//   a: new Node('Machine Learning', 0, 0, 'a', ['b', 'c'], 60),
-//   b: new Node('한글123English', -70, -50, 'b', ['d', 'e']),
-//   c: new Node(3, 60, 100, 'c'),
-//   d: new Node(4, -140, -70, 'd', [], 27),
-//   e: new Node(5, -20, -120, 'e'),
-// };
-
-function MachineLearning(props) {
+function MindMapPage(props) {
   const handleOpenNewTab = (url) => {
     window.open(url, '_blank', 'noopener, noreferrer');
   };
+
+  const { id } = useParams();
+
+  //   const findMindMap = mindMapNodes.find(function (product) {
+  //     return product.id === id;
+  //   });
+
+  const [findMindMap, setFindMindMap] = useState(null);
+  useEffect(() => {
+    setFindMindMap(mindMapNodes[id]);
+
+    console.log(findMindMap);
+  });
+  if (findMindMap === undefined) {
+    return <Error404 isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />;
+  }
 
   return (
     <>
@@ -41,7 +40,7 @@ function MachineLearning(props) {
           overflow: 'hidden',
         }}
       >
-        <MindMap nodes={machineLearningNodes} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
+        <MindMap nodes={findMindMap} isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} />
         {/* <ChangeDarkModeButton isDarkMode={props.isDarkMode} toggleDarkMode={props.toggleDarkMode} /> */}
       </motion.div>
       <Profile />
@@ -58,4 +57,4 @@ function MachineLearning(props) {
   );
 }
 
-export default MachineLearning;
+export default MindMapPage;

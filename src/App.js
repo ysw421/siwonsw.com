@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import MachineLearning from './pages/MachineLearning/MachineLearning.jsx';
+// import MachineLearning from './pages/MachineLearning/MachineLearning.jsx';
 import MainPagePc from './pages/MainPage/MainPagePc.jsx';
 import PaperPage from './pages/PaperPage/PaperPage.jsx';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import MainPageMobile from './pages/MainPage/MainPageMobile';
 import Error404 from './pages/404Error/404Error';
 import { AnimatePresence } from 'framer-motion';
+import MindMapPage from './pages/MindMapPage/MindMapPage';
 
 const GlobalStyle = createGlobalStyle`
   body {        
@@ -51,9 +52,13 @@ function App() {
         <BrowserRouter>
           <AnimatePresence>
             <Routes>
-              <Route
+              {/* <Route
                 path="/mind-map/machine-learning"
                 element={<MachineLearning isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+              /> */}
+              <Route
+                path="/mind-map/:id"
+                element={<MindMapPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
               />
               {innerWidth > 1100 && (
                 <Route path="/" element={<MainPagePc isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
