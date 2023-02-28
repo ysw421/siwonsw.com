@@ -6,11 +6,17 @@ import MindMap from '../../useful/MindMap/MindMap';
 import { mainNodes } from '../../parameters/nodes';
 import { useState, useEffect, createRef } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 function MainPagePC(props) {
   const handleOpenNewTab = (url) => {
     window.open(url, '_blank', 'noopener, noreferrer');
   };
+
+  const movePage = useNavigate();
+  function goTo(url) {
+    movePage(url);
+  }
 
   const [isWink, setIsWink] = useState(false);
   const [constWink, setConstWink] = useState(6);
@@ -68,7 +74,7 @@ function MainPagePC(props) {
               <p>안녕하세요,🖐️개발자 윤시원입니다 :)</p>
               <p>코드 한줄이 세상을 이롭게 만듭니다.</p>
               <div style={{ height: '4rem' }}></div>
-              <p style={{ cursor: 'pointer' }} onClick={() => handleOpenNewTab('https://www.dimigo.hs.kr/')}>
+              <p style={{ cursor: 'pointer' }} onClick={() => goTo('/paper/디미고')}>
                 @KDMHS_21wp
               </p>
               <p>@Fregic_12th</p>

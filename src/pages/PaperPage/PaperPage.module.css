@@ -16,6 +16,7 @@
   padding: 2rem 1.5rem;
   padding-top: 100px;
   position: relative;
+  word-break: keep-all;
 }
 
 .title {

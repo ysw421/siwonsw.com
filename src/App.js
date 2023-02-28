@@ -11,6 +11,7 @@ import MainPageMobile from './pages/MainPage/MainPageMobile';
 import Error404 from './pages/404Error/404Error';
 import { AnimatePresence } from 'framer-motion';
 import MindMapPage from './pages/MindMapPage/MindMapPage';
+import ScrollToTop from './ScrollToTop';
 
 const GlobalStyle = createGlobalStyle`
   body {        
@@ -58,6 +59,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <AnimatePresence>
+            <ScrollToTop />
             <Routes>
               {/* <Route
                 path="/mind-map/machine-learning"
