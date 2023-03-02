@@ -4,6 +4,8 @@ import Page3 from './Pages/Page3';
 import Page4 from './Pages/Page4';
 import Page5 from './Pages/Page5';
 import Page6 from './Pages/Page6';
+import Page7 from './Pages/Page7';
+import Page8 from './Pages/Page8';
 
 function Papers(props) {
   return (
@@ -14,7 +16,9 @@ function Papers(props) {
       {props.numberId === 4 && <Page4 isDarkMode={props.isDarkMode} />}
       {props.numberId === 5 && <Page5 isDarkMode={props.isDarkMode} />}
       {props.numberId === 6 && <Page6 isDarkMode={props.isDarkMode} />}
-      <div style={{ height: '50px' }}></div>
+      {props.numberId === 7 && <Page7 isDarkMode={props.isDarkMode} />}
+      {props.numberId === 8 && <Page8 isDarkMode={props.isDarkMode} />}
+      <div style={{ height: '100px' }}></div>
     </div>
   );
 }

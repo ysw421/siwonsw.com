@@ -91,8 +91,16 @@ export const mindMapNodes = {
       x: -70,
       y: -50,
       link: '/paper/선형-대수학',
-      edges: [],
+      edges: ['행렬'],
       circleSize: 20,
+    },
+    행렬: {
+      value: '행렬',
+      x: -20,
+      y: -110,
+      link: '/paper/행렬',
+      edges: [],
+      circleSize: 40,
     },
   },
 

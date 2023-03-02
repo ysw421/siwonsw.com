@@ -195,7 +195,7 @@ function MainPagePC(props) {
               {/* 내 블로그 */}
               <div
                 className={styles.contactMiniBox}
-                onClick={() => handleOpenNewTab('https://blog.siwonsw.com')}
+                onClick={() => handleOpenNewTab('https://www.siwonsw.com')}
                 style={{
                   borderColor: props.isDarkMode ? 'rgb(248, 248, 248, 0.6)' : 'rgb(40, 44, 53, 0.6)',
                 }}

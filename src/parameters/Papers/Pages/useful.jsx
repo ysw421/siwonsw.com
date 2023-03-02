@@ -3,7 +3,13 @@ import styles from './Pages.module.css';
 export function MainText(props) {
   return (
     <>
-      {props.fontSize === undefined ? (
+      {props.isSpan === true ? (
+        props.fontSize === undefined ? (
+          <span className={styles.mainText}>{props.text}</span>
+        ) : (
+          <span style={{ fontSize: props.fontSize }}>{props.text}</span>
+        )
+      ) : props.fontSize === undefined ? (
         <p className={styles.mainText}>{props.text}</p>
       ) : (
         <p style={{ fontSize: props.fontSize }}>{props.text}</p>

@@ -35,4 +35,16 @@ export const papers = [
     title: '🎬 타이타닉',
     type: '일상',
   },
+  {
+    id: '선형-대수학',
+    numberId: 7,
+    title: '선형 대수학 (Linear Algebra)',
+    type: 'math',
+  },
+  {
+    id: '행렬',
+    numberId: 8,
+    title: '행렬 (Matrix)',
+    type: 'math',
+  },
 ];
