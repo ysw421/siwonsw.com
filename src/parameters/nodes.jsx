@@ -118,7 +118,7 @@ export const mindMapNodes = {
       x: 30,
       y: 100,
       link: '/paper/디미고',
-      edges: [],
+      edges: ['2학년 1, 2일'],
       circleSize: 30,
     },
     영화: {
@@ -134,6 +134,14 @@ export const mindMapNodes = {
       x: -20,
       y: -120,
       link: '/paper/타이타닉',
+      edges: [],
+      circleSize: 20,
+    },
+    '2학년 1, 2일': {
+      value: '2학년 1, 2일',
+      x: -10,
+      y: 160,
+      link: '/paper/2학년-1,-2일',
       edges: [],
       circleSize: 20,
     },

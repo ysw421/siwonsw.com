@@ -47,4 +47,10 @@ export const papers = [
     title: '행렬 (Matrix)',
     type: 'math',
   },
+  {
+    id: '2학년-1,-2일',
+    numberId: 9,
+    title: '2학년 1, 그리고 2일',
+    type: '일상',
+  },
 ];
