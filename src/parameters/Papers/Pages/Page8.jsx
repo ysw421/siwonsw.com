@@ -41,7 +41,7 @@ export default function Page8(props) {
 
   return (
     <>
-      <MathJaxContext>
+      <MathJaxContext version={3} config={config}>
         <MainText text="행렬은 숫자를 직사각형 형태로 배열한 것입니다." />
 
         <MathJax>
