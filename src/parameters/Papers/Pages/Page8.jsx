@@ -13,7 +13,7 @@ const Matrix3x2Box = (props) => {
           display={true}
         />
       </div>
-      <table style={{ position: 'relative', top: '-85px' }}>
+      <table style={{ position: 'relative', top: 'calc(-100% + 15px)' }}>
         <tr>
           <td>
             <input
@@ -418,7 +418,7 @@ export default function Page8(props) {
               display={true}
             />
           </div>
-          <table style={{ position: 'relative', top: '-61px' }}>
+          <table style={{ position: 'relative', top: 'calc(-100% + 16px)' }}>
             <tr>
               <td>
                 <input
