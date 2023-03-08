@@ -6,14 +6,14 @@ import { MathComponent } from 'mathjax-react';
 
 const Matrix3x2Box = (props) => {
   return (
-    <div style={{ height: '100px', overflowY: 'hidden' }}>
+    <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
       <div className={styles.preventDrag}>
         <MathComponent
           tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
           display={true}
         />
       </div>
-      <table style={{ position: 'relative', top: 'calc(-100% + 15px)' }}>
+      <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
         <tr>
           <td>
             <input
@@ -411,14 +411,14 @@ export default function Page8(props) {
         <div style={{ margin: '0 3  px' }}>
           <MainText text="⋅" fontSize="1.5rem" />
         </div>
-        <div style={{ height: '77px', overflowY: 'hidden' }}>
+        <div style={{ height: '77px', overflowY: 'hidden', position: 'relative' }}>
           <div className={styles.preventDrag}>
             <MathComponent
               tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ& ㅤ& ㅤ& ㅤ\\ \\ \end{array}\right]`}
               display={true}
             />
           </div>
-          <table style={{ position: 'relative', top: 'calc(-100% + 16px)' }}>
+          <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             <tr>
               <td>
                 <input
