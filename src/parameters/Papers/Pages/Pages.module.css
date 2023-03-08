@@ -91,6 +91,7 @@
   background-color: transparent;
   border-radius: 6px;
   text-align: center;
+  padding: 0;
 }
 
 .tableInputNumber::-webkit-outer-spin-button,

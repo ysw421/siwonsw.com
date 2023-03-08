@@ -13,7 +13,7 @@ const Matrix3x2Box = (props) => {
           display={true}
         />
       </div>
-      <table style={{ position: 'relative', top: '-90px' }}>
+      <table style={{ position: 'relative', top: '-85px' }}>
         <tr>
           <td>
             <input
@@ -408,17 +408,17 @@ export default function Page8(props) {
           min={-20}
           max={20}
         />
-        <div style={{ margin: '0 10px' }}>
+        <div style={{ margin: '0 3  px' }}>
           <MainText text="⋅" fontSize="1.5rem" />
         </div>
         <div style={{ height: '77px', overflowY: 'hidden' }}>
           <div className={styles.preventDrag}>
             <MathComponent
-              tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ& ㅤ& ㅤ\\ \\ \end{array}\right]`}
+              tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ& ㅤ& ㅤ& ㅤ\\ \\ \end{array}\right]`}
               display={true}
             />
           </div>
-          <table style={{ position: 'relative', top: '-64px' }}>
+          <table style={{ position: 'relative', top: '-61px' }}>
             <tr>
               <td>
                 <input
@@ -503,7 +503,7 @@ export default function Page8(props) {
             </tr>
           </table>
         </div>
-        <div style={{ margin: '0 10px' }}>
+        <div style={{ margin: '0 3px' }}>
           <MainText text="=" fontSize="1.5rem" />
         </div>
         <MathComponent
