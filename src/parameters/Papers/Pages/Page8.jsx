@@ -401,13 +401,144 @@ export default function Page8(props) {
         <MathComponent tex={String.raw`c_{ij} = \sum_{l=1}^k a_{il}b_{lj}`} />
       </div>
       <center className={styles.sortRight}>
-        <Matrix3x2Box
-          matrix={dotProductMatrix1}
-          changeFun={changeDotProductMatrix1}
-          isDarkMode={props.isDarkMode}
-          min={-20}
-          max={20}
-        />
+        <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
+          <div className={styles.preventDrag}>
+            <MathComponent
+              tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
+              display={true}
+            />
+          </div>
+          <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  className={styles.tableInputNumber}
+                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                  value={dotProductMatrix1[0]}
+                  onChange={(e) => {
+                    changeDotProductMatrix1(e.target.value, 0);
+                  }}
+                  min={-20}
+                  max={20}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  className={styles.tableInputNumber}
+                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                  value={dotProductMatrix1[1]}
+                  onChange={(e) => {
+                    changeDotProductMatrix1(e.target.value, 1);
+                  }}
+                  min={-20}
+                  max={20}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  className={styles.tableInputNumber}
+                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                  value={dotProductMatrix1[2]}
+                  onChange={(e) => {
+                    changeDotProductMatrix1(e.target.value, 2);
+                  }}
+                  min={-20}
+                  max={20}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  className={styles.tableInputNumber}
+                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                  value={dotProductMatrix1[3]}
+                  onChange={(e) => {
+                    changeDotProductMatrix1(e.target.value, 3);
+                  }}
+                  min={-20}
+                  max={20}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  className={styles.tableInputNumber}
+                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                  value={dotProductMatrix1[4]}
+                  onChange={(e) => {
+                    changeDotProductMatrix1(e.target.value, 4);
+                  }}
+                  min={-20}
+                  max={20}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  className={styles.tableInputNumber}
+                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                  value={dotProductMatrix1[5]}
+                  onChange={(e) => {
+                    changeDotProductMatrix1(e.target.value, 5);
+                  }}
+                  min={-20}
+                  max={20}
+                />
+              </td>
+            </tr>
+          </table>
+          <div
+            style={{
+              position: 'absolute',
+              width: '70px',
+              height: '74px',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: '-1',
+            }}
+          >
+            <div
+              style={{
+                width: '80%',
+                margin: '10%',
+                marginTop: '3px',
+                marginBottom: '3px',
+                background: '#b8a7ff78',
+                height: '20px',
+                borderRadius: '8px',
+              }}
+            ></div>
+            <div
+              style={{
+                width: '80%',
+                margin: '10%',
+                marginTop: '0',
+                marginBottom: '4px',
+                background: '#00ffee78',
+                height: '20px',
+                borderRadius: '8px',
+              }}
+            ></div>
+            <div
+              style={{
+                width: '80%',
+                margin: '10%',
+                marginTop: '0',
+                background: '#ff00ec78',
+                height: '20px',
+                borderRadius: '8px',
+              }}
+            ></div>
+          </div>
+        </div>
         <div style={{ margin: '0 3  px' }}>
           <MainText text="⋅" fontSize="1.5rem" />
         </div>
@@ -502,6 +633,50 @@ export default function Page8(props) {
               </td>
             </tr>
           </table>
+          <div
+            style={{
+              position: 'absolute',
+              width: '70px',
+              height: '50px',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: '-1',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <div
+              style={{
+                width: '20px',
+                margin: '4%',
+                // marginBottom: '3px',
+                background: '#a7ffc978',
+                height: '92%',
+                borderRadius: '8px',
+              }}
+            ></div>
+            <div
+              style={{
+                width: '20px',
+                margin: '4%',
+                // marginTop: '0',
+                background: '#ffff0078',
+                height: '92%',
+                borderRadius: '8px',
+              }}
+            ></div>
+            <div
+              style={{
+                width: '20px',
+                margin: '4%',
+                // marginTop: '0',
+                background: '#ff2a0078',
+                height: '92%',
+                borderRadius: '8px',
+              }}
+            ></div>
+          </div>
         </div>
         <div style={{ margin: '0 3px' }}>
           <MainText text="=" fontSize="1.5rem" />
