@@ -158,6 +158,8 @@ export default function Page8(props) {
     setDotProductMatrix2({ ...dotProductMatrix2, [i]: e });
   }
 
+  const color = ['#b8a7ff78', '#00ffee78', '#ff00ec78', '#a7ffc978', '#ffff0078', '#ff2a0078'];
+
   useEffect(() => {
     if (!(matrix.m > 7 || matrix.n > 7)) {
       let text = String.raw`\left[\begin{array}{clr}`;
@@ -711,6 +713,232 @@ export default function Page8(props) {
             Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[5])
           } \end{array}\right]`}
         />
+      </center>
+      <center>
+        <>
+          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[0] * dotProductMatrix2[0] + dotProductMatrix1[1] * dotProductMatrix2[3]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[0] * dotProductMatrix2[1] + dotProductMatrix1[1] * dotProductMatrix2[4]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[0] * dotProductMatrix2[2] + dotProductMatrix1[1] * dotProductMatrix2[5]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <div
+          style={{
+            width: '200px',
+            height: '0.5px',
+            backgroundColor: props.isDarkMode ? 'rgb(190 190 190)' : 'rgb(129 118 118)',
+            borderRadius: '2px',
+          }}
+        ></div>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[2] * dotProductMatrix2[0] + dotProductMatrix1[3] * dotProductMatrix2[3]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[2] * dotProductMatrix2[1] + dotProductMatrix1[3] * dotProductMatrix2[4]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[2] * dotProductMatrix2[2] + dotProductMatrix1[3] * dotProductMatrix2[5]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <div
+          style={{
+            width: '200px',
+            height: '0.5px',
+            backgroundColor: props.isDarkMode ? 'rgb(190 190 190)' : 'rgb(129 118 118)',
+            borderRadius: '2px',
+          }}
+        ></div>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[4] * dotProductMatrix2[0] + dotProductMatrix1[5] * dotProductMatrix2[3]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[4] * dotProductMatrix2[1] + dotProductMatrix1[5] * dotProductMatrix2[4]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
+        <Height50 num="5px" />
+        <>
+          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+            <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
+          </span>
+          <MainText
+            text={` = ${dotProductMatrix1[4] * dotProductMatrix2[2] + dotProductMatrix1[5] * dotProductMatrix2[5]}`}
+            fontSize="0.8rem"
+            isSpan={true}
+          />
+        </>
       </center>
       <MainText text="행렬 곱은 아래와 같이 계산할 수 있습니다." />
       <Height50 num="20px" />
