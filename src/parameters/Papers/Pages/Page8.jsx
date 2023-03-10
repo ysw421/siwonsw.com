@@ -114,6 +114,8 @@ export default function Page8(props) {
   const [scalar, setScalar] = useState(2);
   const [dotProductMatrix1, setDotProductMatrix1] = useState({ 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6' });
   const [dotProductMatrix2, setDotProductMatrix2] = useState({ 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6' });
+  const [identityMatrixSize, setIdentityMatrixSize] = useState(3);
+  const [identityMatrixText, setIdentityMatrixText] = useState('1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1');
 
   function changeAddMatrix1(e, i) {
     if (e === '') e = 0;
@@ -204,6 +206,23 @@ export default function Page8(props) {
       setMatrixText(text);
     }
   }, [matrix]);
+
+  useEffect(() => {
+    let text = String.raw``;
+    for (let i = 1; i <= identityMatrixSize; i++) {
+      for (let j = 1; j <= identityMatrixSize; j++) {
+        if (j !== identityMatrixSize) {
+          if (i === j) text += String.raw`1 &`;
+          else text += String.raw`0 &`;
+        } else {
+          if (i === j) text += String.raw`1 `;
+          else text += String.raw`0 `;
+        }
+      }
+      text += String.raw`\\`;
+    }
+    setIdentityMatrixText(text);
+  }, [identityMatrixSize]);
 
   return (
     <div>
@@ -382,570 +401,600 @@ export default function Page8(props) {
         </center>
         <Height50 num="60px" />
       </>
-      <MainText text="행렬 곱 (점 곱)" fontSize="1.4rem" />
+      {/* 점 곱 */}
+      <>
+        <MainText text="행렬 곱 (점 곱)" fontSize="1.4rem" />
+        <Height50 num="15px" />
+        <MainText
+          text="행렬의 곱셈은 곱해지는 행렬의 열의 수와 곱하는 행렬의 행의 수가 같을 때 가능합니다. 곱셈 결과, 행의 수는
+        곱해지는 행렬의 행의 수와 같으며, 열의 수는 곱하는 행렬의 열의 수와 같습니다. 예를 들어 행렬 "
+          isSpan={true}
+        />
+        <MathComponent tex={String.raw`A_{m\times k}`} display={false} />
+        <MainText text="와 행렬 " isSpan={true} />
+        <MathComponent tex={String.raw`B_{k\times n}`} display={false} />
+        <MainText text="를 곱하면, " isSpan={true} />
+        <MathComponent tex={String.raw`(m, n)`} display={false} />
+        <MainText text=" 모양의 행렬이 나옵니다." isSpan={true} />
+        <div style={{ fontSize: '1.6rem', margin: '40px 0' }}>
+          <MathComponent tex={String.raw`A_{m\times k}\cdot B_{k\times n}=C_{m\times n}`} />
+        </div>
+        <MainText text="행렬 곱은 각 행의 원소와 열의 원소의 곱을 더하여 계산합니다. 식으로 나타내면 아래와 같습니다," />
+        <div style={{ fontSize: '1.2rem', marginTop: '40px' }}>
+          <MathComponent tex={String.raw`c_{ij} = \sum_{l=1}^k a_{il}b_{lj}`} />
+        </div>
+        <center className={styles.sortRight}>
+          <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
+            <div className={styles.preventDrag}>
+              <MathComponent
+                tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
+                display={true}
+              />
+            </div>
+            <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+              <tr>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix1[0]}
+                    onChange={(e) => {
+                      changeDotProductMatrix1(e.target.value, 0);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix1[1]}
+                    onChange={(e) => {
+                      changeDotProductMatrix1(e.target.value, 1);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix1[2]}
+                    onChange={(e) => {
+                      changeDotProductMatrix1(e.target.value, 2);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix1[3]}
+                    onChange={(e) => {
+                      changeDotProductMatrix1(e.target.value, 3);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix1[4]}
+                    onChange={(e) => {
+                      changeDotProductMatrix1(e.target.value, 4);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix1[5]}
+                    onChange={(e) => {
+                      changeDotProductMatrix1(e.target.value, 5);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+              </tr>
+            </table>
+            <div
+              style={{
+                position: 'absolute',
+                width: '70px',
+                height: '74px',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: '-1',
+              }}
+            >
+              <div
+                style={{
+                  width: '80%',
+                  margin: '10%',
+                  marginTop: '3px',
+                  marginBottom: '3px',
+                  background: '#b8a7ff78',
+                  height: '20px',
+                  borderRadius: '8px',
+                }}
+              ></div>
+              <div
+                style={{
+                  width: '80%',
+                  margin: '10%',
+                  marginTop: '0',
+                  marginBottom: '4px',
+                  background: '#00ffee78',
+                  height: '20px',
+                  borderRadius: '8px',
+                }}
+              ></div>
+              <div
+                style={{
+                  width: '80%',
+                  margin: '10%',
+                  marginTop: '0',
+                  background: '#ff00ec78',
+                  height: '20px',
+                  borderRadius: '8px',
+                }}
+              ></div>
+            </div>
+          </div>
+          <div style={{ margin: '0 3  px' }}>
+            <MainText text="⋅" fontSize="1.5rem" />
+          </div>
+          <div style={{ height: '77px', overflowY: 'hidden', position: 'relative' }}>
+            <div className={styles.preventDrag}>
+              <MathComponent
+                tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ& ㅤ& ㅤ& ㅤ\\ \\ \end{array}\right]`}
+                display={true}
+              />
+            </div>
+            <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+              <tr>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix2[0]}
+                    onChange={(e) => {
+                      changeDotProductMatrix2(e.target.value, 0);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix2[1]}
+                    onChange={(e) => {
+                      changeDotProductMatrix2(e.target.value, 1);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix2[2]}
+                    onChange={(e) => {
+                      changeDotProductMatrix2(e.target.value, 2);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix2[3]}
+                    onChange={(e) => {
+                      changeDotProductMatrix2(e.target.value, 3);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix2[4]}
+                    onChange={(e) => {
+                      changeDotProductMatrix2(e.target.value, 4);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className={styles.tableInputNumber}
+                    style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                    value={dotProductMatrix2[5]}
+                    onChange={(e) => {
+                      changeDotProductMatrix2(e.target.value, 5);
+                    }}
+                    min={-20}
+                    max={20}
+                  />
+                </td>
+              </tr>
+            </table>
+            <div
+              style={{
+                position: 'absolute',
+                width: '70px',
+                height: '50px',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: '-1',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  width: '20px',
+                  margin: '4%',
+                  // marginBottom: '3px',
+                  background: '#a7ffc978',
+                  height: '92%',
+                  borderRadius: '8px',
+                }}
+              ></div>
+              <div
+                style={{
+                  width: '20px',
+                  margin: '4%',
+                  // marginTop: '0',
+                  background: '#ffff0078',
+                  height: '92%',
+                  borderRadius: '8px',
+                }}
+              ></div>
+              <div
+                style={{
+                  width: '20px',
+                  margin: '4%',
+                  // marginTop: '0',
+                  background: '#ff2a0078',
+                  height: '92%',
+                  borderRadius: '8px',
+                }}
+              ></div>
+            </div>
+          </div>
+          <div style={{ margin: '0 3px' }}>
+            <MainText text="=" fontSize="1.5rem" />
+          </div>
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{clr} ${
+              Number(dotProductMatrix1[0]) * Number(dotProductMatrix2[0]) +
+              Number(dotProductMatrix1[1]) * Number(dotProductMatrix2[3])
+            } & ${
+              Number(dotProductMatrix1[0]) * Number(dotProductMatrix2[1]) +
+              Number(dotProductMatrix1[1]) * Number(dotProductMatrix2[4])
+            } & ${
+              Number(dotProductMatrix1[0]) * Number(dotProductMatrix2[2]) +
+              Number(dotProductMatrix1[1]) * Number(dotProductMatrix2[5])
+            } \\ ${
+              Number(dotProductMatrix1[2]) * Number(dotProductMatrix2[0]) +
+              Number(dotProductMatrix1[3]) * Number(dotProductMatrix2[3])
+            } & ${
+              Number(dotProductMatrix1[2]) * Number(dotProductMatrix2[1]) +
+              Number(dotProductMatrix1[3]) * Number(dotProductMatrix2[4])
+            } & ${
+              Number(dotProductMatrix1[2]) * Number(dotProductMatrix2[2]) +
+              Number(dotProductMatrix1[3]) * Number(dotProductMatrix2[5])
+            } \\ ${
+              Number(dotProductMatrix1[4]) * Number(dotProductMatrix2[0]) +
+              Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[3])
+            } & ${
+              Number(dotProductMatrix1[4]) * Number(dotProductMatrix2[1]) +
+              Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[4])
+            } & ${
+              Number(dotProductMatrix1[4]) * Number(dotProductMatrix2[2]) +
+              Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[5])
+            } \end{array}\right]`}
+          />
+        </center>
+        <center>
+          <>
+            <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[0] * dotProductMatrix2[0] + dotProductMatrix1[1] * dotProductMatrix2[3]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[0] * dotProductMatrix2[1] + dotProductMatrix1[1] * dotProductMatrix2[4]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[0] * dotProductMatrix2[2] + dotProductMatrix1[1] * dotProductMatrix2[5]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <div
+            style={{
+              width: '200px',
+              height: '0.5px',
+              backgroundColor: props.isDarkMode ? 'rgb(190 190 190)' : 'rgb(129 118 118)',
+              borderRadius: '2px',
+            }}
+          ></div>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[2] * dotProductMatrix2[0] + dotProductMatrix1[3] * dotProductMatrix2[3]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[2] * dotProductMatrix2[1] + dotProductMatrix1[3] * dotProductMatrix2[4]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[2] * dotProductMatrix2[2] + dotProductMatrix1[3] * dotProductMatrix2[5]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <div
+            style={{
+              width: '200px',
+              height: '0.5px',
+              backgroundColor: props.isDarkMode ? 'rgb(190 190 190)' : 'rgb(129 118 118)',
+              borderRadius: '2px',
+            }}
+          ></div>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[4] * dotProductMatrix2[0] + dotProductMatrix1[5] * dotProductMatrix2[3]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[4] * dotProductMatrix2[1] + dotProductMatrix1[5] * dotProductMatrix2[4]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+          <Height50 num="5px" />
+          <>
+            <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" + " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText text=" x " fontSize="0.8rem" isSpan={true} />
+            <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
+              <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
+            </span>
+            <MainText
+              text={` = ${dotProductMatrix1[4] * dotProductMatrix2[2] + dotProductMatrix1[5] * dotProductMatrix2[5]}`}
+              fontSize="0.8rem"
+              isSpan={true}
+            />
+          </>
+        </center>
+      </>
+      <Height50 num="70px" />
+      <MainText text="항등 행렬 (Idnetity Matrix)" fontSize="1.4rem" />
       <Height50 num="15px" />
       <MainText
-        text="행렬의 곱셈은 곱해지는 행렬의 열의 수와 곱하는 행렬의 행의 수가 같을 때 가능합니다. 곱셈의 결과, 행의 수는
-        곱해지는 행렬의 행의 수와 같으며, 열의 수는 곱하는 행렬의 열의 수와 같습니다. 예를 들어 행렬 "
+        text="행렬에서 행 번호와 열 번호가 같은 원소들을 주대각선이라고 합니다. 예를 들어 행렬 "
         isSpan={true}
       />
-      <MathComponent tex={String.raw`A_{m\times k}`} display={false} />
-      <MainText text="와 행렬 " isSpan={true} />
-      <MathComponent tex={String.raw`B_{k\times n}`} display={false} />
-      <MainText text="를 곱하면, " isSpan={true} />
-      <MathComponent tex={String.raw`(m, n)`} display={false} />
-      <MainText text=" 모양의 행렬이 나옵니다." isSpan={true} />
-      <div style={{ fontSize: '1.6rem', margin: '40px 0' }}>
-        <MathComponent tex={String.raw`A_{m\times k}\cdot B_{k\times n}=C_{m\times n}`} />
-      </div>
-      <MainText text="행렬 곱은 각 행의 원소와 열의 원소의 곱을 더하여 계산합니다. 식으로 나타내면 아래와 같습니다," />
-      <div style={{ fontSize: '1.2rem', marginTop: '40px' }}>
-        <MathComponent tex={String.raw`c_{ij} = \sum_{l=1}^k a_{il}b_{lj}`} />
-      </div>
-      <center className={styles.sortRight}>
-        <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
-          <div className={styles.preventDrag}>
-            <MathComponent
-              tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
-              display={true}
-            />
-          </div>
-          <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <tr>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix1[0]}
-                  onChange={(e) => {
-                    changeDotProductMatrix1(e.target.value, 0);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix1[1]}
-                  onChange={(e) => {
-                    changeDotProductMatrix1(e.target.value, 1);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix1[2]}
-                  onChange={(e) => {
-                    changeDotProductMatrix1(e.target.value, 2);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix1[3]}
-                  onChange={(e) => {
-                    changeDotProductMatrix1(e.target.value, 3);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix1[4]}
-                  onChange={(e) => {
-                    changeDotProductMatrix1(e.target.value, 4);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix1[5]}
-                  onChange={(e) => {
-                    changeDotProductMatrix1(e.target.value, 5);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-            </tr>
-          </table>
-          <div
-            style={{
-              position: 'absolute',
-              width: '70px',
-              height: '74px',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              zIndex: '-1',
-            }}
-          >
-            <div
-              style={{
-                width: '80%',
-                margin: '10%',
-                marginTop: '3px',
-                marginBottom: '3px',
-                background: '#b8a7ff78',
-                height: '20px',
-                borderRadius: '8px',
-              }}
-            ></div>
-            <div
-              style={{
-                width: '80%',
-                margin: '10%',
-                marginTop: '0',
-                marginBottom: '4px',
-                background: '#00ffee78',
-                height: '20px',
-                borderRadius: '8px',
-              }}
-            ></div>
-            <div
-              style={{
-                width: '80%',
-                margin: '10%',
-                marginTop: '0',
-                background: '#ff00ec78',
-                height: '20px',
-                borderRadius: '8px',
-              }}
-            ></div>
-          </div>
+      <MathComponent tex={String.raw`A`} display={false} />
+      <MainText text="의 원소 " isSpan={true} />
+      <MathComponent tex={String.raw`a_{ii}`} display={false} />
+      <MainText text="는 주대각선의 원소입니다." isSpan={true} />
+      <MainText text="항등 행렬은 주대각선의 원소가 모두 1이고 나머지 원소가 모두 0인 행렬입니다." />
+      <MainText text="항등 행렬은 주로 " isSpan={true} />
+      <MathComponent tex={String.raw`I`} display={false} />
+      <MainText text="로 나타냅니다. " isSpan={true} />
+      <Height50 num="20px" />
+      <center>
+        <div style={{ height: '280px' }} className={styles.sortRight}>
+          <MathComponent
+            tex={String.raw`I = \left[\begin{array}{clr} ${identityMatrixText} \end{array}\right]`}
+            display={true}
+          />
         </div>
-        <div style={{ margin: '0 3  px' }}>
-          <MainText text="⋅" fontSize="1.5rem" />
-        </div>
-        <div style={{ height: '77px', overflowY: 'hidden', position: 'relative' }}>
-          <div className={styles.preventDrag}>
-            <MathComponent
-              tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ& ㅤ& ㅤ& ㅤ\\ \\ \end{array}\right]`}
-              display={true}
-            />
-          </div>
-          <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <tr>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix2[0]}
-                  onChange={(e) => {
-                    changeDotProductMatrix2(e.target.value, 0);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix2[1]}
-                  onChange={(e) => {
-                    changeDotProductMatrix2(e.target.value, 1);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix2[2]}
-                  onChange={(e) => {
-                    changeDotProductMatrix2(e.target.value, 2);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix2[3]}
-                  onChange={(e) => {
-                    changeDotProductMatrix2(e.target.value, 3);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix2[4]}
-                  onChange={(e) => {
-                    changeDotProductMatrix2(e.target.value, 4);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  className={styles.tableInputNumber}
-                  style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                  value={dotProductMatrix2[5]}
-                  onChange={(e) => {
-                    changeDotProductMatrix2(e.target.value, 5);
-                  }}
-                  min={-20}
-                  max={20}
-                />
-              </td>
-            </tr>
-          </table>
-          <div
-            style={{
-              position: 'absolute',
-              width: '70px',
-              height: '50px',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              zIndex: '-1',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <div
-              style={{
-                width: '20px',
-                margin: '4%',
-                // marginBottom: '3px',
-                background: '#a7ffc978',
-                height: '92%',
-                borderRadius: '8px',
-              }}
-            ></div>
-            <div
-              style={{
-                width: '20px',
-                margin: '4%',
-                // marginTop: '0',
-                background: '#ffff0078',
-                height: '92%',
-                borderRadius: '8px',
-              }}
-            ></div>
-            <div
-              style={{
-                width: '20px',
-                margin: '4%',
-                // marginTop: '0',
-                background: '#ff2a0078',
-                height: '92%',
-                borderRadius: '8px',
-              }}
-            ></div>
-          </div>
-        </div>
-        <div style={{ margin: '0 3px' }}>
-          <MainText text="=" fontSize="1.5rem" />
-        </div>
-        <MathComponent
-          tex={String.raw`\left[\begin{array}{clr} ${
-            Number(dotProductMatrix1[0]) * Number(dotProductMatrix2[0]) +
-            Number(dotProductMatrix1[1]) * Number(dotProductMatrix2[3])
-          } & ${
-            Number(dotProductMatrix1[0]) * Number(dotProductMatrix2[1]) +
-            Number(dotProductMatrix1[1]) * Number(dotProductMatrix2[4])
-          } & ${
-            Number(dotProductMatrix1[0]) * Number(dotProductMatrix2[2]) +
-            Number(dotProductMatrix1[1]) * Number(dotProductMatrix2[5])
-          } \\ ${
-            Number(dotProductMatrix1[2]) * Number(dotProductMatrix2[0]) +
-            Number(dotProductMatrix1[3]) * Number(dotProductMatrix2[3])
-          } & ${
-            Number(dotProductMatrix1[2]) * Number(dotProductMatrix2[1]) +
-            Number(dotProductMatrix1[3]) * Number(dotProductMatrix2[4])
-          } & ${
-            Number(dotProductMatrix1[2]) * Number(dotProductMatrix2[2]) +
-            Number(dotProductMatrix1[3]) * Number(dotProductMatrix2[5])
-          } \\ ${
-            Number(dotProductMatrix1[4]) * Number(dotProductMatrix2[0]) +
-            Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[3])
-          } & ${
-            Number(dotProductMatrix1[4]) * Number(dotProductMatrix2[1]) +
-            Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[4])
-          } & ${
-            Number(dotProductMatrix1[4]) * Number(dotProductMatrix2[2]) +
-            Number(dotProductMatrix1[5]) * Number(dotProductMatrix2[5])
-          } \end{array}\right]`}
+        <Slider
+          style={{ marginLeft: '10px', width: '150px', height: '8px' }}
+          axis="x"
+          x={identityMatrixSize}
+          onChange={({ x }) => setIdentityMatrixSize(x)}
+          xmax={9}
+          xmin={1}
+          xstep={1}
         />
       </center>
-      <center>
-        <>
-          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[0] * dotProductMatrix2[0] + dotProductMatrix1[1] * dotProductMatrix2[3]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[0] * dotProductMatrix2[1] + dotProductMatrix1[1] * dotProductMatrix2[4]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[0]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[0], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[1]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[0] * dotProductMatrix2[2] + dotProductMatrix1[1] * dotProductMatrix2[5]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <div
-          style={{
-            width: '200px',
-            height: '0.5px',
-            backgroundColor: props.isDarkMode ? 'rgb(190 190 190)' : 'rgb(129 118 118)',
-            borderRadius: '2px',
-          }}
-        ></div>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[2] * dotProductMatrix2[0] + dotProductMatrix1[3] * dotProductMatrix2[3]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[2] * dotProductMatrix2[1] + dotProductMatrix1[3] * dotProductMatrix2[4]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[2]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[1], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[3]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[2] * dotProductMatrix2[2] + dotProductMatrix1[3] * dotProductMatrix2[5]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <div
-          style={{
-            width: '200px',
-            height: '0.5px',
-            backgroundColor: props.isDarkMode ? 'rgb(190 190 190)' : 'rgb(129 118 118)',
-            borderRadius: '2px',
-          }}
-        ></div>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[0]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[3], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[3]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[4] * dotProductMatrix2[0] + dotProductMatrix1[5] * dotProductMatrix2[3]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[1]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[4], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[4]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[4] * dotProductMatrix2[1] + dotProductMatrix1[5] * dotProductMatrix2[4]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-        <Height50 num="5px" />
-        <>
-          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[4]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[2]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" + " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[2], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix1[5]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText text=" x " fontSize="0.8rem" isSpan={true} />
-          <span style={{ backgroundColor: color[5], borderRadius: '4px' }}>
-            <MainText text={dotProductMatrix2[5]} fontSize="0.8rem" isSpan={true} />
-          </span>
-          <MainText
-            text={` = ${dotProductMatrix1[4] * dotProductMatrix2[2] + dotProductMatrix1[5] * dotProductMatrix2[5]}`}
-            fontSize="0.8rem"
-            isSpan={true}
-          />
-        </>
-      </center>
-      <MainText text="행렬 곱은 아래와 같이 계산할 수 있습니다." />
-      <Height50 num="20px" />
-      <MainText text="1차 다항 연립방정식을 행렬로 나타낼 수 있습니다." />
-      <div>
-        <MathComponent tex="\\(x_1+5x+7=0x^2+9=9\\)" display={true} />
-      </div>
     </div>
   );
 }
