@@ -53,4 +53,10 @@ export const papers = [
     title: '2학년 1, 그리고 2일',
     type: '일상',
   },
+  {
+    id: '가우스-소거법',
+    numberId: 10,
+    title: '가우스 소거법 (Gaussian elimination)',
+    type: 'math',
+  },
 ];

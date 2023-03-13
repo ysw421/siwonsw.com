@@ -99,8 +99,16 @@ export const mindMapNodes = {
       x: -20,
       y: -110,
       link: '/paper/행렬',
-      edges: [],
+      edges: ['가우스 소거법'],
       circleSize: 40,
+    },
+    '가우스 소거법': {
+      value: '가우스 소거법',
+      x: -80,
+      y: -180,
+      link: '/paper/가우스-소거법',
+      edges: [],
+      circleSize: 30,
     },
   },
 

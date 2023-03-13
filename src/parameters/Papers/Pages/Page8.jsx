@@ -114,8 +114,21 @@ export default function Page8(props) {
   const [scalar, setScalar] = useState(2);
   const [dotProductMatrix1, setDotProductMatrix1] = useState({ 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6' });
   const [dotProductMatrix2, setDotProductMatrix2] = useState({ 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6' });
-  const [identityMatrixSize, setIdentityMatrixSize] = useState(3);
+  const [identityMatrixSize, setIdentityMatrixSize] = useState(9);
   const [identityMatrixText, setIdentityMatrixText] = useState('1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1');
+  const [inverseMatrix, setInverseMatrix] = useState({
+    0: 1,
+    1: -1,
+    2: -2,
+    3: 2,
+    4: 3,
+    5: 5,
+    6: 6,
+    7: 0,
+    8: -3,
+  });
+  const [inverseMatrixA, setInverseMatrixA] = useState(0);
+  const [transposedMatrix, setTransposedMatrix] = useState({ 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6' });
 
   function changeAddMatrix1(e, i) {
     if (e === '') e = 0;
@@ -158,6 +171,18 @@ export default function Page8(props) {
     else if (e > 20) e = 20;
     else if (e < -20) e = -20;
     setDotProductMatrix2({ ...dotProductMatrix2, [i]: e });
+  }
+  function changeInverseMatrix(e, i) {
+    if (e === '') e = 0;
+    else if (e > 20) e = 20;
+    else if (e < -20) e = -20;
+    setInverseMatrix({ ...inverseMatrix, [i]: e });
+  }
+  function changeTransposedMatrix(e, i) {
+    if (e === '') e = 0;
+    else if (e > 20) e = 20;
+    else if (e < -20) e = -20;
+    setTransposedMatrix({ ...transposedMatrix, [i]: e });
   }
 
   const color = ['#b8a7ff78', '#00ffee78', '#ff00ec78', '#a7ffc978', '#ffff0078', '#ff2a0078'];
@@ -223,6 +248,14 @@ export default function Page8(props) {
     }
     setIdentityMatrixText(text);
   }, [identityMatrixSize]);
+
+  useEffect(() => {
+    setInverseMatrixA(
+      inverseMatrix[0] * (inverseMatrix[4] * inverseMatrix[8] - inverseMatrix[5] * inverseMatrix[7]) -
+        inverseMatrix[1] * (inverseMatrix[3] * inverseMatrix[8] - inverseMatrix[5] * inverseMatrix[6]) +
+        inverseMatrix[2] * (inverseMatrix[3] * inverseMatrix[7] - inverseMatrix[4] * inverseMatrix[6])
+    );
+  }, [inverseMatrix]);
 
   return (
     <div>
@@ -962,39 +995,503 @@ export default function Page8(props) {
           </>
         </center>
       </>
-      <Height50 num="70px" />
-      <MainText text="항등 행렬 (Idnetity Matrix)" fontSize="1.4rem" />
-      <Height50 num="15px" />
-      <MainText
-        text="행렬에서 행 번호와 열 번호가 같은 원소들을 주대각선이라고 합니다. 예를 들어 행렬 "
-        isSpan={true}
-      />
-      <MathComponent tex={String.raw`A`} display={false} />
-      <MainText text="의 원소 " isSpan={true} />
-      <MathComponent tex={String.raw`a_{ii}`} display={false} />
-      <MainText text="는 주대각선의 원소입니다." isSpan={true} />
-      <MainText text="항등 행렬은 주대각선의 원소가 모두 1이고 나머지 원소가 모두 0인 행렬입니다." />
-      <MainText text="항등 행렬은 주로 " isSpan={true} />
-      <MathComponent tex={String.raw`I`} display={false} />
-      <MainText text="로 나타냅니다. " isSpan={true} />
-      <Height50 num="20px" />
-      <center>
-        <div style={{ height: '280px' }} className={styles.sortRight}>
-          <MathComponent
-            tex={String.raw`I = \left[\begin{array}{clr} ${identityMatrixText} \end{array}\right]`}
-            display={true}
-          />
-        </div>
-        <Slider
-          style={{ marginLeft: '10px', width: '150px', height: '8px' }}
-          axis="x"
-          x={identityMatrixSize}
-          onChange={({ x }) => setIdentityMatrixSize(x)}
-          xmax={9}
-          xmin={1}
-          xstep={1}
+      {/* 항등 행렬 */}
+      <>
+        <Height50 num="70px" />
+        <MainText text="항등 행렬 (Idnetity Matrix)" fontSize="1.4rem" />
+        <Height50 num="15px" />
+        <MainText
+          text="행렬에서 행 번호와 열 번호가 같은 원소들을 주대각선이라고 합니다. 예를 들어 행렬 "
+          isSpan={true}
         />
-      </center>
+        <MathComponent tex={String.raw`A`} display={false} />
+        <MainText text="의 원소 " isSpan={true} />
+        <MathComponent tex={String.raw`a_{ii}`} display={false} />
+        <MainText text="는 주대각선의 원소입니다." isSpan={true} />
+        <MainText text="항등 행렬은 주대각선의 원소가 모두 1이고 나머지 원소가 모두 0인 행렬입니다. 항등 행렬은 주로 " />
+        <MathComponent tex={String.raw`I`} display={false} />
+        <MainText text="로 나타내며, 열의 개수와 행의 개수가 같은 정사각 행렬입니다." isSpan={true} />
+        <Height50 num="20px" />
+        <center>
+          <div style={{ height: '280px' }} className={styles.sortRight}>
+            <MathComponent
+              tex={String.raw`I = \left[\begin{array}{clr} ${identityMatrixText} \end{array}\right]`}
+              display={true}
+            />
+          </div>
+          <Slider
+            style={{ marginLeft: '10px', width: '150px', height: '8px' }}
+            axis="x"
+            x={identityMatrixSize}
+            onChange={({ x }) => setIdentityMatrixSize(x)}
+            xmax={9}
+            xmin={1}
+            xstep={1}
+          />
+        </center>
+      </>
+      {/* 역 행렬 */}
+      <>
+        <Height50 num="70px" />
+        <MainText text="역 행렬" fontSize="1.4rem" />
+        <Height50 num="15px" />
+        <>
+          <MainText text="행렬 " isSpan={true} />
+          <MathComponent tex={String.raw`A`} display={false} />
+          <MainText
+            text="에 대하여 곱했을 때, 항등 행렬이 되는 행렬을 역행렬이라고 합니다. 역행렬은 역함수와 같이 "
+            isSpan={true}
+          />
+          <MathComponent tex={String.raw`A^{-1}`} display={false} />
+          <MainText text="로 나타냅니다." isSpan={true} />
+        </>
+        <center>
+          <div style={{ height: '280px' }} className={styles.sortRight}>
+            {inverseMatrixA !== 0 ? (
+              <div>
+                <div className={styles.sortRight}>
+                  <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
+                    <div className={styles.preventDrag}>
+                      <MathComponent
+                        tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
+                        display={true}
+                      />
+                    </div>
+                    <table
+                      style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+                    >
+                      <tr>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[0]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 0);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[1]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 1);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[2]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 2);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[3]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 3);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[4]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 4);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[5]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 5);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[6]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 6);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[7]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 7);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            className={styles.tableInputNumber}
+                            style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                            value={inverseMatrix[8]}
+                            onChange={(e) => {
+                              changeInverseMatrix(e.target.value, 8);
+                            }}
+                            min={-20}
+                            max={20}
+                          />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <MathComponent
+                    tex={String.raw`\left[\begin{array}{clr} ${(
+                      (inverseMatrix[4] * inverseMatrix[8] - inverseMatrix[5] * inverseMatrix[7]) /
+                      inverseMatrixA
+                    ).toFixed(1)} & ${(
+                      (inverseMatrix[2] * inverseMatrix[7] - inverseMatrix[1] * inverseMatrix[8]) /
+                      inverseMatrixA
+                    ).toFixed(1)} & ${(
+                      (inverseMatrix[1] * inverseMatrix[5] - inverseMatrix[2] * inverseMatrix[4]) /
+                      inverseMatrixA
+                    ).toFixed(1)} \\ ${(
+                      (inverseMatrix[5] * inverseMatrix[6] - inverseMatrix[3] * inverseMatrix[8]) /
+                      inverseMatrixA
+                    ).toFixed(1)} & ${(
+                      (inverseMatrix[0] * inverseMatrix[8] - inverseMatrix[2] * inverseMatrix[6]) /
+                      inverseMatrixA
+                    ).toFixed(1)} & ${(
+                      (inverseMatrix[2] * inverseMatrix[3] - inverseMatrix[0] * inverseMatrix[5]) /
+                      inverseMatrixA
+                    ).toFixed(1)} \\ ${(
+                      (inverseMatrix[3] * inverseMatrix[7] - inverseMatrix[4] * inverseMatrix[6]) /
+                      inverseMatrixA
+                    ).toFixed(1)} & ${(
+                      (inverseMatrix[1] * inverseMatrix[6] - inverseMatrix[0] * inverseMatrix[7]) /
+                      inverseMatrixA
+                    ).toFixed(1)} & ${(
+                      (inverseMatrix[0] * inverseMatrix[4] - inverseMatrix[1] * inverseMatrix[3]) /
+                      inverseMatrixA
+                    ).toFixed(1)} \end{array}\right]`}
+                    display={true}
+                  />
+                  <div style={{ width: '6px' }}></div>
+                  <MathComponent
+                    tex={String.raw` = \left[\begin{array}{clr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array}\right]`}
+                    display={true}
+                  />
+                </div>
+                <MainText text="역행렬을 소수 둘째자리에서 반올림하였습니다." fontSize="0.8rem" />
+              </div>
+            ) : (
+              <>
+                <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
+                  <div className={styles.preventDrag}>
+                    <MathComponent
+                      tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
+                      display={true}
+                    />
+                  </div>
+                  <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                    <tr>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[0]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 0);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[1]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 1);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[2]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 2);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[3]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 3);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[4]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 4);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[5]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 5);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[6]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 6);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[7]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 7);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className={styles.tableInputNumber}
+                          style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                          value={inverseMatrix[8]}
+                          onChange={(e) => {
+                            changeInverseMatrix(e.target.value, 8);
+                          }}
+                          min={-20}
+                          max={20}
+                        />
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <MainText text="는 역행렬이 존재하지 않습니다." fontSize="1.2rem" isSpan={true} />
+              </>
+            )}
+          </div>
+        </center>
+      </>
+      {/* 전치 행렬 */}
+      <>
+        <Height50 num="70px" />
+        <MainText text="전치 행렬" fontSize="1.4rem" />
+        <Height50 num="15px" />
+        <>
+          <MainText
+            text="전치 행렬은 행과 열을 바꾼 행렬입니다. 다르게 표현하면 주대각선을 기준으로 회전시킨 행렬이지요. 행렬 "
+            isSpan={true}
+          />
+          <MathComponent tex={String.raw`A`} display={false} />
+          <MainText text="의 전치행렬은 " isSpan={true} />
+          <MathComponent tex={String.raw`A^{T}`} display={false} />
+          <MainText text="와 같이 나타냅니다." isSpan={true} />
+          <center className={styles.sortRight}>
+            <Matrix3x2Box
+              matrix={transposedMatrix}
+              changeFun={changeTransposedMatrix}
+              isDarkMode={props.isDarkMode}
+              min={-20}
+              max={20}
+            />
+            {/* <MainText text="행렬 " isSpan={true} />
+          <MathComponent tex={String.raw`A`} display={false} />
+          <MainText
+            text="에 대하여 곱했을 때, 항등 행렬이 되는 행렬을 역행렬이라고 합니다. 역행렬은 역함수와 같이 "
+            isSpan={true}
+          />
+          <MathComponent tex={String.raw`A^{-1}`} display={false} />
+          <MainText text="로 나타냅니다." isSpan={true} /> */}
+            {/* <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
+              <div className={styles.preventDrag}>
+                <MathComponent
+                  tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
+                  display={true}
+                />
+              </div>
+              <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                <tr>
+                  <td>
+                    <input
+                      type="number"
+                      className={styles.tableInputNumber}
+                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                      value={props.matrix[0]}
+                      onChange={(e) => {
+                        props.changeFun(e.target.value, 0);
+                      }}
+                      min={-20}
+                      max={20}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      className={styles.tableInputNumber}
+                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                      value={props.matrix[1]}
+                      onChange={(e) => {
+                        props.changeFun(e.target.value, 1);
+                      }}
+                      min={-20}
+                      max={20}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      type="number"
+                      className={styles.tableInputNumber}
+                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                      value={props.matrix[2]}
+                      onChange={(e) => {
+                        props.changeFun(e.target.value, 2);
+                      }}
+                      min={-20}
+                      max={20}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      className={styles.tableInputNumber}
+                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                      value={props.matrix[3]}
+                      onChange={(e) => {
+                        props.changeFun(e.target.value, 3);
+                      }}
+                      min={-20}
+                      max={20}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      type="number"
+                      className={styles.tableInputNumber}
+                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                      value={props.matrix[4]}
+                      onChange={(e) => {
+                        props.changeFun(e.target.value, 4);
+                      }}
+                      min={-20}
+                      max={20}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      className={styles.tableInputNumber}
+                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
+                      value={props.matrix[5]}
+                      onChange={(e) => {
+                        props.changeFun(e.target.value, 5);
+                      }}
+                      min={-20}
+                      max={20}
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div> */}
+          </center>
+        </>
+      </>
     </div>
   );
 }
