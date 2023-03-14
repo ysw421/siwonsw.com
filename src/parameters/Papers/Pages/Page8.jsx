@@ -1046,7 +1046,7 @@ export default function Page8(props) {
           <MainText text="로 나타냅니다." isSpan={true} />
         </>
         <center>
-          <div style={{ height: '280px' }} className={styles.sortRight}>
+          <div style={{ height: '150px' }} className={styles.sortRight}>
             {inverseMatrixA !== 0 ? (
               <div>
                 <div className={styles.sortRight}>
@@ -1367,10 +1367,11 @@ export default function Page8(props) {
             )}
           </div>
         </center>
+        <Height50 num="10px" />
       </>
       {/* 전치 행렬 */}
       <>
-        <Height50 num="70px" />
+        <Height50 num="80px" />
         <MainText text="전치 행렬" fontSize="1.4rem" />
         <Height50 num="15px" />
         <>
@@ -1382,6 +1383,7 @@ export default function Page8(props) {
           <MainText text="의 전치행렬은 " isSpan={true} />
           <MathComponent tex={String.raw`A^{T}`} display={false} />
           <MainText text="와 같이 나타냅니다." isSpan={true} />
+          <Height50 num="40px" />
           <center className={styles.sortRight}>
             <Matrix3x2Box
               matrix={transposedMatrix}
@@ -1390,109 +1392,27 @@ export default function Page8(props) {
               min={-20}
               max={20}
             />
-            {/* <MainText text="행렬 " isSpan={true} />
-          <MathComponent tex={String.raw`A`} display={false} />
+            <MainText text="의 전치 행렬은 " isSpan={true} />
+            <div style={{ width: '10px' }} />
+            <MathComponent
+              tex={String.raw`\left[\begin{array}{clr}${transposedMatrix[0]} & ${transposedMatrix[2]} & ${transposedMatrix[4]} \\ ${transposedMatrix[1]} & ${transposedMatrix[3]} & ${transposedMatrix[5]}\end{array}\right]`}
+              display={false}
+            />
+          </center>
+          <Height50 num="20px" />
           <MainText
-            text="에 대하여 곱했을 때, 항등 행렬이 되는 행렬을 역행렬이라고 합니다. 역행렬은 역함수와 같이 "
+            text="열의 개수가 1개인 행렬을 행 벡터라고 부릅니다. 또한 행의 개수가 1개인 행렬을 열 벡터라고 부릅니다. 일반적으로 행렬 "
             isSpan={true}
           />
-          <MathComponent tex={String.raw`A^{-1}`} display={false} />
-          <MainText text="로 나타냅니다." isSpan={true} /> */}
-            {/* <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
-              <div className={styles.preventDrag}>
-                <MathComponent
-                  tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
-                  display={true}
-                />
-              </div>
-              <table style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                <tr>
-                  <td>
-                    <input
-                      type="number"
-                      className={styles.tableInputNumber}
-                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                      value={props.matrix[0]}
-                      onChange={(e) => {
-                        props.changeFun(e.target.value, 0);
-                      }}
-                      min={-20}
-                      max={20}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className={styles.tableInputNumber}
-                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                      value={props.matrix[1]}
-                      onChange={(e) => {
-                        props.changeFun(e.target.value, 1);
-                      }}
-                      min={-20}
-                      max={20}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input
-                      type="number"
-                      className={styles.tableInputNumber}
-                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                      value={props.matrix[2]}
-                      onChange={(e) => {
-                        props.changeFun(e.target.value, 2);
-                      }}
-                      min={-20}
-                      max={20}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className={styles.tableInputNumber}
-                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                      value={props.matrix[3]}
-                      onChange={(e) => {
-                        props.changeFun(e.target.value, 3);
-                      }}
-                      min={-20}
-                      max={20}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input
-                      type="number"
-                      className={styles.tableInputNumber}
-                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                      value={props.matrix[4]}
-                      onChange={(e) => {
-                        props.changeFun(e.target.value, 4);
-                      }}
-                      min={-20}
-                      max={20}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      className={styles.tableInputNumber}
-                      style={{ color: props.isDarkMode ? 'white' : 'black' }}
-                      value={props.matrix[5]}
-                      onChange={(e) => {
-                        props.changeFun(e.target.value, 5);
-                      }}
-                      min={-20}
-                      max={20}
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div> */}
-          </center>
+          <MathComponent tex={String.raw`x`} display={false} />
+          <MainText text="는 열 벡터( " isSpan={true} />
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{clr}a_{1} & a_{2} & \dots & a_{n}\end{array}\right]`}
+            display={false}
+          />
+          <MainText text=" )를 나타냅니다. 열 벡터를 나타낼 때는 전치 행렬을 활용하여 " isSpan={true} />
+          <MathComponent tex={String.raw`x^{T}`} display={false} />
+          <MainText text=" 와 같이 나타냅니다." isSpan={true} />
         </>
       </>
     </div>
