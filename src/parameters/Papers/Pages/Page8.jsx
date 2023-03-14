@@ -1217,8 +1217,11 @@ export default function Page8(props) {
                     display={true}
                   />
                   <div style={{ width: '6px' }}></div>
+                  <div style={{ transform: 'translateX(-2px)' }}>
+                    <MainText text="=" fontSize="0.8rem" />
+                  </div>
                   <MathComponent
-                    tex={String.raw` = \left[\begin{array}{clr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array}\right]`}
+                    tex={String.raw`\left[\begin{array}{clr} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array}\right]`}
                     display={true}
                   />
                 </div>
