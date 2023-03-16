@@ -23,6 +23,7 @@ function GoMindMaps(props) {
       <div>{props.type === 'ml' && <GoBack url="mind-map/machine-learning" text="Machine Learning Mind Map" />}</div>
       <div>{props.type === 'math' && <GoBack url="mind-map/math" text="Math Mind Map" />}</div>
       <div>{props.type === '일상' && <GoBack url="mind-map/나의-일상" text="일상 마인드 맵" />}</div>
+      <div>{props.type === '프로그래밍' && <GoBack url="mind-map/프로그래밍" text="프로그래밍 마인드 맵" />}</div>
     </>
   );
 }
