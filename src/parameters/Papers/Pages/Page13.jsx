@@ -2,40 +2,191 @@ import styles from './Pages.module.css';
 import { MainText, Line, Height50 } from './useful';
 import { MathComponent } from 'mathjax-react';
 import { useState, useEffect } from 'react';
+// import { PythonProvider } from 'react-py';
+// import { usePython } from 'react-py';
+
+// function Codeblock() {
+//   const x = -314.25;
+
+//   const buffer = new ArrayBuffer(4);
+//   const view = new DataView(buffer);
+
+//   view.setFloat32(0, x);
+
+//   const bits = [];
+//   for (let i = 0; i < buffer.byteLength; i++) {
+//     bits.push(view.getUint8(i).toString(2).padStart(8, '0'));
+//   }
+//   const [input, setInput] = useState('');
+
+//   const { runPython, stdout, stderr, isLoading, isRunning } = usePython();
+//   // runPython(`print('hello world')`);
+//   useEffect(() => {
+//     if (isLoading === false && isRunning === false) {
+//       runPython(`#include <stdio.h>
+//       #include <math.h>
+
+//       int binary2decimal(int binary){
+//           int decimal = 0;
+//           int i = 0;
+//           while (binary != 0)
+//           {
+//               decimal += (binary % 10) * pow(2, i);
+//               binary /= 10;
+//               i++;
+//           }
+//           return decimal;
+//       }
+
+//       int decimal2binary(int decimal){
+//           int binary = 0;
+//           int i = 0;
+//           while (decimal != 0)
+//           {
+//               binary += (decimal % 2) * pow(10, i);
+//               decimal /= 2;
+//               i++;
+//           }
+//           return binary;
+//       }
+
+//       double floatDecimal2binary(double decimal){
+//           int intDecimal = (int)decimal;
+//           double binary = decimal2binary(intDecimal);
+//           double floatDecimal = decimal - intDecimal;
+//           int i = 1;
+//           while (floatDecimal != 0)
+//           {
+//               floatDecimal *= 2;
+//               if(floatDecimal >= 1){
+//                   binary += 1/pow(10, i);
+//                   floatDecimal -= 1;
+//               }
+//               i++;
+//           }
+//           return binary;
+//       }
+
+//       void floatDecimal2floatingPoint(double decimal){
+//           int floatingPoint[32] = {0};
+//           if(decimal < 0){
+//               decimal *= -1;
+//               floatingPoint[0] = 1;
+//           }
+//           double binary = floatDecimal2binary(decimal);
+//           double floatDecimal = decimal - (int)decimal;
+//           int length = 0;
+//           int i=0;
+//           while (floatDecimal != 0)
+//           {
+//               floatDecimal *= 2;
+//               if(floatDecimal >= 1){
+//                   floatDecimal -= 1;
+//               }
+//               i++;
+//           }
+//           length = i;
+//           i = 0;
+//           int binaryInt = (int)binary;
+//           while (binaryInt != 0)
+//           {
+//               binaryInt /= 10;
+//               i++;
+//           }
+//           int floatLength = length;
+//           binaryInt = binary * pow(10, floatLength);
+//           length += i;
+//           binaryInt -= pow(10, length-1);
+
+//           int part2 = decimal2binary(length-floatLength-1+127);
+//           // printf("@@@%d",(int)pow(10, 2));
+//           for(int i=1;i<=8;i++){
+//               floatingPoint[i] = (part2 % (int)pow(10,9-i)) / pow(10, 8-i);
+//           }
+//           printf("binary %d\n",binaryInt);
+//           for(int i=1;i<=length-1;i++){
+//               floatingPoint[8+length-i] = (binaryInt % (int)pow(10,i)) / pow(10, i-1);
+//           }
+//           for(int i=0;i<32;i++) printf("%d",floatingPoint[i]);
+//           printf("\n");
+//       }
+
+//       int main(){
+//           // printf("%d\n", binary2decimal(111));
+//           // printf("%d\n", decimal2binary(30));
+//           // printf("%lf\n", floatDecimal2binary(123.25));
+//           floatDecimal2floatingPoint(-123.25);
+//           return 0;
+//       }`);
+//       console.log('hello');
+//     }
+//   }, [isLoading]);
+//   return (
+//     <>
+//       {/* {isLoading ? <p>Loading...</p> : <p>Ready!</p>} */}
+//       {/* <form>
+//         <textarea onChange={(e) => setInput(e.target.value)} placeholder="Enter your code here" />
+//         <input
+//           type="submit"
+//           value={!isRunning ? 'Run' : 'Running...'}
+//           disabled={isLoading || isRunning}
+//           onClick={(e) => {
+//             e.preventDefault();
+//             runPython(input);
+//           }}
+//         />
+//       </form>
+//       <p>Output</p>
+//       <pre>
+//         <code>{stdout}</code>
+//       </pre>
+//       <p>Error</p>
+//       <pre>
+//         <code>{stderr}</code>
+//       </pre> */}
+//       <pre>
+//         <code>
+//           {isRunning === true ? 'Running...' : ''}
+//           {stdout}
+//           {/* <MainText text={stdout} /> */}
+//         </code>
+//       </pre>
+//       <div>
+//         {bits.map((bit, index) => (
+//           <span key={index}>
+//             {bit.substring(0, 4)} {bit.substring(4)}{' '}
+//           </span>
+//         ))}
+//       </div>
+//     </>
+//   );
+// }
 
 export default function Page13(props) {
-  // const [number, setNumber] = useState(-314.25);
-  // const [binary, setBinary] = useState([
-  //   1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  // ]);
+  const [input, setInput] = useState(-314.25);
+  const [bits, setBits] = useState([]);
 
-  // const changeNumber = (e) => {
-  //   // if (e === '') e = 0;
-  //   if (e > 1000.0) e = 1000;
-  //   else if (e < -1000.0) e = -1000;
-  //   setNumber(e);
-  // };
+  function changeInput(e, i) {
+    if (e === '') e = '';
+    // else if (e > 20) e = 20;
+    // else if (e < -20) e = -20;
+    setInput(e);
+  }
 
-  // const decimal2binary = (input) => {
-  //   let decimal = input;
-  //   let binary = 0;
-  //   let i = 0;
-  //   while (decimal != 0) {
-  //     binary += (decimal % 2) * Math.pow(10, i);
-  //     decimal /= 2;
-  //     console.log(decimal);
-  //     i++;
-  //   }
-  //   return binary;
-  // };
+  useEffect(() => {
+    const x = input;
 
-  // useEffect(() => {
-  //   if (number >= 0) binary[0] = 0;
-  //   else binary[0] = 1;
-  //   let toBinary = 0;
-  //   // console.log(Math.floor(Math.abs(number)));
-  //   console.log(decimal2binary(Math.floor(Math.abs(number))));
-  // }, [number]);
+    const buffer = new ArrayBuffer(4);
+    const view = new DataView(buffer);
+
+    view.setFloat32(0, x);
+
+    const bits = [];
+    for (let i = 0; i < buffer.byteLength; i++) {
+      bits.push(view.getUint8(i).toString(2).padStart(8, '0'));
+    }
+    setBits(bits);
+  }, [input]);
 
   return (
     <>
@@ -116,22 +267,38 @@ export default function Page13(props) {
       <Height50 />
       <Line isDarkMode={props.isDarkMode} />
       <MainText text="-314.25를 부정 소수점으로 표현해 보았습니다. 이 과정은 다른 숫자에서도 가능합니다. 직접 해보세요! :)" />
-      {/* <Height50 />
+
+      {/* <PythonProvider>
+        <Codeblock />
+      </PythonProvider> */}
+      <Height50 num="70px" />
+      <MainText text="아래 숫자의 부동 소수점을 볼 수 있틑 오브젝트를 만들어 두었습니다. 숫자를 입력하여 결과를 확인해 보세요!" />
+      <Height50 num="30px" />
       <center>
-        <input
-          type="number"
-          className={styles.tableInputNumber}
-          style={{ color: props.isDarkMode ? 'white' : 'black', width: '100px', textAlign: 'left' }}
-          value={number}
-          onChange={(e) => {
-            changeNumber(e.target.value);
-          }}
-          min={-1000}
-          max={1000}
-          step={0.1}
-        />
-        <MainText text=" = " isSpan={true} />
-      </center> */}
+        <div className={styles.sortRight}>
+          <input
+            type="number"
+            className={styles.tableInputNumber}
+            style={{ color: props.isDarkMode ? 'white' : 'black', width: '100px', textAlign: 'left' }}
+            value={input}
+            onChange={(e) => {
+              changeInput(e.target.value);
+            }}
+            // min={-20}
+            // max={20}
+            step={0.01}
+          />
+          <MainText text="의 부동 소수점은..." fontSize="0.8rem" isSpan={true} />
+        </div>
+        <Height50 num="10px" />
+        <div className={styles.mainText} style={{ fontSize: '0.8rem' }}>
+          {bits.map((bit, index) => (
+            <span key={index}>
+              {bit.substring(0, 4)} {bit.substring(4)}{' '}
+            </span>
+          ))}
+        </div>
+      </center>
     </>
   );
 }

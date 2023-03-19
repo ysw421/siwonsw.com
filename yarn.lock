@@ -3409,6 +3409,11 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
+comlink@^4.3.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/comlink/-/comlink-4.4.1.tgz#e568b8e86410b809e8600eb2cf40c189371ef981"
+  integrity sha512-+1dlx0aY5Jo1vHy/tSsIGpSkN4tS9rZSW8FIhG0JH/crs9wwweswIo/POr451r7bZww3hFbPAKnTpimzL/mm4Q==
+
 commander@9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-9.2.0.tgz#6e21014b2ed90d8b7c9647230d8b7a94a4a419a9"
@@ -7896,6 +7901,13 @@ react-mathjax@^1.0.1:
   integrity sha512-+mjFcciZY3GQoqiQm3aRTyDjgBKuoaXpY+SCONX00jScuPpTKwnASeFMS5+pbTIzDf5zPT2Y9ZZfQ9U/d4CKtQ==
   dependencies:
     load-script "^1.0.0"
+
+react-py@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/react-py/-/react-py-1.8.5.tgz#b304331ce51cb600f09778ae13ff1a0f5895fd05"
+  integrity sha512-ryHfRZ65KRVB+0/e2GxnV0N4jPYwrA+7aR6FK6OraKIg8Z+nFlOYHiMVd6MAMtzZPcaVKujrVuX+h2ht7+MiSw==
+  dependencies:
+    comlink "^4.3.1"
 
 react-refresh@^0.11.0:
   version "0.11.0"
