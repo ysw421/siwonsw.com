@@ -78,6 +78,7 @@ function MainPagePC(props) {
                 @KDMHS_21wp
               </p>
               <p>@Fregic_12th</p>
+              <p>@0-inf</p>
               <p>더 아름다운 미래를 꿈꾸며~💜</p>
             </span>
             <div style={{ height: '4rem' }}></div>

@@ -62,6 +62,7 @@ function MainPageMobile(props) {
             @KDMHS_21wp
           </p>
           <p>@Fregic_12th</p>
+          <p>@0-inf</p>
           <p>더 아름다운 미래를 꿈꾸며~💜</p>
         </span>
         <div className={styles.titleBar} style={{ backgroundColor: props.isDarkMode ? '#f8f8f8' : '#201c1c' }}></div>

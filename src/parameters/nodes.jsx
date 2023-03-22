@@ -177,7 +177,7 @@ export const mindMapNodes = {
       x: 30,
       y: 100,
       link: '/paper/자료-구조',
-      edges: ['부동-소수점'],
+      edges: ['부동-소수점', '아스키코드,-유니코드'],
       circleSize: 30,
     },
     '부동-소수점': {
@@ -185,6 +185,14 @@ export const mindMapNodes = {
       x: -20,
       y: 170,
       link: '/paper/부동-소수점',
+      edges: [],
+      circleSize: 20,
+    },
+    '아스키코드,-유니코드': {
+      value: '아스키코드, 유니코드',
+      x: 40,
+      y: 200,
+      link: '/paper/아스키코드,-유니코드',
       edges: [],
       circleSize: 20,
     },
