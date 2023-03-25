@@ -95,6 +95,14 @@
   margin: 0;
 }
 
+.tableTextNumber {
+  background-color: transparent;
+  border-radius: 6px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
 .tableInputNumber::-webkit-outer-spin-button,
 .tableInputNumber::-webkit-inner-spin-button {
   -webkit-appearance: none;
