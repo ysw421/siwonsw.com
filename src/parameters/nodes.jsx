@@ -4,17 +4,17 @@ export const mainNodes = {
     x: 0,
     y: 0,
     link: '',
-    edges: ['Machine Learning', 'Math', '나의 일상', '프로그래밍'],
+    edges: ['Math', '나의 일상', '프로그래밍'],
     circleSize: 60,
   },
-  'Machine Learning': {
-    value: 'Machine Learning',
-    x: -80,
-    y: -70,
-    link: '/mind-map/machine-learning',
-    edges: [],
-    circleSize: 20,
-  },
+  // 'Machine Learning': {
+  //   value: 'Machine Learning',
+  //   x: -80,
+  //   y: -70,
+  //   link: '/mind-map/machine-learning',
+  //   edges: [],
+  //   circleSize: 20,
+  // },
   Math: {
     value: 'Math',
     x: 120,
@@ -42,48 +42,48 @@ export const mainNodes = {
 };
 
 export const mindMapNodes = {
-  'machine-learning': {
-    'Machine Learning': {
-      value: 'Machine Learning',
-      x: 0,
-      y: 0,
-      link: '/paper/Machine-Learning',
-      edges: ['b', 'c'],
-      circleSize: 60,
-    },
-    b: {
-      value: '한글123English',
-      x: -70,
-      y: -50,
-      link: '/paper/b',
-      edges: ['d', 'e'],
-      circleSize: 20,
-    },
-    c: {
-      value: '3',
-      x: 60,
-      y: 100,
-      link: '/paper/c',
-      edges: [],
-      circleSize: 20,
-    },
-    d: {
-      value: '4',
-      x: -140,
-      y: -70,
-      link: '/paper/d',
-      edges: [],
-      circleSize: 27,
-    },
-    e: {
-      value: '5',
-      x: -20,
-      y: -120,
-      link: '/paper/e',
-      edges: [],
-      circleSize: 20,
-    },
-  },
+  // 'machine-learning': {
+  //   'Machine Learning': {
+  //     value: 'Machine Learning',
+  //     x: 0,
+  //     y: 0,
+  //     link: '/paper/Machine-Learning',
+  //     edges: ['b', 'c'],
+  //     circleSize: 60,
+  //   },
+  //   b: {
+  //     value: '한글123English',
+  //     x: -70,
+  //     y: -50,
+  //     link: '/paper/b',
+  //     edges: ['d', 'e'],
+  //     circleSize: 20,
+  //   },
+  //   c: {
+  //     value: '3',
+  //     x: 60,
+  //     y: 100,
+  //     link: '/paper/c',
+  //     edges: [],
+  //     circleSize: 20,
+  //   },
+  //   d: {
+  //     value: '4',
+  //     x: -140,
+  //     y: -70,
+  //     link: '/paper/d',
+  //     edges: [],
+  //     circleSize: 27,
+  //   },
+  //   e: {
+  //     value: '5',
+  //     x: -20,
+  //     y: -120,
+  //     link: '/paper/e',
+  //     edges: [],
+  //     circleSize: 20,
+  //   },
+  // },
 
   math: {
     Math: {
@@ -107,7 +107,7 @@ export const mindMapNodes = {
       x: -20,
       y: -110,
       link: '/paper/행렬',
-      edges: ['가우스 소거법'],
+      edges: ['가우스 소거법', '행렬식'],
       circleSize: 40,
     },
     '가우스 소거법': {
@@ -117,6 +117,14 @@ export const mindMapNodes = {
       link: '/paper/가우스-소거법',
       edges: [],
       circleSize: 30,
+    },
+    행렬식: {
+      value: '행렬식',
+      x: 10,
+      y: -210,
+      link: '/paper/행렬식',
+      edges: [],
+      circleSize: 28,
     },
   },
 

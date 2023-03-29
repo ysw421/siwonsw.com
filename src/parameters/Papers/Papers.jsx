@@ -12,6 +12,7 @@ import Page11 from './Pages/Page11';
 import Page12 from './Pages/Page12';
 import Page13 from './Pages/Page13';
 import Page14 from './Pages/Page14';
+import P행렬식 from './Pages/P행렬식';
 
 function Papers(props) {
   return (
@@ -30,6 +31,7 @@ function Papers(props) {
       {props.numberId === 12 && <Page12 isDarkMode={props.isDarkMode} />}
       {props.numberId === 13 && <Page13 isDarkMode={props.isDarkMode} />}
       {props.numberId === 14 && <Page14 isDarkMode={props.isDarkMode} />}
+      {props.numberId === 15 && <P행렬식 isDarkMode={props.isDarkMode} />}
       <div style={{ height: '100px' }}></div>
     </div>
   );

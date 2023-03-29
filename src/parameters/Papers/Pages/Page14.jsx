@@ -1,5 +1,5 @@
 import styles from './Pages.module.css';
-import { MainText, Line, Height50, MovieDiv } from './useful';
+import { MainText, Line, Height50, MovieDiv, Box } from './useful';
 import { MathComponent } from 'mathjax-react';
 import { useState, useEffect } from 'react';
 
@@ -90,6 +90,8 @@ export default function Page14(props) {
       <MainText text="아스키코드에 대하여 알아보았습니다. 아래 문자의 아스키 코드를 확인할 수 있는 오브젝트를 만들어 두었습니다. 확인해 보세요!" />
       <Height50 />
       <center>
+        <Box text="⚠️ 아스키코드에 존재하는 글자만을 적을 수 있습니다." isDarkMode={props.isDarkMode} />
+        <Height50 num="20px" />
         <input
           type="text"
           value={ascii}
@@ -99,6 +101,7 @@ export default function Page14(props) {
         />
         <Height50 num="20px" />
         <MainText text={asciiValue} fontSize="0.8rem" />
+        {/* <MainText text="아스키코드에 존재하는 글자만을 적을 수 있습니다." fontSize="0.8rem" /> */}
       </center>
       <Height50 num="40px" />
       <Line isDarkMode={props.isDarkMode} />

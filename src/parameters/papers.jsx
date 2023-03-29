@@ -83,4 +83,10 @@ export const papers = [
     title: '글자를 나타내다, 아스키코드와 유니코드',
     type: '프로그래밍',
   },
+  {
+    id: '행렬식',
+    numberId: 15,
+    title: '행렬식 (Determinant)',
+    type: 'math',
+  },
 ];
