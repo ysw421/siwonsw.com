@@ -142,6 +142,13 @@ export default function Page14(props) {
           isSpan={true}
         />
       </>
+      <Height50 num="70px" />
+      <>
+        <Line isDarkMode={props.isDarkMode} />
+        <MainText text="라폴라스 전개 (Laplace expansion)" fontSize="1.7rem" />
+        <Height50 num="20px" />
+        <MainText text="라폴라스 전개를(또는 코팩터 전개라고 불림) 이용하여 " />
+      </>
     </>
   );
 }

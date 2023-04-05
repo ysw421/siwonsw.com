@@ -4,7 +4,7 @@ export const mainNodes = {
     x: 0,
     y: 0,
     link: '',
-    edges: ['Math', '나의 일상', '프로그래밍'],
+    edges: ['Math', '나의 일상', '프로그래밍', '양자 컴퓨터'],
     circleSize: 60,
   },
   // 'Machine Learning': {
@@ -36,6 +36,14 @@ export const mainNodes = {
     x: 100,
     y: -80,
     link: '/mind-map/프로그래밍',
+    edges: [],
+    circleSize: 20,
+  },
+  '양자 컴퓨터': {
+    value: '양자 컴퓨터',
+    x: -110,
+    y: -60,
+    link: '/mind-map/양자-컴퓨터',
     edges: [],
     circleSize: 20,
   },
