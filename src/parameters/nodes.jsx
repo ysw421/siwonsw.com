@@ -213,4 +213,39 @@ export const mindMapNodes = {
       circleSize: 20,
     },
   },
+
+  '양자-컴퓨터': {
+    '양자-컴퓨터': {
+      value: '양자 컴퓨터',
+      x: 0,
+      y: 0,
+      link: '/paper/프로그래밍',
+      edges: ['양자-역학'],
+      circleSize: 60,
+    },
+    '양자-역학': {
+      value: '양자 역학',
+      x: 30,
+      y: 100,
+      link: '/paper/양자-역학',
+      edges: ['부동-소수점', '아스키코드,-유니코드'],
+      circleSize: 30,
+    },
+    '부동-소수점': {
+      value: '부동 소수점',
+      x: -20,
+      y: 170,
+      link: '/paper/부동-소수점',
+      edges: [],
+      circleSize: 20,
+    },
+    '아스키코드,-유니코드': {
+      value: '아스키코드, 유니코드',
+      x: 40,
+      y: 200,
+      link: '/paper/아스키코드,-유니코드',
+      edges: [],
+      circleSize: 20,
+    },
+  },
 };

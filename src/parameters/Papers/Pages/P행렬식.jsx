@@ -64,7 +64,7 @@ export default function Page14(props) {
         <MathComponent tex={String.raw`\lambda`} display={false} />
         <MainText text="는 스칼라값, " isSpan={true} />
         <MathComponent tex={String.raw`B`} display={false} />
-        <MainText text="행렬입니다)라고 하면 다음을 만족해야 합니다." isSpan={true} />
+        <MainText text="는 행렬입니다)라고 하면 다음을 만족해야 합니다." isSpan={true} />
         <Height50 num="20px" />
         <MathComponent
           tex={String.raw`\lambda \left[ \begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22} \end{array} \right]
