@@ -84,7 +84,7 @@ export default function Page14(props) {
         <MathComponent tex={String.raw`a_{11}\times b_{11} + a_{12}\times b_{21}`} display={false} />
         <MainText text="와 " isSpan={true} />
         <MathComponent tex={String.raw`a_{21}\times b_{12} + a_{22}\times b_{22}`} display={false} />
-        <MainText text="는 값이 같아야 하며 0이 아니어야 합니다. 또한" isSpan={true} />
+        <MainText text="는 값이 같아야 하며 0이 아니어야 합니다. 또한 " isSpan={true} />
         <MathComponent tex={String.raw`a_{11}\times b_{12} + a_{12}\times b_{22}`} display={false} />
         <MainText text="와 " isSpan={true} />
         <MathComponent tex={String.raw`a_{21}\times b_{11} + a_{22}\times b_{21}`} display={false} />
