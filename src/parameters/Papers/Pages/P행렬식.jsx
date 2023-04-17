@@ -101,7 +101,7 @@ export default function Page14(props) {
           tex={String.raw`B = \left[ \begin{array}{cc} a_{22} & -a_{12} \\ -a_{21} & a_{11} \end{array} \right]`}
           display={true}
         />
-        <Height50 num="20px" />
+        {/* <Height50 num="0px" /> */}
         <MathComponent
           tex={String.raw`\left[ \begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22} \end{array} \right]
           \left[ \begin{array}{cc} a_{22} & -a_{12} \\ -a_{21} & a_{11} \end{array} \right]
