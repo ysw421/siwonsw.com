@@ -6,6 +6,7 @@ export const mainNodes = {
     link: '',
     edges: ['Math', '나의 일상', '프로그래밍', '양자 컴퓨터'],
     circleSize: 60,
+    isFolder: true,
   },
   // 'Machine Learning': {
   //   value: 'Machine Learning',
@@ -219,6 +220,7 @@ export const mindMapNodes = {
       link: '',
       edges: ['stack'],
       circleSize: 20,
+      isFolder: true,
     },
     stack: {
       value: 'stack',

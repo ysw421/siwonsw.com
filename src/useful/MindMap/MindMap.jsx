@@ -91,12 +91,13 @@ function MindMap(props) {
                               <div
                                 onMouseDown={() => setSaveMousePos({ x: mousePos.x, y: mousePos.y })}
                                 onMouseMove={handleMouseMove}
-                                className={styles.nodeCircle}
+                                className={props.nodes[key].isFolder ? styles.nodeFolder : styles.nodeCircle}
                                 onClick={() => goTo(props.nodes[key].link)}
                                 style={{
                                   width: `${props.nodes[key].circleSize}px`,
                                   height: `${props.nodes[key].circleSize}px`,
                                   backgroundColor: props.isDarkMode ? '#f8f8f8' : '#201c1c',
+                                  backgroundColor: props.nodes[key].isFolder ? '#c4ccf3' : '#f8f8f8',
                                 }}
                               ></div>
                               <span className={styles.nodeValue}>{props.nodes[key].value}</span>
