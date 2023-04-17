@@ -222,7 +222,7 @@ export const mindMapNodes = {
     },
     stack: {
       value: 'stack',
-      x: 200,
+      x: 180,
       y: 100,
       link: '',
       edges: [],
