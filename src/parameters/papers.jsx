@@ -89,4 +89,10 @@ export const papers = [
     title: '행렬식 (Determinant)',
     type: 'math',
   },
+  {
+    id: 'stack',
+    numberId: 16,
+    title: 'stack',
+    type: '프로그래밍',
+  },
 ];
