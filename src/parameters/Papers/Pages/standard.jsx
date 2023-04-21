@@ -4,8 +4,8 @@ function standard(props) {
   return (
     <>
       <>
-        <Line isDarkMode={props.isDarkMode} />
         <MainText text="구조" fontSize="1.7rem" />
+        <Line isDarkMode={props.isDarkMode} />
         <Height50 num="20px" />
       </>
       <>
