@@ -1,4 +1,4 @@
-import { MainText, Line, Height50, MovieDiv } from './useful';
+import { MainText, Line, Height50, MovieDiv, Box } from './useful';
 
 function standard(props) {
   return (
@@ -8,8 +8,13 @@ function standard(props) {
         <Line isDarkMode={props.isDarkMode} />
         <Height50 num="20px" />
       </>
+
       <>
         <MovieDiv alt="용아맥" src="/img/Page/Page6/용아맥.jpg" />
+      </>
+
+      <>
+        <Box text="⚠️ 스포 주의! 저의 생각일 뿐 주의!" isDarkMode={props.isDarkMode} />
       </>
     </>
   );

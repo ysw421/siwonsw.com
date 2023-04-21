@@ -1,5 +1,5 @@
 import styles from './Pages.module.css';
-import { Height50, MovieDiv, Line, MainText } from './useful';
+import { Height50, MovieDiv, Line, MainText, Box } from './useful';
 
 export default function Page1(props) {
   return (
@@ -17,11 +17,44 @@ export default function Page1(props) {
       <Height50 />
       사실 스택은 배열로 구현 가능하지만 스택은 배열과 달리 출력시 상수 시간이 걸린다는 장점이 있습니다. 즉 스택에
       적합한 상황이라면, 배열보다 더 빠른 계산이 가능합니다. 흔히 스택에서 사용되는 명령어를 알아봅시다.
-      <Height50 />
-      <MainText text="push()" fontSize="1.7rem" />
-      <Line isDarkMode={props.isDarkMode} />
-      <Height50 num="1px" />
-      push는 스택에 데이터를 추가하는 명령어입니다. stack1.push(421)과 같이 데이터를 매개변수로 가집니다.
+      <Height50 num="70px" />
+      {/* push */}
+      <>
+        <MainText text="push" fontSize="1.7rem" />
+        <Line isDarkMode={props.isDarkMode} />
+        <Height50 num="1px" />
+        push는 스택에 데이터를 추가하는 명령어입니다. stack1.push(421)과 같이 데이터를 매개변수로 가집니다.
+        <Height50 num="20px" />
+        <Box text={`📂 stack1.push(421)`} isDarkMode={props.isDarkMode} />
+        <br />위 코드를 실행하면 스택, stack1에 제일 위에 421이 추가됩니다.
+      </>
+      <Height50 num="70px" />
+      {/* pop */}
+      <>
+        <MainText text="pop" fontSize="1.7rem" />
+        <Line isDarkMode={props.isDarkMode} />
+        <Height50 num="1px" />
+        pop은 데이터를 삭제하는 명령어입니다. stack1.pop()과 같이 매개변수를 가지지 않습니다. 또한 제일 위에 있는
+        데이터를 반환합니다.
+        <Height50 num="20px" />
+        <Box text={`📂 stack1.push() => 421`} isDarkMode={props.isDarkMode} />
+        <br />
+        stack1의 제일 윗 값이 421이라고 가정하여 봅시다. 위 코드를 실행하면 stack1에서 421이 삭제되고 421이 출력됩니다.
+        삭제되는 과정은 제일 윗 데이터의 주소값이 바뀌는 것과 같습니다.
+      </>
+      {/* peek */}
+      <>
+        <MainText text="peek" fontSize="1.7rem" />
+        <Line isDarkMode={props.isDarkMode} />
+        <Height50 num="1px" />
+        pop은 데이터를 삭제하는 명령어입니다. stack1.pop()과 같이 매개변수를 가지지 않습니다. 또한 제일 위에 있는
+        데이터를 반환합니다.
+        <Height50 num="20px" />
+        <Box text={`📂 stack1.push() => 421`} isDarkMode={props.isDarkMode} />
+        <br />
+        stack1의 제일 윗 값이 421이라고 가정하여 봅시다. 위 코드를 실행하면 stack1에서 421이 삭제되고 421이 출력됩니다.
+        삭제되는 과정은 제일 윗 데이터의 주소값이 바뀌는 것과 같습니다.
+      </>
     </>
   );
 }
