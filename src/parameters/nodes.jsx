@@ -218,18 +218,18 @@ export const mindMapNodes = {
       x: 120,
       y: 140,
       link: '',
-      edges: ['stack'],
+      edges: [],
       circleSize: 20,
       isFolder: true,
     },
-    stack: {
-      value: 'stack',
-      x: 180,
-      y: 100,
-      link: '',
-      edges: [],
-      circleSize: 20,
-    },
+    // stack: {
+    //   value: 'stack',
+    //   x: 180,
+    //   y: 100,
+    //   link: '',
+    //   edges: [],
+    //   circleSize: 20,
+    // },
   },
 
   '양자-컴퓨터': {

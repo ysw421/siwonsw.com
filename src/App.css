@@ -34,3 +34,16 @@
 .App {
   height: calc(var(--vh, 1vh) * 100);
 }
+
+pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: font2;
+  font-size: 1.2rem;
+  line-height: 150%;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.3rem;
+}
