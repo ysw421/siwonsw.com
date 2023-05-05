@@ -434,9 +434,9 @@ export default function Page8(props) {
         </center>
         <Height50 num="60px" />
       </>
-      {/* 점 곱 */}
+      {/* 내적 */}
       <>
-        <MainText text="행렬 곱 (점 곱)" fontSize="1.4rem" />
+        <MainText text="행렬 곱 (내적)" fontSize="1.4rem" />
         <Height50 num="15px" />
         <MainText
           text="행렬의 곱셈은 곱해지는 행렬의 열의 수와 곱하는 행렬의 행의 수가 같을 때 가능합니다. 곱셈 결과, 행의 수는
