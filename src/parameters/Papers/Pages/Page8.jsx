@@ -458,7 +458,7 @@ export default function Page8(props) {
         </div>
         <center className={styles.sortRight}>
           <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
-            <div className={styles.preventDrag}>
+            <div className={styles.preventDrag} style={{ position: 'relative', top: '-10px' }}>
               <MathComponent
                 tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
                 display={true}
@@ -565,8 +565,8 @@ export default function Page8(props) {
                 style={{
                   width: '80%',
                   margin: '10%',
-                  marginTop: '3px',
-                  marginBottom: '3px',
+                  marginTop: '-4px',
+                  marginBottom: '13px',
                   background: '#b8a7ff78',
                   height: '20px',
                   borderRadius: '8px',
@@ -577,7 +577,7 @@ export default function Page8(props) {
                   width: '80%',
                   margin: '10%',
                   marginTop: '0',
-                  marginBottom: '4px',
+                  marginBottom: '13px',
                   background: '#00ffee78',
                   height: '20px',
                   borderRadius: '8px',
@@ -599,7 +599,7 @@ export default function Page8(props) {
             <MainText text="⋅" fontSize="1.5rem" />
           </div>
           <div style={{ height: '77px', overflowY: 'hidden', position: 'relative' }}>
-            <div className={styles.preventDrag}>
+            <div className={styles.preventDrag} style={{ position: 'relative', top: '-4px' }}>
               <MathComponent
                 tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ& ㅤ& ㅤ& ㅤ\\ \\ \end{array}\right]`}
                 display={true}
@@ -1051,7 +1051,7 @@ export default function Page8(props) {
               <div>
                 <div className={styles.sortRight}>
                   <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
-                    <div className={styles.preventDrag}>
+                    <div className={styles.preventDrag} style={{ position: 'relative', top: '-10.5px' }}>
                       <MathComponent
                         tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
                         display={true}
