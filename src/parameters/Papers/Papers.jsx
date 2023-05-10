@@ -8,7 +8,7 @@ import Page6 from './Pages/Page6';
 import Page7 from './Pages/Page7';
 import Page8 from './Pages/Page8';
 import Page9 from './Pages/Page9';
-import Page10 from './Pages/Page10';
+import P가우스_소거법 from './Pages/P가우스-소거법';
 import Page11 from './Pages/Page11';
 import Page12 from './Pages/Page12';
 import Page13 from './Pages/Page13';
@@ -28,7 +28,7 @@ function Papers(props) {
       {props.numberId === 7 && <Page7 isDarkMode={props.isDarkMode} />}
       {props.numberId === 8 && <Page8 isDarkMode={props.isDarkMode} />}
       {props.numberId === 9 && <Page9 isDarkMode={props.isDarkMode} />}
-      {props.numberId === 10 && <Page10 isDarkMode={props.isDarkMode} />}
+      {props.numberId === '가우스-소거법' && <P가우스_소거법 isDarkMode={props.isDarkMode} />}
       {props.numberId === 11 && <Page11 isDarkMode={props.isDarkMode} />}
       {props.numberId === 12 && <Page12 isDarkMode={props.isDarkMode} />}
       {props.numberId === 13 && <Page13 isDarkMode={props.isDarkMode} />}

@@ -55,7 +55,7 @@ export const papers = [
   },
   {
     id: '가우스-소거법',
-    numberId: 10,
+    numberId: '가우스-소거법',
     title: '가우스 소거법 (Gaussian elimination)',
     type: 'math',
   },

@@ -3,7 +3,7 @@ import { MainText, Height50 } from './useful';
 import { MathComponent } from 'mathjax-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Page10(props) {
+export default function P가우스_소거법(props) {
   const navigate = useNavigate();
   function goBack(url) {
     navigate('/' + url);
@@ -11,6 +11,8 @@ export default function Page10(props) {
 
   return (
     <>
+      두개
+      <Height50 num="200px" />
       <MainText text="연립일차방정식은 행렬의 곱셈으로 나타낼 수 있습니다. 일반적으로 변수 " isSpan={true} />
       <MathComponent tex={String.raw`a`} display={false} />
       <MainText text="개의 값을 구하기 위해서는 식 또한 " isSpan={true} />
