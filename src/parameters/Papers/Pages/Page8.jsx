@@ -7,7 +7,7 @@ import { MathComponent } from 'mathjax-react';
 const Matrix3x2Box = (props) => {
   return (
     <div style={{ height: '100px', overflowY: 'hidden', position: 'relative' }}>
-      <div className={styles.preventDrag}>
+      <div className={styles.preventDrag} style={{ position: 'relative', top: '-9px' }}>
         <MathComponent
           tex={String.raw`\left[\begin{array}{clr} ㅤ & ㅤ & ㅤ& ㅤ\\  \\ \\ \end{array}\right]`}
           display={true}
