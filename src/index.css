@@ -20,3 +20,7 @@ body {
 html {
   height: -webkit-fill-available;
 }
+
+a:visited {
+  color: inherit;
+}

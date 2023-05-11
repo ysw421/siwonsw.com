@@ -11,7 +11,28 @@ export default function P가우스_소거법(props) {
 
   return (
     <>
-      두개
+      두 개 이상의 방정식에서 공통된 해를 찾고 싶을 때 연립 방정식을 사용합니다.
+      <>
+        <Height50 num="20px" />
+        <MathComponent tex={String.raw`x_1 + 5x_2 - 2x_3 = 12`} display={true} />
+        <MathComponent tex={String.raw`-2x_1 + 3x_2 + 4x_3 = 2`} display={true} />
+        <MathComponent tex={String.raw`4x_1 + x_2 + 3x_3 = 21`} display={true} />
+        <Height50 num="20px" />
+      </>
+      위 연립 방정식은 연립 일차 방정식입니다. 미지수 3개,{' '}
+      <MathComponent tex={String.raw`x_1, x_2, x_3`} display={false} />가 존재합니다. 연립 일차 방정식은 행렬의 곱셈으로
+      나타낼 수 있습니다.
+      <>
+        <Height50 num="20px" />
+        <MathComponent
+          tex={String.raw`\left[\begin{array}{clr} 1 & 5 & -2 \\ -2 & 3 & 4 \\ 4 & 1 & 3 \end{array} \right] \left[ \begin{array}{clr} x_1 \\ x_2 \\ x_3 \end{array} \right] = \left[ \begin{array}{clr} 12 \\ 2 \\ 21 \end{array} \right]`}
+          display={true}
+        />
+        <Height50 num="20px" />
+      </>
+      <a href="paper/행렬">
+        <MainText text="이전 노드" isSpan={true} />
+      </a>
       <Height50 num="200px" />
       <MainText text="연립일차방정식은 행렬의 곱셈으로 나타낼 수 있습니다. 일반적으로 변수 " isSpan={true} />
       <MathComponent tex={String.raw`a`} display={false} />

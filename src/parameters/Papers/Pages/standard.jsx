@@ -16,6 +16,11 @@ function standard(props) {
       <>
         <Box text="⚠️ 스포 주의! 저의 생각일 뿐 주의!" isDarkMode={props.isDarkMode} />
       </>
+      <>
+        <a href="paper/행렬">
+          <MainText text="이전 노드" isSpan={true} />
+        </a>
+      </>
     </>
   );
 }
