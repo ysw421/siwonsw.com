@@ -33,6 +33,11 @@ export default function P가우스_소거법(props) {
       <a href="paper/행렬">
         <MainText text="이전 노드" isSpan={true} />
       </a>
+      에서 알아보았듯이, 행렬의 곱은 각 행의 원소와 열의 원소의 곱을 더하여 계산합니다. 이 사실을 통해 연립 일차
+      방정식과 행렬은 같은 것임을 알 수 있습니다.
+      <Height50 num="70px" />
+      가우스 소거법을 사용하면 위 행렬의 해를 쉽게 구할 수 있습니다. 가우스 소거법은 행렬을 행사다리꼴행렬(Row Echelon
+      Form, REF)로 표현하는 방법입니다.
       <Height50 num="200px" />
       <MainText text="연립일차방정식은 행렬의 곱셈으로 나타낼 수 있습니다. 일반적으로 변수 " isSpan={true} />
       <MathComponent tex={String.raw`a`} display={false} />
