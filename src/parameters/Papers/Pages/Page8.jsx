@@ -1008,7 +1008,10 @@ export default function Page8(props) {
         <MainText text="의 원소 " isSpan={true} />
         <MathComponent tex={String.raw`a_{ii}`} display={false} />
         <MainText text="는 주대각선의 원소입니다." isSpan={true} />
-        <MainText text="항등 행렬은 주대각선의 원소가 모두 1이고 나머지 원소가 모두 0인 행렬입니다. 항등 행렬은 주로 " />
+        <MainText
+          text="항등 행렬은 주대각선의 원소가 모두 1이고 나머지 원소가 모두 0인 행렬입니다. 항등 행렬은 주로 "
+          isSpan={true}
+        />
         <MathComponent tex={String.raw`I`} display={false} />
         <MainText text="로 나타내며, 열의 개수와 행의 개수가 같은 정사각 행렬입니다." isSpan={true} />
         <Height50 num="20px" />
