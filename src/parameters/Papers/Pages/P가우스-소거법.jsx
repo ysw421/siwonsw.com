@@ -38,12 +38,21 @@ export default function P가우스_소거법(props) {
       <Height50 num="70px" />
       가우스 소거법을 사용하면 위 행렬의 해를 쉽게 구할 수 있습니다. 가우스 소거법은 행렬을 행사다리꼴행렬(Row Echelon
       Form, REF)로 표현하는 방법입니다. 먼저 Row Echelon From에 대하여 알아보겠습니다.
+      <Height50 num="20px" />
       <MathComponent
-        tex={String.raw`\left[ \begin{array}{cc} 4 & 0 & 0 & 0 & 0 & 0 \\
+        tex={String.raw`\left[ \begin{array}{cc} 4 & 0 & 0 & 7 & 9 & 0 \\
           0 & 2 & 1 & 0 & 8 & 3 \\ 0 & 0 & 0 & -3 & 2 & 8 \\
           0 & 0 & 0 & 0 & 3 & -9 \\ 0 & 0 & 0 & 0 & 0 & 0  \end{array} \right]`}
         display={true}
       />
+      <Height50 num="20px" />
+      Row Echelon From은 다음 조건을 만족하여야 합니다.
+      <br />
+      <blockquote>
+        1. 0으로만 구성된 행은 제일 아래 위치합니다.
+        <br />
+        2. 가장 왼편에 존재하는 0이 아닌 원소는 윗 행렬보다 아래 행렬이 오른쪽에 존재합니다.
+      </blockquote>
       <Height50 num="200px" />
       <MainText text="연립일차방정식은 행렬의 곱셈으로 나타낼 수 있습니다. 일반적으로 변수 " isSpan={true} />
       <MathComponent tex={String.raw`a`} display={false} />

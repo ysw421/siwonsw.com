@@ -1415,7 +1415,7 @@ export default function Page8(props) {
           />
           <MainText text=" )를 나타냅니다. 열 벡터를 나타낼 때는 전치 행렬을 활용하여 " isSpan={true} />
           <MathComponent tex={String.raw`x^{T}`} display={false} />
-          <MainText text=" 와 같이 나타냅니다." isSpan={true} />
+          <MainText text="와 같이 나타냅니다." isSpan={true} />
         </>
       </>
     </div>
