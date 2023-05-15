@@ -40,6 +40,12 @@ export default function P가우스_소거법(props) {
       Form, REF)로 표현하는 방법입니다. 먼저 Row Echelon From에 대하여 알아보겠습니다.
       <Height50 num="20px" />
       <MathComponent
+        tex={String.raw`\left[ \begin{array}{cc} &&&&&&&&&&\\
+          &&&&& \\ &&&&& \\
+          &&&&& \\ &&&&& \end{array} \right]`}
+        display={true}
+      />
+      <MathComponent
         tex={String.raw`\left[ \begin{array}{cc} 4 & 0 & 0 & 7 & 9 & 0 \\
           0 & 2 & 1 & 0 & 8 & 3 \\ 0 & 0 & 0 & -3 & 2 & 8 \\
           0 & 0 & 0 & 0 & 3 & -9 \\ 0 & 0 & 0 & 0 & 0 & 0  \end{array} \right]`}
@@ -53,6 +59,7 @@ export default function P가우스_소거법(props) {
         <br />
         2. 가장 왼편에 존재하는 0이 아닌 원소는 윗 행렬보다 아래 행렬이 오른쪽에 존재합니다.
       </blockquote>
+      즉 계단 모양입니다.
       <Height50 num="200px" />
       <MainText text="연립일차방정식은 행렬의 곱셈으로 나타낼 수 있습니다. 일반적으로 변수 " isSpan={true} />
       <MathComponent tex={String.raw`a`} display={false} />
