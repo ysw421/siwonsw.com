@@ -122,3 +122,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.rowEchelonFormBox {
+  background-color: rgba(234, 255, 147, 0.4);
+  width: 87%;
+  height: 28.8px;
+  border-radius: 0 0 0 8px;
+}
