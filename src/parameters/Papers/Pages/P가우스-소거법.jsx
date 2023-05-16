@@ -96,29 +96,45 @@ export default function P가우스_소거법(props) {
       -8로 나눔으로써 pivot을 1로 만들었습니다. pivot을 1로 나눈 이유는 아래 행(
       <MathComponent tex={String.raw`R_{3}`} display={false} />
       )을 보다 쉽게 계산하기 위함입니다.
-      <>
+      <div>
         <Height50 num="20px" />
-        <MathComponent
-          tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 3&-2&-5&3 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: -3R_1\\ㅤ \end{array}`}
-          display={true}
-        />
-        <MathComponent
-          tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&-8&4&-12 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: \div8\\ㅤ \end{array}`}
-          display={true}
-        />
+        <div style={{ transform: 'translateX(31px)' }}>
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 3&-2&-5&3 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: -3R_1\\ㅤ \end{array}`}
+            display={true}
+          />
+        </div>
+        <div style={{ transform: 'translateX(21px)' }}>
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&-8&4&-12 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: \div8\\ㅤ \end{array}`}
+            display={true}
+          />
+        </div>
         <MathComponent
           tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]`}
           display={true}
         />
         <Height50 num="20px" />
-      </>
+      </div>
       <MathComponent tex={String.raw`R_{3}`} display={false} />
       행에 <MathComponent tex={String.raw`2R_{1}`} display={false} />을 더한 후,{' '}
-      <MathComponent tex={String.raw`7R_{1}`} display={false} />을 빼줍니다.
+      <MathComponent tex={String.raw`7R_{2}`} display={false} />을 빼줍니다.
       <>
         <Height50 num="20px" />
+        <div style={{ transform: 'translateX(33px)' }}>
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:+2R_1 \end{array}`}
+            display={true}
+          />
+        </div>
+        <div style={{ transform: 'translateX(33px)' }}>
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&7&-2&12 \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:-7R_2 \end{array}`}
+            display={true}
+          />
+        </div>
         <MathComponent
-          tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&7&-2&12 \end{array} \right]`}
+          tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&0&3\over2&-{17\over2} \end{array} \right]`}
           display={true}
         />
         <Height50 num="20px" />
