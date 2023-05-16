@@ -63,8 +63,9 @@ export default function P가우스_소거법(props) {
         <br />
         2. 가장 왼편에 존재하는 0이 아닌 원소는 윗 행렬보다 아래 행렬이 오른쪽에 존재합니다.
       </blockquote>
-      즉 계단 모양입니다. (개인적으로 행사다리꼴 모양이라 말하기에는 무리가 있다고 생각합니다.🤣) 가장 왼편에 존재하는
-      0이 아닌 원소를 피봇(pivot)이라고 부릅니다.
+      즉 계단 모양입니다. (개인적으로 행사다리꼴 모양이라 말하기에는 무리가 있다고 생각합니다.🤣)
+      <br />
+      가장 왼편에 존재하는 0이 아닌 원소를 피봇(pivot)이라고 부릅니다.
       <Height50 num="60px" />
       위에서 예로 든 연립 일차 방정식을 가우스 소거법을 활용하여 Row Echelon Form으로 변환하고 해를 구해봅시다. 우선, 윗
       행렬 방정식을 첨가 행렬로 나타냅니다. 행렬 방정식 <MathComponent tex={String.raw`AX = B`} display={false} />를
@@ -97,24 +98,26 @@ export default function P가우스_소거법(props) {
       <MathComponent tex={String.raw`R_{3}`} display={false} />
       )을 보다 쉽게 계산하기 위함입니다.
       <div>
-        <Height50 num="20px" />
-        <div style={{ transform: 'translateX(31px)' }}>
+        <div>
+          <Height50 num="20px" />
+          <div style={{ transform: 'translateX(31px)' }}>
+            <MathComponent
+              tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 3&-2&-5&3 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: -3R_1\\ㅤ \end{array}`}
+              display={true}
+            />
+          </div>
+          <div style={{ transform: 'translateX(21px)' }}>
+            <MathComponent
+              tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&-8&4&-12 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: \div8\\ㅤ \end{array}`}
+              display={true}
+            />
+          </div>
           <MathComponent
-            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 3&-2&-5&3 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: -3R_1\\ㅤ \end{array}`}
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]`}
             display={true}
           />
+          <Height50 num="20px" />
         </div>
-        <div style={{ transform: 'translateX(21px)' }}>
-          <MathComponent
-            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&-8&4&-12 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: \div8\\ㅤ \end{array}`}
-            display={true}
-          />
-        </div>
-        <MathComponent
-          tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]`}
-          display={true}
-        />
-        <Height50 num="20px" />
       </div>
       <MathComponent tex={String.raw`R_{3}`} display={false} />
       행에 <MathComponent tex={String.raw`2R_{1}`} display={false} />을 더한 후,{' '}
