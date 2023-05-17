@@ -15,6 +15,7 @@ import Page13 from './Pages/Page13';
 import Page14 from './Pages/Page14';
 import P행렬식 from './Pages/P행렬식';
 import Pstack from './Pages/Pstack';
+import P프레직_수업_진행 from './Pages/P프레직-수업-진행';
 
 function Papers(props) {
   return (
@@ -35,6 +36,7 @@ function Papers(props) {
       {props.numberId === 14 && <Page14 isDarkMode={props.isDarkMode} />}
       {props.numberId === 15 && <P행렬식 isDarkMode={props.isDarkMode} />}
       {props.numberId === 16 && <Pstack isDarkMode={props.isDarkMode} />}
+      {props.numberId === '프레직-수업-진행' && <P프레직_수업_진행 isDarkMode={props.isDarkMode} />}
       <div style={{ height: '100px' }}></div>
     </div>
   );

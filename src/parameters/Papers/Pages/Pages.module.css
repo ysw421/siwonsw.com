@@ -129,3 +129,10 @@
   height: 28.8px;
   border-radius: 0 0 0 8px;
 }
+
+.dragImpossible {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-use-select: none;
+  user-select: none;
+}

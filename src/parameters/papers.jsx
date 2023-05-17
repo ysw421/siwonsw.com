@@ -95,4 +95,10 @@ export const papers = [
     title: 'stack',
     type: '프로그래밍',
   },
+  {
+    id: '프레직-수업-진행',
+    numberId: '프레직-수업-진행',
+    title: 'stack',
+    type: '일상',
+  },
 ];
