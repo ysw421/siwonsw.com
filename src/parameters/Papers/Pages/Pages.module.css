@@ -136,3 +136,7 @@
   -ms-use-select: none;
   user-select: none;
 }
+
+.a {
+  color: inherit;
+}
