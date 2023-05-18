@@ -63,7 +63,7 @@ export default function P가우스_소거법(props) {
         <br />
         2. 가장 왼편에 존재하는 0이 아닌 원소는 윗 행렬보다 아래 행렬이 오른쪽에 존재합니다.
       </blockquote>
-      즉 계단 모양입니다. (개인적으로 행사다리꼴 모양이라 말하기에는 무리가 있다고 생각합니다.🤣)
+      즉 계단 모양입니다. (개인적으로 행사다리꼴 모양이라 말하기 어렵다고 생각합니다.🤣)
       <br />
       가장 왼편에 존재하는 0이 아닌 원소를 피봇(pivot)이라고 부릅니다.
       <Height50 num="60px" />
@@ -107,14 +107,16 @@ export default function P가우스_소거법(props) {
         </div>
         <div style={{ transform: 'translateX(21px)' }}>
           <MathComponent
-            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&-8&4&-12 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: \div8\\ㅤ \end{array}`}
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&-8&4&-12 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\: \div-8\\ㅤ \end{array}`}
             display={true}
           />
         </div>
-        <MathComponent
-          tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]`}
-          display={true}
-        />
+        <div style={{ transform: 'translateX(33px)' }}>
+          <MathComponent
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:+2R_1 \end{array}`}
+            display={true}
+          />
+        </div>
         <Height50 num="20px" />
       </>
       <MathComponent tex={String.raw`R_{3}`} display={false} />
@@ -124,19 +126,13 @@ export default function P가우스_소거법(props) {
         <Height50 num="20px" />
         <div style={{ transform: 'translateX(33px)' }}>
           <MathComponent
-            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ -2&3&4&2 \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:+2R_1 \end{array}`}
-            display={true}
-          />
-        </div>
-        <div style={{ transform: 'translateX(33px)' }}>
-          <MathComponent
             tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&7&-2&12 \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:-7R_2 \end{array}`}
             display={true}
           />
         </div>
         <div style={{ transform: 'translateX(25px)' }}>
           <MathComponent
-            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&0&3\over2&-{17\over2} \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:\times {2\over3} \end{array}`}
+            tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&0&3\over2&3\over2 \end{array} \right]\begin{array}{c} ㅤ\\ㅤ\\:\times {2\over3} \end{array}`}
             display={true}
           />
         </div>
@@ -146,62 +142,24 @@ export default function P가우스_소거법(props) {
       행에 <MathComponent tex={String.raw`2\over3`} display={false} />를 곱하여 모든 pivot을 1로 만들 수 있습니다.
       <Height50 num="20px" />
       <MathComponent
-        tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&0&1&-{17\over3} \end{array} \right]\begin{array}{c} \end{array}`}
+        tex={String.raw`\left[\begin{array}{ccc|c} 1&2&-3&5 \\ 0&1&-{1\over2}&3\over2 \\ 0&0&1&1 \end{array} \right]\begin{array}{c} \end{array}`}
         display={true}
       />
       <Height50 num="20px" />
-      이와 같이 모든 pivot이 1인 Row Echelon Form을 Reduced Row Echelon Form라고 합니다.
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> 우선 각 행을 <MathComponent tex={String.raw`R_{1}, R_{2}, R_{3}`} display={false} />로 표시하겠습니다.
-      <>
-        <Height50 num="20px" />
-        <MathComponent
-          tex={String.raw`\left[\begin{array}{cc} 1 & 2 & -3 \\ 3 & -2 & -5 \\ -2 & 3 & 4 \end{array} \right] \left[ \begin{array}{cc} x_1 \\ x_2 \\ x_3 \end{array} \right] = \left[ \begin{array}{cc} 5 \\ 3 \\ 2 \end{array} \right] \begin{array}{cc} :R_1 \\ :R_2 \\ :R_3 \end{array}`}
-          display={true}
-        />
-        <Height50 num="20px" />
-      </>
-      <Height50 num="200px" />
-      <MainText text="연립일차방정식은 행렬의 곱셈으로 나타낼 수 있습니다. 일반적으로 변수 " isSpan={true} />
-      <MathComponent tex={String.raw`a`} display={false} />
-      <MainText text="개의 값을 구하기 위해서는 식 또한 " isSpan={true} />
-      <MathComponent tex={String.raw`a`} display={false} />
-      <MainText text="개가 필요합니다. 예를들어 아래 변수 3개, " isSpan={true} />
-      <MathComponent tex={String.raw`x_1, x_2, x_3`} display={false} />
-      <MainText text="을 가진 식 3개를 행렬로 나타내어 봅시다." isSpan={true} />
-      <Height50 num="20px" />
-      <MathComponent tex={String.raw`x_1 + 5x_2 - 2x_3 = 12`} display={true} />
-      <MathComponent tex={String.raw`-2x_1 + 3x_2 + 4x_3 = 2`} display={true} />
-      <MathComponent tex={String.raw`4x_1 + x_2 + 3x_3 = 21`} display={true} />
-      <Height50 num="20px" />
-      <span onClick={() => goBack('paper/행렬')} style={{ cursor: 'pointer', textDecoration: 'underline' }}>
-        <MainText text="이전 노드" isSpan={true} />
-      </span>
-      <MainText
-        text="에서 알아보았듯이, 행렬의 곱은 각 행의 원소와 열의 원소의 곱을 더하여 계산합니다. 이 사실을 이용하여 위 식을 행렬로 나타내었습니다."
-        isSpan={true}
-      />
+      이와 같이 모든 pivot이 1인 Row Echelon Form을 Reduced Row Echelon Form라고 합니다. 위 식은 항등 행렬로 변환
+      가능함을 알 수 있습니다. 과정을 생략하여 항등 행렬로 변환하면 아래와 같습니다.
       <Height50 num="20px" />
       <MathComponent
-        tex={String.raw`\left[\begin{array}{clr} 1 & 5 & -2 \\ -2 & 3 & 4 \\ 4 & 1 & 3 \end{array} \right] \left[ \begin{array}{clr} x_1 \\ x_2 \\ x_3 \end{array} \right] = \left[ \begin{array}{clr} 12 \\ 2 \\ 21 \end{array} \right]`}
+        tex={String.raw`\left[\begin{array}{ccc|c} 1&0&0&4 \\ 0&1&0&2 \\ 0&0&1&1 \end{array} \right]\begin{array}{c} \end{array} = \left[\begin{array}{c} x_1 \\ x_2 \\ x_3 \end{array} \right]`}
         display={true}
       />
-      <Height50 num="20px" />
-      {/* <MainText
-        text=""
-        isSpan={true}
-      />
-      <Height50 num="20px" />
       <MathComponent
-        tex={String.raw`\left[\begin{array}{ccc|c} 1 & 5 & -2 & x_1\\ -2 & 3 & 4 & x_2\\ 4 & 1 & 3 & x_3\end{array} \right] = \left[ \begin{array}{clr} 12 \\ 2 \\ 21 \end{array} \right]`}
+        tex={String.raw`\left[\begin{array}{ccc} 1&0&0\\0&1&0\\0&0&1 \end{array} \right]\left[\begin{array}{c} x_1\\x_2\\x_3 \end{array} \right]=\left[\begin{array}{c} 4\\2\\1 \end{array} \right]`}
         display={true}
-      /> */}
-      <MainText text="그렇다면, " />
+      />
+      <Height50 num="20px" />
+      따라서 <MathComponent tex={String.raw`x_1 = 4, x_2=2, x_1=1`} display={false} />
+      임을 알 수 있습니다.
     </>
   );
 }
