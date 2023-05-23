@@ -62,7 +62,7 @@ export default function P가우스_소거법(props) {
         />
         <Height50 num="20px" />
       </>
-      <a href="paper/행렬">
+      <a href="paper/행렬" className={styles.a}>
         <MainText text="이전 노드" isSpan={true} />
       </a>
       에서 알아보았듯이, 행렬의 곱은 각 행의 원소와 열의 원소의 곱을 더하여 계산합니다. 이 사실을 통해 윗 연립 일차
@@ -173,6 +173,14 @@ export default function P가우스_소거법(props) {
         <MainText text="행렬식" isSpan={true} />
       </a>
       )
+      <Height50 num="20px" />
+      <MathComponent
+        tex={String.raw`A=\left[\begin{array}{cccc} 4&0&1&2\\1&4&2&0\\0&1&4&2\\2&2&0&4 \end{array}\right]`}
+        display={true}
+      />
+      <Height50 num="20px" />
+      <MathComponent tex={String.raw`AA^{-1}=I_{n}`} display={true} />
+      <MathComponent tex={String.raw`[A|I_{n}] = A^{-1} \rightarrow [I_{n}|A^{-1}] = A`} display={true} />
     </>
   );
 }
