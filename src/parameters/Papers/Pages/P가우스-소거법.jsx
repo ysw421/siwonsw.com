@@ -70,8 +70,8 @@ export default function P가우스_소거법(props) {
       <Height50 num="70px" />
       위 <MathComponent tex={String.raw`x_1, x_2, x_3`} display={false} />를 구하는 방법에는 여러 방법이 존재하겠지만,
       가우스 소거법을 활용하여 해를 구해봅시다. 위에서 예로 든 연립 일차 방정식을 Row Echelon Form으로 변환합니다. 우선,
-      윗 행렬 방정식을 첨가 행렬로 나타냅니다. 행렬 방정식 <MathComponent tex={String.raw`AX = B`} display={false} />를
-      첨가 행렬을 활용하여 다음과 같이 표현할 수 있습니다.
+      윗 행렬 방정식을 첨가 행렬(Augmented Matrix)로 나타냅니다. 행렬 방정식{' '}
+      <MathComponent tex={String.raw`AX = B`} display={false} />를 첨가 행렬을 활용하여 다음과 같이 표현할 수 있습니다.
       <Height50 num="20px" />
       <MathComponent tex={String.raw`A|B = X`} display={true} />
       <Height50 num="20px" />
@@ -179,8 +179,26 @@ export default function P가우스_소거법(props) {
         display={true}
       />
       <Height50 num="20px" />
+      행렬을 역행렬과 곱할 경우, 항등 행렬이 됩니다.
+      <Height50 num="20px" />
       <MathComponent tex={String.raw`AA^{-1}=I_{n}`} display={true} />
+      <Height50 num="20px" />
+      이를 Augmented Matrix로 표현하면 아래와 같습니다.
+      <Height50 num="20px" />
       <MathComponent tex={String.raw`[A|I_{n}] = A^{-1} \rightarrow [I_{n}|A^{-1}] = A`} display={true} />
+      <Height50 num="20px" />
+      우리는 왼쪽 방정식을 오른쪽 방정식으로 변환할 것입니다. Augmented Matrix의 왼쪽의{' '}
+      <MathComponent tex={String.raw`A`} display={false} />를 가우스 소거법을 활용하여 항등 행렬로 나타냅니다.
+      결과적으로 Augmented Matrix의 항등행렬은 역행렬로 변환됩니다. 위에서와 같이 우항은 신경쓰지 않겠습니다. (우리의
+      목표는 역행렬을 구하는 것입니다. 우항의 결과값은 처음 행렬과 같습니다.)
+      <br />
+      <MathComponent tex={String.raw`A`} display={false} />의 역행렬을 위와 같은 방법으로 구해봅시다.
+      <Height50 num="20px" />
+      <MathComponent
+        tex={String.raw`\left[\begin{array}{cccc|cccc} 4&0&1&2&1&0&0&0\\1&4&2&0&0&1&0&0\\0&1&4&2&0&0&1&0\\2&2&0&4&0&0&0&1 \end{array}\right]\rightarrow
+        \left[\begin{array}{cccc|cccc} 1&0&0&0&8\over29&2\over29&-{3\over29}&-{5\over58}\\0&1&0&0&-{3\over29}&13\over58&-{5\over58}&11\over116\\0&0&1&0&2\over29&1\over58&13\over58&-{17\over116}\\0&0&0&1&-{5\over58}&-{17\over116}&11\over116&57\over232 \end{array}\right]`}
+        display={true}
+      />
     </>
   );
 }

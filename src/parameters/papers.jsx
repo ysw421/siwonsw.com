@@ -101,4 +101,10 @@ export const papers = [
     title: '🌿프레직 선형회귀 수업을 진행하며',
     type: '일상',
   },
+  {
+    id: '현대-모형',
+    numberId: '현대-모형',
+    title: '현대 모형',
+    type: '양자 컴퓨터',
+  },
 ];
