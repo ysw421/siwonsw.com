@@ -40,6 +40,15 @@ function Papers(props) {
       {props.numberId === '프레직-수업-진행' && <P프레직_수업_진행 isDarkMode={props.isDarkMode} />}
       {props.numberId === '현대-모형' && <P현대_모형 isDarkMode={props.isDarkMode} />}
       <div style={{ height: '100px' }}></div>
+      <h1>가나다</h1>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="ysw421/My-blog"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async
+      ></script>
     </div>
   );
 }
