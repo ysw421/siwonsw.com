@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import styles from './Pages/Pages.module.css';
 import Page1 from './Pages/Page1';
 import Page2 from './Pages/Page2';
@@ -19,6 +20,28 @@ import P프레직_수업_진행 from './Pages/P프레직-수업-진행';
 import P현대_모형 from './Pages/P현대-모형';
 
 function Papers(props) {
+  const commentsEl = useRef(null);
+
+  useEffect(() => {
+    const scriptEl = document.createElement('script');
+    scriptEl.async = true;
+    scriptEl.src = 'https://giscus.app/client.js';
+    scriptEl.setAttribute('data-repo', 'ysw421/My-blog');
+    scriptEl.setAttribute('data-repo-id', 'R_kgDOJCUXQQ');
+    scriptEl.setAttribute('General', 'General');
+    scriptEl.setAttribute('data-category-id', 'DIC_kwDOJCUXQc4CW0wT');
+    scriptEl.setAttribute('data-mapping', 'pathname');
+    scriptEl.setAttribute('data-strict', '0');
+    scriptEl.setAttribute('data-reactions-enabled', '1');
+    scriptEl.setAttribute('data-emit-metadata', '0');
+    scriptEl.setAttribute('data-input-position', 'bottom');
+    scriptEl.setAttribute('data-theme', props.isDarkMode ? 'dark' : 'light');
+    scriptEl.setAttribute('data-lang', 'ko');
+    scriptEl.setAttribute('data-loading', 'lazy');
+    scriptEl.setAttribute('crossorigin-loading', 'anonymous');
+    commentsEl.current?.appendChild(scriptEl);
+  }, [props.isDarkMode]);
+
   return (
     <div style={{ fontFamily: 'font2' }} className={styles.mainText}>
       {props.numberId === 1 && <Page1 isDarkMode={props.isDarkMode} />}
@@ -40,15 +63,9 @@ function Papers(props) {
       {props.numberId === '프레직-수업-진행' && <P프레직_수업_진행 isDarkMode={props.isDarkMode} />}
       {props.numberId === '현대-모형' && <P현대_모형 isDarkMode={props.isDarkMode} />}
       <div style={{ height: '100px' }}></div>
-      <h1>가나다</h1>
-      <script
-        src="https://utteranc.es/client.js"
-        repo="ysw421/My-blog"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async
-      ></script>
+      <center>
+        <div ref={commentsEl} style={{ width: '100%', maxWidth: '800px' }} />
+      </center>
     </div>
   );
 }
