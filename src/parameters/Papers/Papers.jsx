@@ -66,6 +66,7 @@ function Papers(props) {
       <center>
         <div ref={commentsEl} style={{ width: '100%', maxWidth: '800px' }} />
       </center>
+      <div style={{ height: '50px' }}></div>
     </div>
   );
 }

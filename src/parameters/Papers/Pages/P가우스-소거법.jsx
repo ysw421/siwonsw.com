@@ -189,10 +189,11 @@ export default function P가우스_소거법(props) {
       <Height50 num="20px" />
       우리는 왼쪽 방정식을 오른쪽 방정식으로 변환할 것입니다. Augmented Matrix의 왼쪽의{' '}
       <MathComponent tex={String.raw`A`} display={false} />를 가우스 소거법을 활용하여 항등 행렬로 나타냅니다.
-      결과적으로 Augmented Matrix의 항등행렬은 역행렬로 변환됩니다. 위에서와 같이 우항은 신경쓰지 않겠습니다. (우리의
-      목표는 역행렬을 구하는 것입니다. 우항의 결과값은 처음 행렬과 같습니다.)
+      결과적으로 Augmented Matrix의 항등행렬은 <MathComponent tex={String.raw`A`} display={false} />의 역행렬로
+      변환됩니다. 위에서 연립 일차 방정식을 풀었을 때와 같이 우항은 신경쓰지 않겠습니다. (우리의 목표는 역행렬을 구하는
+      것입니다. 우항의 결과값은 처음 행렬과 같습니다.)
       <br />
-      <MathComponent tex={String.raw`A`} display={false} />의 역행렬을 위와 같은 방법으로 구해봅시다.
+      아래 <MathComponent tex={String.raw`A`} display={false} />의 역행렬을 구한 식이 있습니다.
       <Height50 num="20px" />
       <MathComponent
         tex={String.raw`\left[\begin{array}{cccc|cccc} 4&0&1&2&1&0&0&0\\1&4&2&0&0&1&0&0\\0&1&4&2&0&0&1&0\\2&2&0&4&0&0&0&1 \end{array}\right]\rightarrow
