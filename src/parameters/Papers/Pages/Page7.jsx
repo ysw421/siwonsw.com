@@ -27,7 +27,7 @@ export default function Page7(props) {
       <Height50 num="20px" />
       <MathComponent tex={String.raw`x=\frac{-b\pm\sqrt {b ^{2} -4ac}}{2a}`} />
       <Height50 num="20px" />
-      바로 위와 같이 근의 공식을 사용하면 됩니다. 여러 방정식의 계수를 변수로 나타내어 일반적인 성질을 찾았습니다.
+      식을 완전 제곱식으로 전환하여 해를 구할 수도 있으나, 중학생때 저희는 위와 같은 근의 공식을 배웠습니다. 근의 공식은 특정한 상황이 아닌 모든 이차방정식에서 성립합니다. 즉, 이차방정식의 계수를 변수로 나타내어 일반적인 성질을 찾았습니다.
       이처럼 수학적 구조들의 일반적인 성질을 연구하는 수학의 분야가 '대수학'입니다.
       <Height50 num="140px" />
       <MainText text="선형 대수학(Linear algebra)" fontSize="1.7rem" />
