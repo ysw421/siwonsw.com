@@ -1,4 +1,4 @@
-import { MainText, Height50, Line, Box } from './useful';
+import { MainText, Height50, Line, Box, MovieDiv } from './useful';
 import { useState, useEffect } from 'react';
 import Slider from 'react-input-slider';
 import styles from './Pages.module.css';
@@ -129,6 +129,7 @@ export default function Page8(props) {
   });
   const [inverseMatrixA, setInverseMatrixA] = useState(0);
   const [transposedMatrix, setTransposedMatrix] = useState({ 0: '1', 1: '2', 2: '3', 3: '4', 4: '5', 5: '6' });
+  const [slider, setSlider] = useState({ a: 5, b: 50 });
 
   function changeAddMatrix1(e, i) {
     if (e === '') e = 0;
@@ -1417,6 +1418,82 @@ export default function Page8(props) {
           <MathComponent tex={String.raw`x^{T}`} display={false} />
           <MainText text="와 같이 나타냅니다." isSpan={true} />
         </>
+      </>
+      <>
+        <Height50 num="70px" />
+        <Line isDarkMode={props.isDarkMode} />
+        <Height50 num="20px" />
+        추가로 개인적으로 행렬이 컴퓨터 분야에서 중요하다고 생각하는 이유를 소개하겠습니다.
+        <br />
+        컴퓨터는 모든 정보를 0과 1, 이진수로 표현합니다. 예컨대 소수점이 있는 숫자는{' '}
+        <a href="부동-소수점" className={styles.a}>
+          <MainText text="부동 소수점" isSpan={true} />
+        </a>
+        을 활용하여 0과 1로 표현합니다. 여기서 주목할 점은, 이진수는 0과 1중 하나의 숫자만을 가지는 디지털 값입니다. 즉
+        1비트에 0.4를 저장할 수 없습니다.
+        <Height50 num="40px" />
+        비단 현실의 데이터는 연속적이며 비선형적이므로 디지털로 표현하기에 한계가 있습니다.
+        <ul>
+          <li>
+            연속적: 우리가 말하는 '순간'은 무엇일까요? 매우 짧은 순간은 몇 초를 말하는 것일까요? 시간은 끝 없이 나눌 수
+            있습니다. 지금으로부터 1초 후 시간도 존재하며, 0.1초, 0.001초, 0.00...1초 후 또한 존재합니다. 불연속적인
+            자연수 집합은 시간처럼 끝없이 나누지 못합니다. 2와 6 사이에 3이 존재하지만, 2와 3 사이에는 아무 수도
+            존재하지 않습니다. 이처럼 연속적인 데이터는 디지털로 표현하기에 한계가 있습니다.
+            <br />
+          </li>
+          <li>
+            비선형적: 일차함수 <MathComponent tex={String.raw`y = 3x + 5`} display={false} />는 연속이며 3과 5 두 수
+            만을 활용하여 표현 가능합니다. 이와 같이 상관관계가 존재하는 연속의 선형 데이터는 특징값을 활용하여 나타낼
+            수 있습니다. 비단 우리가 표현하고 싶은 대다수의 현실 데이터는 선형적이지 않습니다. 예컨대 전화를 할 때 저의
+            목소리는 선형적일까요? 제가 '안녕'이라 말할 수도 있으며, '반가워'라고 말할 수도 있습니다. 즉 선형적이지
+            않습니다.
+          </li>
+        </ul>
+        일반적으로 현실의 데이터를 디지털로 변환할 때 연속적인 값을 나누어 특정 부분에 대하여 값을 저장합니다. 소리
+        데이터를 디지털로 변활할 때 사용되는{' '}
+        <a href="https://ko.wikipedia.org/wiki/%ED%91%9C%EB%B3%B8%ED%99%94" className={styles.a}>
+          <MainText text="표본화(wikipedia)" isSpan={true} />
+        </a>
+        를 살펴 봅시다.
+        <>
+          <Height50 num="20px" />
+          <MovieDiv
+            alt="표본화"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Signal_Sampling.png/450px-Signal_Sampling.png"
+          />
+          <center style={{ fontSize: '0.8rem' }}>표본화 (wikipedia)</center>
+          <Height50 num="20px" />
+        </>
+        더욱 작은 단위로 나눌수록 현실의 데이터와 비슷한 데이터가 됩니다.
+        <Height50 num="20px" />
+        <center>
+          <Slider
+            style={{ marginLeft: '10px', width: '150px', height: '8px' }}
+            axis="x"
+            x={slider.a}
+            onChange={({ x }) => setSlider((state) => ({ ...state, a: x }))}
+            xmax={10}
+            xmin={1}
+            xstep={1}
+          />
+          <br />
+          <Slider
+            style={{ marginLeft: '10px', width: '150px', height: '8px' }}
+            axis="x"
+            x={slider.b}
+            onChange={({ x }) => setSlider((state) => ({ ...state, b: x }))}
+            xmax={100}
+            xmin={1}
+            xstep={1}
+          />
+        </center>
+        <Height50 num="20px" />
+        같은 길이를 가진 슬라이더 중 위 슬라이더는 10개로 나누었으며, 아래 슬라이더는 100개로 나누었습니다. 아래
+        슬라이더가 더욱 부드럽게 움직이며 연속적인 값에 가까움을 느낄 수 있습니다. 비단 데이터의 크기는 증가합니다.
+        <Height50 num="20px" />
+        행렬은 디지털 값을 저장하기에 적합합니다. 위에서 나눈 데이터를 각각 저장한다면 관리하기 어려울 것입니다. 예컨대
+        시간에 따라 나눈 음성 데이터의 소리를 2배로 키우고 싶다면 행렬에 스칼라값 2를 곱할 수 있습니다.(예를 위한
+        설명입니다.) 행렬을 활용하여 하나의 값으로 표현하는 것이 효율적입니다. 이미지라면 더욱 그렇습니다.
       </>
     </div>
   );
