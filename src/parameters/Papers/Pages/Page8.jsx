@@ -269,7 +269,7 @@ export default function Page8(props) {
         <MainText text="는 아래와 같습니다. " isSpan={true} />
         <MainText text="단 " isSpan={true} />
         <MathComponent tex={String.raw`(m, n) \in \mathbb{N}`} display={false} />
-        <Height50 num="10px" />
+        <Height50 num="20px" />
         <center>
           <div style={{ height: '180px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {matrix.m > 7 && matrix.n > 7 ? (
@@ -281,7 +281,7 @@ export default function Page8(props) {
               <MathComponent tex={matrixText} display={true} />
             )}
           </div>
-          <Height50 num="20px" />
+          <Height50 num="40px" />
           <MainText text="m" isSpan={true} />
           <Slider
             style={{ marginLeft: '10px', width: '150px', height: '8px' }}
