@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 // import MachineLearning from './pages/MachineLearning/MachineLearning.jsx';
 import MainPagePc from './pages/MainPage/MainPagePc.jsx';
 import PaperPage from './pages/PaperPage/PaperPage.jsx';
+import OperaPage from './pages/OperaPage/OperaPage.jsx';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 // import reset from 'styled-reset';
 import { darkTheme, lightTheme } from './theme';
@@ -78,6 +79,10 @@ function App() {
               <Route
                 path="/paper/:id"
                 element={<PaperPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
+              />
+              <Route
+                path="/opera/:id"
+                element={<OperaPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />}
               />
               <Route path="*" element={<Error404 isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
               <Route path="/*/*" element={<Error404 isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />

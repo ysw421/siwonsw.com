@@ -18,6 +18,7 @@
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-easy-panzoom": "^0.4.4",
+    "react-fullpage": "^0.1.19",
     "react-icons": "^4.7.1",
     "react-input-slider": "^6.0.1",
     "react-mathjax": "^1.0.1",
