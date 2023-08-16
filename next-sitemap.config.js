@@ -4,7 +4,7 @@
  */
 module.exports = {
   // !STARTERCONF Change the siteUrl
-  siteUrl: 'https://github.com/cryptoclans',
+  siteUrl: 'https://github.com/ysw421',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
