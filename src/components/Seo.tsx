@@ -1,22 +1,25 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// !STARTERCONF Change these default meta
-const defaultMeta = {
-  title: 'CosmosKit + Next.js + Tailwind CSS + TypeScript Starter',
-  siteName: 'CosmosKit + Next.js + Tailwind CSS + TypeScript Starter',
-  description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+import { siteConfig } from '@/constant/config';
 
-  url: 'https://github.com/cryptoclans',
-  type: 'website',
-  robots: 'follow, index',
-  /**
-   * No need to be filled, will be populated with openGraph function
-   * If you wish to use a normal image, just specify the path below
-   */
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
-};
+// !STARTERCONF Change these default meta
+const defaultMeta = siteConfig;
+// const defaultMeta = {
+//   title: 'SiWon',
+//   siteName: 'Made with 💜 by siwon',
+//   description: 'Hello, i am siwon :)',
+
+//   url: 'https://github.com/ysw421',
+//   type: 'website',
+//   robots: 'follow, index',
+//   /**
+//    * No need to be filled, will be populated with openGraph function
+//    * If you wish to use a normal image, just specify the path below
+//    */
+//   image:
+//     'https://github.com/ysw421/My-blog/blob/master/public/logo512.png?raw=true',
+// };
 
 type SeoProps = {
   date?: string;

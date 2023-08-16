@@ -1,6 +1,7 @@
-import Button from '@components/buttons/Button';
 import Link from 'next/link';
 import * as React from 'react';
+
+import Button from '@/components/buttons/Button';
 
 /**
  * SVGR Support
@@ -22,29 +23,5 @@ export default function HomePage() {
         <Button>test page로</Button>
       </Link>
     </div>
-    // <Layout>
-    //   {/* <Seo templateTitle='Home' /> */}
-    //   <Seo />
-
-    //   <main>
-    //     <section className='bg-white'>
-    //       <div className='relative flex flex-col items-center justify-center min-h-screen py-12 text-center layout'>
-    //         <Vercel className='text-5xl' />
-    //         <h1 className='mt-4'>
-    //           CosmosKit + Next.js + Tailwind CSS + TypeScript Starter
-    //         </h1>
-    //         <p className='mt-2 text-sm text-gray-800'>
-    //           A starter for CosmosKit + Next.js, Tailwind CSS, and TypeScript
-    //           with Absolute Import, Seo, Link component, pre-configured with
-    //           Husky{' '}
-    //         </p>
-
-    //         <ButtonLink className='mt-6' href='/components' variant='light'>
-    //           See all components
-    //         </ButtonLink>
-    //       </div>
-    //     </section>
-    //   </main>
-    // </Layout>
   );
 }
