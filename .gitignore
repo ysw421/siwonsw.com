@@ -5,10 +5,6 @@
 /.pnp
 .pnp.js
 
-/.github
-/.husky
-/.vscode
-
 # testing
 /coverage
 
@@ -38,11 +34,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 # next-sitemap
-robots.txt
 sitemap.xml
 sitemap-*.xml
-
-*.idea
