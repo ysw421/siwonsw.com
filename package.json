@@ -55,7 +55,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.3",
     "jest": "^27.5.1",
     "lint-staged": "^12.5.0",
     "next-router-mock": "^0.7.5",
