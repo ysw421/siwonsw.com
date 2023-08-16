@@ -18,9 +18,15 @@ import Button from '@/components/buttons/Button';
 export default function HomePage() {
   return (
     <div className='flex flex-col items-center justify-center w-screen h-screen gap-3'>
-      hello
+      <span className='text-6xl'>🖐️</span>
+      <span className='mb-5 text-center'>
+        <p className='text-3xl'>Hello, i am siwon.</p>
+        <p className='text-xm'>
+          CosmosKit + Nextjs + Tailwind + Typescript + Scss
+        </p>
+      </span>
       <Link href='./test'>
-        <Button>test page로</Button>
+        <Button>Go to Test Page</Button>
       </Link>
     </div>
   );

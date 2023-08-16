@@ -25,7 +25,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       disabled: buttonDisabled,
       isLoading,
-      variant = 'primary',
+      variant = 'outline',
       size = 'base',
       isDarkBg = false,
       leftIcon: LeftIcon,
