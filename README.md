@@ -1,4 +1,4 @@
-CosmosKit + Nextjs + Tailwind + Typescript
+CosmosKit + Nextjs + Tailwind + Typescript + Scss
 
 ```
 yarn install
