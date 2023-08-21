@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
-
 const links = [
   { href: '/', label: 'Route 1' },
   { href: '/', label: 'Route 2' },
@@ -9,8 +7,16 @@ const links = [
 
 export default function Header() {
   return (
-    <header className='top-0 z-50 w-screen h-16 bg-gray-100 stiky'>
-      <div className='flex items-center justify-between layout h-14'>
+    <header className='absolute top-0 z-50 w-full h-20 px-5 '>
+      <div className='flex items-center justify-between w-full h-full'>
+        <span className='text-2xl font-bold'>Siwon's Profile</span>
+        <img
+          src='images/my-logo.png'
+          alt='Logo'
+          className='rounded-full h-1/2'
+        />
+      </div>
+      {/* <div className='flex items-center justify-between w-full layout h-14'>
         <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
           Home
         </UnstyledLink>
@@ -25,7 +31,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-      </div>
+      </div> */}
     </header>
   );
 }

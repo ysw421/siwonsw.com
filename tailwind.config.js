@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        fontMain: ['font-main'],
+        fontSub: ['font-sub'],
+        main: ['font-main', 'font-sub', 'Inter', ...fontFamily.sans],
         primary: ['Inter', ...fontFamily.sans],
       },
       colors: {
@@ -23,7 +26,8 @@ module.exports = {
           800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
         },
-        dark: '#222222',
+        light: '#f8f8f8',
+        dark: '#292c34',
       },
       keyframes: {
         flicker: {
@@ -52,5 +56,6 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [require('@tailwindcss/forms')],
 };
