@@ -7,22 +7,36 @@ import NextImage from '@/components/NextImage';
 //   { href: '/', label: 'Route 2' },
 // ];
 
-export default function Header() {
+export default function Header({
+  difference = false,
+}: {
+  difference?: boolean;
+}) {
   return (
-    <header className='absolute top-0 z-50 h-20 w-full px-5 '>
-      <div className='flex h-full w-full items-center justify-between'>
-        <span className='text-lg font-bold md:text-2xl '>Siwon's Profile</span>
-        <NextImage
-          useSkeleton
-          src='/images/my-logo.png'
-          width='180'
-          height='180'
-          alt='Logo'
-          className='w-[40px]'
-          imgClassName='rounded-full'
-        />
-      </div>
-      {/* <div className='flex items-center justify-between w-full layout h-14'>
+    <>
+      <header className='absolute top-0 h-20 w-full select-none px-5'>
+        <div className='flex h-full w-full items-center justify-between'>
+          {difference && (
+            <span className='text-lg font-bold text-white mix-blend-difference md:text-2xl'>
+              Siwon's Profile
+            </span>
+          )}
+          {!difference && (
+            <span className='text-lg font-bold text-white md:text-2xl'>
+              Siwon's Profile
+            </span>
+          )}
+          <NextImage
+            useSkeleton
+            src='/images/my-logo.png'
+            width='180'
+            height='180'
+            alt='Logo'
+            className='w-[40px]'
+            imgClassName='rounded-full'
+          />
+        </div>
+        {/* <div className='flex items-center justify-between w-full layout h-14'>
         <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
           Home
         </UnstyledLink>
@@ -38,6 +52,7 @@ export default function Header() {
           </ul>
         </nav>
       </div> */}
-    </header>
+      </header>
+    </>
   );
 }
