@@ -1,9 +1,17 @@
+import { useAtom } from 'jotai';
+
+import styles from './animation.module.scss';
+
+import { isDarkMode_ } from '@/lib/darkMode';
+
 export default function Test() {
+  const [isDarkMode] = useAtom(isDarkMode_);
+
   type Node = {
     value: string;
     x: number;
     y: number;
-    link: string;
+    link?: string;
     edges: string[];
     circleSize: number;
     isFolder?: boolean;
@@ -33,6 +41,7 @@ export default function Test() {
       link: '/paper/행렬',
       edges: ['가우스 소거법', '행렬식'],
       circleSize: 40,
+      isFolder: true,
     },
     '가우스 소거법': {
       value: '가우스 소거법',
@@ -106,7 +115,17 @@ export default function Test() {
                   width: `${nodes[key].circleSize}px`,
                   height: `${nodes[key].circleSize}px`,
                 }}
-                className='rounded-full bg-dark transition-all hover:rounded-[40%] dark:bg-light'
+                className={
+                  nodes[key].isFolder
+                    ? `rounded-[35%] ${
+                        isDarkMode ? 'bg-[#c4ccf3]' : 'bg-gray-700'
+                      }`
+                    : `${styles.transition} rounded-[100%] ${
+                        isDarkMode
+                          ? 'bg-light hover:bg-[#c4ccf3]'
+                          : 'bg-dark hover:bg-gray-700'
+                      } hover:rounded-[35%]`
+                }
               ></div>
               <span className='whitespace-nowrap'>{nodes[key].value}</span>
             </div>
