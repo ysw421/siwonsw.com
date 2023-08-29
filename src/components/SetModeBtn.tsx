@@ -1,42 +1,53 @@
-import { atom, useAtom } from 'jotai';
-import { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
+import { isDarkMode_ } from '@/lib/darkMode';
+
+// import styled from 'styled-components';
 import Button from '@/components/buttons/Button';
+import IconButton from '@/components/buttons/IconButton';
 
-const isDarkMode_ = atom<boolean>(true);
-export { isDarkMode_ };
-
-export default function SetModeBtn() {
+export default function SetModeBtn({ type = 1 }: { type?: number }) {
   const [isDarkMode, setIsDarkMode] = useAtom(isDarkMode_);
-  const [mode, setMode] = useState<string>('Dark Mode');
 
   const toggleDarkMode = () => {
-    if (localStorage.getItem('theme') === 'dark') {
-      // Dark mode to Light mode
-      localStorage.removeItem('theme');
-      document.documentElement.classList.remove('dark');
-      setMode('Light Mode');
+    if (isDarkMode) {
       setIsDarkMode(false);
     } else {
-      // Light mode to Dark mode
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      setMode('Dark Mode');
       setIsDarkMode(true);
     }
   };
 
-  useEffect(() => {
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  }, [mode]);
-
   return (
     <div>
-      <Button isDarkBg={isDarkMode} onClick={toggleDarkMode}>
-        {mode}
-      </Button>
+      {type === 1 && (
+        <div className='flex items-center gap-2'>
+          <span className='text-lg'>
+            {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+          </span>
+          <IconButton
+            isDarkBg={isDarkMode}
+            onClick={toggleDarkMode}
+            className='p-1.5'
+            icon={isDarkMode ? MdOutlineLightMode : MdOutlineDarkMode}
+            iconClassName='text-sm'
+          />
+        </div>
+      )}
+      {type === 2 && (
+        <Button
+          isDarkBg={isDarkMode}
+          onClick={toggleDarkMode}
+          className='p-1.5'
+        >
+          {isDarkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+        </Button>
+      )}
+      {type === 3 && (
+        <Button isDarkBg={isDarkMode} onClick={toggleDarkMode}>
+          {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+        </Button>
+      )}
     </div>
   );
 }

@@ -6,7 +6,8 @@ import '@/styles/colors.scss';
 import '@/styles/fonts.scss';
 import '@/styles/utilities.scss';
 
-import Header from '@/components/layout/Header';
+// import Header from '@/components/layout/Header';
+import Layout from '@/components/layout/Layout';
 
 // import { TailwindModal } from '@/components/wallet';
 /**
@@ -17,13 +18,9 @@ import Header from '@/components/layout/Header';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <div className='font-main'>
-        {/* <div className='fixed top-0 left-0 z-50 w-full'></div> */}
-        <div className='w-screen h-screen bg-light text-dark dark:bg-dark dark:text-light'>
-          <Header />
-          <Component {...pageProps} />
-        </div>
-      </div>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

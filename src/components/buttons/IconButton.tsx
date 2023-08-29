@@ -26,7 +26,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       className,
       disabled: buttonDisabled,
       isLoading,
-      variant = 'primary',
+      variant = 'outline',
       isDarkBg = false,
       icon: Icon,
       iconClassName,

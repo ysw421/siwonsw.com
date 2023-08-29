@@ -2,9 +2,10 @@ import { useAtom } from 'jotai';
 import Link from 'next/link';
 import * as React from 'react';
 
+import { isDarkMode_ } from '@/lib/darkMode';
+
 import Button from '@/components/buttons/Button';
 import SetModeBtn from '@/components/SetModeBtn';
-import { isDarkMode_ } from '@/components/SetModeBtn';
 
 /**
  * SVGR Support
@@ -19,14 +20,14 @@ import { isDarkMode_ } from '@/components/SetModeBtn';
 // to customize the default configuration.
 
 export default function HomePage() {
-  const [isDarkMode, setIsDarkMode] = useAtom(isDarkMode_);
+  const [isDarkMode] = useAtom(isDarkMode_);
 
   return (
-    <div className='flex flex-col items-center justify-center w-full h-full gap-3 '>
+    <div className='flex h-full w-full flex-col items-center justify-center gap-3 '>
       <span className='text-6xl '>🖐️</span>
       <span className='mb-5 text-center'>
         <p className='mb-1 text-4xl'>Hello, i am siwon.</p>
-        <p className='text-blue-500 text-xm dark:text-red-400'>
+        <p className='text-xm text-blue-500 dark:text-red-400'>
           CosmosKit + Nextjs + Tailwind + Typescript + Scss
         </p>
       </span>

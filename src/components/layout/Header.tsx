@@ -1,19 +1,25 @@
 import * as React from 'react';
 
-const links = [
-  { href: '/', label: 'Route 1' },
-  { href: '/', label: 'Route 2' },
-];
+import NextImage from '@/components/NextImage';
+
+// const links = [
+//   { href: '/', label: 'Route 1' },
+//   { href: '/', label: 'Route 2' },
+// ];
 
 export default function Header() {
   return (
-    <header className='absolute top-0 z-50 w-full h-20 px-5 '>
-      <div className='flex items-center justify-between w-full h-full'>
-        <span className='text-2xl font-bold'>Siwon's Profile</span>
-        <img
-          src='images/my-logo.png'
+    <header className='absolute top-0 z-50 h-20 w-full px-5 '>
+      <div className='flex h-full w-full items-center justify-between'>
+        <span className='text-lg font-bold md:text-2xl '>Siwon's Profile</span>
+        <NextImage
+          useSkeleton
+          src='/images/my-logo.png'
+          width='180'
+          height='180'
           alt='Logo'
-          className='rounded-full h-1/2'
+          className='w-[40px]'
+          imgClassName='rounded-full'
         />
       </div>
       {/* <div className='flex items-center justify-between w-full layout h-14'>
