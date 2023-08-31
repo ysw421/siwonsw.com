@@ -14,7 +14,7 @@ export default function Header({
 }) {
   return (
     <>
-      <header className='absolute top-0 h-20 w-full select-none px-5'>
+      <header className='absolute top-0 left-0 h-[64px] w-screen select-none px-5'>
         <div className='flex h-full w-full items-center justify-between'>
           {difference && (
             <span className='text-lg font-bold text-white mix-blend-difference md:text-2xl'>
@@ -22,7 +22,7 @@ export default function Header({
             </span>
           )}
           {!difference && (
-            <span className='text-lg font-bold text-white md:text-2xl'>
+            <span className='text-lg font-bold md:text-2xl'>
               Siwon's Profile
             </span>
           )}

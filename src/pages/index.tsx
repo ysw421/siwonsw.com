@@ -30,6 +30,13 @@ export default function HomePage() {
         <p className='text-xm text-blue-500 dark:text-red-400'>
           CosmosKit + Nextjs + Tailwind + Typescript + Scss
         </p>
+        <div className='h-1'></div>
+        <div className='text-sm'>
+          <span>Made with 🔥 by </span>
+          <a href='https://github.com/ysw421' target='_blink'>
+            siwon
+          </a>
+        </div>
       </span>
       <Link href='./test'>
         <Button isDarkBg={isDarkMode}>Go to Test Page</Button>

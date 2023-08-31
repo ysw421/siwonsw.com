@@ -1,23 +1,9 @@
-import { useAtom } from 'jotai';
+import { Nodes } from '@/lib/nodeType';
 
-import styles from './animation.module.scss';
-
-import { isDarkMode_ } from '@/lib/darkMode';
+import MindMap from '@/components/MindMap';
 
 export default function Test() {
-  const [isDarkMode] = useAtom(isDarkMode_);
-
-  type Node = {
-    value: string;
-    x: number;
-    y: number;
-    link?: string;
-    edges: string[];
-    circleSize: number;
-    isFolder?: boolean;
-  };
-
-  const nodes: Record<string, Node> = {
+  const nodes: Nodes = {
     Math: {
       value: 'Math',
       x: 0,
@@ -61,76 +47,5 @@ export default function Test() {
     },
   };
 
-  const canvasSize = { width: 1000, height: 800 };
-
-  return (
-    <>
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        className='absolute top-0 left-0 h-full w-full'
-      >
-        {nodes &&
-          Object.keys(nodes).map((key: string) =>
-            nodes[key].edges.map((edge, edgeIndex) => {
-              return (
-                <g key={edgeIndex}>
-                  <path
-                    d={`M ${nodes[key].x + canvasSize.width / 2} ${
-                      nodes[key].y + canvasSize.height / 2
-                    } L ${nodes[edge].x + canvasSize.width / 2} ${
-                      nodes[edge].y + canvasSize.height / 2
-                    }`}
-                    stroke='#818181'
-                    strokeWidth='1.2'
-                    fill='none'
-                    style={{ transition: 'all 0.5s ease-in-out' }}
-                  ></path>
-                </g>
-              );
-            })
-          )}
-      </svg>
-      <div className='h-full w-full'>
-        {nodes &&
-          Object.keys(nodes).map((key) => (
-            <div
-              key={key}
-              style={{
-                transform: `translate(${
-                  nodes[key].x -
-                  nodes[key].circleSize / 2 +
-                  canvasSize.width / 2
-                }px, ${
-                  nodes[key].y -
-                  (nodes[key].circleSize > 27
-                    ? nodes[key].circleSize / 2
-                    : 13.5) +
-                  canvasSize.height / 2
-                }px)`,
-              }}
-              className='absolute flex h-auto w-auto flex-row items-center justify-center gap-2 text-xl font-extralight'
-            >
-              <div
-                style={{
-                  width: `${nodes[key].circleSize}px`,
-                  height: `${nodes[key].circleSize}px`,
-                }}
-                className={
-                  nodes[key].isFolder
-                    ? `rounded-[35%] ${
-                        isDarkMode ? 'bg-[#c4ccf3]' : 'bg-gray-700'
-                      }`
-                    : `${styles.transition} rounded-[100%] ${
-                        isDarkMode
-                          ? 'bg-light hover:bg-[#c4ccf3]'
-                          : 'bg-dark hover:bg-gray-700'
-                      } hover:rounded-[35%]`
-                }
-              ></div>
-              <span className='whitespace-nowrap'>{nodes[key].value}</span>
-            </div>
-          ))}
-      </div>
-    </>
-  );
+  return <MindMap nodes={nodes} />;
 }
