@@ -33,7 +33,11 @@ export default function HomePage() {
         <div className='h-1'></div>
         <div className='text-sm'>
           <span>Made with 🔥 by </span>
-          <a href='https://github.com/ysw421' target='_blink'>
+          <a
+            href='https://github.com/ysw421'
+            target='_blink'
+            className='underline-offset-2'
+          >
             siwon
           </a>
         </div>

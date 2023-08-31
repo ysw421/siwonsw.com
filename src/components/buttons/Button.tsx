@@ -2,6 +2,8 @@ import * as React from 'react';
 import { IconType } from 'react-icons';
 import { ImSpinner2 } from 'react-icons/im';
 
+import styles from './animation.module.scss';
+
 import clsxm from '@/lib/clsxm';
 
 const ButtonVariant = ['primary', 'outline', 'ghost', 'light', 'dark'] as const;
@@ -93,6 +95,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           'disabled:cursor-not-allowed',
           isLoading &&
             'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
+          styles.transition,
           className
         )}
         {...rest}

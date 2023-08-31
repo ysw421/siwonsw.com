@@ -41,7 +41,8 @@ export default function SetModeBtn({
           <IconButton
             isDarkBg={isDarkMode}
             onClick={toggleDarkMode}
-            className='bg-light p-1.5 dark:bg-dark'
+            // className='bg-light p-1.5 dark:bg-dark'
+            className='p-1.5'
             icon={isDarkMode ? MdOutlineLightMode : MdOutlineDarkMode}
             iconClassName='text-sm'
           />
@@ -51,17 +52,13 @@ export default function SetModeBtn({
         <Button
           isDarkBg={isDarkMode}
           onClick={toggleDarkMode}
-          className='bg-light p-1.5 dark:bg-dark'
+          className='p-1.5'
         >
           {isDarkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
         </Button>
       )}
       {type === 3 && (
-        <Button
-          isDarkBg={isDarkMode}
-          onClick={toggleDarkMode}
-          className='bg-light dark:bg-dark'
-        >
+        <Button isDarkBg={isDarkMode} onClick={toggleDarkMode}>
           {isDarkMode ? 'Dark Mode' : 'Light Mode'}
         </Button>
       )}

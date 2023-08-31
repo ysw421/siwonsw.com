@@ -51,7 +51,7 @@ export default function MindMapLayout({
                   <IconButton
                     isDarkBg={isDarkMode}
                     icon={AiOutlineHome}
-                    className='bg-light p-1.5 dark:bg-dark'
+                    className='p-1.5'
                     onClick={() => resetTransform()}
                   />
                 </div>
