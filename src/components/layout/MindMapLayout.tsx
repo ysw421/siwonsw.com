@@ -41,7 +41,7 @@ export default function MindMapLayout({
               <TransformComponent>
                 <div className='h-screen w-screen'>{children}</div>
               </TransformComponent>
-              <div className='absolute right-5 bottom-5 flex flex-col items-end gap-2 rounded'>
+              <div className='absolute right-5 bottom-5 flex flex-col items-end gap-2'>
                 <div className='flex items-center gap-2'>
                   {isMd && (
                     <span className='text-lg text-white mix-blend-difference'>

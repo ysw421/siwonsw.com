@@ -16,18 +16,8 @@ export default function Header({
   return (
     <>
       <header className='absolute top-0 left-0 h-[64px] w-full select-none px-5'>
-        <div className='flex h-full w-full items-center justify-between'>
-          {difference && (
-            <span className='text-lg font-bold text-white mix-blend-difference md:text-2xl'>
-              Siwon's Profile
-            </span>
-          )}
-          {!difference && (
-            <span className='text-lg font-bold md:text-2xl'>
-              Siwon's Profile
-            </span>
-          )}
-          <Link href='/'>
+        <div className='flex h-full w-full'>
+          <Link href='/' className='flex items-center gap-2 md:gap-3'>
             <NextImage
               useSkeleton
               src='/images/my-logo.png'
@@ -37,6 +27,14 @@ export default function Header({
               className='w-[40px]'
               imgClassName='rounded-full'
             />
+            {difference && (
+              <span className='text-2xl font-bold text-white mix-blend-difference'>
+                Siwon's Profile
+              </span>
+            )}
+            {!difference && (
+              <span className='text-2xl font-bold'>Siwon's Profile</span>
+            )}
           </Link>
         </div>
         {/* <div className='flex items-center justify-between w-full layout h-14'>

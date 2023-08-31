@@ -5,6 +5,7 @@ import * as React from 'react';
 import { isDarkMode_ } from '@/lib/darkMode';
 
 import Button from '@/components/buttons/Button';
+import MadeWith from '@/components/MadeWith🔥BySiwon';
 import SetModeBtn from '@/components/SetModeBtn';
 
 /**
@@ -31,16 +32,7 @@ export default function HomePage() {
           CosmosKit + Nextjs + Tailwind + Typescript + Scss
         </p>
         <div className='h-1'></div>
-        <div className='text-sm'>
-          <span>Made with 🔥 by </span>
-          <a
-            href='https://github.com/ysw421'
-            target='_blink'
-            className='underline-offset-2'
-          >
-            siwon
-          </a>
-        </div>
+        <MadeWith />
       </span>
       <Link href='./test'>
         <Button isDarkBg={isDarkMode}>Go to Test Page</Button>
