@@ -28,6 +28,8 @@ module.exports = {
         },
         light: '#f8f8f8',
         dark: '#292c34',
+        link: 'rgb(59 130 246 / var(--tw-text-opacity))',
+        linkRed: 'rgb(248 113 113 / var(--tw-text-opacity))',
       },
       keyframes: {
         flicker: {

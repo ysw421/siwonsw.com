@@ -24,17 +24,17 @@ export default function HomePage() {
   const [isDarkMode] = useAtom(isDarkMode_);
 
   return (
-    <div className='flex h-full w-full flex-col items-center justify-center gap-3 '>
+    <div className='flex flex-col items-center justify-center w-full h-full gap-3 '>
       <span className='text-6xl '>🖐️</span>
       <span className='mb-5 text-center'>
         <p className='mb-1 text-4xl'>Hello, i am siwon.</p>
-        <p className='text-xm text-blue-500 dark:text-red-400'>
+        <p className='text-blue-500 text-xm dark:text-red-400'>
           CosmosKit + Nextjs + Tailwind + Typescript + Scss
         </p>
         <div className='h-1'></div>
         <MadeWith />
       </span>
-      <Link href='./test'>
+      <Link href='./paper/test'>
         <Button isDarkBg={isDarkMode}>Go to Test Page</Button>
       </Link>
       <SetModeBtn />

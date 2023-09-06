@@ -29,7 +29,7 @@ export default function SetModeBtn({
       {type === 1 && (
         <div className='flex items-center gap-2'>
           {difference && (
-            <span className='text-lg text-white mix-blend-difference'>
+            <span className='text-lg font-thin text-white mix-blend-difference'>
               {isDarkMode ? 'Dark Mode' : 'Light Mode'}
             </span>
           )}
