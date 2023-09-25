@@ -1,10 +1,11 @@
 import { BlockMath, InlineMath } from 'react-katex';
 
+import 'katex/dist/katex.min.css';
+
 import ColorLink from '@/components/ColorLink';
 import Paper from '@/components/Paper';
 import { Box, MathBox, SubTitle } from '@/components/utilities';
-
-export default function Test2() {
+export default function LinearAlgebra() {
   return (
     <Paper title='선형대수학(Linear Algebra)'>
       <p>
@@ -17,8 +18,10 @@ export default function Test2() {
         정의는 아래와 같습니다.
       </p>
       <Box>
-        <p>일련의 공리들을 만족하는 수학적 구조들의 일반적인 성질을 연구하는</p>
-        <p>수학의 한 분야</p>
+        <p className='max-w-[500px]'>
+          일련의 공리들을 만족하는 수학적 구조들의 일반적인 성질을 연구하는
+          수학의 한 분야 - Wikipedia
+        </p>
       </Box>
       <p>예를 들어 봅시다.</p>
       <p>실수 평면에서의 아래와 같은 방정식이 있습니다.</p>
@@ -37,15 +40,15 @@ export default function Test2() {
         일반적인 성질을 찾았습니다. 이처럼 수학적 구조들의 일반적인 성질을
         연구하는 수학의 분야가 '대수학'입니다.
       </p>
-      <div className='w-full h-28' />
+      <div className='h-28 w-full' />
       <SubTitle subTitle='선형 대수학(Linear algebra)' />
       <p>
         선형 대수학은 벡터, 행렬등을 연구하는 대수학 한 분야입니다. 선형은
-        가산성과 동차성을 만족합니다.
+        가산성(Additivity)과 동차성(Homogeneity)을 만족합니다.
       </p>
-      <MathBox>
-        <BlockMath>f(x_1 + x_2) = f(x_1) + f(x_2)</BlockMath>
-        <BlockMath>{`f(\\lambda x) = \\lambda f(x)`}</BlockMath>
+      <MathBox className='text-md md:text-2xl'>
+        <BlockMath>Additivity: f(x_1 + x_2) = f(x_1) + f(x_2)</BlockMath>
+        <BlockMath>{`Homogeneity: f(\\lambda x) = \\lambda f(x)`}</BlockMath>
       </MathBox>
       <p>
         즉 원점을 지나며 <InlineMath>Ax</InlineMath>
@@ -68,6 +71,18 @@ export default function Test2() {
         돕기 위한 시각화된 그래프 및 상호작용이 가능한 오브젝트를 사용 할
         예정입니다. 이를 통하여 보다 직관적 이해를 늘리고 선형 대수학에 대한
         흥미를 높이는 것이 목표입니다.
+      </p>
+      <p className='mt-14'>
+        추가로,{' '}
+        <ColorLink
+          href='https://en.wikipedia.org/wiki/Linearity'
+          target='_blink'
+        >
+          위키피디아 'Linearity' 글
+        </ColorLink>
+        에서는 선형의 다양한 정의를 소개하고 있습니다. 따라서, '선형'이라는
+        단어를 글에서 접할 경우 무엇을 뜻하는지 다시 한번 고민할 필요가
+        존재합니다.
       </p>
     </Paper>
   );

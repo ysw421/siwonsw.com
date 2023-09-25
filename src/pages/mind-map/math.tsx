@@ -8,8 +8,9 @@ const nodes: Nodes = {
     x: 0,
     y: 0,
     link: '/paper/Math',
-    edges: ['선형 대수학'],
+    edges: ['선형 대수학', '../'],
     circleSize: 60,
+    isFolder: true,
   },
   '선형 대수학': {
     value: '선형 대수학',
@@ -23,10 +24,9 @@ const nodes: Nodes = {
     value: '행렬',
     x: -20,
     y: -110,
-    link: '/paper/행렬',
+    link: '/paper/matrix',
     edges: ['가우스 소거법', '행렬식'],
     circleSize: 40,
-    isFolder: true,
   },
   '가우스 소거법': {
     value: '가우스 소거법',
@@ -44,8 +44,16 @@ const nodes: Nodes = {
     edges: [],
     circleSize: 28,
   },
+  '../': {
+    value: '../',
+    x: -40,
+    y: 60,
+    link: '/mind-map/post',
+    edges: [],
+    circleSize: 32,
+  },
 };
 
-export default function Test() {
+export default function Math() {
   return <MindMap nodes={nodes} />;
 }

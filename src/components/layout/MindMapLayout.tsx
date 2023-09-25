@@ -13,9 +13,11 @@ import SetModeBtn from '@/components/SetModeBtn';
 export default function MindMapLayout({
   isMd,
   children,
+  isAllowAnimation,
 }: {
   isMd: boolean;
   children: React.ReactNode;
+  isAllowAnimation: boolean;
 }) {
   const [isDarkMode] = useAtom(isDarkMode_);
 
@@ -23,9 +25,11 @@ export default function MindMapLayout({
     <div className={`h-screen w-screen ${isDarkMode ? 'dark' : ''}`}>
       {/* <div className='fixed top-0 left-0 z-50 w-full'></div> */}
       <div
-        className={`h-full w-full bg-light text-dark dark:bg-dark dark:text-light ${styles.transition}`}
+        className={`h-full w-full bg-light text-dark dark:bg-dark dark:text-light ${
+          isAllowAnimation && styles.transition
+        }`}
       >
-        <Header className='absolute' />
+        <Header className='absolute' isAllowAnimation={isAllowAnimation} />
         <TransformWrapper limitToBounds={false} minScale={0.2} initialScale={1}>
           {({ resetTransform }) => (
             <>

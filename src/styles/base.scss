@@ -80,6 +80,18 @@
   }
 }
 
-.katex-html {
+// .katex-html {
+//   display: none;
+// }
+
+.katex-display {
+  margin: 0 !important;
+}
+
+.react-pdf__Page__textContent {
+  display: none;
+}
+
+.react-pdf__Page__annotations {
   display: none;
 }

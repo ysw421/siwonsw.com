@@ -14,16 +14,20 @@ import NextImage from '@/components/NextImage';
 
 export default function Header({
   className = '',
+  isAllowAnimation,
 }: {
   difference?: boolean;
   className?: string;
   zIndex?: boolean;
+  isAllowAnimation: boolean;
 }) {
   return (
     <>
       <header
         className={clsxm(
-          `sticky top-0 left-0 z-50 h-[64px] w-full select-none bg-[#f8f8f880] px-5 backdrop-blur-[2px] dark:bg-[#282c3580] ${styles.transition}`,
+          `sticky top-0 left-0 z-50 h-[64px] w-full select-none bg-[#f8f8f880] px-5 backdrop-blur-[2px] dark:bg-[#282c3580] ${
+            isAllowAnimation && styles.transition
+          }`,
           className
         )}
       >

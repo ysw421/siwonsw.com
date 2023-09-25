@@ -24,7 +24,7 @@ export const nodes: Nodes = {
     value: 'My life',
     x: -70,
     y: 80,
-    link: '/mind-map/My-life',
+    link: '/mind-map/my-life',
     edges: [],
     circleSize: 20,
   },
@@ -32,20 +32,20 @@ export const nodes: Nodes = {
     value: 'Programming',
     x: 100,
     y: -80,
-    link: '/mind-map/Programming',
+    link: '/mind-map/programming',
     edges: [],
     circleSize: 20,
   },
   'Quantum Cumputing': {
-    value: 'Quantum Cumputing',
+    value: 'Quantum Computing',
     x: -110,
     y: -60,
-    link: '/mind-map/Quantum-Cumputing',
+    link: '/mind-map/quantum-computing',
     edges: [],
     circleSize: 20,
   },
 };
 
-export default function Test() {
+export default function Post() {
   return <MindMap nodes={nodes} />;
 }

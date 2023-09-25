@@ -21,7 +21,7 @@ const Dimigo = () => {
       <FaGraduationCap className='text-3xl' />
       <div>
         <p className='text-md'>Korea Digital Media High School 21st</p>
-        <p className='text-sm'>2022Y March ~</p>
+        <p className='text-sm'>March 2022 ~</p>
       </div>
     </Link>
   );

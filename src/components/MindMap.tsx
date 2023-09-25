@@ -32,6 +32,27 @@ export default function MindMap({
     }
   }, [screenRef]);
 
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (!canvasSize_ && screenRef.current !== null) {
+        setCanvasSize({
+          width: screenRef.current.offsetWidth,
+          height: screenRef.current.offsetHeight,
+        });
+      }
+    });
+    return () => {
+      window.removeEventListener('resize', () => {
+        if (!canvasSize_ && screenRef.current !== null) {
+          setCanvasSize({
+            width: screenRef.current.offsetWidth,
+            height: screenRef.current.offsetHeight,
+          });
+        }
+      });
+    };
+  }, []);
+
   const MainComponents = ({
     canvasSize,
   }: {
@@ -41,7 +62,7 @@ export default function MindMap({
       <>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='absolute top-0 left-0 z-0 w-full h-full'
+          className='absolute top-0 left-0 z-0 h-full w-full'
         >
           {nodes &&
             Object.keys(nodes).map((key: string) =>
@@ -63,7 +84,7 @@ export default function MindMap({
               })
             )}
         </svg>
-        <div className='w-full h-full'>
+        <div className='h-full w-full'>
           {nodes &&
             Object.keys(nodes).map((key) =>
               nodes[key].isFolder ? (
@@ -82,20 +103,20 @@ export default function MindMap({
                       canvasSize.height / 2
                     }px)`,
                   }}
-                  className='absolute flex flex-row items-center justify-center w-auto h-auto gap-2 text-xl font-extralight'
+                  className='absolute flex h-auto w-auto flex-row items-center justify-center gap-2 text-xl font-extralight'
                 >
                   <div
                     style={{
                       width: `${nodes[key].circleSize}px`,
                       height: `${nodes[key].circleSize}px`,
                     }}
-                    className={`${styles.transition} ${
-                      styles.transition
-                    } rounded-[35%] ${
+                    className={`${styles.transition} rounded-[35%] ${
                       isDarkMode ? 'bg-[#c4ccf3]' : 'bg-[#280d6b]'
                     }`}
                   />
-                  <span className='whitespace-nowrap'>{nodes[key].value}</span>
+                  <span className='whitespace-nowrap font-fontMain'>
+                    {nodes[key].value}
+                  </span>
                 </div>
               ) : (
                 <Link
@@ -114,7 +135,7 @@ export default function MindMap({
                       canvasSize.height / 2
                     }px)`,
                   }}
-                  className='absolute flex flex-row items-center justify-center w-auto h-auto gap-2 text-xl font-extralight'
+                  className='absolute flex h-auto w-auto flex-row items-center justify-center gap-2 text-xl font-extralight'
                 >
                   <div
                     style={{
@@ -127,7 +148,9 @@ export default function MindMap({
                         : 'bg-dark hover:bg-[#280d6b]'
                     } rotate-0 hover:rotate-[135deg] hover:cursor-pointer hover:rounded-[35%]`}
                   />
-                  <span className='whitespace-nowrap'>{nodes[key].value}</span>
+                  <span className='whitespace-nowrap font-fontMain'>
+                    {nodes[key].value}
+                  </span>
                 </Link>
               )
             )}
@@ -137,11 +160,11 @@ export default function MindMap({
   };
 
   return canvasSize_ == null ? (
-    <div className='w-full h-full' ref={screenRef}>
+    <div className='h-full w-full' ref={screenRef}>
       <MainComponents canvasSize={canvasSize} />
     </div>
   ) : (
-    <div className='w-full h-full'>
+    <div className='h-full w-full'>
       <MainComponents canvasSize={canvasSize} />
     </div>
   );

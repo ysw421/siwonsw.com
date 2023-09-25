@@ -5,6 +5,7 @@ import '@/styles/base.scss';
 import '@/styles/colors.scss';
 import '@/styles/fonts.scss';
 import '@/styles/utilities.scss';
+import '@/styles/inputNumber.scss';
 
 // import Header from '@/components/layout/Header';
 import Layout from '@/components/layout/Layout';

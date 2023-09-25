@@ -1,7 +1,5 @@
 import { useAtom } from 'jotai';
-import Link from 'next/link';
 import { useEffect, useRef } from 'react';
-import { AiOutlineLeft } from 'react-icons/ai';
 
 import styles from './animation.module.scss';
 
@@ -44,13 +42,13 @@ export default function Paper({
     <div className={`h-full w-full ${styles.transition}`}>
       <div className='relative w-full h-full max-w-5xl px-6 pt-8 mx-auto text-md'>
         <div className='w-full h-auto'>
-          <div className='inherit w-fit'>
+          {/* <div className='inherit w-fit'>
             <Link href='/' className='flex items-center mb-1'>
               <AiOutlineLeft />
               <p>전으로</p>
             </Link>
-          </div>
-          <p className='text-5xl'>{title}</p>
+          </div> */}
+          <p className='text-5xl font-fontMain'>{title}</p>
           <div className='my-6 h-[2px] rounded-full bg-dark dark:bg-light'></div>
         </div>
         {children}

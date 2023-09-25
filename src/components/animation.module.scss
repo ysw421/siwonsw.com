@@ -1,6 +1,6 @@
 .transition {
-  transition-property: border-radius, background-color, transform;
+  transition-property: border-radius, background-color, transform, color;
   // transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-timing-function: ease-in-out;
-  transition-duration: 0.4s;
+  transition-duration: 0.6s;
 }
