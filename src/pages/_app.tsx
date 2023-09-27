@@ -9,6 +9,7 @@ import '@/styles/inputNumber.scss';
 
 // import Header from '@/components/layout/Header';
 import Layout from '@/components/layout/Layout';
+import Seo from '@/components/Seo';
 
 // import { TailwindModal } from '@/components/wallet';
 /**
@@ -19,6 +20,7 @@ import Layout from '@/components/layout/Layout';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Seo />
       <Layout>
         <Component {...pageProps} />
       </Layout>

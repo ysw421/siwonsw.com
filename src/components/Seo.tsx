@@ -17,6 +17,7 @@ export default function Seo(props: SeoProps) {
     ...defaultMeta,
     ...props,
   };
+  // meta['title'] = siteConfig.title;
   meta['title'] = props.templateTitle
     ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;

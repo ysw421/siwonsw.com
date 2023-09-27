@@ -1,5 +1,8 @@
+import Link from 'next/link';
+import { AiOutlineLink } from 'react-icons/ai';
+
 import Paper from '@/components/Paper';
-import { Box, ImageBox, SubTitle } from '@/components/utilities';
+import { Box, ImageBox, InlineBox, SubTitle } from '@/components/utilities';
 
 export default function Stack() {
   return (
@@ -31,14 +34,14 @@ export default function Stack() {
         push는 스택에 데이터를 추가하는 명령어입니다. stack1.push(421)과 같이
         데이터를 매개변수로 가집니다.
       </p>
-      <Box className='font-fontMain text-2xl'>📂 stack1.push(421)</Box>
+      <Box className='text-2xl font-fontMain'>📂 stack1.push(421)</Box>
       <p>위 코드를 실행하면 스택, stack1에 제일 위에 421이 추가됩니다.</p>
       <SubTitle subTitle='pop' />
       <p>
         pop은 데이터를 삭제하는 명령어입니다. stack1.pop()과 같이 매개변수를
         가지지 않습니다. 또한 제일 위에 있는 데이터를 반환합니다.
       </p>
-      <Box className='font-fontMain text-2xl'>{`📂 stack1.pop() => 421`}</Box>
+      <Box className='text-2xl font-fontMain'>{`📂 stack1.pop() => 421`}</Box>
       <p>
         stack1의 제일 윗 값이 421이라고 가정하여 봅시다. 위 코드를 실행하면
         stack1에서 421이 삭제되고 421이 출력됩니다. 삭제되는 과정은 제일 윗
@@ -49,7 +52,37 @@ export default function Stack() {
         peek는 제일 위에 존재하는 값을 출력합니다. pop과 다르게 삭제하지
         않습니다.
       </p>
-      <Box className='font-fontMain text-2xl'>{`📂 stack1.peek() => 421`}</Box>
+      <Box className='text-2xl font-fontMain'>{`📂 stack1.peek() => 421`}</Box>
+      <SubTitle subTitle='Stack 문제' />
+      <p>
+        아래 제가 학교 프로그래밍 시간에 제작한 간단한 스택 관련 문제가
+        있습니다. 스택을 활용하여 해결해보면 재미있을 것입니다.
+      </p>
+      <Box className='text-2xl font-fontMain'>
+        다음은 이상의 오감도 시제 4의 숫자 부분을 좌우 반전한 버전입니다. 스택
+        또는 큐를 활용하여 출력하십시오.
+        <pre className='mx-auto text-sm'>
+          {`患者의容態에關한問題.
+1234567890・
+123456789・0
+12345678・90
+1234567・890
+123456・7890
+12345・67890
+1234・567890
+123・4567890
+12・34567890
+1・234567890
+・1234567890
+診斷 0 : 1
+        26.10.1931
+                以上 責任醫師 李 箱`}
+        </pre>
+      </Box>
+      <p>아래는 해설입니다.</p>
+      <Link href='/files/paper/stack/오감도-시제-4.pdf' target='_blink'>
+        <InlineBox leftIcon={AiOutlineLink}>해설 (pdf file)</InlineBox>
+      </Link>
     </Paper>
   );
 }

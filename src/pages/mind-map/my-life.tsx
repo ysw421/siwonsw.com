@@ -49,8 +49,16 @@ const nodes: Nodes = {
     x: 90,
     y: 60,
     link: '/paper/my-first-class-in-fregic',
-    edges: [],
+    edges: ['Linear Regression PDF 자료'],
     circleSize: 20,
+  },
+  'Linear Regression PDF 자료': {
+    value: 'Linear Regression PDF 자료',
+    x: 170,
+    y: 15,
+    link: '/files/paper/my-first-class-in-fregic/LinearRegressionPDF.pdf',
+    edges: [],
+    circleSize: 15,
   },
   '../': {
     value: '../',

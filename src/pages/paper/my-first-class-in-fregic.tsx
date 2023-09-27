@@ -22,14 +22,14 @@ export default function MyFirstClassInFregic() {
           선형회귀를 알려주고 싶었습니다.
         </p>
         <PdfPreview fileSrc='/files/paper/my-first-class-in-fregic/LinearRegressionPDF.pdf' />
-        <div className='my-8 flex justify-center gap-4'>
+        <div className='flex justify-center gap-4 my-8'>
           <Link
-            href='http://localhost:3000/files/paper/my-first-class-in-fregic/LinearRegressionPDF.pdf'
+            href='/files/paper/my-first-class-in-fregic/LinearRegressionPDF.pdf'
             target='_blink'
           >
             <InlineBox leftIcon={AiOutlineLink}>발표자료</InlineBox>
           </Link>
-          <Link href='http://localhost:3000/files/paper/my-first-class-in-fregic/linear_regression.ipynb'>
+          <Link href='/files/paper/my-first-class-in-fregic/linear_regression.ipynb'>
             <InlineBox leftIcon={AiOutlineLink}>코드 (ipynb file)</InlineBox>
           </Link>
         </div>

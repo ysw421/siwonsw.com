@@ -10,7 +10,7 @@ import {
   DraggableVerticalBar,
 } from '@/components/DraggableBar';
 import Paper from '@/components/Paper';
-import { SubTitle } from '@/components/utilities';
+import { Box, SubTitle } from '@/components/utilities';
 
 export default function Matrix() {
   return (
@@ -24,11 +24,16 @@ export default function Matrix() {
       <Part4 />
       <SubTitle subTitle='행렬 곱' />
       <Part5 />
+      <SubTitle subTitle='항등 행렬 (Identity Matrix)' />
+      <Part6 />
     </Paper>
   );
 }
 
-const Part1 = () => {
+/**
+ *행렬에 대한 기본적 해설
+ */
+function Part1() {
   const [position, setPosition] = useState({ x: 23 * 4, y: 12 * 6 });
   const [matrixText, setMatrixText] = useState<string>('');
   const [mn, setMn] = useState({
@@ -143,15 +148,16 @@ const Part1 = () => {
         <InlineMath>[A]^j</InlineMath>로 표현합니다.
       </p>
       <p>
-        또한, 행렬 <InlineMath>A</InlineMath>의 <InlineMath>(i, j)</InlineMath>
+        행렬 <InlineMath>A</InlineMath>의 <InlineMath>(i, j)</InlineMath>
         좌표의 요소를 <InlineMath>{`[A]_{i j}`}</InlineMath>와 같이
         표현하겠습니다. 비단, 위 행렬 <InlineMath>A</InlineMath>의 요소들과 같이
         편히를 위해, 흔히 <InlineMath>{`[A]_{i j}`}</InlineMath>와 같이
-        표현합니다.
+        표현합니다. 또한 위 행렬과 같이{' '}
+        <InlineMath>{`A = (a_{ij})`}</InlineMath>와 같이 표현할 수도 있습니다.
       </p>
     </>
   );
-};
+}
 
 const Part2 = () => {
   function getRandomInt(min: number, max: number) {
@@ -663,9 +669,106 @@ const Part5 = () => {
         <BlockMath>(A+B)C = AC+BC</BlockMath>
         <BlockMath>A(B+C) = AB+AC</BlockMath>
       </div>
+      <p>
+        아래, 두번째 식(<InlineMath>(A+B)C = AC+BC</InlineMath>)의 간단한 증명을
+        준비하였습니다. 각 행렬은{' '}
+        <InlineMath>{`A=(a_{jk}),\\; B=(b_{jk}),\\; C=(c_{kj})`}</InlineMath>로
+        정의합니다.
+      </p>
+      <Box className='my-8'>
+        <p className='mb-2 border-b-2 border-dark dark:border-light'>Proof</p>
+        <BlockMath>{`[(A+B)C]_{ij} = \\sum_{k}(a_{ik}+b_{ik})c_{kj}`}</BlockMath>
+        <BlockMath>{`[AC+BC]_{ij} = \\sum_{k}(a_{ik}c_{kj}+b_{ik}c_{kj})`}</BlockMath>
+      </Box>
+      <p>
+        위 두식은 동일하기 때문에, 두번째 식은 성립합니다. 다른 식 또한 위
+        증명과 같이 어렵지 않게 성립함을 확인 가능합니다. 행렬의 곱은 결합
+        법칙이 성립하므로 <InlineMath>(AB)C</InlineMath>보다는{' '}
+        <InlineMath>ABC</InlineMath>가 더 흔히 사용되는 표현입니다.
+      </p>
     </>
   );
 };
+
+function Part6() {
+  const [position, setPosition] = useState({ x: 15 * 4, y: 12 * 6 });
+  const [matrixText, setMatrixText] = useState<string>('');
+  const [mn, setMn] = useState({
+    m: position.y / 15 + 1,
+    n: position.x / 15 + 1,
+  });
+
+  useEffect(() => {
+    const m = position.y / 15 + 1;
+    const n = position.x / 15 + 1;
+    setMn({ m: m, n: n });
+    let text = String.raw`\begin{bmatrix}`;
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        if (j === 1) text += ` ${i === j ? 1 : 0}`;
+        else text += ` & ${i === j ? 1 : 0}`;
+      }
+      text += '\\\\';
+    }
+    text += `\\end{bmatrix}`;
+    setMatrixText(text);
+  }, [position]);
+
+  return (
+    <>
+      <p>
+        앞서 행렬 곱의 내용을 되돌아 보면, <InlineMath>(n, n)</InlineMath>모양의
+        행렬(정사각 행렬(square matrix))은 지수 표현이 가능합니다. 즉,{' '}
+        <InlineMath>AAA</InlineMath>의 경우 <InlineMath>{`A^{3}`}</InlineMath>과
+        같이 표현 가능합니다. 그렇다면, <InlineMath>A^0</InlineMath>의 값은
+        무엇일까요? 실수에서 <InlineMath>{`(real\\;number)^0 = 1`}</InlineMath>
+        이 단위적인 것과 같이, <InlineMath>A^0</InlineMath> 또한 단위적이며,
+        특별히 <InlineMath>I</InlineMath>로 표현하고 항등 행렬이라 부릅니다.
+        항등 행렬의 정의는 아래와 같습니다.
+      </p>
+      <div className='my-8'>
+        <div className='flex items-center justify-center w-full h-full'>
+          <InlineMath>I = </InlineMath>
+          <div className='relative flex h-64 w-[280px] flex-col items-center justify-center'>
+            <div className='absolute z-30 flex'>
+              <div className='w-[50px]' />
+              <Draggable
+                axis='x'
+                bounds={{ left: 0, top: 0, right: 15 * 7, bottom: 0 }}
+                defaultPosition={{ x: 0, y: 0 }}
+                grid={[15, 15]}
+                position={{ x: position.x, y: 0 }}
+                onDrag={(e, data) => {
+                  setPosition({
+                    x: data.x < 0 ? 0 : data.x,
+                    y: data.x < 0 ? 0 : data.x,
+                  });
+                }}
+              >
+                <div className='w-auto h-auto rounded-xl'>
+                  <div className='p-3'>
+                    <DraggableVerticalBar />
+                  </div>
+                </div>
+              </Draggable>
+            </div>
+            <div className='z-0 h-fit w-fit select-none text-[16.5px]'>
+              <BlockMath>{matrixText}</BlockMath>
+            </div>
+          </div>
+        </div>
+        <div className='flex flex-col items-center w-full text-md'>
+          <BottomControlEx />
+        </div>
+      </div>
+      <div className='flex flex-col gap-2 my-8'>
+        <BlockMath>{`I = (i_{ij})`}</BlockMath>
+        <BlockMath>{`(i_{ij}) = \\begin{cases}1 & i = j \\\\
+         0 & i\\ne j\\end{cases}`}</BlockMath>
+      </div>
+    </>
+  );
+}
 
 const InputMatrix = ({
   position,

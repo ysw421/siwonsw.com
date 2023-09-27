@@ -15,7 +15,7 @@ import NextImage from '@/components/NextImage';
 export function SubTitle({ subTitle }: { subTitle: string }) {
   return (
     <div className='flex flex-col gap-0'>
-      <p className='mt-8 mb-2 font-fontMain text-3xl'>{subTitle}</p>
+      <p className='mt-8 mb-2 text-3xl font-fontMain'>{subTitle}</p>
       <div className='mb-6 h-[2px] w-full rounded-full bg-dark dark:bg-light' />
     </div>
   );
@@ -40,10 +40,10 @@ export const Box = forwardRef<HTMLButtonElement, BoxProps>(
     leftIconClassName,
   }) => {
     return (
-      <div className='my-8 w-full'>
+      <div className='w-full my-8'>
         <div
           className={clsxm(
-            `mx-auto h-auto w-fit rounded-md bg-[#d7d6d6] p-3 dark:bg-[#555c6e] ${styles.transition}`,
+            `mx-auto h-auto w-fit max-w-full overflow-x-auto rounded-md bg-[#d7d6d6] p-3 dark:bg-[#555c6e] ${styles.transition}`,
             className
           )}
         >
@@ -139,7 +139,7 @@ export function MovieBox({
   imgSrc: string;
 }) {
   return (
-    <div className='mb-8 w-full'>
+    <div className='w-full mb-8'>
       <div className='mx-auto flex min-w-[320px] max-w-[550px] flex-col gap-2 md:flex-row md:gap-8 '>
         <NextImage
           src={imgSrc}
@@ -149,8 +149,8 @@ export function MovieBox({
           imgClassName='rounded-lg'
         />
         <div className='whitespace-pre-wrap'>
-          <p className='font-fontMain text-3xl'>{title}</p>
-          <p className='font-fontMain text-sm'>{subTitle}</p>
+          <p className='text-3xl font-fontMain'>{title}</p>
+          <p className='text-sm font-fontMain'>{subTitle}</p>
           <p className='mt-0 md:mt-8'>{`감독: ${director}`}</p>
           <p className='pl-10 -indent-10'>{`출연: ${cast}`}</p>
         </div>
@@ -200,7 +200,7 @@ export function ImageBox({
 
   return (
     <div className={clsxm('mb-8 w-full', className)} ref={imageRef}>
-      <div className='mx-auto flex w-fit flex-col gap-2 md:flex-row md:gap-8'>
+      <div className='flex flex-col gap-2 mx-auto w-fit md:flex-row md:gap-8'>
         <NextImage
           src={imgSrc}
           width={imageWidth}
@@ -236,7 +236,7 @@ export function PdfPreview({
   return (
     <>
       <div
-        className='w-full select-none overflow-hidden rounded-lg bg-light dark:bg-dark'
+        className='w-full overflow-hidden rounded-lg select-none bg-light dark:bg-dark'
         ref={pdfRef}
         style={{ aspectRatio: rate }}
       >
@@ -251,7 +251,7 @@ export function PdfPreview({
           />
         </Document>
       </div>
-      <div className='mt-1/2 flex justify-center gap-3'>
+      <div className='flex justify-center gap-3 mt-1/2'>
         <SlArrowLeft
           onClick={() => changePage(-1)}
           style={{ cursor: 'pointer' }}
