@@ -40,7 +40,7 @@ const nodes: Nodes = {
     value: '행렬식',
     x: 10,
     y: -210,
-    link: '/paper/행렬식',
+    link: '/paper/determinant',
     edges: [],
     circleSize: 28,
   },

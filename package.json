@@ -1,7 +1,7 @@
 {
-  "name": "ts-nextjs-tailwind-starter",
-  "version": "0.1.0",
-  "private": true,
+  "name": "siwon",
+  "version": "1.0",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -86,5 +86,9 @@
     "**/*.{json,css,scss,md,webmanifest}": [
       "prettier -w"
     ]
-  }
+  },
+  "main": "src/index.tsx",
+  "repository": "https://github.com/ysw421/My-blog",
+  "author": "siwon",
+  "license": "mit"
 }

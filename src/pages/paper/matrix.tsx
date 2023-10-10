@@ -26,6 +26,10 @@ export default function Matrix() {
       <Part5 />
       <SubTitle subTitle='항등 행렬 (Identity Matrix)' />
       <Part6 />
+      <SubTitle subTitle='역 행렬 (Inverse Matrix)' />
+      <Part7 />
+      <SubTitle subTitle='전치 행렬 (Transpose Matrix)' />
+      <Part8 />
     </Paper>
   );
 }
@@ -66,7 +70,7 @@ function Part1() {
         아래와 같습니다. 단 <InlineMath>{`(m, n)\\in\\mathbb{N}`}</InlineMath>
       </p>
       <div className='my-8'>
-        <div className='flex items-center justify-center w-full h-full'>
+        <div className='flex h-full w-full items-center justify-center'>
           <InlineMath>A = </InlineMath>
           <div className='relative flex h-64 w-[280px] flex-col items-center justify-center'>
             <div className='absolute z-30 flex'>
@@ -81,7 +85,7 @@ function Part1() {
                   setPosition({ x: data.x < 0 ? 0 : data.x, y: position.y });
                 }}
               >
-                <div className='w-auto h-auto rounded-xl'>
+                <div className='h-auto w-auto rounded-xl'>
                   <div className='p-3'>
                     <DraggableVerticalBar />
                   </div>
@@ -100,7 +104,7 @@ function Part1() {
                   setPosition({ x: position.x, y: data.y < 0 ? 0 : data.y });
                 }}
               >
-                <div className='w-auto h-auto rounded-xl'>
+                <div className='h-auto w-auto rounded-xl'>
                   <div className='p-3'>
                     <DraggableHorizontalBar />
                   </div>
@@ -121,7 +125,7 @@ function Part1() {
                   });
                 }}
               >
-                <div className='w-auto h-auto rounded-xl'>
+                <div className='h-auto w-auto rounded-xl'>
                   <div className='p-3'>
                     <DraggableBar />
                   </div>
@@ -133,7 +137,7 @@ function Part1() {
             </div>
           </div>
         </div>
-        <div className='flex flex-col items-center w-full text-md'>
+        <div className='text-md flex w-full flex-col items-center'>
           <BlockMath>{`m:${mn.m}, n:${mn.n}`}</BlockMath>
           <BottomControlEx />
         </div>
@@ -231,7 +235,7 @@ const Part2 = () => {
         행렬의 모양(크기, 차원)이 같을 경우 연산이 가능합니다.
       </p>
       <p className='mt-4'>덧셈</p>
-      <div className='flex justify-center w-full'>
+      <div className='flex w-full justify-center'>
         <div className='flex flex-col flex-wrap items-center justify-center md:flex-row'>
           <InputMatrix
             position={m1Position}
@@ -259,7 +263,7 @@ const Part2 = () => {
       </div>
       <BottomControlEx />
       <p className='mt-4'>뺄셈</p>
-      <div className='flex justify-center w-ful'>
+      <div className='w-ful flex justify-center'>
         <div className='flex flex-col flex-wrap items-center justify-center md:flex-row'>
           <InputMatrix
             position={m1Position}
@@ -436,7 +440,7 @@ const Part4 = () => {
         덧셈이나, 뺄셈과 같이 행렬의 모양(크기, 차원)이 같은 경우 연산이
         가능합니다. 기호 <InlineMath>{`\\circ`}</InlineMath>로 표현합니다.
       </p>
-      <div className='flex justify-center w-full'>
+      <div className='flex w-full justify-center'>
         <div className='flex flex-col flex-wrap items-center justify-center md:flex-row'>
           <InputMatrix
             position={m1Position}
@@ -576,7 +580,7 @@ const Part5 = () => {
           {i !== 0 && (
             <div className='h-[1px] w-[300px] rounded-full bg-dark dark:bg-light' />
           )}
-          <div className='flex my-2'>
+          <div className='my-2 flex'>
             <RoofText h={i} />
           </div>
         </>
@@ -627,7 +631,7 @@ const Part5 = () => {
       <div className='my-8'>
         <BlockMath>{`[C]_{ij} = \\sum_{l=1}^{k}{[A]_{il}[B]_{lj}}`}</BlockMath>
       </div>
-      <div className='flex justify-center w-full'>
+      <div className='flex w-full justify-center'>
         <div className='flex flex-col flex-wrap items-center justify-center md:flex-row'>
           <InputMatrixForProduct
             position={m1Position}
@@ -654,7 +658,7 @@ const Part5 = () => {
         </div>
       </div>
       <BottomControlEx />
-      <div className='flex flex-col items-center justify-center my-8'>
+      <div className='my-8 flex flex-col items-center justify-center'>
         <ShowProcess />
       </div>
       <p>
@@ -727,7 +731,7 @@ function Part6() {
         항등 행렬의 정의는 아래와 같습니다.
       </p>
       <div className='my-8'>
-        <div className='flex items-center justify-center w-full h-full'>
+        <div className='flex h-full w-full items-center justify-center'>
           <InlineMath>I = </InlineMath>
           <div className='relative flex h-64 w-[280px] flex-col items-center justify-center'>
             <div className='absolute z-30 flex'>
@@ -745,7 +749,7 @@ function Part6() {
                   });
                 }}
               >
-                <div className='w-auto h-auto rounded-xl'>
+                <div className='h-auto w-auto rounded-xl'>
                   <div className='p-3'>
                     <DraggableVerticalBar />
                   </div>
@@ -757,15 +761,262 @@ function Part6() {
             </div>
           </div>
         </div>
-        <div className='flex flex-col items-center w-full text-md'>
+        <div className='text-md flex w-full flex-col items-center'>
           <BottomControlEx />
         </div>
       </div>
-      <div className='flex flex-col gap-2 my-8'>
+      <div className='my-8 flex flex-col gap-2'>
         <BlockMath>{`I = (i_{ij})`}</BlockMath>
         <BlockMath>{`(i_{ij}) = \\begin{cases}1 & i = j \\\\
          0 & i\\ne j\\end{cases}`}</BlockMath>
       </div>
+      <p>
+        항등행렬에 상수 배를 한 행렬을 스칼라 행렬(scalar matrix)이라고
+        부릅니다.
+      </p>
+    </>
+  );
+}
+
+function Part7() {
+  const [position, setPosition] = useState({ x: 21 * 2, y: 12 * 2 });
+  const [matrixText, setMatrixText] = useState<string>('');
+  const [mn, setMn] = useState({
+    m: position.y / 12 + 1,
+    n: position.x / 21 + 1,
+  });
+  const [matrixValue, setMatrixValue] = useState<Array<number[]>>([
+    [1, -1, -2],
+    [2, 3, 5],
+    [6, 0, -3],
+  ]);
+
+  const [det, setDet] = useState<number>(0);
+
+  function updateValue(i: number, j: number, newValue: number) {
+    setMatrixValue((prevMatrix) => {
+      const newMatrix = [...prevMatrix];
+      newMatrix[i] = [...prevMatrix[i]];
+      newMatrix[i][j] = newValue;
+      return newMatrix;
+    });
+  }
+
+  const InputVerticalFor = () => {
+    const arr = [];
+    for (let i = 0; i < mn.m; i++)
+      arr.push(
+        <div className=' flex gap-[12.5px]'>{InputHorizontalFor(i)}</div>
+      );
+    return arr;
+  };
+
+  const InputHorizontalFor = (h: number) => {
+    const arr = [];
+    for (let i = 0; i < mn.n; i++)
+      arr.push(
+        <input
+          type='number'
+          className='z-50 m-0 h-[20px] w-[22px] bg-transparent p-0 text-center text-sm'
+          onChange={(e) => updateValue(h, i, Number(e.target.value))}
+          value={matrixValue[h][i]}
+        />
+      );
+    return arr;
+  };
+
+  useEffect(() => {
+    const m = position.y / 12 + 1;
+    const n = position.x / 21 + 1;
+    setMn({ m: m, n: n });
+    let text = String.raw`\begin{bmatrix}`;
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        if (j === 1) text += ` \\;\\;\\;\\;`;
+        else text += ` & \\;\\;\\;\\;`;
+      }
+      if (i != m) text += '\\\\';
+    }
+    text += `\\;\\end{bmatrix}`;
+    setMatrixText(text);
+  }, []);
+
+  useEffect(() => {
+    setDet(
+      matrixValue[0][0] *
+        (matrixValue[1][1] * matrixValue[2][2] -
+          matrixValue[1][2] * matrixValue[2][1]) -
+        matrixValue[0][1] *
+          (matrixValue[1][0] * matrixValue[2][2] -
+            matrixValue[1][2] * matrixValue[2][0]) +
+        matrixValue[0][2] *
+          (matrixValue[1][0] * matrixValue[2][1] -
+            matrixValue[1][1] * matrixValue[2][0])
+    );
+  }, [matrixValue]);
+
+  return (
+    <>
+      <p>
+        두개의 <InlineMath>(n,n)</InlineMath>모양의 square matrix인,{' '}
+        <InlineMath>A, B</InlineMath>에 대하여{' '}
+        <InlineMath>AB = I = BA</InlineMath>를 만족할 경우,{' '}
+        <InlineMath>A</InlineMath>와 <InlineMath>B</InlineMath>를 가역
+        행렬(invertible matrix, 역 행렬이 존재하는 행렬)이라 부르고,{' '}
+        <InlineMath>B</InlineMath>를 <InlineMath>A</InlineMath>의 역
+        행렬(inverse matrix)라고 부릅니다. 또한 역 행렬은 역 함수와 같이,{' '}
+        <InlineMath>{`B = A^{-1}`}</InlineMath>처럼 표기합니다.
+      </p>
+      <div className='my-8 flex w-full flex-col items-center justify-center gap-4 md:gap-0'>
+        <div className='flex flex-col flex-wrap items-center justify-center gap-2 md:flex-row md:gap-0'>
+          <div className='flex items-center justify-center'>
+            <div className='relative flex h-24  w-[150px] flex-col items-center justify-center'>
+              <div className='relative h-fit w-fit text-[16.5px]'>
+                <div className='absolute top-1/2 left-1/2 z-0 h-fit w-fit -translate-x-1/2 -translate-y-1/2 select-none'>
+                  <BlockMath>{matrixText}</BlockMath>
+                </div>
+                <div className='relative top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-[4px]'>
+                  {InputVerticalFor()}
+                </div>
+              </div>
+            </div>
+            {det !== 0 && (
+              <InlineMath>{`\\begin{bmatrix}${(
+                (matrixValue[1][1] * matrixValue[2][2] -
+                  matrixValue[1][2] * matrixValue[2][1]) /
+                det
+              ).toFixed(1)} & ${(
+                (matrixValue[0][2] * matrixValue[2][1] -
+                  matrixValue[0][1] * matrixValue[2][2]) /
+                det
+              ).toFixed(1)} & ${(
+                (matrixValue[0][1] * matrixValue[1][2] -
+                  matrixValue[0][2] * matrixValue[1][1]) /
+                det
+              ).toFixed(1)} \\\\ ${(
+                (matrixValue[1][2] * matrixValue[2][0] -
+                  matrixValue[1][0] * matrixValue[2][2]) /
+                det
+              ).toFixed(1)} & ${(
+                (matrixValue[0][0] * matrixValue[2][2] -
+                  matrixValue[0][2] * matrixValue[2][0]) /
+                det
+              ).toFixed(1)} & ${(
+                (matrixValue[0][2] * matrixValue[1][0] -
+                  matrixValue[0][0] * matrixValue[1][2]) /
+                det
+              ).toFixed(1)} \\\\ ${(
+                (matrixValue[1][0] * matrixValue[2][1] -
+                  matrixValue[1][1] * matrixValue[2][0]) /
+                det
+              ).toFixed(1)} & ${(
+                (matrixValue[0][1] * matrixValue[2][0] -
+                  matrixValue[0][0] * matrixValue[2][1]) /
+                det
+              ).toFixed(1)} & ${(
+                (matrixValue[0][0] * matrixValue[1][1] -
+                  matrixValue[0][1] * matrixValue[1][0]) /
+                det
+              ).toFixed(1)} \\end{bmatrix}`}</InlineMath>
+            )}
+          </div>
+          {det !== 0 ? (
+            <>
+              <InlineMath>{`= \\begin{bmatrix}1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}`}</InlineMath>
+            </>
+          ) : (
+            <span className='text-center'>
+              위 행렬은 역 행렬이 존재하지 않습니다(가역 행렬이 아닙니다).
+            </span>
+          )}
+        </div>
+        {det !== 0 && (
+          <span className='text-sm'>
+            역 행렬을 소수 둘째자리에서 반올림하였습니다.
+          </span>
+        )}
+      </div>
+      <p>
+        역 행렬을 구하는 과정은 복잡하여 시각화된 오브젝트를{' '}
+        <InlineMath>(3, 3)</InlineMath>모양의 행렬에 한하여 제작하였습니다.
+        다음에 가우스 소거법을 소개하며, 역 행렬을 구하는 방법을 알아보겠습니다.
+        또한 가역 행렬인지 확인하는 방법으로, 행렬식을 알아보겠습니다.
+      </p>
+    </>
+  );
+}
+
+function Part8() {
+  function getRandomInt(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  const [m1Position, setM1Position] = useState({ x: 21 * 5, y: 12 * 8 });
+  const [m1Mn, setM1Mn] = useState({
+    m: 9,
+    n: 6,
+  });
+  const [m1Value, setM1Value] = useState<Array<number[]>>(
+    Array.from({ length: 9 }, () => Array.from({ length: 6 }, () => 0))
+  );
+  const [matrixText, setMatrixText] = useState<string>('');
+
+  useEffect(() => {
+    setM1Value(
+      Array.from({ length: 9 }, () =>
+        Array.from({ length: 6 }, () => getRandomInt(0, 9))
+      )
+    );
+  }, []);
+
+  useEffect(() => {
+    let text = String.raw`\begin{bmatrix}`;
+    for (let i = 0; i < m1Mn.n; i++) {
+      for (let j = 0; j < m1Mn.m; j++) {
+        if (j === 0) text += ` ${m1Value[j][i]}`;
+        else text += ` & ${m1Value[j][i]}`;
+      }
+      text += '\\\\';
+    }
+    text += `\\end{bmatrix}`;
+    setMatrixText(text);
+  }, [m1Mn, m1Value]);
+
+  return (
+    <>
+      <p>
+        전치 행렬(transpose matrix)은 행과 열을 바꾼 행렬입니다. 행렬{' '}
+        <InlineMath>A</InlineMath>의 전치 행렬은{' '}
+        <InlineMath>{`A^{T}`}</InlineMath>와 같이 표현합니다.{` `}
+        즉, <InlineMath>{`[A^{T}]_{ij} = [A]_{ji}`}</InlineMath>를 성립합니다.
+        행렬 <InlineMath>A</InlineMath>가 <InlineMath>(m, n)</InlineMath>모양의
+        행렬일 때, 전치 행렬 <InlineMath>{`A^{T}`}</InlineMath>는{' '}
+        <InlineMath>(n,m)</InlineMath>모양의 행렬입니다.
+      </p>
+      <div className='mt-8 flex flex-wrap items-center justify-center'>
+        <div className='flex items-center justify-center'>
+          <InlineMath>A =</InlineMath>
+          <InputMatrix
+            position={m1Position}
+            setPosition={setM1Position}
+            mn={m1Mn}
+            setMn={setM1Mn}
+            matrixValue={m1Value}
+            setMatrixValue={setM1Value}
+          />
+        </div>
+      </div>
+      <div className='mb-8 flex h-36 flex-wrap items-center justify-center'>
+        <InlineMath>{`A^{T} = ${matrixText}`}</InlineMath>
+      </div>
+      <p>
+        열의 개수가 1개인 행렬을 행 벡터라고 부릅니다. 또한 행의 개수가 1개인
+        행렬을 열 벡터라고 부릅니다. 일반적으로 행렬 <InlineMath>x</InlineMath>
+        는 열 벡터(
+        <InlineMath>{`\\begin{bmatrix}a_1 & a_2 & \\dots & a_n\\end{bmatrix}`}</InlineMath>
+        ) 를 나타냅니다. 열 벡터를 나타낼 때는 전치 행렬을 활용하여{' '}
+        <InlineMath>{`x^{T}`}</InlineMath>와 같이 나타냅니다.
+      </p>
     </>
   );
 }
@@ -800,8 +1051,10 @@ const InputMatrix = ({
   function updateValue(i: number, j: number, newValue: number) {
     setMatrixValue((prevMatrix) => {
       const newMatrix = [...prevMatrix];
-      newMatrix[i] = [...prevMatrix[i]];
-      newMatrix[i][j] = newValue;
+      if (newValue > -100 && newValue < 100) {
+        newMatrix[i] = [...prevMatrix[i]];
+        newMatrix[i][j] = newValue;
+      }
       return newMatrix;
     });
   }
@@ -861,7 +1114,7 @@ const InputMatrix = ({
                 setPosition({ x: data.x < 0 ? 0 : data.x, y: position.y });
               }}
             >
-              <div className='z-50 w-auto h-auto rounded-xl'>
+              <div className='z-50 h-auto w-auto rounded-xl'>
                 <div className='p-4'>
                   <DraggableVerticalBar />
                 </div>
@@ -880,7 +1133,7 @@ const InputMatrix = ({
                 setPosition({ x: position.x, y: data.y < 0 ? 0 : data.y });
               }}
             >
-              <div className='z-50 w-auto h-auto rounded-xl'>
+              <div className='z-50 h-auto w-auto rounded-xl'>
                 <div className='p-4'>
                   <DraggableHorizontalBar />
                 </div>
@@ -901,7 +1154,7 @@ const InputMatrix = ({
                 });
               }}
             >
-              <div className='z-50 w-auto h-auto rounded-xl'>
+              <div className='z-50 h-auto w-auto rounded-xl'>
                 <div className='p-3'>
                   <DraggableBar />
                 </div>
@@ -911,7 +1164,7 @@ const InputMatrix = ({
         </>
       )}
       <div className='relative h-fit w-fit text-[16.5px]'>
-        <div className='absolute z-0 -translate-x-1/2 -translate-y-1/2 select-none top-1/2 left-1/2 h-fit w-fit'>
+        <div className='absolute top-1/2 left-1/2 z-0 h-fit w-fit -translate-x-1/2 -translate-y-1/2 select-none'>
           <BlockMath>{matrixText}</BlockMath>
         </div>
         <div className='relative top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-[4px]'>
@@ -944,8 +1197,10 @@ const InputMatrixForProduct = ({
   function updateValue(i: number, j: number, newValue: number) {
     setMatrixValue((prevMatrix) => {
       const newMatrix = [...prevMatrix];
-      newMatrix[i] = [...prevMatrix[i]];
-      newMatrix[i][j] = newValue;
+      if (newValue > -100 && newValue < 100) {
+        newMatrix[i] = [...prevMatrix[i]];
+        newMatrix[i][j] = newValue;
+      }
       return newMatrix;
     });
   }
@@ -1019,7 +1274,7 @@ const InputMatrixForProduct = ({
             setPosition({ x: data.x < 0 ? 0 : data.x, y: position.y });
           }}
         >
-          <div className='z-50 w-auto h-auto rounded-xl'>
+          <div className='z-50 h-auto w-auto rounded-xl'>
             <div className='p-4'>
               <DraggableVerticalBar />
             </div>
@@ -1040,7 +1295,7 @@ const InputMatrixForProduct = ({
                 setPosition({ x: position.x, y: data.y < 0 ? 0 : data.y });
               }}
             >
-              <div className='z-50 w-auto h-auto rounded-xl'>
+              <div className='z-50 h-auto w-auto rounded-xl'>
                 <div className='p-4'>
                   <DraggableHorizontalBar />
                 </div>
@@ -1061,7 +1316,7 @@ const InputMatrixForProduct = ({
                 });
               }}
             >
-              <div className='z-50 w-auto h-auto rounded-xl'>
+              <div className='z-50 h-auto w-auto rounded-xl'>
                 <div className='p-3'>
                   <DraggableBar />
                 </div>
@@ -1071,7 +1326,7 @@ const InputMatrixForProduct = ({
         </>
       )}
       <div className='relative h-fit w-fit text-[16.5px]'>
-        <div className='absolute z-0 -translate-x-1/2 -translate-y-1/2 select-none top-1/2 left-1/2 h-fit w-fit'>
+        <div className='absolute top-1/2 left-1/2 z-0 h-fit w-fit -translate-x-1/2 -translate-y-1/2 select-none'>
           <BlockMath>{matrixText}</BlockMath>
         </div>
         <div className='relative top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-[4px]'>
@@ -1084,8 +1339,8 @@ const InputMatrixForProduct = ({
 
 const BottomControlEx = () => {
   return (
-    <div className='flex flex-wrap justify-center text-sm text-center'>
-      <div className='flex mx-1 text-center'>
+    <div className='flex flex-wrap justify-center text-center text-sm'>
+      <div className='mx-1 flex text-center'>
         '
         <div className='translate-y-[10px]'>
           <DraggableBar />

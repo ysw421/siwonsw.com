@@ -31,7 +31,7 @@ export default function Header({
           className
         )}
       >
-        <div className='flex w-full h-full'>
+        <div className='flex h-full w-full'>
           <Link href='/' className='flex items-center gap-2 md:gap-3'>
             <NextImage
               useSkeleton
@@ -42,7 +42,7 @@ export default function Header({
               className='w-[40px]'
               imgClassName='rounded-full'
             />
-            <span className='text-2xl'>Siwon Yun</span>
+            <span className='text-2xl'>Siwon</span>
           </Link>
         </div>
         {/* <div className='flex items-center justify-between w-full layout h-14'>
