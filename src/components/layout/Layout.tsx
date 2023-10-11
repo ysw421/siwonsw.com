@@ -47,6 +47,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           isDarkMode ? 'dark' : ''
         }`}
       >
+        <style jsx global>{`
+          body {
+            background: ${isDarkMode ? 'bg-dark' : 'bg-light'};
+          }
+        `}</style>
+
         {/* <span>{mode}</span> */}
         {/* <span className='hidden' key={isDarkMode ? 1 : 2}>
           {isDarkMode === true ? '11' : '22'}
