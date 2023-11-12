@@ -5,11 +5,10 @@ import { MovieBox } from '@/components/utilities';
 export default function Movie() {
   return (
     <Paper title='🎬 영화를 좋아하는 시원입니다.'>
-      <p>
+      <p className='mb-8'>
         영화 보기를 좋아합니다, 영화를 보며 다양한 생각을 하는 것을, 나와 다른
         관점에서 생각해 보기를 즐깁니다.
       </p>
-      <p className='mb-8'>아래는 제가 좋아하는 영화들입니다.</p>
       <MovieBox
         imgSrc='/images/paper/movie/Titanic.jpeg'
         cast={`레오나르도 디카프리오(잭 도슨)\n케이트 윈슬렛(로즈 드위트 버케이터)`}
