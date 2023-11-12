@@ -131,12 +131,14 @@ export function MovieBox({
   director,
   cast,
   imgSrc,
+  isHideDirectorCast = false,
 }: {
   title: string;
   subTitle: string;
   director: string;
   cast: string;
   imgSrc: string;
+  isHideDirectorCast?: boolean;
 }) {
   return (
     <div className='w-full mb-8'>
@@ -151,8 +153,12 @@ export function MovieBox({
         <div className='whitespace-pre-wrap'>
           <p className='text-3xl font-fontMain'>{title}</p>
           <p className='text-sm font-fontMain'>{subTitle}</p>
-          <p className='mt-0 md:mt-8'>{`감독: ${director}`}</p>
-          <p className='pl-10 -indent-10'>{`출연: ${cast}`}</p>
+          {isHideDirectorCast ? null : (
+            <>
+              <p className='mt-0 md:mt-8'>{`감독: ${director}`}</p>
+              <p className='pl-10 -indent-10'>{`출연: ${cast}`}</p>
+            </>
+          )}
         </div>
       </div>
     </div>
