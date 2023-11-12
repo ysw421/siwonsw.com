@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import Div100vh from 'react-div-100vh';
 
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/base.scss';
@@ -19,12 +20,12 @@ import Seo from '@/components/Seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Div100vh>
       <Seo />
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </Div100vh>
   );
 }
 

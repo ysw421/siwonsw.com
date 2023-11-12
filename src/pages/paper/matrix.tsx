@@ -1013,8 +1013,8 @@ function Part8() {
         열의 개수가 1개인 행렬을 행 벡터라고 부릅니다. 또한 행의 개수가 1개인
         행렬을 열 벡터라고 부릅니다. 일반적으로 행렬 <InlineMath>x</InlineMath>
         는 열 벡터(
-        <InlineMath>{`\\begin{bmatrix}a_1 & a_2 & \\dots & a_n\\end{bmatrix}`}</InlineMath>
-        ) 를 나타냅니다. 열 벡터를 나타낼 때는 전치 행렬을 활용하여{' '}
+        <InlineMath>{`\\begin{bmatrix}a_1 \\\\ a_2 \\\\ \\vdots \\\\ a_n\\end{bmatrix}`}</InlineMath>
+        ) 를 나타냅니다. 행 벡터를 나타낼 때는 전치 행렬을 활용하여{' '}
         <InlineMath>{`x^{T}`}</InlineMath>와 같이 나타냅니다.
       </p>
     </>
