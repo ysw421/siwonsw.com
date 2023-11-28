@@ -30,6 +30,7 @@ export default function LocalMinSVG() {
   const gRef_a = useRef<SVGGElement>(null);
   const gRef_b = useRef<SVGGElement>(null);
   const gRef_c = useRef<SVGGElement>(null);
+  // SVGSVGElement
 
   const [a, setA] = useState<number>(width / 4);
   const [b, setB] = useState<number>(width / 2);
@@ -134,13 +135,34 @@ export default function LocalMinSVG() {
   }, [a_function_value, b_function_value, c_function_value, a, b, c]);
 
   useEffect(() => {
-    const svg = d3.select(svgRef.current);
-    const g_a = d3.select(gRef_a.current);
-    const g_b = d3.select(gRef_b.current);
-    const g_c = d3.select(gRef_c.current);
-    if (svg.empty() || g_a.empty() || g_b.empty() || g_c.empty()) return;
+    // const svg = d3.select(svgRef.current);
+    // const g_a = d3.select(gRef_a.current);
+    // const g_b = d3.select(gRef_b.current);
+    // const g_c = d3.select(gRef_c.current);
+    const g_a = d3.select(gRef_a.current) as d3.Selection<
+      SVGGElement,
+      unknown,
+      any,
+      any
+    >;
+    const g_b = d3.select(gRef_b.current) as d3.Selection<
+      SVGGElement,
+      unknown,
+      any,
+      any
+    >;
+    const g_c = d3.select(gRef_c.current) as d3.Selection<
+      SVGGElement,
+      unknown,
+      any,
+      any
+    >;
 
-    const drag_a = d3.drag().on('drag', function (e: { y: number; x: number }) {
+    // if (g_a.empty() || g_b.empty() || g_c.empty()) return;
+
+    const drag_a = (
+      d3.drag() as d3.DragBehavior<SVGGElement, unknown, unknown>
+    ).on('drag', function (e: { y: number; x: number }) {
       if (e.y >= 0 && e.y <= height) {
         setA_function_value(e.y);
       } else if (e.y < 0) {
@@ -157,7 +179,9 @@ export default function LocalMinSVG() {
       }
     });
     g_a.call(drag_a);
-    const drag_b = d3.drag().on('drag', function (e: { y: number; x: number }) {
+    const drag_b = (
+      d3.drag() as d3.DragBehavior<SVGGElement, unknown, unknown>
+    ).on('drag', function (e: { y: number; x: number }) {
       if (e.y >= 0 && e.y <= height) {
         setB_function_value(e.y);
       } else if (e.y < 0) {
@@ -174,7 +198,9 @@ export default function LocalMinSVG() {
       }
     });
     g_b.call(drag_b);
-    const drag_c = d3.drag().on('drag', function (e: { y: number; x: number }) {
+    const drag_c = (
+      d3.drag() as d3.DragBehavior<SVGGElement, unknown, unknown>
+    ).on('drag', function (e: { y: number; x: number }) {
       if (e.y >= 0 && e.y <= height) {
         setC_function_value(e.y);
       } else if (e.y < 0) {

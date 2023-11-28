@@ -30,6 +30,7 @@ export default function LocalMinSVG() {
   const gRef_a = useRef<SVGGElement>(null);
   const gRef_b = useRef<SVGGElement>(null);
   const gRef_c = useRef<SVGGElement>(null);
+  const circleRef = useRef<SVGCircleElement>(null);
 
   const [idx, setIdx] = useState<number>(0);
   const [startIdx, setStartIdx] = useState<number>(50);
@@ -56,7 +57,7 @@ export default function LocalMinSVG() {
   const [arr, setArr] = useState<number[]>([700]);
 
   const [velocity, setVelocity] = useState<number>(0);
-  const momentum = 0.9955;
+  const [inertia, setInertia] = useState<number>(0.9955);
 
   const [isFirst, setIsFirst] = useState<boolean>(true);
 
@@ -146,7 +147,7 @@ export default function LocalMinSVG() {
     let currentVelocity = velocity;
     for (let i = 0; i < 1000; i++) {
       const gradient = stepSize * get_dfunction_value(arr[arr.length - 1]);
-      currentVelocity = momentum * currentVelocity + gradient;
+      currentVelocity = inertia * currentVelocity + gradient;
       arr.push(arr[arr.length - 1] + currentVelocity);
     }
     setArr(arr);
@@ -160,6 +161,7 @@ export default function LocalMinSVG() {
     a,
     b,
     c,
+    inertia,
   ]);
 
   useEffect(() => {
@@ -255,13 +257,42 @@ export default function LocalMinSVG() {
   }, [a_function_value, b_function_value, c_function_value, a, b, c]);
 
   useEffect(() => {
-    const svg = d3.select(svgRef.current);
-    const g_a = d3.select(gRef_a.current);
-    const g_b = d3.select(gRef_b.current);
-    const g_c = d3.select(gRef_c.current);
-    if (svg.empty() || g_a.empty() || g_b.empty() || g_c.empty()) return;
+    if (isFirst) setIsFirst(false);
+    else {
+      setIdx(0);
+      setIsAutoPlay(false);
+    }
+  }, [startIdx]);
 
-    const drag_a = d3.drag().on('drag', function (e: { y: number; x: number }) {
+  useEffect(() => {
+    const g_a = d3.select(gRef_a.current) as d3.Selection<
+      SVGGElement,
+      unknown,
+      any,
+      any
+    >;
+    const g_b = d3.select(gRef_b.current) as d3.Selection<
+      SVGGElement,
+      unknown,
+      any,
+      any
+    >;
+    const g_c = d3.select(gRef_c.current) as d3.Selection<
+      SVGGElement,
+      unknown,
+      any,
+      any
+    >;
+    const circle = d3.select(circleRef.current) as d3.Selection<
+      SVGCircleElement,
+      unknown,
+      any,
+      any
+    >;
+
+    const drag_a = (
+      d3.drag() as d3.DragBehavior<SVGGElement, unknown, unknown>
+    ).on('drag', function (e: { y: number; x: number }) {
       if (e.y >= 0 && e.y <= height) {
         setA_function_value(e.y);
       } else if (e.y < 0) {
@@ -278,7 +309,9 @@ export default function LocalMinSVG() {
       }
     });
     g_a.call(drag_a);
-    const drag_b = d3.drag().on('drag', function (e: { y: number; x: number }) {
+    const drag_b = (
+      d3.drag() as d3.DragBehavior<SVGGElement, unknown, unknown>
+    ).on('drag', function (e: { y: number; x: number }) {
       if (e.y >= 0 && e.y <= height) {
         setB_function_value(e.y);
       } else if (e.y < 0) {
@@ -295,7 +328,9 @@ export default function LocalMinSVG() {
       }
     });
     g_b.call(drag_b);
-    const drag_c = d3.drag().on('drag', function (e: { y: number; x: number }) {
+    const drag_c = (
+      d3.drag() as d3.DragBehavior<SVGGElement, unknown, unknown>
+    ).on('drag', function (e: { y: number; x: number }) {
       if (e.y >= 0 && e.y <= height) {
         setC_function_value(e.y);
       } else if (e.y < 0) {
@@ -312,6 +347,18 @@ export default function LocalMinSVG() {
       }
     });
     g_c.call(drag_c);
+    const drag_circle = (
+      d3.drag() as d3.DragBehavior<SVGCircleElement, unknown, unknown>
+    ).on('drag', function (e: { x: number }) {
+      if (e.x >= 0 && e.x <= width) {
+        setStartIdx(parseInt(String(e.x)));
+      } else if (e.x < 0) {
+        setStartIdx(0);
+      } else if (e.x > width) {
+        setStartIdx(width);
+      }
+    });
+    circle.call(drag_circle);
   }, []);
 
   return (
@@ -327,59 +374,90 @@ export default function LocalMinSVG() {
           <DragIcon x={c} y={c_function_value} />
         </g>
         <circle
+          ref={circleRef}
           cx={arr[idx]}
           cy={get_function_real_value(arr[idx], k_ab, h_ab, k_bc, h_bc)}
           r='25'
           fill='#B5ABDF'
         />
       </svg>
-      <div className='flex gap-2 mt-2'>
-        <label htmlFor='idx'>time :</label>
-        <input
-          id='idx'
-          type='range'
-          min={0}
-          max={1000}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setIdx(Number(e.target.value));
-            setIsAutoPlay(false);
-          }}
-          value={idx}
-        />
-        <label htmlFor='startIdx'>start position :</label>
-        <input
-          id='startIdx'
-          type='range'
-          min={0}
-          max={1600}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setStartIdx(Number(e.target.value));
-            setIdx(0);
-            setIsAutoPlay(false);
-          }}
-          value={startIdx}
-        />
-        <label htmlFor='stepSize'>step size :</label>
-        <input
-          id='stepSize'
-          type='range'
-          min={0.01}
-          max={0.1}
-          step={0.001}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setStepSize(Number(e.target.value));
-            setIdx(0);
-            setIsAutoPlay(false);
-          }}
-          value={stepSize}
-        />
-        <label htmlFor='isAutoPlay'>auto play :</label>
-        <input
-          id='isAutoPlay'
-          type='checkbox'
-          checked={isAutoPlay}
-          onChange={({ target: { checked } }) => setIsAutoPlay(checked)}
-        />
+      <div className='flex justify-center w-auto gap-8 mt-2 md:gap-16'>
+        <div className='flex flex-col items-center gap-1'>
+          <div>
+            <p className=''>time : {idx}</p>
+            <input
+              id='idx'
+              type='range'
+              min={0}
+              max={1000}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setIdx(Number(e.target.value));
+                setIsAutoPlay(false);
+              }}
+              value={idx}
+            />
+          </div>
+          <div>
+            <p>start position : {startIdx}</p>
+            <input
+              id='startIdx'
+              type='range'
+              min={0}
+              max={1600}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setStartIdx(Number(e.target.value));
+                setIdx(0);
+                setIsAutoPlay(false);
+              }}
+              value={startIdx}
+            />
+          </div>
+        </div>
+        <div className='flex flex-col items-center gap-1'>
+          <div>
+            <p>step size : {stepSize}</p>
+            <input
+              id='stepSize'
+              type='range'
+              min={0.01}
+              max={0.1}
+              step={0.001}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setStepSize(Number(e.target.value));
+                setIdx(0);
+                setIsAutoPlay(false);
+              }}
+              value={stepSize}
+            />
+          </div>
+          <div>
+            <p>inertia : {inertia}</p>
+            <input
+              id='stepSize'
+              type='range'
+              min={0.95}
+              max={0.999}
+              step={0.0001}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setInertia(Number(e.target.value));
+                setIdx(0);
+                setIsAutoPlay(false);
+              }}
+              value={inertia}
+            />
+          </div>
+        </div>
+      </div>
+      <div className='flex justify-center'>
+        <div className='flex items-center gap-2'>
+          <p>auto play :</p>
+          <input
+            id='isAutoPlay'
+            type='checkbox'
+            checked={isAutoPlay}
+            onChange={({ target: { checked } }) => setIsAutoPlay(checked)}
+          />
+        </div>
       </div>
     </>
   );
