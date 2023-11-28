@@ -268,26 +268,26 @@ export default function LocalMinSVG() {
     const g_a = d3.select(gRef_a.current) as d3.Selection<
       SVGGElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
     const g_b = d3.select(gRef_b.current) as d3.Selection<
       SVGGElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
     const g_c = d3.select(gRef_c.current) as d3.Selection<
       SVGGElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
     const circle = d3.select(circleRef.current) as d3.Selection<
       SVGCircleElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
 
     const drag_a = (

@@ -142,20 +142,20 @@ export default function LocalMinSVG() {
     const g_a = d3.select(gRef_a.current) as d3.Selection<
       SVGGElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
     const g_b = d3.select(gRef_b.current) as d3.Selection<
       SVGGElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
     const g_c = d3.select(gRef_c.current) as d3.Selection<
       SVGGElement,
       unknown,
-      any,
-      any
+      null,
+      undefined
     >;
 
     // if (g_a.empty() || g_b.empty() || g_c.empty()) return;

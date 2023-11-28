@@ -10,7 +10,7 @@ export default function Custom404() {
           alt='404 img'
           width={204}
           height={1}
-        ></NextImage>
+        />
         <p className='mt-3 text-4xl font-fontSub md:text-5xl'>404 Error</p>
         <p className='text-md font-fontSub'>Page not found</p>
       </div>
