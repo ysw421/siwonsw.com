@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import 'katex/dist/katex.min.css';
 
 import Paper from '@/components/Paper';
+import GradientDescentSVG from '@/components/paper/momentum/GradientDescentSVG';
 import LocalMinSVG from '@/components/paper/momentum/LocalMinSVG';
 import { SubTitle } from '@/components/utilities';
 
@@ -68,19 +69,32 @@ export default function Momentum() {
         위해 미분값에 대한 정보를 바탕으로 작은 값만큼 이동하는 기법을 경사
         하강법이라 합니다. 여기서 '작은 값'은 얼마 만큼 움직일지 설정한 값으로
         step-size라고 부르며 symbol <InlineMath math='\gamma' />로
-        표현하겠습니다(
+        표현하겠습니다. step-size는 양수로 설정하여야 하는데(
         <InlineMath math='\gamma > 0' />
-        ). 경사 하강법의 시간별 위치(index)를 <InlineMath math='x_t' />로
-        표현하면 1차 최적화 알고리듬(output은 언제나{' '}
-        <InlineMath math='\mathbb{R}' />) 경사 하강법의 알고리듬은 다음과
-        같습니다.
-        <div className='my-8'>
-          <BlockMath math='x_{t+1} = x_t - \gamma \nabla f(x_t)^\intercal' />
-        </div>
-        위 식을 반복하면 local minimum에 수렴합니다.
+        ), 이는 미분값이 음수일 경우 오른쪽으로 양수일 경우 왼쪽으로 이동해야
+        하기 때문입니다(자세한 것은 아래 식을 참조).{' '}
+        <InlineMath math='\gamma < 0' />일 경우 경사 하강법식 local minimum이
+        아닌 local maximum에 수렴하며 경사 상승법이라 부릅니다. 경사 하강법의
+        시간별 위치(index)를 <InlineMath math='x_t' />로 표현하며 첫 index 값인{' '}
+        <InlineMath math='x_0' />은 임의의 수로 설정합니다. 1차 최적화
+        알고리듬(output은 언제나 <InlineMath math='\mathbb{R}' />
+        )인 경사 하강법의 식은 다음과 같습니다.
       </p>
-      <BlockMath math='f(x) = x^2 + 2x + 1' />
-      <InlineMath math='\frac{df}{dx} = 2x + 2' />
+      <div className='my-8'>
+        <BlockMath math='x_{t+1} = x_t - \gamma \nabla f(x_t)^\intercal' />
+      </div>
+      <p>
+        step-size가 굉장히 작은 값을 고려하여{' '}
+        <InlineMath math='f(x_{i+1}) \leq f(x_i)' />을 만족하여 위 식을 반복하면
+        local minimum에 수렴합니다. 앞에서 등장한 object의 경우 input값이
+        단변량이지만, 훌륭한 machine learning 모델을 위해 다변량 input값을
+        고려할 필요가 있습니다. 위 식에서 전치 행렬(
+        <InlineMath math='^\intercal' />
+        )는 input값이 다변량인 경우를 고려하여 추가하였습니다.
+      </p>
+      <div className='w-4/5 m-auto my-8 aspect-video'>
+        <GradientDescentSVG />
+      </div>
     </Paper>
   );
 }

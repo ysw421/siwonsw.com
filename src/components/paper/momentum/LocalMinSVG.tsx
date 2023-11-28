@@ -23,17 +23,20 @@ function DragIcon({ x, y }: { x: number; y: number }) {
 }
 
 export default function LocalMinSVG() {
+  const width = 1600;
+  const height = 1000;
+
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef_a = useRef<SVGGElement>(null);
   const gRef_b = useRef<SVGGElement>(null);
   const gRef_c = useRef<SVGGElement>(null);
 
-  const [a, setA] = useState(0);
-  const [b, setB] = useState(0);
-  const [c, setC] = useState(0);
-  const [a_function_value, setA_function_value] = useState(500);
-  const [b_function_value, setB_function_value] = useState(200);
-  const [c_function_value, setC_function_value] = useState(700);
+  const [a, setA] = useState<number>(width / 4);
+  const [b, setB] = useState<number>(width / 2);
+  const [c, setC] = useState<number>((width * 3) / 4);
+  const [a_function_value, setA_function_value] = useState<number>(500);
+  const [b_function_value, setB_function_value] = useState<number>(200);
+  const [c_function_value, setC_function_value] = useState<number>(700);
 
   useEffect(() => {
     const svg = svgRef.current;
@@ -42,73 +45,52 @@ export default function LocalMinSVG() {
       if (!svg.firstChild) return;
       svg.firstChild.remove();
     }
-
-    const width = 1600;
-    const height = 1000;
     const gridGap = 150;
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     const d = [];
-    const a = width / 4;
-    const b = width / 2;
-    const c = (width * 3) / 4;
+    // const a = width / 4;
+    // const b = width / 2;
+    // const c = (width * 3) / 4;
 
-    setA(a);
-    setB(b);
-    setC(c);
+    // setA(a);
+    // setB(b);
+    // setC(c);
 
+    function g_a(x: number) {
+      return (-((x - a) ** 2) * a_function_value) / a ** 2 + a_function_value;
+    }
     function g_ab(x: number) {
       return x ** 3 / 3 - ((a + b) / 2) * x ** 2 + a * b * x;
     }
     function g_bc(x: number) {
       return x ** 3 / 3 - ((b + c) / 2) * x ** 2 + b * c * x;
     }
+    function g_c(x: number) {
+      return (
+        (-((x - c) ** 2) * c_function_value) / (width - c) ** 2 +
+        c_function_value
+      );
+    }
     const k_ab = (a_function_value - b_function_value) / (g_ab(a) - g_ab(b));
     const h_ab = a_function_value - k_ab * g_ab(a);
     const k_bc = (b_function_value - c_function_value) / (g_bc(b) - g_bc(c));
     const h_bc = b_function_value - k_bc * g_bc(b);
-    for (let x = a; x <= c; x++) {
+    for (let x = 0; x <= width; x++) {
       let y;
-      if (x >= a && x <= b) {
+      if (x < a) y = g_a(x);
+      else if (x >= a && x <= b) {
         y = k_ab * g_ab(x) + h_ab;
       } else if (x >= b && x <= c) {
         y = k_bc * g_bc(x) + h_bc;
-      }
-      d.push(`${x === a ? 'M' : 'L'} ${x},${y}`);
+      } else y = g_c(x);
+      d.push(`${x === 0 ? 'M' : 'L'} ${x},${y}`);
     }
     path.setAttribute('d', d.join(' '));
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', '#f00');
     path.setAttribute('stroke-width', '5');
     svg.insertBefore(path, svg.firstChild);
-
-    const path_f = document.createElementNS(
-      'http://www.w3.org/2000/svg',
-      'path'
-    );
-    path_f.setAttribute(
-      'd',
-      `M 0,0 Q ${a / 2},${a_function_value} ${a},${a_function_value}`
-    );
-    path_f.setAttribute('fill', 'none');
-    path_f.setAttribute('stroke', '#f00');
-    path_f.setAttribute('stroke-width', '5');
-    svg.insertBefore(path_f, svg.firstChild);
-
-    const path_l = document.createElementNS(
-      'http://www.w3.org/2000/svg',
-      'path'
-    );
-    path_l.setAttribute(
-      'd',
-      `M ${c},${c_function_value} Q ${
-        (c + width) / 2
-      },${c_function_value} ${width},0`
-    );
-    path_l.setAttribute('fill', 'none');
-    path_l.setAttribute('stroke', '#f00');
-    path_l.setAttribute('stroke-width', '5');
-    svg.insertBefore(path_l, svg.firstChild);
 
     for (let x = 0; x < width; x += gridGap) {
       const line = document.createElementNS(
@@ -149,7 +131,7 @@ export default function LocalMinSVG() {
     line.setAttribute('y2', (height - 1).toString());
     line.setAttribute('stroke', '#000');
     svg.insertBefore(line, svg.firstChild);
-  }, [a_function_value, b_function_value, c_function_value]);
+  }, [a_function_value, b_function_value, c_function_value, a, b, c]);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
@@ -158,16 +140,31 @@ export default function LocalMinSVG() {
     const g_c = d3.select(gRef_c.current);
     if (svg.empty() || g_a.empty() || g_b.empty() || g_c.empty()) return;
 
-    const drag_a = d3.drag().on('drag', function (e: { y: number }) {
-      setA_function_value(e.y);
+    const drag_a = d3.drag().on('drag', function (e: { y: number; x: number }) {
+      if (e.y >= 0 && e.y <= height) {
+        setA_function_value(e.y);
+      }
+      if (e.x >= 50 && e.x <= width / 3) {
+        setA(e.x);
+      }
     });
     g_a.call(drag_a);
-    const drag_b = d3.drag().on('drag', function (e: { y: number }) {
-      setB_function_value(e.y);
+    const drag_b = d3.drag().on('drag', function (e: { y: number; x: number }) {
+      if (e.y >= 0 && e.y <= height) {
+        setB_function_value(e.y);
+      }
+      if (e.x >= width / 3 + 50 && e.x <= (width * 2) / 3 - 50) {
+        setB(e.x);
+      }
     });
     g_b.call(drag_b);
-    const drag_c = d3.drag().on('drag', function (e: { y: number }) {
-      setC_function_value(e.y);
+    const drag_c = d3.drag().on('drag', function (e: { y: number; x: number }) {
+      if (e.y >= 0 && e.y <= height) {
+        setC_function_value(e.y);
+      }
+      if (e.x >= (width * 2) / 3 && e.x <= width - 50) {
+        setC(e.x);
+      }
     });
     g_c.call(drag_c);
   }, []);
