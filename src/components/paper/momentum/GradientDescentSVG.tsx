@@ -8,7 +8,7 @@ export default function GradientDescentSVG() {
 
   const [idx, setIdx] = useState<number>(0);
   const [startIdx, setStartIdx] = useState<number>(700);
-  const [stepSize, setStepSize] = useState<number>(0.1);
+  const [stepSize, setStepSize] = useState<number>(0.05);
 
   const [a, setA] = useState<number>(width / 4);
   const [b, setB] = useState<number>(width / 2);
@@ -233,10 +233,7 @@ export default function GradientDescentSVG() {
           id='isAutoPlay'
           type='checkbox'
           checked={isAutoPlay}
-          onChange={({ target: { checked } }) => {
-            setIsAutoPlay(checked);
-            console.log(checked);
-          }}
+          onChange={({ target: { checked } }) => setIsAutoPlay(checked)}
         />
       </div>
     </>

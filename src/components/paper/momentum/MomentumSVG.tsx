@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 function DragIcon({ x, y }: { x: number; y: number }) {
   return (
@@ -31,17 +31,141 @@ export default function LocalMinSVG() {
   const gRef_b = useRef<SVGGElement>(null);
   const gRef_c = useRef<SVGGElement>(null);
 
+  const [idx, setIdx] = useState<number>(0);
+  const [startIdx, setStartIdx] = useState<number>(50);
+  const [stepSize, setStepSize] = useState<number>(0.02);
+
   const [a, setA] = useState<number>(width / 4);
   const [b, setB] = useState<number>(width / 2);
   const [c, setC] = useState<number>((width * 3) / 4);
+  const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
+
   const [a_function_value, setA_function_value] = useState<number>(500);
   const [b_function_value, setB_function_value] = useState<number>(200);
   const [c_function_value, setC_function_value] = useState<number>(700);
 
+  const [k_ab, setK_ab] = useState<number>(
+    (a_function_value - b_function_value) / (g_ab(a) - g_ab(b))
+  );
+  const [h_ab, setH_ab] = useState<number>(a_function_value - k_ab * g_ab(a));
+  const [k_bc, setK_bc] = useState<number>(
+    (b_function_value - c_function_value) / (g_bc(b) - g_bc(c))
+  );
+  const [h_bc, setH_bc] = useState<number>(b_function_value - k_bc * g_bc(b));
+
+  const [arr, setArr] = useState<number[]>([700]);
+
+  const [velocity, setVelocity] = useState<number>(0);
+  const momentum = 0.9955;
+
+  const [isFirst, setIsFirst] = useState<boolean>(true);
+
+  function g_a(x: number) {
+    return (-((x - a) ** 2) * a_function_value) / a ** 2 + a_function_value;
+  }
+  function g_ab(x: number) {
+    return x ** 3 / 3 - ((a + b) / 2) * x ** 2 + a * b * x;
+  }
+  function g_bc(x: number) {
+    return x ** 3 / 3 - ((b + c) / 2) * x ** 2 + b * c * x;
+  }
+  function g_c(x: number) {
+    return (
+      (-((x - c) ** 2) * c_function_value) / (width - c) ** 2 + c_function_value
+    );
+  }
+  function dg_a() {
+    return ((2 * a_function_value) / a) * (-1 / a + 1);
+  }
+  function dg_ab(x: number) {
+    return x ** 2 - (a + b) * x + a * b;
+  }
+  function dg_bc(x: number) {
+    return x ** 2 - (b + c) * x + b * c;
+  }
+  function dg_c() {
+    return -((2 * c_function_value) / (width - c)) * (-1 / (width - c) + 1);
+  }
+
+  // function get_function_value(x: number) {
+  //   let y;
+  //   if (x < a) y = g_a(x);
+  //   else if (x >= a && x <= b) {
+  //     y = k_ab * g_ab(x) + h_ab;
+  //   } else if (x >= b && x <= c) {
+  //     y = k_bc * g_bc(x) + h_bc;
+  //   } else y = g_c(x);
+  //   return y;
+  // }
+  function get_dfunction_value(x: number) {
+    let y;
+    if (x < a) y = dg_a();
+    else if (x >= a && x <= b) {
+      y = k_ab * dg_ab(x);
+    } else if (x >= b && x <= c) {
+      y = k_bc * dg_bc(x);
+    } else y = dg_c();
+    return y;
+  }
+
+  function get_function_real_value(
+    x: number,
+    k_ab: number,
+    h_ab: number,
+    k_bc: number,
+    h_bc: number
+  ) {
+    let y;
+    if (x < a) y = g_a(x);
+    else if (x >= a && x <= b) {
+      y = k_ab * g_ab(x) + h_ab;
+    } else if (x >= b && x <= c) {
+      y = k_bc * g_bc(x) + h_bc;
+    } else y = g_c(x);
+    return y;
+  }
+
+  useEffect(() => {
+    const changeIdx = setInterval(() => {
+      if (!isAutoPlay) return;
+      setIdx((e: number) => (e >= 1000 ? 0 : e + 5));
+    }, 10);
+    return () => clearInterval(changeIdx);
+  }, [isAutoPlay]);
+
+  useEffect(() => {
+    // const arr = [startIdx];
+    // for (let i = 0; i < 10000; i++) {
+    //   arr.push(
+    //     arr[arr.length - 1] +
+    //       stepSize * get_dfunction_value(arr[arr.length - 1])
+    //   );
+    // }
+    // setArr(arr);
+    const arr = [startIdx];
+    let currentVelocity = velocity;
+    for (let i = 0; i < 1000; i++) {
+      const gradient = stepSize * get_dfunction_value(arr[arr.length - 1]);
+      currentVelocity = momentum * currentVelocity + gradient;
+      arr.push(arr[arr.length - 1] + currentVelocity);
+    }
+    setArr(arr);
+    setVelocity(currentVelocity);
+  }, [
+    stepSize,
+    startIdx,
+    a_function_value,
+    b_function_value,
+    c_function_value,
+    a,
+    b,
+    c,
+  ]);
+
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg) return;
-    while (svg.children.length > 3) {
+    while (svg.children.length > 4) {
       if (!svg.firstChild) return;
       svg.firstChild.remove();
     }
@@ -57,33 +181,24 @@ export default function LocalMinSVG() {
     // setB(b);
     // setC(c);
 
-    function g_a(x: number) {
-      return (-((x - a) ** 2) * a_function_value) / a ** 2 + a_function_value;
-    }
-    function g_ab(x: number) {
-      return x ** 3 / 3 - ((a + b) / 2) * x ** 2 + a * b * x;
-    }
-    function g_bc(x: number) {
-      return x ** 3 / 3 - ((b + c) / 2) * x ** 2 + b * c * x;
-    }
-    function g_c(x: number) {
-      return (
-        (-((x - c) ** 2) * c_function_value) / (width - c) ** 2 +
-        c_function_value
-      );
-    }
     const k_ab = (a_function_value - b_function_value) / (g_ab(a) - g_ab(b));
     const h_ab = a_function_value - k_ab * g_ab(a);
     const k_bc = (b_function_value - c_function_value) / (g_bc(b) - g_bc(c));
     const h_bc = b_function_value - k_bc * g_bc(b);
+
+    setK_ab(k_ab);
+    setH_ab(h_ab);
+    setK_bc(k_bc);
+    setH_bc(h_bc);
+
     for (let x = 0; x <= width; x++) {
-      let y;
-      if (x < a) y = g_a(x);
-      else if (x >= a && x <= b) {
-        y = k_ab * g_ab(x) + h_ab;
-      } else if (x >= b && x <= c) {
-        y = k_bc * g_bc(x) + h_bc;
-      } else y = g_c(x);
+      const y = get_function_real_value(x, k_ab, h_ab, k_bc, h_bc);
+      // if (x < a) y = g_a(x);
+      // else if (x >= a && x <= b) {
+      //   y = k_ab * g_ab(x) + h_ab;
+      // } else if (x >= b && x <= c) {
+      //   y = k_bc * g_bc(x) + h_bc;
+      // } else y = g_c(x);
       d.push(`${x === 0 ? 'M' : 'L'} ${x},${y}`);
     }
     path.setAttribute('d', d.join(' '));
@@ -131,6 +246,12 @@ export default function LocalMinSVG() {
     line.setAttribute('y2', (height - 1).toString());
     line.setAttribute('stroke', '#000');
     svg.insertBefore(line, svg.firstChild);
+
+    if (isFirst) setIsFirst(false);
+    else {
+      setIdx(0);
+      setIsAutoPlay(false);
+    }
   }, [a_function_value, b_function_value, c_function_value, a, b, c]);
 
   useEffect(() => {
@@ -193,64 +314,73 @@ export default function LocalMinSVG() {
     g_c.call(drag_c);
   }, []);
 
-  // <text
-  //   x='30'
-  //   y='90'
-  //   fill='#ED6E46'
-  //   font-size='100'
-  //   font-family="'Leckerli One', cursive"
-  //   text-anchor='middle'
-  // >
-  //   evening
-  // </text>;
   return (
-    <svg ref={svgRef} className='w-full h-full' viewBox='0 0 1600 1000'>
-      <g ref={gRef_a}>
-        <DragIcon x={a} y={a_function_value} />
-        {a_function_value > b_function_value && (
-          <text
-            x={a}
-            y={a_function_value + 60}
-            font-size='40'
-            text-anchor='middle'
-          >
-            {a_function_value > c_function_value
-              ? 'global minimum'
-              : 'local minimum'}
-          </text>
-        )}
-      </g>
-      <g ref={gRef_b}>
-        <DragIcon x={b} y={b_function_value} />
-        {b_function_value > a_function_value &&
-          b_function_value > c_function_value && (
-            <>
-              <text
-                x={b}
-                y={b_function_value + 60}
-                font-size='40'
-                text-anchor='middle'
-              >
-                global minimum
-              </text>
-            </>
-          )}
-      </g>
-      <g ref={gRef_c}>
-        <DragIcon x={c} y={c_function_value} />
-        {c_function_value > b_function_value && (
-          <text
-            x={c}
-            y={c_function_value + 60}
-            font-size='40'
-            text-anchor='middle'
-          >
-            {c_function_value > a_function_value
-              ? 'global minimum'
-              : 'local minimum'}
-          </text>
-        )}
-      </g>
-    </svg>
+    <>
+      <svg ref={svgRef} className='w-full h-full' viewBox='0 0 1600 1000'>
+        <g ref={gRef_a}>
+          <DragIcon x={a} y={a_function_value} />
+        </g>
+        <g ref={gRef_b}>
+          <DragIcon x={b} y={b_function_value} />
+        </g>
+        <g ref={gRef_c}>
+          <DragIcon x={c} y={c_function_value} />
+        </g>
+        <circle
+          cx={arr[idx]}
+          cy={get_function_real_value(arr[idx], k_ab, h_ab, k_bc, h_bc)}
+          r='25'
+          fill='#B5ABDF'
+        />
+      </svg>
+      <div className='flex gap-2 mt-2'>
+        <label htmlFor='idx'>time :</label>
+        <input
+          id='idx'
+          type='range'
+          min={0}
+          max={1000}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setIdx(Number(e.target.value));
+            setIsAutoPlay(false);
+          }}
+          value={idx}
+        />
+        <label htmlFor='startIdx'>start position :</label>
+        <input
+          id='startIdx'
+          type='range'
+          min={0}
+          max={1600}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setStartIdx(Number(e.target.value));
+            setIdx(0);
+            setIsAutoPlay(false);
+          }}
+          value={startIdx}
+        />
+        <label htmlFor='stepSize'>step size :</label>
+        <input
+          id='stepSize'
+          type='range'
+          min={0.01}
+          max={0.1}
+          step={0.001}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setStepSize(Number(e.target.value));
+            setIdx(0);
+            setIsAutoPlay(false);
+          }}
+          value={stepSize}
+        />
+        <label htmlFor='isAutoPlay'>auto play :</label>
+        <input
+          id='isAutoPlay'
+          type='checkbox'
+          checked={isAutoPlay}
+          onChange={({ target: { checked } }) => setIsAutoPlay(checked)}
+        />
+      </div>
+    </>
   );
 }

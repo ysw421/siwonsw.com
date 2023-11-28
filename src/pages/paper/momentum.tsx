@@ -7,6 +7,7 @@ import 'katex/dist/katex.min.css';
 import Paper from '@/components/Paper';
 import GradientDescentSVG from '@/components/paper/momentum/GradientDescentSVG';
 import LocalMinSVG from '@/components/paper/momentum/LocalMinSVG';
+import MomentumSVG from '@/components/paper/momentum/MomentumSVG';
 import { SubTitle } from '@/components/utilities';
 
 export default function Momentum() {
@@ -94,6 +95,9 @@ export default function Momentum() {
       </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
         <GradientDescentSVG />
+      </div>
+      <div className='w-4/5 m-auto my-8 aspect-video'>
+        <MomentumSVG />
       </div>
     </Paper>
   );
