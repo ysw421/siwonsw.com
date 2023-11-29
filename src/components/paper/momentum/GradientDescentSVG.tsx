@@ -229,7 +229,7 @@ export default function GradientDescentSVG() {
       setIdx(0);
       setIsAutoPlay(false);
     }
-  }, [a_function_value, b_function_value, c_function_value]);
+  }, [a_function_value, b_function_value, c_function_value, a, b, c]);
 
   useEffect(() => {
     if (isFirst) setIsFirst(false);
