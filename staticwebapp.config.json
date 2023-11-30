@@ -1,5 +1,5 @@
 {
   "navigationFallback": {
-    "rewrite": "/src/pages/404.tsx"
+    "rewrite": "/404.html"
   }
 }
