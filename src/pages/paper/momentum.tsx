@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import 'katex/dist/katex.min.css';
 
+import Button from '@/components/buttons/Button';
 import Paper from '@/components/Paper';
 import GradientDescentSVG from '@/components/paper/momentum/GradientDescentSVG';
 import LocalMinSVG from '@/components/paper/momentum/LocalMinSVG';
@@ -11,7 +12,20 @@ import MomentumSVG from '@/components/paper/momentum/MomentumSVG';
 import { SubTitle } from '@/components/utilities';
 
 export default function Momentum() {
+  const width = 1600;
+  const height = 1000;
+
   const [isMd, setIsMd] = useState(false);
+
+  const [gd_a_function_value, setGd_A_function_value] = useState<number>(500);
+  const [gd_b_function_value, setGd_B_function_value] = useState<number>(200);
+  const [gd_c_function_value, setGd_C_function_value] = useState<number>(700);
+  const [gd_startIdx, setGd_StartIdx] = useState<number>(700);
+  const [gd_stepSize, setGd_StepSize] = useState<number>(0.05);
+
+  const [gd_a, setGd_A] = useState<number>(width / 4);
+  const [gd_b, setGd_B] = useState<number>(width / 2);
+  const [gd_c, setGd_C] = useState<number>((width * 3) / 4);
 
   const md = useMediaQuery({
     query: '(min-width : 768px)',
@@ -94,8 +108,63 @@ export default function Momentum() {
         )는 input값이 다변량인 경우를 고려하여 추가하였습니다.
       </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
-        <GradientDescentSVG />
+        <GradientDescentSVG
+          a_function_value={gd_a_function_value}
+          b_function_value={gd_b_function_value}
+          c_function_value={gd_c_function_value}
+          setA_function_value={setGd_A_function_value}
+          setB_function_value={setGd_B_function_value}
+          setC_function_value={setGd_C_function_value}
+          a={gd_a}
+          b={gd_b}
+          c={gd_c}
+          setA={setGd_A}
+          setB={setGd_B}
+          setC={setGd_C}
+          startIdx={gd_startIdx}
+          setStartIdx={setGd_StartIdx}
+          stepSize={gd_stepSize}
+          setStepSize={setGd_StepSize}
+        />
       </div>
+      <p>
+        위는 경사 하강법을 시각화한 object입니다. 경사 하강법의 결과, 처음
+        위치에 따라 각각의 local minimum으로 수렴해간다는 것을 확인할 수
+        있습니다. 식에서 예상 가능한 바와 같이, 기울기가 급격한 지점에서는 값이
+        빠르게 변화하지만{' '}
+        <Button
+          className='mx-1'
+          onClick={() => {
+            setGd_A(width / 4);
+            setGd_B(width / 2);
+            setGd_C((width * 3) / 4);
+            setGd_A_function_value(400);
+            setGd_B_function_value(420);
+            setGd_C_function_value(400);
+            setGd_StartIdx(500);
+            setGd_StepSize(0.05);
+          }}
+        >
+          Case 1
+        </Button>
+        , 기울기가 완만한 지점에서는 값이 느리게 변화합니다
+        <Button
+          className='mx-1'
+          onClick={() => {
+            setGd_A(width / 4);
+            setGd_B(width / 2);
+            setGd_C((width * 3) / 4);
+            setGd_A_function_value(200);
+            setGd_B_function_value(700);
+            setGd_C_function_value(200);
+            setGd_StartIdx(500);
+            setGd_StepSize(0.05);
+          }}
+        >
+          Case 2
+        </Button>
+        .
+      </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
         <MomentumSVG />
       </div>
