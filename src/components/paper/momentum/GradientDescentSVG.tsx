@@ -399,16 +399,17 @@ export default function GradientDescentSVG({
         viewBox='0 0 1600 1000'
         onClick={() => setIsAutoPlay((e) => !e)}
       >
-        <g ref={gRef_a}>
+        <g ref={gRef_a} cursor='grap'>
           <DragIcon x={a} y={a_function_value} />
         </g>
-        <g ref={gRef_b}>
+        <g ref={gRef_b} cursor='grap'>
           <DragIcon x={b} y={b_function_value} />
         </g>
-        <g ref={gRef_c}>
+        <g ref={gRef_c} cursor='grap'>
           <DragIcon x={c} y={c_function_value} />
         </g>
         <circle
+          cursor='grap'
           ref={circleRef}
           cx={arr[idx]}
           cy={get_function_real_value(arr[idx], k_ab, h_ab, k_bc, h_bc)}

@@ -46,11 +46,11 @@ export default function Momentum() {
         문제(optimization, 최적화)로 변환 가능합니다. 비단, 함수를 최적화하는
         것은 간단한 작업이 아닙니다. 연속적인 함수인 <InlineMath math='f(x)' />
         를 가정하여 봅시다. <InlineMath math='x \in \mathbb{R}' />일 때, 모든
-        경우에 대하여 함수값을 구하고 비교하여 최솟값을 구하는 것은
+        경우에 대하여 함숫값을 구하고 비교하여 최솟값을 구하는 것은
         불가능합니다. 만약 함수 <InlineMath math='f(x)' />가 미분 가능하다면,
         함수의 최솟값에서 미분값은 0을 가집니다. 또한 미분은 함수의 기울기(더
         정확히는 각 변화량에 따른 비율)를 나타내므로, <InlineMath math='x' />의
-        직후와 직전의 함수값에 대한 정보를 포함합니다. 비단, 미분은 절대적인
+        직후와 직전의 함숫값에 대한 정보를 포함합니다. 비단, 미분은 절대적인
         최솟값을 찾는 도구가 될 수 없습니다.
       </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
@@ -78,9 +78,9 @@ export default function Momentum() {
       </p>
       <SubTitle subTitle='경사 하강법(gradient descent)' />
       <p>
-        앞서 언급한 바와 같이 연속인 함수에서 미분값은 직후와 직전 함수값에 대한
-        정보를 포함합니다. 자세히 언급컨대, 미분값이 양수인 경우 직전 함수값이
-        더 작으며, 음수인 경우 직후 함수값이 더 큽니다. local minimum을 찾기
+        앞서 언급한 바와 같이 연속인 함수에서 미분값은 직후와 직전 함숫값에 대한
+        정보를 포함합니다. 자세히 언급컨대, 미분값이 양수인 경우 직전 함숫값이
+        더 작으며, 음수인 경우 직후 함숫값이 더 큽니다. local minimum을 찾기
         위해 미분값에 대한 정보를 바탕으로 작은 값만큼 이동하는 기법을 경사
         하강법이라 합니다. 여기서 '작은 값'은 얼마 만큼 움직일지 설정한 값으로
         step-size라고 부르며 symbol <InlineMath math='\gamma' />로
@@ -133,7 +133,7 @@ export default function Momentum() {
         있습니다. 식에서 예상 가능한 바와 같이, 기울기가 급격한 지점에서는
         빠르게 수렴해 가지만{' '}
         <Button
-          className='mx-1'
+          className='py-1 mx-1'
           onClick={() => {
             setGd_A(width / 4);
             setGd_B(width / 2);
@@ -149,7 +149,7 @@ export default function Momentum() {
         </Button>
         , 기울기가 완만한 지점에서는 느리게 수렴해 값니다
         <Button
-          className='mx-1'
+          className='py-1 mx-1'
           onClick={() => {
             setGd_A(width / 4);
             setGd_B(width / 2);
@@ -163,9 +163,42 @@ export default function Momentum() {
         >
           Case 2
         </Button>
-        . step-size 또한 수렴해가는 속도에 영향을 미칩니다.{' '}
+        . step-size 또한 수렴해가는 속도에 영향을 미칩니다. step-size가
+        상대적으로 작은 상황(
         <Button
-          className='mx-1'
+          className='py-1 mx-1'
+          onClick={() => {
+            setGd_A(width / 4);
+            setGd_B(width / 2);
+            setGd_C((width * 3) / 4);
+            setGd_A_function_value(200);
+            setGd_B_function_value(700);
+            setGd_C_function_value(200);
+            setGd_StartIdx(500);
+            setGd_StepSize(0.01);
+          }}
+        >
+          Case 3
+        </Button>
+        )은 step-size가 상대적으로 큰 상황(
+        <Button
+          className='py-1 mx-1'
+          onClick={() => {
+            setGd_A(width / 4);
+            setGd_B(width / 2);
+            setGd_C((width * 3) / 4);
+            setGd_A_function_value(200);
+            setGd_B_function_value(700);
+            setGd_C_function_value(200);
+            setGd_StartIdx(500);
+            setGd_StepSize(0.1);
+          }}
+        >
+          Case 4
+        </Button>
+        )보다 보다 느리게 수렴합니다. 비단 step-size가 너무 큰 경우(
+        <Button
+          className='py-1 mx-1'
           onClick={() => {
             setGd_A(width / 3);
             setGd_B(width / 2);
@@ -177,8 +210,15 @@ export default function Momentum() {
             setGd_StepSize(40);
           }}
         >
-          Case 2
+          Case 5
         </Button>
+        ) 수렴하지 않거나 점점 최적값과 멀어질 수 있습니다. 이를
+        overshoot되었다고 표현합니다. Case 5의 경우, step-size를 인위적으로
+        범위를 벗어나는 큰 값으로 지정하였습니다. 필자가 위 object를 제작하며
+        안정성(오류가 발생하지 않는)을 위해 제약한 조건들로 인해 훌륭한
+        overshoot의 예를 제작하지는 못한점, 때문에 time이 3까지로 제한되는 점
+        양해 부탁합니다. 비단, 최적값(중앙)과 점점 멀어져 가는 시각화를 통해
+        overshoot의 개념을 이해하는데 충분하리라 생각합니다.
       </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
         <MomentumSVG />
