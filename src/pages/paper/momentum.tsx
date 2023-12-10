@@ -9,11 +9,11 @@ import Paper from '@/components/Paper';
 import GradientDescentSVG from '@/components/paper/momentum/GradientDescentSVG';
 import LocalMinSVG from '@/components/paper/momentum/LocalMinSVG';
 import MomentumSVG from '@/components/paper/momentum/MomentumSVG';
-import { SubTitle } from '@/components/utilities';
+import { Box, SubTitle } from '@/components/utilities';
 
 export default function Momentum() {
   const width = 1600;
-  const height = 1000;
+  // const height = 1000;
 
   const [isMd, setIsMd] = useState(false);
 
@@ -71,10 +71,11 @@ export default function Momentum() {
       </div>
       <p>
         위 object를 통해 local minimum과 global minimum에서 모두
-        미분값(기울기)이 0임을 확인 가능합니다. 본 글에서는 local minimum을 찾을
-        수 있는 경사 하강법(gradient descent) 및, 확률적으로 global minimum을
-        찾을 수 있는 momentum 기법에 대하여 설명합니다. 추가로 제약된 구역에서의
-        최적값을 구하는 기법을 다룹니다.
+        미분값(기울기)이 0임을 확인 가능합니다(의심할 수 있으나, 본 함수는
+        각각의 드래그 가능한 점에서 미분값이 0입니다). 본 글에서는 local
+        minimum을 찾을 수 있는 경사 하강법(gradient descent) 및, 확률적으로
+        global minimum을 찾을 수 있는 momentum 기법에 대하여 설명합니다. 추가로
+        제약된 구역에서의 최적값을 구하는 기법을 다룹니다.
       </p>
       <SubTitle subTitle='경사 하강법(gradient descent)' />
       <p>
@@ -196,7 +197,25 @@ export default function Momentum() {
         >
           Case 4
         </Button>
-        )보다 보다 느리게 수렴합니다. 비단 step-size가 너무 큰 경우(
+        ,{' '}
+        <Button
+          className='py-1 mx-1'
+          onClick={() => {
+            setGd_A(width / 4 - 100);
+            setGd_B(width / 2);
+            setGd_C((width * 3) / 4 + 100);
+            setGd_A_function_value(0);
+            setGd_B_function_value(1000);
+            setGd_C_function_value(0);
+            setGd_StartIdx(650);
+            setGd_StepSize(85);
+          }}
+        >
+          Case 5
+        </Button>
+        )보다 보다 느리게 수렴합니다. step-size가 어느 정도 이상인 경우(Case
+        5)에는 곡선을 '지그재그' 모양으로 넘어가며 이동합니다. 비단 step-size가
+        너무 큰 경우(
         <Button
           className='py-1 mx-1'
           onClick={() => {
@@ -210,15 +229,64 @@ export default function Momentum() {
             setGd_StepSize(40);
           }}
         >
-          Case 5
+          Case 6
         </Button>
         ) 수렴하지 않거나 점점 최적값과 멀어질 수 있습니다. 이를
         overshoot되었다고 표현합니다. Case 5의 경우, step-size를 인위적으로
-        범위를 벗어나는 큰 값으로 지정하였습니다. 필자가 위 object를 제작하며
-        안정성(오류가 발생하지 않는)을 위해 제약한 조건들로 인해 훌륭한
-        overshoot의 예를 제작하지는 못한점, 때문에 time이 3까지로 제한되는 점
-        양해 부탁합니다. 비단, 최적값(중앙)과 점점 멀어져 가는 시각화를 통해
-        overshoot의 개념을 이해하는데 충분하리라 생각합니다.
+        범위를 벗어나는 큰 값으로 지정하였습니다.
+        <Box>
+          ⚠️ 필자는 위 object를 제작하며 안정성(오류가 발생하지 않는)을 위해
+          다양한 제약한 조건을 추가하였습니다(함수의 좌측과 우측은 2차 함수로
+          구성된 방면, 중앙은 3차 함수로 구성 되었습니다. Case 5에서 start
+          position이 긴 계곡에서 처음 부분이 아닌 중앙 부분에 위치하게 설정한
+          이유도 이 점을 고려하여 생각해보면 좋을 것 같습니다.). 이로 인해
+          훌륭한 overshoot의 예를 제작하지는 못한 점, 때문에 time이 3까지로
+          제한되는 점, 그리고 step-size가 상대적으로 큰 경우에 대하여 다양한
+          예시를 보여주지 못한 점에 대하여 양해 부탁합니다. 비단, 최적값(중앙)과
+          점점 멀어져 가는 시각화를 통해 overshoot의 개념을 이해하는데
+          충분하리라 생각합니다.
+        </Box>
+      </p>
+      <p className='mt-8'>
+        위 object의 설정값을 다양하게 조절하며, 경사 하강법의 시각화된 모습을
+        바라보면, step-size의 설정값이 최적값을 구하는데 굉장히 중요함을 느낄 수
+        있습니다. 위 object에서는 step-size의 설정값이 경사 하강법 과정에서
+        변하지 아니하나, 경우에 따라 step-size를 변화시키면 더욱 효율적으로
+        local minimum을 찾을 수 있습니다. 예컨대, 경사 하강법을 실행했을 때,
+        함숫값이 증가하였다면 전으로 돌아가 step-size 값을 줄이며 함숫값이
+        감소하였다면 step-size 값을 증가시킬 수 있습니다. 해당 방법은 Case 5와
+        같이 지그재그하게 수렴하는 경우를 만듭니다.
+      </p>
+      <SubTitle subTitle='모멘텀(momentum)' />
+      <p>
+        앞서 언급한 바와 같이, 경사 하강법은 (적당한 step-size 값에 대하여)
+        local minimum 값을 구합니다. 즉, 다음과 같은 상황(
+        <Button
+          className='py-1 mx-1'
+          onClick={() => {
+            setGd_A(width / 4);
+            setGd_B(width / 2);
+            setGd_C((width * 3) / 4);
+            setGd_A_function_value(500);
+            setGd_B_function_value(200);
+            setGd_C_function_value(700);
+            setGd_StartIdx(90);
+            setGd_StepSize(0.1);
+          }}
+        >
+          Case 7
+        </Button>
+        )에서 global minimum 값을 찾을 수 없습니다. 다음 상황과 같이 2개의 local
+        minimum 사이 local maximum이 생길 때 이를 언덕이라 부르는데, momentum을
+        통해 언덕을 띄어 넘을 수 있습니다. 즉, momentum은 확률적으로 global
+        minimum을 구할 수 있습니다. 비단, 우리는 경사 하강법의 다른 문제점에
+        주목합니다. 경사 하강법은 1차 미분값 정보만을 바탕으로 최적화가 이루어
+        지기에, Case 5와 같이 지그재그 모양으로 수렴하는 경우가 발생하며 이 경우
+        최적화가 느리게 진행됩니다(input의 차원을 늘리면 해당 경사 하강법의
+        문제점에 대하여 더 좋은 시각화가 가능합니다. 시간이 남는다면 시각화를
+        진행해 보겠습니다). momentum 기법의 경우 '공을 굴리는 것'과 같이 관성을
+        이용합니다. 프로그래밍에서 메모리를 소비할 경우 연산 속도는 빨라지는데,
+        momentum 또한 같습니다.
       </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
         <MomentumSVG />

@@ -161,11 +161,25 @@ export default function GradientDescentSVG({
       () => {
         if (!isAutoPlay) return;
         setIdx((e: number) =>
-          stepSize > 10 ? (e >= 2 ? 0 : e + 1) : e >= 10000 ? 0 : e + 50
+          stepSize === 40
+            ? e >= 2
+              ? 0
+              : e + 1
+            : stepSize === 85
+            ? e >= 30
+              ? 0
+              : e + 1
+            : e >= 10000
+            ? 0
+            : e + 50
         );
       },
-      stepSize > 10 ? 500 : 10
+      stepSize === 40 ? 500 : stepSize === 85 ? 100 : 10
     );
+    // const changeIdx = setInterval(() => {
+    //   if (!isAutoPlay) return;
+    //   setIdx((e: number) => (e >= 10000 ? 0 : e + 50));
+    // }, 10);
     return () => clearInterval(changeIdx);
   }, [isAutoPlay]);
 
@@ -430,7 +444,7 @@ export default function GradientDescentSVG({
               id='idx'
               type='range'
               min={0}
-              max={stepSize > 10 ? 2 : 10000}
+              max={stepSize === 40 ? 2 : stepSize === 85 ? 30 : 10000}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setIdx(Number(e.target.value));
                 setIsAutoPlay(false);
@@ -462,6 +476,7 @@ export default function GradientDescentSVG({
               type='range'
               min={0.01}
               max={0.2}
+              // max={200}
               step={0.001}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setStepSize(Number(e.target.value));
