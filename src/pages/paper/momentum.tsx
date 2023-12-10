@@ -130,8 +130,8 @@ export default function Momentum() {
       <p>
         위는 경사 하강법을 시각화한 object입니다. 경사 하강법의 결과, 처음
         위치에 따라 각각의 local minimum으로 수렴해간다는 것을 확인할 수
-        있습니다. 식에서 예상 가능한 바와 같이, 기울기가 급격한 지점에서는 값이
-        빠르게 변화하지만{' '}
+        있습니다. 식에서 예상 가능한 바와 같이, 기울기가 급격한 지점에서는
+        빠르게 수렴해 가지만{' '}
         <Button
           className='mx-1'
           onClick={() => {
@@ -147,7 +147,7 @@ export default function Momentum() {
         >
           Case 1
         </Button>
-        , 기울기가 완만한 지점에서는 값이 느리게 변화합니다
+        , 기울기가 완만한 지점에서는 느리게 수렴해 값니다
         <Button
           className='mx-1'
           onClick={() => {
@@ -163,7 +163,22 @@ export default function Momentum() {
         >
           Case 2
         </Button>
-        .
+        . step-size 또한 수렴해가는 속도에 영향을 미칩니다.{' '}
+        <Button
+          className='mx-1'
+          onClick={() => {
+            setGd_A(width / 3);
+            setGd_B(width / 2);
+            setGd_C((width * 2) / 3);
+            setGd_A_function_value(0);
+            setGd_B_function_value(1000);
+            setGd_C_function_value(0);
+            setGd_StartIdx(750);
+            setGd_StepSize(40);
+          }}
+        >
+          Case 2
+        </Button>
       </p>
       <div className='w-4/5 m-auto my-8 aspect-video'>
         <MomentumSVG />

@@ -155,12 +155,30 @@ export default function GradientDescentSVG({
       setArr(arr);
     }
 
-    const changeIdx = setInterval(() => {
-      if (!isAutoPlay) return;
-      setIdx((e: number) => (e >= 10000 ? 0 : e + 50));
-    }, 10);
+    if (!isAutoPlay) return;
+
+    const changeIdx = setInterval(
+      () => {
+        if (!isAutoPlay) return;
+        setIdx((e: number) =>
+          stepSize > 10 ? (e >= 2 ? 0 : e + 1) : e >= 10000 ? 0 : e + 50
+        );
+      },
+      stepSize > 10 ? 500 : 10
+    );
     return () => clearInterval(changeIdx);
   }, [isAutoPlay]);
+
+  useEffect(() => {
+    const arr = [startIdx];
+    for (let i = 0; i < idx + 1; i++) {
+      arr.push(
+        arr[arr.length - 1] +
+          stepSize * get_dfunction_value(arr[arr.length - 1])
+      );
+    }
+    setArr(arr);
+  }, [idx]);
 
   useEffect(() => {
     const arr = [startIdx];
@@ -168,6 +186,7 @@ export default function GradientDescentSVG({
       arr[arr.length - 1] + stepSize * get_dfunction_value(arr[arr.length - 1])
     );
     setArr(arr);
+    setIdx(0);
   }, [
     stepSize,
     startIdx,
@@ -410,7 +429,7 @@ export default function GradientDescentSVG({
               id='idx'
               type='range'
               min={0}
-              max={10000}
+              max={stepSize > 10 ? 2 : 10000}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setIdx(Number(e.target.value));
                 setIsAutoPlay(false);
