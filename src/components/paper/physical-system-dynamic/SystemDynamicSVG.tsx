@@ -12,14 +12,19 @@ export default function SystemDynamicSVG({
   length,
   weightY,
   setWeightY,
+  update,
 }: {
   length: number;
   weightY: number;
   setWeightY: React.Dispatch<React.SetStateAction<number>>;
+  update: boolean;
 }) {
   // const [cartX, setCartX] = useState<number>(0);
   // const [weightY, setWeightY] = useState<number>(length);
   const [cartSpeed, setCartSpeed] = useState<number>(0);
+  const defaultTime = 1000; // default time for 1 second
+  // const frame = 0.05; // num per second
+  const frame = 0.05;
 
   interface Node {
     name: string;
@@ -28,7 +33,7 @@ export default function SystemDynamicSVG({
     value: number;
     isFlow?: boolean;
     rate?: number;
-    parameter?: boolean;
+    isParameter?: boolean;
   }
 
   interface Link {
@@ -43,28 +48,28 @@ export default function SystemDynamicSVG({
     x: 120,
     y: 755,
     value: 1,
-    parameter: true,
+    isParameter: true,
   };
   nodes['추 질량'] = {
     name: 'C: 질량',
     x: 1480,
     y: 755,
     value: 2,
-    parameter: true,
+    isParameter: true,
   };
   nodes['전체 질량'] = {
     name: 'C: 전체 질량',
     x: 600,
     y: 1150,
     value: nodes['수레 질량'].value + nodes['추 질량'].value,
-    parameter: true,
+    isParameter: true,
   };
   nodes['중력 가속도'] = {
     name: 'C: 중력 가속도',
-    x: 1050,
-    y: 1250,
+    x: 950,
+    y: 1300,
     value: 9.8,
-    parameter: true,
+    isParameter: true,
     // value: 10,
   };
   nodes['중력'] = {
@@ -75,7 +80,7 @@ export default function SystemDynamicSVG({
   };
   nodes['가속도'] = {
     name: '가속도',
-    x: 1000,
+    x: 950,
     y: 950,
     value:
       nodes['중력'].value / (nodes['추 질량'].value + nodes['수레 질량'].value),
@@ -86,7 +91,7 @@ export default function SystemDynamicSVG({
     y: 1020,
     value: cartSpeed,
     isFlow: true,
-    rate: 0.25,
+    rate: cartSpeed / 100,
   };
   nodes['장력'] = {
     name: '장력',
@@ -203,27 +208,179 @@ export default function SystemDynamicSVG({
     { source: '속도', target: '수레 운동 에너지' },
   ];
 
-  const frame = 0.05; // num per second
-
   useEffect(() => {
-    if (weightY < 1) return;
+    if (weightY < 0.01) return;
+    const newSpeed = cartSpeed + nodes['가속도'].value;
+    const newDeltaWeightY = deltaWeightY + nodes['가속도'].value;
+    const newWeightY = weightY - nodes['추 Y좌표 변화량'].value;
+
     const changeIdx = setInterval(() => {
-      const newSpeed = cartSpeed + nodes['가속도'].value * frame;
-      setCartSpeed((prev) => prev + nodes['가속도'].value * frame);
-      const newDeltaWeightY = deltaWeightY + nodes['가속도'].value * frame;
-      setDeltaWeightY((prev) => prev + nodes['가속도'].value * frame);
-      const newWeightY = weightY - nodes['추 Y좌표 변화량'].value * frame;
-      setWeightY((prev) => prev - nodes['추 Y좌표 변화량'].value * frame);
-      // const newCartX = cartX + nodes['속도'].value;
-      // setCartX((prev) => prev + nodes['속도'].value);
+      console.log(
+        (
+          nodes['추 운동 에너지'].value +
+          nodes['수레 운동 에너지'].value +
+          nodes['추 위치 에너지'].value +
+          nodes['수레 위치 에너지'].value
+        ).toFixed(3)
+      );
+
+      setCartSpeed(newSpeed);
+      setDeltaWeightY(newDeltaWeightY);
+      setWeightY(newWeightY);
       nodes['속도'].value = newSpeed;
-      // nodes['수레 x좌표'].value = newCartX;
       nodes['수레 x좌표 변화량'].value = newDeltaWeightY;
       nodes['추 Y좌표'].value = newWeightY;
+      // const newCartX = cartX + nodes['속도'].value;
+      // setCartX((prev) => prev + nodes['속도'].value);
+      // nodes['수레 x좌표'].value = newCartX;
+
       return;
-    }, 100 * frame);
+    }, defaultTime * frame);
     return () => clearInterval(changeIdx);
   }, [nodes]);
+
+  useEffect(() => {
+    const nodes: { [key: string]: Node } = {};
+    nodes['수레 질량'] = {
+      name: 'C: 질량',
+      x: 120,
+      y: 755,
+      value: 1,
+      isParameter: true,
+    };
+    nodes['추 질량'] = {
+      name: 'C: 질량',
+      x: 1480,
+      y: 755,
+      value: 2,
+      isParameter: true,
+    };
+    nodes['전체 질량'] = {
+      name: 'C: 전체 질량',
+      x: 600,
+      y: 1150,
+      value: nodes['수레 질량'].value + nodes['추 질량'].value,
+      isParameter: true,
+    };
+    nodes['중력 가속도'] = {
+      name: 'C: 중력 가속도',
+      x: 950,
+      y: 1300,
+      value: 9.8,
+      isParameter: true,
+      // value: 10,
+    };
+    nodes['중력'] = {
+      name: '중력',
+      x: 1300,
+      y: 1150,
+      value: nodes['추 질량'].value * nodes['중력 가속도'].value,
+    };
+    nodes['가속도'] = {
+      name: '가속도',
+      x: 950,
+      y: 950,
+      value:
+        nodes['중력'].value /
+        (nodes['추 질량'].value + nodes['수레 질량'].value),
+    };
+    nodes['속도'] = {
+      name: '속도',
+      x: 750,
+      y: 1020,
+      value: cartSpeed,
+      isFlow: true,
+      rate: cartSpeed / 100,
+    };
+    nodes['장력'] = {
+      name: '장력',
+      x: 300,
+      y: 1000,
+      value: nodes['수레 질량'].value * nodes['가속도'].value,
+    };
+    // nodes['수레 x좌표'] = {
+    //   name: '좌표(x)',
+    //   x: 120,
+    //   y: 280,
+    //   value: cartX,
+    //   isFlow: true,
+    //   rate: cartX / length,
+    // };
+    nodes['수레 x좌표'] = {
+      name: '좌표(x)',
+      x: 120,
+      y: 280,
+      value: weightY,
+      isFlow: true,
+      rate: weightY / length,
+    };
+    setDeltaWeightY(nodes['가속도'].value / 2);
+    nodes['수레 x좌표 변화량'] = {
+      name: 'FLOW',
+      x: 300,
+      y: 170,
+      value: deltaWeightY,
+    };
+    nodes['추 Y좌표'] = {
+      name: '좌표(Y)',
+      x: 900,
+      y: 280,
+      value: weightY,
+      isFlow: true,
+      rate: weightY / length,
+    };
+    nodes['추 Y좌표 변화량'] = {
+      name: 'FLOW',
+      x: 1080,
+      y: 170,
+      value: deltaWeightY,
+    };
+    nodes['추 운동 에너지'] = {
+      name: '운동 에너지',
+      x: 1000,
+      y: 600,
+      value: (nodes['추 질량'].value * nodes['속도'].value ** 2) / 2,
+      isFlow: true,
+      rate:
+        (nodes['추 질량'].value * nodes['속도'].value ** 2) /
+        (2 * length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+    };
+    nodes['추 위치 에너지'] = {
+      name: '위치 에너지',
+      x: 1400,
+      y: 600,
+      value:
+        nodes['추 질량'].value *
+        nodes['중력 가속도'].value *
+        nodes['추 Y좌표'].value,
+      isFlow: true,
+      rate:
+        (nodes['추 질량'].value *
+          nodes['중력 가속도'].value *
+          nodes['추 Y좌표'].value) /
+        (length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+    };
+    nodes['수레 운동 에너지'] = {
+      name: '운동 에너지',
+      x: 200,
+      y: 600,
+      value: (nodes['수레 질량'].value * nodes['속도'].value ** 2) / 2,
+      isFlow: true,
+      rate:
+        (nodes['수레 질량'].value * nodes['속도'].value ** 2) /
+        (2 * length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+    };
+    nodes['수레 위치 에너지'] = {
+      name: '위치 에너지',
+      x: 600,
+      y: 600,
+      value: 0,
+      isFlow: true,
+      rate: 0,
+    };
+    setCartSpeed(0);
+    setWeightY(length);
+  }, [update]);
 
   return (
     <svg className='w-full h-full' viewBox='0 0 1600 1600'>
@@ -306,7 +463,7 @@ export default function SystemDynamicSVG({
             value={nodes[key].value}
             rate={nodes[key].rate}
           />
-        ) : nodes[key].parameter ? (
+        ) : nodes[key].isParameter ? (
           <Parameter
             key={key}
             x={nodes[key].x}
