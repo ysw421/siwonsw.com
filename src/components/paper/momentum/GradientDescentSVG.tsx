@@ -161,11 +161,25 @@ export default function GradientDescentSVG({
       () => {
         if (!isAutoPlay) return;
         setIdx((e: number) =>
-          stepSize > 10 ? (e >= 2 ? 0 : e + 1) : e >= 10000 ? 0 : e + 50
+          stepSize === 40
+            ? e >= 2
+              ? 0
+              : e + 1
+            : stepSize === 85
+            ? e >= 30
+              ? 0
+              : e + 1
+            : e >= 10000
+            ? 0
+            : e + 50
         );
       },
-      stepSize > 10 ? 500 : 10
+      stepSize === 40 ? 500 : stepSize === 85 ? 100 : 10
     );
+    // const changeIdx = setInterval(() => {
+    //   if (!isAutoPlay) return;
+    //   setIdx((e: number) => (e >= 10000 ? 0 : e + 50));
+    // }, 10);
     return () => clearInterval(changeIdx);
   }, [isAutoPlay]);
 
@@ -399,16 +413,17 @@ export default function GradientDescentSVG({
         viewBox='0 0 1600 1000'
         onClick={() => setIsAutoPlay((e) => !e)}
       >
-        <g ref={gRef_a}>
+        <g ref={gRef_a} cursor='grap'>
           <DragIcon x={a} y={a_function_value} />
         </g>
-        <g ref={gRef_b}>
+        <g ref={gRef_b} cursor='grap'>
           <DragIcon x={b} y={b_function_value} />
         </g>
-        <g ref={gRef_c}>
+        <g ref={gRef_c} cursor='grap'>
           <DragIcon x={c} y={c_function_value} />
         </g>
         <circle
+          cursor='grap'
           ref={circleRef}
           cx={arr[idx]}
           cy={get_function_real_value(arr[idx], k_ab, h_ab, k_bc, h_bc)}
@@ -429,7 +444,7 @@ export default function GradientDescentSVG({
               id='idx'
               type='range'
               min={0}
-              max={stepSize > 10 ? 2 : 10000}
+              max={stepSize === 40 ? 2 : stepSize === 85 ? 30 : 10000}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setIdx(Number(e.target.value));
                 setIsAutoPlay(false);
@@ -461,6 +476,7 @@ export default function GradientDescentSVG({
               type='range'
               min={0.01}
               max={0.2}
+              // max={200}
               step={0.001}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setStepSize(Number(e.target.value));
