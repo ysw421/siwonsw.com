@@ -19,7 +19,15 @@ export function DragIcon({ x, y }: { x: number; y: number }) {
   );
 }
 
-export function PauseIcon({ x, y }: { x: number; y: number }) {
+export function PauseIcon({
+  x,
+  y,
+  isDarkMode,
+}: {
+  x: number;
+  y: number;
+  isDarkMode: boolean;
+}) {
   return (
     <g transform={`translate(${x - 25}, ${y - 25})`}>
       <svg
@@ -33,8 +41,8 @@ export function PauseIcon({ x, y }: { x: number; y: number }) {
         {/* <circle cx='25' cy='25' r='23.25' stroke='#20193B' strokeWidth='1.5' /> */}
         <path
           d='M16 13H20V37H16V13ZM30 13H34V37H30V13Z'
-          fill='black'
-          stroke='black'
+          fill={isDarkMode ? 'white' : 'black'}
+          stroke={isDarkMode ? 'white' : 'black'}
           strokeWidth='1.5'
         />
       </svg>
@@ -42,7 +50,15 @@ export function PauseIcon({ x, y }: { x: number; y: number }) {
   );
 }
 
-export function PlayIcon({ x, y }: { x: number; y: number }) {
+export function PlayIcon({
+  x,
+  y,
+  isDarkMode,
+}: {
+  x: number;
+  y: number;
+  isDarkMode: boolean;
+}) {
   return (
     <g transform={`translate(${x - 25}, ${y - 25})`}>
       <svg
@@ -56,8 +72,8 @@ export function PlayIcon({ x, y }: { x: number; y: number }) {
         {/* <circle cx='25' cy='25' r='23.25' stroke='#20193B' strokeWidth='1.5' /> */}
         <path
           d='M17 13L33 25L17 37V13Z'
-          fill='black'
-          stroke='black'
+          fill={isDarkMode ? 'white' : 'black'}
+          stroke={isDarkMode ? 'white' : 'black'}
           strokeWidth='1.5'
         />
       </svg>

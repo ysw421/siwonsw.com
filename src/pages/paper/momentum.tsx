@@ -128,7 +128,7 @@ export default function Momentum() {
           setStepSize={setGd_StepSize}
         />
       </div>
-      <p>
+      <div>
         위는 경사 하강법을 시각화한 object입니다. 경사 하강법의 결과, 처음
         위치에 따라 각각의 local minimum으로 수렴해간다는 것을 확인할 수
         있습니다. 식에서 예상 가능한 바와 같이, 기울기가 급격한 지점에서는
@@ -246,7 +246,7 @@ export default function Momentum() {
           점점 멀어져 가는 시각화를 통해 overshoot의 개념을 이해하는데
           충분하리라 생각합니다.
         </Box>
-      </p>
+      </div>
       <p className='mt-8'>
         위 object의 설정값을 다양하게 조절하며, 경사 하강법의 시각화된 모습을
         바라보면, step-size의 설정값이 최적값을 구하는데 굉장히 중요함을 느낄 수
@@ -258,7 +258,7 @@ export default function Momentum() {
         같이 지그재그하게 수렴하는 경우를 만듭니다.
       </p>
       <SubTitle subTitle='모멘텀(momentum)' />
-      <p>
+      <div>
         앞서 언급한 바와 같이, 경사 하강법은 (적당한 step-size 값에 대하여)
         local minimum 값을 구합니다. 즉, 다음과 같은 상황(
         <Button
@@ -287,7 +287,7 @@ export default function Momentum() {
         진행해 보겠습니다). momentum 기법의 경우 '공을 굴리는 것'과 같이 관성을
         이용합니다. 프로그래밍에서 메모리를 소비할 경우 연산 속도는 빨라지는데,
         momentum 또한 같습니다.
-      </p>
+      </div>
       <div className='w-4/5 m-auto my-8 aspect-video'>
         <MomentumSVG />
       </div>

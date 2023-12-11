@@ -1,9 +1,12 @@
 import * as d3 from 'd3';
+import { useAtom } from 'jotai';
 import { useEffect, useRef, useState } from 'react';
 
-import { DragIcon } from '@/components/paper/momentum/Icons';
+import { isDarkMode_ } from '@/lib/darkMode';
 
+import { DragIcon } from '@/components/paper/momentum/Icons';
 export default function LocalMinSVG() {
+  const [isDarkMode] = useAtom(isDarkMode_);
   const width = 1600;
   const height = 1000;
 
@@ -83,7 +86,7 @@ export default function LocalMinSVG() {
       line.setAttribute('y1', '0');
       line.setAttribute('x2', x.toString());
       line.setAttribute('y2', height.toString());
-      line.setAttribute('stroke', '#000');
+      line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
       svg.insertBefore(line, svg.firstChild);
     }
     let line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -91,7 +94,7 @@ export default function LocalMinSVG() {
     line.setAttribute('y1', '0');
     line.setAttribute('x2', (width - 1).toString());
     line.setAttribute('y2', height.toString());
-    line.setAttribute('stroke', '#000');
+    line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
     svg.insertBefore(line, svg.firstChild);
 
     for (let y = 0; y < height; y += gridGap) {
@@ -103,7 +106,7 @@ export default function LocalMinSVG() {
       line.setAttribute('y1', y.toString());
       line.setAttribute('x2', width.toString());
       line.setAttribute('y2', y.toString());
-      line.setAttribute('stroke', '#000');
+      line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
       svg.insertBefore(line, svg.firstChild);
     }
     line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -111,9 +114,17 @@ export default function LocalMinSVG() {
     line.setAttribute('y1', (height - 1).toString());
     line.setAttribute('x2', width.toString());
     line.setAttribute('y2', (height - 1).toString());
-    line.setAttribute('stroke', '#000');
+    line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
     svg.insertBefore(line, svg.firstChild);
-  }, [a_function_value, b_function_value, c_function_value, a, b, c]);
+  }, [
+    a_function_value,
+    b_function_value,
+    c_function_value,
+    a,
+    b,
+    c,
+    isDarkMode,
+  ]);
 
   useEffect(() => {
     // const svg = d3.select(svgRef.current);
@@ -220,6 +231,7 @@ export default function LocalMinSVG() {
             y={a_function_value + 60}
             fontSize='40'
             textAnchor='middle'
+            fill={isDarkMode ? 'white' : 'black'}
           >
             {a_function_value > c_function_value
               ? 'global minimum'
@@ -237,6 +249,7 @@ export default function LocalMinSVG() {
                 y={b_function_value + 60}
                 fontSize='40'
                 textAnchor='middle'
+                fill={isDarkMode ? 'white' : 'black'}
               >
                 global minimum
               </text>
@@ -251,6 +264,7 @@ export default function LocalMinSVG() {
             y={c_function_value + 60}
             fontSize='40'
             textAnchor='middle'
+            fill={isDarkMode ? 'white' : 'black'}
           >
             {c_function_value > a_function_value
               ? 'global minimum'

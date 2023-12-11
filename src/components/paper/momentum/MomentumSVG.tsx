@@ -1,5 +1,8 @@
 import * as d3 from 'd3';
+import { useAtom } from 'jotai';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
+
+import { isDarkMode_ } from '@/lib/darkMode';
 
 import {
   DragIcon,
@@ -8,6 +11,7 @@ import {
 } from '@/components/paper/momentum/Icons';
 
 export default function LocalMinSVG() {
+  const [isDarkMode] = useAtom(isDarkMode_);
   const width = 1600;
   const height = 1000;
 
@@ -205,7 +209,7 @@ export default function LocalMinSVG() {
       line.setAttribute('y1', '0');
       line.setAttribute('x2', x.toString());
       line.setAttribute('y2', height.toString());
-      line.setAttribute('stroke', '#000');
+      line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
       svg.insertBefore(line, svg.firstChild);
     }
     let line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -213,7 +217,7 @@ export default function LocalMinSVG() {
     line.setAttribute('y1', '0');
     line.setAttribute('x2', (width - 1).toString());
     line.setAttribute('y2', height.toString());
-    line.setAttribute('stroke', '#000');
+    line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
     svg.insertBefore(line, svg.firstChild);
 
     for (let y = 0; y < height; y += gridGap) {
@@ -225,7 +229,7 @@ export default function LocalMinSVG() {
       line.setAttribute('y1', y.toString());
       line.setAttribute('x2', width.toString());
       line.setAttribute('y2', y.toString());
-      line.setAttribute('stroke', '#000');
+      line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
       svg.insertBefore(line, svg.firstChild);
     }
     line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -233,7 +237,7 @@ export default function LocalMinSVG() {
     line.setAttribute('y1', (height - 1).toString());
     line.setAttribute('x2', width.toString());
     line.setAttribute('y2', (height - 1).toString());
-    line.setAttribute('stroke', '#000');
+    line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
     svg.insertBefore(line, svg.firstChild);
 
     if (isFirst) {
@@ -251,7 +255,15 @@ export default function LocalMinSVG() {
       setIdx(0);
       setIsAutoPlay(false);
     }
-  }, [a_function_value, b_function_value, c_function_value, a, b, c]);
+  }, [
+    a_function_value,
+    b_function_value,
+    c_function_value,
+    a,
+    b,
+    c,
+    isDarkMode,
+  ]);
 
   useEffect(() => {
     if (isFirst) setIsFirst(false);
@@ -383,15 +395,15 @@ export default function LocalMinSVG() {
           fill='#B5ABDF'
         />
         {isAutoPlay ? (
-          <PauseIcon x={50} y={950} />
+          <PauseIcon x={50} y={950} isDarkMode={isDarkMode} />
         ) : (
-          <PlayIcon x={50} y={950} />
+          <PlayIcon x={50} y={950} isDarkMode={isDarkMode} />
         )}
       </svg>
       <div className='flex justify-center w-auto gap-8 mt-2 md:gap-16'>
         <div className='flex flex-col items-center gap-1'>
           <div>
-            <p className=''>time : {idx}</p>
+            <p>time : {idx}</p>
             <input
               id='idx'
               type='range'
