@@ -1,5 +1,8 @@
 import * as d3 from 'd3';
+import { useAtom } from 'jotai';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
+
+import { isDarkMode_ } from '@/lib/darkMode';
 
 import {
   DragIcon,
@@ -42,6 +45,7 @@ export default function GradientDescentSVG({
   stepSize: number;
   setStepSize: (e: number) => void;
 }) {
+  const [isDarkMode] = useAtom(isDarkMode_);
   const width = 1600;
   const height = 1000;
 
@@ -183,16 +187,16 @@ export default function GradientDescentSVG({
     return () => clearInterval(changeIdx);
   }, [isAutoPlay]);
 
-  useEffect(() => {
-    const arr = [startIdx];
-    for (let i = 0; i < idx + 1; i++) {
-      arr.push(
-        arr[arr.length - 1] +
-          stepSize * get_dfunction_value(arr[arr.length - 1])
-      );
-    }
-    setArr(arr);
-  }, [idx]);
+  // useEffect(() => {
+  //   const arr = [startIdx];
+  //   for (let i = 0; i < 10000; i++) {
+  //     arr.push(
+  //       arr[arr.length - 1] +
+  //         stepSize * get_dfunction_value(arr[arr.length - 1])
+  //     );
+  //   }
+  //   setArr(arr);
+  // }, [idx]);
 
   useEffect(() => {
     const arr = [startIdx];
@@ -253,7 +257,7 @@ export default function GradientDescentSVG({
       line.setAttribute('y1', '0');
       line.setAttribute('x2', x.toString());
       line.setAttribute('y2', height.toString());
-      line.setAttribute('stroke', '#000');
+      line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
       svg.insertBefore(line, svg.firstChild);
     }
     let line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -261,7 +265,7 @@ export default function GradientDescentSVG({
     line.setAttribute('y1', '0');
     line.setAttribute('x2', (width - 1).toString());
     line.setAttribute('y2', height.toString());
-    line.setAttribute('stroke', '#000');
+    line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
     svg.insertBefore(line, svg.firstChild);
 
     for (let y = 0; y < height; y += gridGap) {
@@ -273,7 +277,7 @@ export default function GradientDescentSVG({
       line.setAttribute('y1', y.toString());
       line.setAttribute('x2', width.toString());
       line.setAttribute('y2', y.toString());
-      line.setAttribute('stroke', '#000');
+      line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
       svg.insertBefore(line, svg.firstChild);
     }
     line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
@@ -281,11 +285,10 @@ export default function GradientDescentSVG({
     line.setAttribute('y1', (height - 1).toString());
     line.setAttribute('x2', width.toString());
     line.setAttribute('y2', (height - 1).toString());
-    line.setAttribute('stroke', '#000');
+    line.setAttribute('stroke', isDarkMode ? '#fff' : '#000');
     svg.insertBefore(line, svg.firstChild);
 
     if (isFirst) {
-      setIsFirst(false);
       const arr = [startIdx];
       for (let i = 0; i < 10000; i++) {
         arr.push(
@@ -294,11 +297,20 @@ export default function GradientDescentSVG({
         );
       }
       setArr(arr);
+      setIsFirst(false);
     } else {
       setIdx(0);
       setIsAutoPlay(false);
     }
-  }, [a_function_value, b_function_value, c_function_value, a, b, c]);
+  }, [
+    a_function_value,
+    b_function_value,
+    c_function_value,
+    a,
+    b,
+    c,
+    isDarkMode,
+  ]);
 
   useEffect(() => {
     if (isFirst) setIsFirst(false);
@@ -431,9 +443,9 @@ export default function GradientDescentSVG({
           fill='#B5ABDF'
         />
         {isAutoPlay ? (
-          <PauseIcon x={50} y={950} />
+          <PauseIcon x={50} y={950} isDarkMode={isDarkMode} />
         ) : (
-          <PlayIcon x={50} y={950} />
+          <PlayIcon x={50} y={950} isDarkMode={isDarkMode} />
         )}
       </svg>
       <div className='flex justify-center w-auto gap-8 mt-2 md:gap-16'>
