@@ -5,8 +5,10 @@ import SystemDynamicSVG from '@/components/paper/physical-system-dynamic/SystemD
 import VisualizationSVG from '@/components/paper/physical-system-dynamic/VisualizationSVG';
 
 export default function PhysicalSystemDynamic() {
-  const length = 271.27;
+  const length = 326.67;
+  // const length = 6;
   const [position, setPosition] = useState<number>(length);
+  const [update, setUpdate] = useState<boolean>(false);
 
   return (
     <Paper title='System Dynamic - physcial'>
@@ -19,15 +21,24 @@ export default function PhysicalSystemDynamic() {
         max={length}
         step={1}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          setPosition(Number(e.target.value));
+          // setPosition(Number(e.target.value));
+          // setUpdate((prev) => !prev);
         }}
         value={position}
+      />
+      <input
+        type='button'
+        onClick={() => {
+          setUpdate((prev) => !prev);
+        }}
+        value='reset'
       />
       <div className='w-4/5 m-auto my-8'>
         <SystemDynamicSVG
           length={length}
           weightY={position}
           setWeightY={setPosition}
+          update={update}
         />
       </div>
     </Paper>
