@@ -49,16 +49,12 @@ export default function SetModeBtn({
         </div>
       )}
       {type === 2 && (
-        <Button
-          isDarkBg={isDarkMode}
-          onClick={toggleDarkMode}
-          className='p-1.5'
-        >
+        <Button onClick={toggleDarkMode} className='p-1.5'>
           {isDarkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
         </Button>
       )}
       {type === 3 && (
-        <Button isDarkBg={isDarkMode} onClick={toggleDarkMode}>
+        <Button onClick={toggleDarkMode}>
           {isDarkMode ? 'Dark Mode' : 'Light Mode'}
         </Button>
       )}

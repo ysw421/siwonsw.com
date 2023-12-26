@@ -4,6 +4,7 @@ import {
   BezierArrow,
   DelayBezierArrow,
   Flow,
+  MainFlow,
   Node,
   Parameter,
 } from '@/components/paper/physical-system-dynamic/GraphUtilities';
@@ -13,11 +14,21 @@ export default function SystemDynamicSVG({
   weightY,
   setWeightY,
   update,
+  weightOfCart,
+  weightOfWeight,
+  isAutoPlay,
+  setIsAutoPlay,
+  accelerationOfGravity,
 }: {
   length: number;
   weightY: number;
   setWeightY: React.Dispatch<React.SetStateAction<number>>;
   update: boolean;
+  weightOfCart: number;
+  weightOfWeight: number;
+  isAutoPlay: boolean;
+  setIsAutoPlay: React.Dispatch<React.SetStateAction<boolean>>;
+  accelerationOfGravity: number;
 }) {
   // const [cartX, setCartX] = useState<number>(0);
   // const [weightY, setWeightY] = useState<number>(length);
@@ -47,14 +58,14 @@ export default function SystemDynamicSVG({
     name: 'C: 질량',
     x: 120,
     y: 755,
-    value: 1,
+    value: weightOfCart,
     isParameter: true,
   };
   nodes['추 질량'] = {
     name: 'C: 질량',
     x: 1480,
     y: 755,
-    value: 2,
+    value: weightOfWeight,
     isParameter: true,
   };
   nodes['전체 질량'] = {
@@ -62,13 +73,12 @@ export default function SystemDynamicSVG({
     x: 600,
     y: 1150,
     value: nodes['수레 질량'].value + nodes['추 질량'].value,
-    isParameter: true,
   };
   nodes['중력 가속도'] = {
     name: 'C: 중력 가속도',
     x: 950,
     y: 1300,
-    value: 9.8,
+    value: accelerationOfGravity,
     isParameter: true,
     // value: 10,
   };
@@ -181,6 +191,26 @@ export default function SystemDynamicSVG({
     isFlow: true,
     rate: 0,
   };
+  nodes['전체 위치 에너지'] = {
+    name: '위치 에너지',
+    x: 1300,
+    y: 1550,
+    value: nodes['수레 위치 에너지'].value + nodes['추 위치 에너지'].value,
+    isFlow: true,
+    rate:
+      (nodes['수레 위치 에너지'].value + nodes['추 위치 에너지'].value) /
+      (length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+  };
+  nodes['전체 운동 에너지'] = {
+    name: '운동 에너지',
+    x: 300,
+    y: 1550,
+    value: nodes['수레 운동 에너지'].value + nodes['추 운동 에너지'].value,
+    isFlow: true,
+    rate:
+      (nodes['수레 운동 에너지'].value + nodes['추 운동 에너지'].value) /
+      (length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+  };
   // const [nodes, setnodes] = useState<{ [key: string]: Node }>(nodes);
 
   const links: Link[] = [
@@ -210,19 +240,21 @@ export default function SystemDynamicSVG({
 
   useEffect(() => {
     if (weightY < 0.01) return;
+    if (!isAutoPlay) return;
     const newSpeed = cartSpeed + nodes['가속도'].value;
     const newDeltaWeightY = deltaWeightY + nodes['가속도'].value;
     const newWeightY = weightY - nodes['추 Y좌표 변화량'].value;
 
     const changeIdx = setInterval(() => {
-      console.log(
-        (
-          nodes['추 운동 에너지'].value +
-          nodes['수레 운동 에너지'].value +
-          nodes['추 위치 에너지'].value +
-          nodes['수레 위치 에너지'].value
-        ).toFixed(3)
-      );
+      if (!isAutoPlay) return;
+      // console.log(
+      //   (
+      //     nodes['추 운동 에너지'].value +
+      //     nodes['수레 운동 에너지'].value +
+      //     nodes['추 위치 에너지'].value +
+      //     nodes['수레 위치 에너지'].value
+      //   ).toFixed(3)
+      // );
 
       setCartSpeed(newSpeed);
       setDeltaWeightY(newDeltaWeightY);
@@ -245,14 +277,14 @@ export default function SystemDynamicSVG({
       name: 'C: 질량',
       x: 120,
       y: 755,
-      value: 1,
+      value: weightOfCart,
       isParameter: true,
     };
     nodes['추 질량'] = {
       name: 'C: 질량',
       x: 1480,
       y: 755,
-      value: 2,
+      value: weightOfWeight,
       isParameter: true,
     };
     nodes['전체 질량'] = {
@@ -266,7 +298,7 @@ export default function SystemDynamicSVG({
       name: 'C: 중력 가속도',
       x: 950,
       y: 1300,
-      value: 9.8,
+      value: accelerationOfGravity,
       isParameter: true,
       // value: 10,
     };
@@ -378,12 +410,37 @@ export default function SystemDynamicSVG({
       isFlow: true,
       rate: 0,
     };
+    nodes['전체 위치 에너지'] = {
+      name: '위치 에너지',
+      x: 1300,
+      y: 1550,
+      value: nodes['수레 위치 에너지'].value + nodes['추 위치 에너지'].value,
+      isFlow: true,
+      rate:
+        (nodes['수레 위치 에너지'].value + nodes['추 위치 에너지'].value) /
+        (length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+    };
+    nodes['전체 운동 에너지'] = {
+      name: '운동 에너지',
+      x: 300,
+      y: 1550,
+      value: nodes['수레 운동 에너지'].value + nodes['추 운동 에너지'].value,
+      isFlow: true,
+      rate:
+        (nodes['수레 운동 에너지'].value + nodes['추 운동 에너지'].value) /
+        (length * nodes['중력 가속도'].value * nodes['추 질량'].value),
+    };
     setCartSpeed(0);
     setWeightY(length);
-  }, [update]);
+  }, [update, weightOfCart, weightOfWeight, isAutoPlay]);
 
   return (
-    <svg className='w-full h-full' viewBox='0 0 1600 1600'>
+    <svg
+      className='w-full h-full'
+      viewBox='0 0 1600 1600'
+      onClick={() => setIsAutoPlay((prev) => !prev)}
+    >
+      <MainFlow />
       <g>
         <rect x='50' y='50' width='725' height='55' fill='#7b7b7b' />
         <rect
@@ -452,6 +509,50 @@ export default function SystemDynamicSVG({
           />
         )
       )}
+      <BezierArrow
+        x1={nodes['추 운동 에너지'].x}
+        y1={
+          nodes['추 운동 에너지'].isFlow
+            ? nodes['추 운동 에너지'].y -
+              150 * (nodes['추 운동 에너지'].rate || 0)
+            : nodes['추 운동 에너지'].y
+        }
+        x2={820}
+        y2={1498}
+      />
+      <BezierArrow
+        x1={nodes['수레 운동 에너지'].x}
+        y1={
+          nodes['수레 운동 에너지'].isFlow
+            ? nodes['수레 운동 에너지'].y -
+              150 * (nodes['수레 운동 에너지'].rate || 0)
+            : nodes['수레 운동 에너지'].y
+        }
+        x2={820}
+        y2={1498}
+      />
+      <BezierArrow
+        x1={nodes['추 위치 에너지'].x}
+        y1={
+          nodes['추 위치 에너지'].isFlow
+            ? nodes['추 위치 에너지'].y -
+              150 * (nodes['추 위치 에너지'].rate || 0)
+            : nodes['추 위치 에너지'].y
+        }
+        x2={775}
+        y2={1435}
+      />
+      <BezierArrow
+        x1={nodes['수레 위치 에너지'].x}
+        y1={
+          nodes['수레 위치 에너지'].isFlow
+            ? nodes['수레 위치 에너지'].y -
+              150 * (nodes['수레 위치 에너지'].rate || 0)
+            : nodes['수레 위치 에너지'].y
+        }
+        x2={775}
+        y2={1435}
+      />
 
       {Object.keys(nodes).map((key) =>
         nodes[key].isFlow ? (
