@@ -29,6 +29,7 @@ type BoxProps = {
   leftIcon?: IconType;
   leftIconClassName?: string;
   className?: string;
+  overClassName?: string;
 };
 
 export const Box = forwardRef<HTMLButtonElement, BoxProps>(
@@ -38,9 +39,10 @@ export const Box = forwardRef<HTMLButtonElement, BoxProps>(
     size = 'base',
     leftIcon: LeftIcon,
     leftIconClassName,
+    overClassName = '',
   }) => {
     return (
-      <div className='w-full my-8'>
+      <div className={clsxm('w-full my-8', overClassName)}>
         <div
           className={clsxm(
             `mx-auto h-auto w-fit max-w-full overflow-x-auto rounded-md bg-[#d7d6d6] p-3 dark:bg-[#555c6e] ${styles.transition}`,
@@ -180,10 +182,12 @@ export function ImageBox({
   imgSrc,
   alt = 'image',
   className = '',
+  caption = '',
 }: {
   alt?: string;
   imgSrc: string;
   className?: string;
+  caption?: string;
 }) {
   const imageRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -205,17 +209,19 @@ export function ImageBox({
   }, []);
 
   return (
-    <div className={clsxm('mb-8 w-full', className)} ref={imageRef}>
-      <div className='flex flex-col gap-2 mx-auto w-fit md:flex-row md:gap-8'>
-        <NextImage
-          src={imgSrc}
-          width={imageWidth}
-          height={100}
-          alt={alt}
-          imgClassName='rounded-lg'
-        />
+    <>
+      <div className={clsxm('mb-8 w-full', className)} ref={imageRef}>
+        <div className='flex flex-col gap-2 mx-auto w-fit md:flex-row md:gap-8'>
+          <NextImage
+            src={imgSrc}
+            width={imageWidth}
+            height={100}
+            alt={alt}
+            imgClassName='rounded-lg'
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

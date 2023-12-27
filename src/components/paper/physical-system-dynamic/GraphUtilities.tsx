@@ -292,3 +292,36 @@ export function Flow({
     </g>
   );
 }
+
+export function MainFlow() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={1009}
+      height={155}
+      fill='none'
+      x={370}
+      y={1400}
+    >
+      <g transform='scale(0.85)'>
+        <path fill='#527DFF' d='M0 28h960.505v6H0zM0 47h960.505v6H0z' />
+        <path
+          fill='#527DFF'
+          d='m1009 40-82.128 30.31V9.69L1009 40ZM479.471 35l30.482 33.75h-60.964L479.471 35Z'
+        />
+        <path
+          fill='#527DFF'
+          d='m479.471 45-30.483-33.75h60.965L479.471 45ZM1009 127H48.495v-6H1009zM1009 108H48.495v-6H1009z'
+        />
+        <path
+          fill='#527DFF'
+          d='m0 115 82.128-30.31v60.621L0 115ZM529.529 120l-30.482-33.75h60.964L529.529 120Z'
+        />
+        <path
+          fill='#527DFF'
+          d='m529.529 110 30.483 33.75h-60.965L529.529 110Z'
+        />
+      </g>
+    </svg>
+  );
+}
