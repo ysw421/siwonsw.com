@@ -100,12 +100,6 @@ const IntroduceMySelf = () => {
       </div>
       <div className='w-full h-8 sm:h-16' />
       <div className='flex flex-col items-start justify-center w-full gap-0 sm:flex-row sm:items-center sm:gap-8'>
-        <h3>Education</h3>
-        <Dimigo />
-      </div>
-      <Dimigo_exp />
-      <div className='w-full h-8 sm:h-16' />
-      <div className='flex flex-col items-start justify-center w-full gap-0 sm:flex-row sm:items-center sm:gap-8'>
         <h3>Contact</h3>
         <div>
           <Emali />
@@ -113,6 +107,26 @@ const IntroduceMySelf = () => {
           <LinkedIn />
         </div>
       </div>
+      <div className='w-full h-8 sm:h-16' />
+      <div>
+        <h3>Technical Skills</h3>
+        <p>Computer Languages: C, Python, JavaScript, TypeScript, Julia</p>
+        <p>OS: Window, GNU/Linux (Ubuntu)</p>
+        <p>Code Editor: NeoVim, Visual Studio Code</p>
+        <p>Document Editor: LaTeX, MS Word, and MS Power Point</p>
+      </div>
+      <div className='w-full h-8 sm:h-16' />
+      <div>
+        <h3>Another Intersest</h3>
+        <p>Watching movies, Visiting a museum, Hugging my cat</p>
+      </div>
+      <div className='w-full h-8 sm:h-16' />
+      <div className='flex flex-col items-start justify-center w-full gap-0 sm:flex-row sm:items-center sm:gap-8'>
+        <h3>Education</h3>
+        <Dimigo />
+      </div>
+      <Dimigo_exp />
+      <div className='w-full h-8 sm:h-16' />
     </>
   );
 };
