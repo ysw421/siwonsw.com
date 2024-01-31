@@ -117,7 +117,7 @@ const IntroduceMySelf = () => {
       </div>
       <div className='w-full h-8 sm:h-16' />
       <div>
-        <h3>Another Intersest</h3>
+        <h3>Another Intersest or What I Like</h3>
         <p>Watching movies, Visiting a museum, Hugging my cat</p>
       </div>
       <div className='w-full h-8 sm:h-16' />
