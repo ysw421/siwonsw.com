@@ -17,7 +17,7 @@ const nodes: Nodes = {
     x: 30,
     y: 100,
     link: '/paper/dimigo',
-    edges: ['2학년 1, 2일', '프레직-수업-진행'],
+    edges: ['2학년 1, 2일', 'AI Club 🌿Fregic'],
     circleSize: 30,
   },
   문화: {
@@ -55,14 +55,14 @@ const nodes: Nodes = {
   },
   '2학년 1, 2일': {
     value: '2학년 1, 2일',
-    x: -10,
-    y: 160,
+    x: 120,
+    y: 150,
     link: '/paper/first-day-2-years',
     edges: [],
     circleSize: 20,
   },
-  '프레직-수업-진행': {
-    value: '프레직 수업 진행',
+  'AI Club 🌿Fregic': {
+    value: 'AI Club 🌿Fregic',
     x: 90,
     y: 60,
     link: '/paper/my-first-class-in-fregic',
@@ -84,6 +84,23 @@ const nodes: Nodes = {
     link: '/mind-map/post',
     edges: [],
     circleSize: 32,
+  },
+  학업: {
+    value: '학업',
+    x: -70,
+    y: 150,
+    link: '/paper/나의-일상',
+    edges: ['디미고'],
+    circleSize: 40,
+    isFolder: true,
+  },
+  '공업일반 1인 1프로젝트': {
+    value: '공업일반 1인 1프로젝트: Pintos',
+    x: 0,
+    y: 230,
+    link: '/mind-map/1-person-1-project',
+    edges: ['학업'],
+    circleSize: 30,
   },
 };
 
