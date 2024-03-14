@@ -6,6 +6,7 @@ export interface Node {
   edges: string[];
   circleSize: number;
   isFolder?: boolean;
+  isLeftText?: boolean;
 }
 
 export type Nodes = Record<string, Node>;
