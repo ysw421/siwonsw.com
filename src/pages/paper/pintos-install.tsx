@@ -1,8 +1,8 @@
 import Paper from '@/components/Paper';
 
-export default function Main() {
+export default function Test() {
   return (
-    <Paper title='행렬'>
+    <Paper title='Pintos 설치 시행 착오'>
       국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다. 각급
       선거관리위원회의 조직·직무범위 기타 필요한 사항은 법률로 정한다.
       국회의원의 수는 법률로 정하되, 200인 이상으로 한다. 국무총리는 국회의
