@@ -77,7 +77,7 @@ export default function Momentum() {
         global minimum을 찾을 수 있는 momentum 기법에 대하여 설명합니다. 추가로
         제약된 구역에서의 최적값을 구하는 기법을 다룹니다.
       </p>
-      <SubTitle subTitle='경사 하강법(gradient descent)' />
+      <SubTitle subTitle='경사 하강법(Gradient Descent)' />
       <p>
         앞서 언급한 바와 같이 연속인 함수에서 미분값은 직후와 직전 함숫값에 대한
         정보를 포함합니다. 자세히 언급컨대, 미분값이 양수인 경우 직전 함숫값이
@@ -100,7 +100,7 @@ export default function Momentum() {
         <BlockMath math='x_{t+1} = x_t - \gamma \nabla f(x_t)^\intercal' />
       </div>
       <p>
-        step-size가 굉장히 작은 값을 고려하여{' '}
+        step-size가 굉장히 작은 값임을 고려하여{' '}
         <InlineMath math='f(x_{i+1}) \leq f(x_i)' />을 만족하여 위 식을 반복하면
         local minimum에 수렴합니다. 앞에서 등장한 object의 경우 input값이
         단변량이지만, 훌륭한 machine learning 모델을 위해 다변량 input값을
