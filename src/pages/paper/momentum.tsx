@@ -85,7 +85,9 @@ export default function Momentum() {
         위해 미분값에 대한 정보를 바탕으로 작은 값만큼 이동하는 기법을 경사
         하강법이라 합니다. 여기서 '작은 값'은 얼마 만큼 움직일지 설정한 값으로
         step-size라고 부르며 symbol <InlineMath math='\gamma' />로
-        표현하겠습니다. step-size는 양수로 설정하여야 하는데(
+        표현하겠습니다 (step-size를 learning rate라 부르는 문헌 및 경우가
+        많으나, '얼마 만큼 울직일지 설정함'의 의미를 보다 명확히 표현하기 위해
+        step-size라는 단어를 사용합니다). step-size는 양수로 설정하여야 하는데(
         <InlineMath math='\gamma > 0' />
         ), 이는 미분값이 음수일 경우 오른쪽으로 양수일 경우 왼쪽으로 이동해야
         하기 때문입니다(자세한 것은 아래 식을 참조).{' '}
