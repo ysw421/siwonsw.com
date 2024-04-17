@@ -77,7 +77,7 @@ export default function Momentum() {
         global minimum을 찾을 수 있는 momentum 기법에 대하여 설명합니다. 추가로
         제약된 구역에서의 최적값을 구하는 기법을 다룹니다.
       </p>
-      <SubTitle subTitle='경사 하강법(gradient descent)' />
+      <SubTitle subTitle='경사 하강법(Gradient Descent)' />
       <p>
         앞서 언급한 바와 같이 연속인 함수에서 미분값은 직후와 직전 함숫값에 대한
         정보를 포함합니다. 자세히 언급컨대, 미분값이 양수인 경우 직전 함숫값이
@@ -85,7 +85,9 @@ export default function Momentum() {
         위해 미분값에 대한 정보를 바탕으로 작은 값만큼 이동하는 기법을 경사
         하강법이라 합니다. 여기서 '작은 값'은 얼마 만큼 움직일지 설정한 값으로
         step-size라고 부르며 symbol <InlineMath math='\gamma' />로
-        표현하겠습니다. step-size는 양수로 설정하여야 하는데(
+        표현하겠습니다 (step-size를 learning rate라 부르는 문헌 및 경우가
+        많으나, '얼마 만큼 울직일지 설정함'의 의미를 보다 명확히 표현하기 위해
+        step-size라는 단어를 사용합니다). step-size는 양수로 설정하여야 하는데(
         <InlineMath math='\gamma > 0' />
         ), 이는 미분값이 음수일 경우 오른쪽으로 양수일 경우 왼쪽으로 이동해야
         하기 때문입니다(자세한 것은 아래 식을 참조).{' '}
@@ -100,7 +102,7 @@ export default function Momentum() {
         <BlockMath math='x_{t+1} = x_t - \gamma \nabla f(x_t)^\intercal' />
       </div>
       <p>
-        step-size가 굉장히 작은 값을 고려하여{' '}
+        step-size가 굉장히 작은 값임을 고려하여{' '}
         <InlineMath math='f(x_{i+1}) \leq f(x_i)' />을 만족하여 위 식을 반복하면
         local minimum에 수렴합니다. 앞에서 등장한 object의 경우 input값이
         단변량이지만, 훌륭한 machine learning 모델을 위해 다변량 input값을
