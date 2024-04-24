@@ -167,6 +167,43 @@ export function MovieBox({
   );
 }
 
+export function BookBox({
+  title,
+  subTitle,
+  author,
+  imgSrc,
+  isHideDirectorCast = false,
+}: {
+  title: string;
+  subTitle: string;
+  author: string;
+  imgSrc: string;
+  isHideDirectorCast?: boolean;
+}) {
+  return (
+    <div className='w-full mb-8'>
+      <div className='mx-auto flex min-w-[320px] max-w-[550px] flex-col gap-2 md:flex-row md:gap-8 '>
+        <NextImage
+          src={imgSrc}
+          width={200}
+          height={100}
+          alt='Movie Poster'
+          imgClassName='rounded-lg'
+        />
+        <div className='whitespace-pre-wrap'>
+          <p className='text-3xl font-fontMain'>{title}</p>
+          <p className='text-sm font-fontMain'>{subTitle}</p>
+          {isHideDirectorCast ? null : (
+            <>
+              <p className='mt-0 md:mt-8'>{`저자: ${author}`}</p>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Hr({ className = '' }: { className?: string }) {
   return (
     <div
