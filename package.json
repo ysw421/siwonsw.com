@@ -94,5 +94,8 @@
   "main": "src/index.tsx",
   "repository": "https://github.com/ysw421/My-blog",
   "author": "siwon",
-  "license": "mit"
+  "license": "mit",
+  "engines": {
+    "node": ">=20"
+  }
 }
