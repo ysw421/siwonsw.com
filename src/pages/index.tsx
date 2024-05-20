@@ -99,6 +99,47 @@ const IntroduceMySelf = () => {
         </p>
       </div>
       <div className='w-full h-8 sm:h-16' />
+      <div>
+        <h3 className='mb-2'>Experiences & Awards</h3>
+        <div>
+          <h4>
+            Regeneron International Science and Engineering Fair (ISEF) 2024
+          </h4>
+          <p>○ Los Angeles, Finalist</p>
+        </div>
+        <div>
+          <h4>Korea Code Fair (KCF) 2023</h4>
+          <p>○ Bronze medal</p>
+        </div>
+        <div>
+          <h4>Smarteen App+ Challenge (STAC) 2023</h4>
+          <p>○ Bronze medal</p>
+        </div>
+        <div>
+          <h4>
+            KAIST Creative and Global Leader Program (창의적 글로벌 리더
+            프로그램, 창글리) 2023 Summer
+          </h4>
+          <p>○ Team 6</p>
+        </div>
+        <div>
+          <h4>KAIST CANSAT COMPETITION KOREA 2023</h4>
+          <p>○ First round qualifier selection</p>
+        </div>
+        <div>
+          <h4>Korean Scholars Conference for Youth (KSCY) 2023</h4>
+          <p>○ Computer Engineering Research Track, Official Ambassadors</p>
+        </div>
+        <div>
+          <h4>E-icon World Contest 2022</h4>
+          <p>○ Bronze medal</p>
+        </div>
+        <div>
+          <h4>Nexon Youth Programming Challenge (NYPC) 2020</h4>
+          <p>○ Top 500</p>
+        </div>
+      </div>
+      <div className='w-full h-8 sm:h-16' />
       <div className='flex flex-col items-start justify-center w-full gap-0 sm:flex-row sm:items-center sm:gap-8'>
         <h3>Contact</h3>
         <div>
