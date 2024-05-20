@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AiOutlineGithub } from 'react-icons/ai';
-import { FaGraduationCap } from 'react-icons/fa';
+import { FaGraduationCap, FaLinkedin } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
 import { MdEmail } from 'react-icons/md';
 import { useMediaQuery } from 'react-responsive';
@@ -23,7 +23,7 @@ const Dimigo = () => {
       <FaGraduationCap className='text-3xl' />
       <div>
         <p className='text-md'>Korea Digital Media High School 21st</p>
-        <p className='text-sm'>March 2022 ~</p>
+        <p className='text-sm'>March 2022 ~ January 2025</p>
       </div>
     </Link>
   );
@@ -51,47 +51,123 @@ const Github = () => {
   );
 };
 
+const LinkedIn = () => {
+  return (
+    <Link
+      href='https://www.linkedin.com/in/i-love-you'
+      target='_blink'
+      className='flex items-center gap-1'
+    >
+      <FaLinkedin className='text-lg' />
+      <p className='text-md'>siwon yun</p>
+    </Link>
+  );
+};
+
 const IntroduceMySelf = () => {
   return (
     <>
-      <div className='h-6 w-full sm:h-12' />
+      <div className='w-full h-6 sm:h-12' />
       <h1 className='mb-4'>🖐️ Hello, I am siwon. </h1>
-      <div className='mb-2 flex items-center text-yellow-400 dark:text-yellow-200'>
+      <div className='flex items-center mb-2 text-yellow-400 dark:text-yellow-200'>
         <IoLocation size={15} />
         <p>Ansan, South Korea</p>
       </div>
       <div className='indent-6'>
         <p>
-          I'm a student in{' '}
+          I am a student at{' '}
           <ColorLink href='https://www.dimigo.hs.kr/' target='_blink'>
             Korea Digital Media High School(KDMHS)
-          </ColorLink>{' '}
-          21st. I'm interested in Artificial Intelligence(AI) espally Machine
-          Learning, Web Programming, Programming Langaege, and Quantum
-          Computing.
+          </ColorLink>
+          . Recently, I've been interested in Machine Learning of Artificial
+          Intelligence(AI) part, Mathematics, Programming Language, Web
+          Programming, and Quantum Computing. My huge goal is to simulate this
+          world. I believe my interests are a step toward achieving my goal.
         </p>
         <p>
-          I will write the posts that includes objects that can be controlled by
-          the user on my website. For example, I plan to create an object that
+          I will write posts on this website to record my memories and share my
+          experiences and thoughts. It will include objects that interact with
+          users on my website. For example, I plan to create an object that
           visualizes multi-dimensional concepts in linear algebra using a
           two-dimensional representation. I have faith in the power of geometric
-          visualization. Probably, I will write the posts in Korean.
+          visualization. Almost all posts will be in Korean. I recommend you
+          study Korean to read my posts 😁
+        </p>
+        <p>
+          I hope you guys have a good day, and thank you for reading my
+          introduction :)
         </p>
       </div>
-      <div className='h-8 w-full sm:h-16' />
-      <div className='flex w-full flex-col items-start justify-center gap-0 sm:flex-row sm:items-center sm:gap-8'>
-        <h3>Education</h3>
-        <Dimigo />
+      <div className='w-full h-8 sm:h-16' />
+      <div>
+        <h3 className='mb-2'>Experiences & Awards</h3>
+        <div>
+          <h4>
+            Regeneron International Science and Engineering Fair (ISEF) 2024
+          </h4>
+          <p>○ Los Angeles, Finalist</p>
+        </div>
+        <div>
+          <h4>Korea Code Fair (KCF) 2023</h4>
+          <p>○ Bronze medal</p>
+        </div>
+        <div>
+          <h4>Smarteen App+ Challenge (STAC) 2023</h4>
+          <p>○ Bronze medal</p>
+        </div>
+        <div>
+          <h4>
+            KAIST Creative and Global Leader Program (창의적 글로벌 리더
+            프로그램, 창글리) 2023 Summer
+          </h4>
+          <p>○ Team 6</p>
+        </div>
+        <div>
+          <h4>KAIST CANSAT COMPETITION KOREA 2023</h4>
+          <p>○ First round qualifier selection</p>
+        </div>
+        <div>
+          <h4>Korean Scholars Conference for Youth (KSCY) 2023</h4>
+          <p>○ Computer Engineering Research Track, Official Ambassadors</p>
+        </div>
+        <div>
+          <h4>E-icon World Contest 2022</h4>
+          <p>○ Bronze medal</p>
+        </div>
+        <div>
+          <h4>Nexon Youth Programming Challenge (NYPC) 2020</h4>
+          <p>○ Top 500</p>
+        </div>
       </div>
-      <Dimigo_exp />
-      <div className='h-8 w-full sm:h-16' />
-      <div className='flex w-full flex-col items-start justify-center gap-0 sm:flex-row sm:items-center sm:gap-8'>
+      <div className='w-full h-8 sm:h-16' />
+      <div className='flex flex-col items-start justify-center w-full gap-0 sm:flex-row sm:items-center sm:gap-8'>
         <h3>Contact</h3>
         <div>
           <Emali />
           <Github />
+          <LinkedIn />
         </div>
       </div>
+      <div className='w-full h-8 sm:h-16' />
+      <div>
+        <h3>Technical Skills</h3>
+        <p>Computer Languages: C, Python, JavaScript, TypeScript, Julia</p>
+        <p>OS: Window, GNU/Linux (Ubuntu)</p>
+        <p>Code Editor: NeoVim, Visual Studio Code</p>
+        <p>Document Editor: LaTeX, MS Word, and MS Power Point</p>
+      </div>
+      <div className='w-full h-8 sm:h-16' />
+      <div>
+        <h3>Another Intersest or What I Like</h3>
+        <p>Watching movies, Visiting a museum, Hugging my cat</p>
+      </div>
+      <div className='w-full h-8 sm:h-16' />
+      <div className='flex flex-col items-start justify-center w-full gap-0 sm:flex-row sm:items-center sm:gap-8'>
+        <h3>Education</h3>
+        <Dimigo />
+      </div>
+      <Dimigo_exp />
+      <div className='w-full h-8 sm:h-16' />
     </>
   );
 };
@@ -108,15 +184,15 @@ export default function Main() {
   }, [md]);
 
   return (
-    <div className='h-full w-full'>
+    <div className='w-full h-full'>
       <div className='mx-auto w-full max-w-[1000px] overflow-auto px-6'>
         <IntroduceMySelf />
-        <div className='h-16 w-full sm:h-32' />
+        <div className='w-full h-16 sm:h-32' />
         <Link href='/mind-map/post'>
           <p className='text-3xl'>Post</p>
         </Link>
         <IframeMindMap nodes={nodes} initialScale={isMd ? 1 : 0.7} />
-        <div className='flex h-16 w-full items-center justify-center sm:h-32'>
+        <div className='flex items-center justify-center w-full h-16 sm:h-32'>
           <MadeWith />
         </div>
       </div>

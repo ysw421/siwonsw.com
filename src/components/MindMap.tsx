@@ -62,7 +62,7 @@ export default function MindMap({
       <>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='absolute top-0 left-0 z-0 h-full w-full'
+          className='absolute top-0 left-0 z-0 w-full h-full'
         >
           {nodes &&
             Object.keys(nodes).map((key: string) =>
@@ -84,7 +84,7 @@ export default function MindMap({
               })
             )}
         </svg>
-        <div className='h-full w-full'>
+        <div className='w-full h-full'>
           {nodes &&
             Object.keys(nodes).map((key) =>
               nodes[key].isFolder ? (
@@ -103,7 +103,7 @@ export default function MindMap({
                       canvasSize.height / 2
                     }px)`,
                   }}
-                  className='absolute flex h-auto w-auto flex-row items-center justify-center gap-2 text-xl font-extralight'
+                  className='absolute flex flex-row items-center justify-center w-auto h-auto gap-2 text-xl font-extralight'
                 >
                   <div
                     style={{
@@ -135,7 +135,7 @@ export default function MindMap({
                       canvasSize.height / 2
                     }px)`,
                   }}
-                  className='absolute flex h-auto w-auto flex-row items-center justify-center gap-2 text-xl font-extralight'
+                  className='absolute flex flex-row items-center justify-center w-auto h-auto gap-2 text-xl font-extralight'
                 >
                   <div
                     style={{
@@ -160,11 +160,11 @@ export default function MindMap({
   };
 
   return canvasSize_ == null ? (
-    <div className='h-full w-full' ref={screenRef}>
+    <div className='w-full h-full' ref={screenRef}>
       <MainComponents canvasSize={canvasSize} />
     </div>
   ) : (
-    <div className='h-full w-full'>
+    <div className='w-full h-full'>
       <MainComponents canvasSize={canvasSize} />
     </div>
   );

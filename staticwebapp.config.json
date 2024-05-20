@@ -1,8 +1,13 @@
 {
+<<<<<<< HEAD
   "responseOverrides": {
     "404": {
       "rewrite": "/index.html",
       "statusCode": 404
     }
+=======
+  "navigationFallback": {
+    "rewrite": "/404.html"
+>>>>>>> refs/remotes/origin/build-azure
   }
 }

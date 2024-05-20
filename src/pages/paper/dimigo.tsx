@@ -6,7 +6,7 @@ export const Dimigo_exp = () => {
     <div>
       <p className='mt-8 font-bold'>Korea Digital Media High School (KDMHS)</p>
       <p>Ansan, South Korea</p>
-      <p>21st: March 2022 ~</p>
+      <p>21st: March 2022 ~ January 2025</p>
       <p className='mt-3'>1st year, Grade 10</p>
       <div className='pl-6'>
         <p className='pl-8 -indent-8 sm:pl-28 sm:-indent-28'>
@@ -29,10 +29,12 @@ export const Dimigo_exp = () => {
         <p className='pl-12 -indent-12'>
           Major: Web Programming, Mathematics for Engineering
         </p>
-        <p className='pl-12 -indent-12'>AI Course: Information Structure</p>
+        <p className='pl-12 -indent-12'>AI Course: Data Structure Theory</p>
       </div>
-      <p className='mt-3'>
+      <p className='pl-24 mt-3 -indent-24'>
         School Club: 🌿Fregic 12th, artificial intelligence(AI) study club
+        <br />
+        Turing 1st, artificial intelligence(AI) research lab
       </p>
     </div>
   );
@@ -42,7 +44,7 @@ export default function Dimigo() {
   return (
     <Paper title='👋 Hello, I am siwon in KDMHS.'>
       {/* My profile */}
-      <div className='text-center text-sm'>
+      <div className='text-sm text-center'>
         <p className='text-xl'>Siwon Yun</p>
         <p>Korea Digital Media High School 21wp</p>
         <p>Ansan, South Korea</p>
