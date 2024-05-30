@@ -39,6 +39,7 @@
     "react-responsive": "^9.0.2",
     "react-zoom-pan-pinch": "^3.1.0",
     "sass": "^1.65.1",
+    "styled-components": "^6.1.11",
     "tailwind-merge": "^1.8.1"
   },
   "devDependencies": {
