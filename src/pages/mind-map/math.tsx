@@ -32,7 +32,7 @@ const nodes: Nodes = {
     value: '가우스 소거법',
     x: -80,
     y: -180,
-    link: '/paper/가우스-소거법',
+    link: '/paper/gaussian-elimination',
     edges: [],
     circleSize: 30,
   },
