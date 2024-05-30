@@ -8,11 +8,18 @@ import Paper from '@/components/Paper';
 import { Hr } from '@/components/utilities';
 
 export default function GaussianElimination() {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
+  const [isSmallScreen, setIsSmallScreen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768);
+      if (typeof window !== 'undefined') {
+        setIsSmallScreen(window.innerWidth <= 768);
+      }
     };
 
     window.addEventListener('resize', handleResize);
