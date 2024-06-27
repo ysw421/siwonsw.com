@@ -83,13 +83,13 @@ export default function SystemDynamicSVG({
     // value: 10,
   };
   nodes['중력'] = {
-    name: '중력',
+    name: 'C: 중력',
     x: 1300,
     y: 1150,
     value: nodes['추 질량'].value * nodes['중력 가속도'].value,
   };
   nodes['가속도'] = {
-    name: '가속도',
+    name: 'C: 가속도',
     x: 950,
     y: 950,
     value:
@@ -104,7 +104,7 @@ export default function SystemDynamicSVG({
     rate: cartSpeed / 100,
   };
   nodes['장력'] = {
-    name: '장력',
+    name: 'C: 장력',
     x: 300,
     y: 1000,
     value: nodes['수레 질량'].value * nodes['가속도'].value,
@@ -219,9 +219,9 @@ export default function SystemDynamicSVG({
     { source: '추 질량', target: '중력' },
     { source: '중력 가속도', target: '중력' },
     { source: '중력', target: '가속도' },
-    { source: '수레 질량', target: '가속도' },
+    { source: '전체 질량', target: '가속도' },
     { source: '가속도', target: '장력' },
-    { source: '전체 질량', target: '장력' },
+    { source: '수레 질량', target: '장력' },
     { source: '가속도', target: '속도', isDelay: true },
     { source: '수레 x좌표 변화량', target: '수레 x좌표', isDelay: true },
     { source: '가속도', target: '수레 x좌표 변화량', isDelay: true },
@@ -303,13 +303,13 @@ export default function SystemDynamicSVG({
       // value: 10,
     };
     nodes['중력'] = {
-      name: '중력',
+      name: 'C: 중력',
       x: 1300,
       y: 1150,
       value: nodes['추 질량'].value * nodes['중력 가속도'].value,
     };
     nodes['가속도'] = {
-      name: '가속도',
+      name: 'C: 가속도',
       x: 950,
       y: 950,
       value:
@@ -325,7 +325,7 @@ export default function SystemDynamicSVG({
       rate: cartSpeed / 100,
     };
     nodes['장력'] = {
-      name: '장력',
+      name: 'C: 장력',
       x: 300,
       y: 1000,
       value: nodes['수레 질량'].value * nodes['가속도'].value,
