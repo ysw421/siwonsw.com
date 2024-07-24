@@ -4,8 +4,7 @@ import { MovieBox } from '@/components/utilities';
 export default function Movie() {
   return (
     <Paper title='🎭 뮤지컬'>
-      <p>제가 보았던 뮤지컬의 목록입니다.</p>
-      <p className='mb-8'>아래는 제가 좋아하는 영화들입니다.</p>
+      <p className='mb-8'>아래는 제가 보았던 뮤지컬의 목록입니다.</p>
       <MovieBox
         imgSrc='/images/paper/musical/ThePhantomOfTheOpera.jpg'
         cast=''

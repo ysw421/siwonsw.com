@@ -176,6 +176,22 @@ const nodes: Nodes = {
     edges: ['PDF 발표 자료'],
     circleSize: 10,
   },
+  'DB: 관계형 DB 용어와 수학 용어의 매핑': {
+    value: 'DB: 관계형 DB 용어와 수학 용어의 매핑',
+    x: 320,
+    y: 260,
+    link: '/files/paper/db_terms.pdf',
+    edges: ['PDF 발표 자료'],
+    circleSize: 10,
+  },
+  '공업수학: 1/2에 대한 고찰': {
+    value: '공업수학: 1/2에 대한 고찰',
+    x: 320,
+    y: 300,
+    link: '/files/paper/half.pdf',
+    edges: ['PDF 발표 자료'],
+    circleSize: 10,
+  },
 };
 
 export default function MyLife() {
