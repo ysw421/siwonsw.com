@@ -296,13 +296,13 @@ export default function Momentum() {
         momentum은 이전 시간의 변화량인 <InlineMath math='\Delta x_t' />를
         메모리에 저장합니다. 프로그래밍에서 메모리를 소비할 경우 연산 속도는
         빨라지는데, momentum 또한 메모리를 저장함으로써 높은 확률로
-        경사하강법보다 빠른 수렴 속도를 가진다는 점서 유사합니다. decay factor인{' '}
-        <InlineMath math='\alpha' />는 momentum의 정도를 나타내며,{' '}
-        <InlineMath math='\alpha \in [0, 1]' />로 설정합니다.{' '}
+        경사하강법보다 빠른 수렴 속도를 가진다는 점서 유사합니다. decay factor인
+        <InlineMath math='\alpha' />는 momentum의 정도를 나타내며,
+        <InlineMath math='\alpha \in [0, 1]' />로 설정합니다.
         <InlineMath math='\alpha = 0' />인 경우, 경사 하강법과 동일한 결과를
         얻습니다. <InlineMath math='\alpha = 1' />인 경우, 이전 시간의 변화량을
         모두 반영하여 최적값을 찾습니다.
-        <InlineMath math='\alpha' />의 설정값은 경험적으로 결정하게 됩니다.{' '}
+        <InlineMath math='\alpha' />의 설정값은 경험적으로 결정하게 됩니다.
         <InlineMath math='\gamma' />는 step-size 값으로, 경사 하강법과
         동일합니다. momentum은 경사 하강법과 달리, 이전 시간의 변화량을 고려하여
         최적값을 찾기에, 지그재그 모양으로 수렴하는 문제를 해결할 수 있습니다.
