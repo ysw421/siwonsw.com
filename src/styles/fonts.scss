@@ -6,12 +6,15 @@
 @font-face {
   font-family: 'font-main';
   src: url('/fonts/EF_Diary.ttf');
+  // src: url('/fonts/KyoboHandwriting2021sjy.ttf');
 }
 
 @font-face {
   font-family: 'font-cmu';
   font-weight: 100 900;
-  src: url('/fonts/CMUBMO.TTF');
+  // src: url('/fonts/CMUNRM.TTF');
+  src: url('/fonts/CMUNSS.TTF');
+  src: url('/fonts/CMUNTT.TTF');
 }
 
 @font-face {
