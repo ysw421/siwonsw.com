@@ -439,7 +439,7 @@ export default function LocalMinSVG() {
               id='stepSize'
               type='range'
               min={0.01}
-              max={0.1}
+              max={0.2}
               step={0.001}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setStepSize(Number(e.target.value));
@@ -454,9 +454,9 @@ export default function LocalMinSVG() {
             <input
               id='stepSize'
               type='range'
-              min={0.95}
-              max={0.999}
-              step={0.0001}
+              min={0.5}
+              max={0.99}
+              step={0.01}
               onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setInertia(Number(e.target.value));
                 setIdx(0);
