@@ -100,7 +100,7 @@ const IntroduceMySelf = () => {
       </div>
       <div className='w-full h-8 sm:h-16' />
       <div>
-        <h3 className='mb-2'>Experiences & Awards</h3>
+        <h3 className='mb-2'>Selected Experiences & Awards</h3>
         <div>
           <h4>
             Regeneron International Science and Engineering Fair (ISEF) 2024

@@ -7,7 +7,7 @@ export const Dimigo_exp = () => {
       <p className='mt-8 font-bold'>Korea Digital Media High School (KDMHS)</p>
       <p>Ansan, South Korea</p>
       <p>21st: March 2022 ~ January 2025</p>
-      <p className='mt-3'>1st year, Grade 10</p>
+      <p className='mt-3'>1st year</p>
       <div className='pl-6'>
         <p className='pl-8 -indent-8 sm:pl-28 sm:-indent-28'>
           Default Subject: Korean, Integrated Mathematics, Integrated Science,
@@ -19,17 +19,30 @@ export const Dimigo_exp = () => {
           Computer
         </p>
       </div>
-      <p className='mt-3'>2nd year, Grade 11</p>
+      <p className='mt-3'>2nd year</p>
       <div className='pl-6'>
         <p className='pl-8 -indent-8 sm:pl-28 sm:-indent-28'>
-          Default Subject: Koran History, Literature Studies, English, Physical
-          Education, Mathematics, Differential and Integral Calculus, Physics,
-          Chemistry, Vocational Studies, Chinese
+          Default Subject: Koran History, Korean Literature Studies, English,
+          Physical Education, Mathematics, Differential and Integral Calculus,
+          Physics, Chemistry, Vocational Studies, Chinese
         </p>
         <p className='pl-12 -indent-12'>
           Major: Web Programming, Mathematics for Engineering
         </p>
         <p className='pl-12 -indent-12'>AI Course: Data Structure Theory</p>
+      </div>
+      <p className='mt-3'>3rd year</p>
+      <div className='pl-6'>
+        <p className='pl-8 -indent-8 sm:pl-28 sm:-indent-28'>
+          Default Subject: Koran Classic Literature Studies, English, Industry
+          Studies
+        </p>
+        <p className='pl-12 -indent-12'>
+          Major: Database, Web Programming, Mathematics for Engineering
+        </p>
+        <p className='pl-12 -indent-12'>
+          AI Course: Big Data, Artificial Intelligence
+        </p>
       </div>
       <p className='pl-24 mt-3 -indent-24'>
         School Club: 🌿Fregic 12th, artificial intelligence(AI) study club
