@@ -401,8 +401,8 @@ export default function LocalMinSVG() {
         )}
       </svg>
       <div className='flex justify-center w-auto gap-8 mt-2 md:gap-16'>
-        <div className='flex flex-col items-center gap-1'>
-          <div>
+        <div className='flex flex-col items-center w-40 gap-1'>
+          <div className='flex flex-col w-full'>
             <p>time : {idx}</p>
             <input
               id='idx'
@@ -416,8 +416,8 @@ export default function LocalMinSVG() {
               value={idx}
             />
           </div>
-          <div>
-            <p>start position : {startIdx}</p>
+          <div className='flex flex-col w-full'>
+            <p>start pos : {startIdx}</p>
             <input
               id='startIdx'
               type='range'
@@ -432,8 +432,8 @@ export default function LocalMinSVG() {
             />
           </div>
         </div>
-        <div className='flex flex-col items-center gap-1'>
-          <div>
+        <div className='flex flex-col items-center w-40 gap-1'>
+          <div className='flex flex-col w-full'>
             <p>step size : {stepSize}</p>
             <input
               id='stepSize'
@@ -449,7 +449,7 @@ export default function LocalMinSVG() {
               value={stepSize}
             />
           </div>
-          <div>
+          <div className='flex flex-col w-full'>
             <p>inertia : {inertia}</p>
             <input
               id='stepSize'
