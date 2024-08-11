@@ -13,9 +13,55 @@
   font-family: 'font-cmu';
   font-weight: 100 900;
   // src: url('/fonts/CMUNRM.TTF');
-  src: url('/fonts/CMUNSS.TTF');
+  // src: url('/fonts/CMUNSS.TTF');
   src: url('/fonts/CMUNTT.TTF');
 }
+
+@font-face {
+  font-family: 'font-batang';
+  //   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.eot);
+  //   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.eot?#iefix)
+  //       format('embedded-opentype'),
+  //     url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.woff2)
+  //       format('woff2'),
+  //     url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.woff)
+  //       format('woff'),
+  //     url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.ttf)
+  //       format('truetype');
+  // }
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.eot);
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.eot?#iefix)
+      format('embedded-opentype'),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.woff2)
+      format('woff2'),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.woff)
+      format('woff'),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.ttf)
+      format('truetype');
+}
+// @font-face {
+//   font-family: 'Hahmlet-Regular';
+//   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2')
+//     format('woff2');
+//   font-weight: 100;
+//   font-style: serif;
+// }
+// @font-face {
+//   font-family: font-batang;
+//   src: url('/fonts/BatangChe.ttf');
+// }
+
+// @font-face {
+//   font-family: 'font-batang';
+//   src: url('/fonts/BATANG.TTF');
+// }
+// @font-face {
+//   font-family: 'font-HANBatang';
+//   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/HANBatang.woff')
+//     format('woff');
+//   font-weight: 100;
+//   font-style: normal;
+// }
 
 @font-face {
   font-family: 'font-pretendard';
