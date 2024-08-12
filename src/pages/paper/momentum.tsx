@@ -290,7 +290,7 @@ export default function Momentum() {
       </div>
       <div className='my-8'>
         <BlockMath math='\Delta x_t = x_t - x_{t-1}' />
-        <BlockMath math='x_t = x_{t+1} + \alpha \Delta x_t - \gamma (\nabla f (x_t))^T' />
+        <BlockMath math='x_{t+1} = x_t + \alpha \Delta x_t - \gamma (\nabla f (x_t))^T' />
       </div>
       <p>
         momentum은 이전 시간의 변화량인 <InlineMath math='\Delta x_t' />를
