@@ -117,7 +117,7 @@ export default function FloatingPoint() {
             구성됩니다.
           </p>
         </div>
-        <div className='my-12 flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 my-12'>
           <div className='flex flex-wrap justify-center gap-0 text-xl md:gap-2'>
             <span>SEEE EEEE EMMM MMMM</span>
             <span>MMMM MMMM MMMM MMMM</span>
@@ -125,14 +125,15 @@ export default function FloatingPoint() {
           <p className='text-center'>S: 부호 비트, E: 지수부, M: 가수부</p>
         </div>
         <p className='mt-6'>
-          해당 글에서는 특별한 상호작용 시스템을 적용하였습니다. 10진수 소수를
-          부동 소수점 자료형을 활용하여 나타내는 방법을 알아보며, 사용하는
-          예시를 지정할 수 있습니다. 즉, 자신이 원하는 숫자에 대한 변환 과정을
-          확인해 볼 수 있습니다. 아래에 원하는 수를 입력하여 예시를 설정하세요.
+          본 글에서는 특별한 상호작용 시스템을 적용하였습니다. 10진수 소수를
+          부동 소수점 자료형을 활용하여 나타내는 방법을 알아보며, 글에서 설명을
+          위해 사용하는 예시를 직접 지정할 수 있습니다. 즉, 자신이 원하는 숫자에
+          대한 변환 과정을 확인해 볼 수 있습니다. 아래에 원하는 수를 입력하여
+          예시를 설정하세요.
         </p>
-        <div className='mt-4 flex w-full justify-center'>
+        <div className='flex justify-center w-full mt-4'>
           <input
-            className='max-w-md rounded-lg bg-transparent'
+            className='max-w-md bg-transparent rounded-lg'
             type='number'
             value={showNumber ?? ''}
             onChange={(e) => {
@@ -148,7 +149,7 @@ export default function FloatingPoint() {
           양수이므로 부호 비트가 0, -3.14는 음수이므로 부호 비트가 1입니다. 즉 
           ${number}의 첫 비트는 ${number < 0 ? '1' : '0'}입니다.`}
         </p>
-        <div className='my-12 flex flex-wrap justify-center gap-0 text-xl md:gap-2'>
+        <div className='flex flex-wrap justify-center gap-0 my-12 text-xl md:gap-2'>
           <span>{number < 0 ? '1' : '0'}EEE EEEE EMMM MMMM</span>
           <span>MMMM MMMM MMMM MMMM</span>
         </div>
@@ -184,7 +185,7 @@ export default function FloatingPoint() {
           저장합니다. 즉, 위 예에서 {exp - 127} + 127 = {exp}를 2진수로 변환한
           값, {toBinary(exp)}를 지수부 비트에 넣습니다.
         </p>
-        <div className='my-12 flex flex-wrap justify-center gap-0 text-xl md:gap-2'>
+        <div className='flex flex-wrap justify-center gap-0 my-12 text-xl md:gap-2'>
           <span>
             {number < 0 ? '1' : '0'}
             {showExp.slice(0, 3)} {showExp.slice(3, 7)} {showExp[7]}MMM MMMM
@@ -196,7 +197,7 @@ export default function FloatingPoint() {
           첫 수는 언제나 1이기 때문에 저장하지 않습니다. 앞부분부터 저장하며,
           나머지는 0으로 채웁니다.
         </p>
-        <div className='my-12 flex flex-wrap justify-center gap-0 text-xl md:gap-2'>
+        <div className='flex flex-wrap justify-center gap-0 my-12 text-xl md:gap-2'>
           <span>
             {number < 0 ? '1' : '0'}
             {showExp.slice(0, 3)} {showExp.slice(3, 7)} {showExp[7]}
