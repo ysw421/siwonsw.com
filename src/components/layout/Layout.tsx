@@ -8,7 +8,6 @@ import scrollBar from '@/lib/scrollBar.module.scss';
 
 import { isDarkMode_ } from '@/lib/darkMode';
 
-import GoogleAnalytics from '@/components/layout/gtag';
 import Header from '@/components/layout/Header';
 import MindMapLayout from '@/components/layout/MindMapLayout';
 import SetModeBtn from '@/components/SetModeBtn';
@@ -38,9 +37,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   if (folder[1] === 'mind-map') {
     return (
       <>
-        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
-        ) : null}
         <MindMapLayout isMd={isMd} isAllowAnimation={isAllowAnimation}>
           {children}
         </MindMapLayout>
@@ -49,9 +45,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   } else {
     return (
       <>
-        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
-        ) : null}
         <div
           className={`relative h-screen w-screen overflow-hidden ${
             isDarkMode ? 'dark' : ''
