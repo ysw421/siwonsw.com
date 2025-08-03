@@ -1,0 +1,108 @@
+# MDX 통합 예제
+
+이것은 **MDX** 파일의 예제입니다. Markdown과 React 컴포넌트를 함께 사용할 수 있습니다.
+
+기술의 세계에서 0부터 무한대까지의 여정은 끝이 없습니다. 우리는 항상 배우고, 탐구하고, 혁신합니다. 새로운 기술, 새로운 아이디어, 새로운 가능성을 향한 우리의 여정은 계속될 것입니다. 0-inf의 비전은 간단합니다. 끊임없이 배우고, 성장하며, 혁신하는 것. 0부터 시작해 무한대를 향해 나아가는 우리의 여정은 앞으로도 계속될 것입니다.
+
+## 기본 Markdown 요소들
+
+### 텍스트 스타일링
+- **굵은 텍스트**
+- *기울임 텍스트*
+- `인라인 코드`
+- ~~취소선~~
+
+### 리스트
+1. 첫 번째 항목
+2. 두 번째 항목
+   - 하위 항목 1
+   - 하위 항목 2
+
+## 커스텀 컴포넌트 사용
+
+<Alert type="info">
+이것은 정보 알림입니다. MDX에서 React 컴포넌트를 직접 사용할 수 있습니다.
+</Alert>
+
+<Alert type="warning">
+주의: 이것은 경고 메시지입니다.
+</Alert>
+
+<Alert type="success">
+성공! 모든 설정이 완료되었습니다.
+</Alert>
+
+## 코드 블록
+
+```typescript
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+const user: User = {
+  id: 1,
+  name: "홍길동",
+  email: "hong@example.com"
+}
+```
+
+<CodeBlock language="javascript">
+{`
+function fibonacci(n) {
+  if (n <= 1) return n
+  return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+console.log(fibonacci(10)) // 55
+`}
+</CodeBlock>
+
+## 표
+
+| 기능 | 설명 | 상태 |
+|------|------|------|
+| MDX 통합 | Markdown + React | ✅ |
+| 타입스크립트 | 타입 안전성 | ✅ |
+| Tailwind CSS | 스타일링 | ✅ |
+| 동적 로딩 | 런타임 로드 | ✅ |
+| 수학 공식 | KaTeX 지원 | ✅ |
+
+| 기능 | 설명 | 상태 |
+|------|------|------|
+| MDX | Markdown + React | ✅ |
+| TS | 타입 안전성 | ✅ |
+
+
+## 수학 공식
+
+인라인 수식: $E = mc^2$
+
+| 기능 | 설명 | 상태 |
+|------|------|------|
+| MDX | Markdown + React | ✅ |
+| TS | 타입 안전성 | ✅ |
+
+가나다
+
+블록 수식:
+$$
+\begin{aligned}
+\nabla \times \vec{\mathbf{B}} &= \mu_0\vec{\mathbf{J}} + \mu_0\epsilon_0 \frac{\partial\vec{\mathbf{E}}}{\partial t} \\
+\nabla \times \vec{\mathbf{E}} &= -\frac{\partial\vec{\mathbf{B}}}{\partial t}
+\end{aligned}
+$$
+
+복잡한 수식:
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
+> 이것은 인용문입니다. MDX에서 모든 Markdown 문법을 사용할 수 있습니다.
+
+---
+
+## 마무리
+
+이제 MDX가 완전히 통합되어 Markdown의 편리함과 React의 강력함, 그리고 수학 공식까지 함께 사용할 수 있습니다!
