@@ -1,8 +1,7 @@
-import { getMDXContent } from '@/lib/mdx-server'
-import { MDXHydrationBoundary } from '@/components/mdx-hydration-boundary'
+import { processMDXContent } from '@/lib/mdx-processor'
+import { MDXContent } from '@/components/mdx-content'
 import Image from "next/image"
 import { Metadata } from 'next'
-import { getStaticMDXContent } from '@/lib/mdx-static'
 
 export const metadata: Metadata = {
   title: "Siwon's Webpage",
@@ -10,25 +9,19 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  /* const mdxData = await getMDXContent('example') */
-  const mdxData = await getStaticMDXContent('example')
+  const mdxData = await processMDXContent('example')
   
-  if (!mdxData) {
-    return <div>콘텐츠를 찾을 수 없습니다.</div>
-  }
-
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        {/* {mdxData ? ( */}
-        {/*   <MDXHydrationBoundary  */}
-        {/*     source={mdxData.source} */}
-        {/*     className="prose prose-lg max-w-none" */}
-        {/*   /> */}
-        {/* ) : ( */}
-        {/*   <div>콘텐츠를 찾을 수 없습니다.</div> */}
-        {/* )} */}
-        {mdxData.content}
+        {mdxData ? (
+          <MDXContent 
+            html={mdxData.contentHtml}
+            className="prose prose-lg max-w-none"
+          />
+        ) : (
+          <div>콘텐츠를 찾을 수 없습니다.</div>
+        )}
         
         <Image
           className="dark:invert"

@@ -1,107 +1,119 @@
-import { getAllMDXSlugs, getMDXContent } from '@/lib/mdx'
-import Link from 'next/link'
+import { processMDXContent, getAllMDXSlugs } from '@/lib/mdx-processor'
+import { MDXContent } from '@/components/mdx-content'
+import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
+import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Blog Posts - Siwon\'s Webpage',
-  description: 'All blog posts and articles',
+interface PostPageProps {
+  params: {
+    slug: string
+  }
 }
 
-interface PostPreview {
-  slug: string
-  title: string
-  description?: string
-  date?: string
-  tags?: string[]
-}
-
-export default async function PostsPage() {
+export async function generateStaticParams() {
   const slugs = getAllMDXSlugs()
-  const posts: PostPreview[] = []
+  return slugs.map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  const mdxData = await processMDXContent(params.slug)
   
-  // 모든 포스트의 메타데이터 수집
-  for (const slug of slugs) {
-    const mdxData = await getMDXContent(slug)
-    if (mdxData) {
-      posts.push({
-        slug,
-        title: mdxData.frontmatter.title || slug,
-        description: mdxData.frontmatter.description,
-        date: mdxData.frontmatter.date,
-        tags: mdxData.frontmatter.tags,
-      })
+  if (!mdxData) {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested post could not be found.',
     }
   }
   
-  // 날짜순 정렬 (최신순)
-  posts.sort((a, b) => {
-    if (!a.date && !b.date) return 0
-    if (!a.date) return 1
-    if (!b.date) return -1
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
-  })
+  return {
+    title: mdxData.frontmatter.title || `Post: ${params.slug}`,
+    description: mdxData.frontmatter.description || mdxData.excerpt || `Content for ${params.slug}`,
+    keywords: mdxData.frontmatter.keywords || [],
+    openGraph: {
+      title: mdxData.frontmatter.title || `Post: ${params.slug}`,
+      description: mdxData.frontmatter.description || mdxData.excerpt || `Content for ${params.slug}`,
+      type: 'article',
+      publishedTime: mdxData.frontmatter.date,
+      authors: mdxData.frontmatter.author ? [mdxData.frontmatter.author] : undefined,
+      tags: mdxData.frontmatter.tags,
+    }
+  }
+}
+
+export default async function PostPage({ params }: PostPageProps) {
+  const mdxData = await processMDXContent(params.slug)
+  
+  if (!mdxData) {
+    notFound()
+  }
   
   return (
     <div className="max-w-4xl mx-auto">
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">블로그 포스트</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
-          개발, 수학, 그리고 생각들을 정리한 공간입니다.
-        </p>
-      </header>
-      
-      <div className="space-y-6">
-        {posts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500">아직 포스트가 없습니다.</p>
-          </div>
-        ) : (
-          posts.map((post) => (
-            <article
-              key={post.slug}
-              className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow"
-            >
-              <Link href={`/posts/${post.slug}`}>
-                <h2 className="text-2xl font-semibold mb-2 text-blue-600 dark:text-blue-400 hover:underline">
-                  {post.title}
-                </h2>
-              </Link>
-              
-              {post.description && (
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {post.description}
-                </p>
+      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+        <Link href="/" className="hover:text-blue-600 transition-colors">
+          홈
+        </Link>
+        <span>→</span>
+        <Link href="/posts" className="hover:text-blue-600 transition-colors">
+          포스트
+        </Link>
+        <span>→</span>
+        <span className="text-gray-900 dark:text-gray-100">
+          {mdxData.frontmatter.title || params.slug}
+        </span>
+      </nav>
+
+      <article>
+        {(mdxData.frontmatter.title || mdxData.frontmatter.description || mdxData.frontmatter.date) && (
+          <header className="mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+            {mdxData.frontmatter.title && (
+              <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                {mdxData.frontmatter.title}
+              </h1>
+            )}
+            
+            {mdxData.frontmatter.description && (
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+                {mdxData.frontmatter.description}
+              </p>
+            )}
+            
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+              {mdxData.frontmatter.author && (
+                <span>작성자: {mdxData.frontmatter.author}</span>
               )}
               
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-                {post.date && (
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString('ko-KR')}
-                  </time>
-                )}
-                
-                {post.tags && post.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded-full"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                    {post.tags.length > 3 && (
-                      <span className="text-xs text-gray-400">
-                        +{post.tags.length - 3}
-                      </span>
-                    )}
-                  </div>
-                )}
+              {mdxData.frontmatter.date && (
+                <time dateTime={mdxData.frontmatter.date}>
+                  {new Date(mdxData.frontmatter.date).toLocaleDateString('ko-KR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+              )}
+            </div>
+            
+            {mdxData.frontmatter.tags && mdxData.frontmatter.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {mdxData.frontmatter.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
+                  >
+                    #{tag}
+                  </span>
+                ))}
               </div>
-            </article>
-          ))
+            )}
+          </header>
         )}
-      </div>
+        
+        <MDXContent 
+          html={mdxData.contentHtml}
+          className="prose prose-lg max-w-none"
+        />
+      </article>
     </div>
   )
 }

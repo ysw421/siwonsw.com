@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { ThemeProvider } from 'next-themes'
 import { ToggleThemeRound } from '@/components/ToggleTheme'
+import { themeScript } from '@/lib/theme-script'
 import 'katex/dist/katex.min.css'
 import "@/app/styles/globals.scss"
 
@@ -16,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-primary antialiased">
         <header id='top-nav-bar' className='sticky top-0 left-0 z-50 h-[64px] w-full select-none px-5 backdrop-blur-[2px]'>
           <div className='flex h-full w-full'>
@@ -23,7 +27,12 @@ export default function RootLayout({
           </div>
         </header>
         
-        <ThemeProvider>
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="system"
+          enableSystem={true}
+          disableTransitionOnChange={false}
+        >
           <main className="flex flex-col justify-items-center max-w-4xl mx-auto px-4 pb-8">
             {children}
           </main>
