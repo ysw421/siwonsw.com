@@ -13,14 +13,12 @@ function ThemeIcon() {
   }, [])
 
   if (!mounted) {
-    // SSR 중에는 시스템 테마를 기준으로 아이콘 표시
-    return <CiLight />
+    return <CiLight size={20} />
   }
 
-  // resolvedTheme을 사용하여 시스템 테마도 올바르게 처리
   const currentTheme = resolvedTheme || theme
   
-  return currentTheme === 'dark' ? <CiDark /> : <CiLight />
+  return currentTheme === 'dark' ? <CiDark size={20} /> : <CiLight size={20} />
 }
 
 export function ToggleThemeRound() {
@@ -38,8 +36,8 @@ export function ToggleThemeRound() {
 
   if (!mounted) {
     return (
-      <button className="flex justify-center items-center rounded-full bg-white shadow-round text-[--color-ui-font] w-[40px] h-[40px] fixed right-4 bottom-4">
-        <CiLight />
+      <button className="theme-toggle flex justify-center items-center rounded-full w-[44px] h-[44px] fixed right-4 bottom-4">
+        <CiLight size={20} />
       </button>
     )
   }
@@ -47,7 +45,8 @@ export function ToggleThemeRound() {
   return (
     <button
       onClick={handleToggle}
-      className="flex justify-center items-center rounded-full bg-white shadow-round text-[--color-ui-font] w-[40px] h-[40px] fixed right-4 bottom-4 transition-all duration-200"
+      className="theme-toggle flex justify-center items-center rounded-full w-[44px] h-[44px] fixed right-4 bottom-4"
+      aria-label={`Switch to ${resolvedTheme === 'light' ? 'dark' : 'light'} theme`}
     >
       <ThemeIcon />
     </button>
@@ -69,20 +68,24 @@ export function ToggleThemeEmojiBtn() {
 
   if (!mounted) {
     return (
-      <button>
-        <div className="flex gap-1 items-center">
-          <CiLight />
-          Theme
+      <button className="theme-toggle px-3 py-2 rounded-lg">
+        <div className="flex gap-2 items-center">
+          <CiLight size={18} />
+          <span className="text-sm font-medium">Theme</span>
         </div>
       </button>
     )
   }
 
   return (
-    <button onClick={handleToggle}>
-      <div className="flex gap-1 items-center">
+    <button 
+      onClick={handleToggle}
+      className="theme-toggle px-3 py-2 rounded-lg"
+      aria-label={`Switch to ${resolvedTheme === 'light' ? 'dark' : 'light'} theme`}
+    >
+      <div className="flex gap-2 items-center">
         <ThemeIcon />
-        Theme
+        <span className="text-sm font-medium">Theme</span>
       </div>
     </button>
   )

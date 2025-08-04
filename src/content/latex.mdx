@@ -1,0 +1,266 @@
+---
+title: "LaTeX 정확한 색상 스타일 가이드"
+description: "LaTeX 파일에서 가져온 정확한 색상으로 구현된 모든 컴포넌트들"
+date: "2024-08-04"
+author: "Siwon"
+keywords: ["LaTeX", "Colors", "Styling", "MDX"]
+tags: ["latex", "colors", "design"]
+---
+
+<div class="latex-chapter">
+  <div class="chapter-number">Guide 1</div>
+  <div class="chapter-title">LaTeX 정확한 색상 박스들</div>
+</div>
+
+이제 LaTeX 파일에서 정의된 정확한 색상들을 사용합니다!
+
+### Alert 컴포넌트들 (LaTeX 색상 매핑)
+
+<Alert type="info">
+**정보 알림** (Definition 스타일): darkblue/lightblue 색상을 사용합니다.
+</Alert>
+
+<Alert type="warning">
+**주의사항** (Note 스타일): darkorange/lightorange 색상을 사용합니다.
+</Alert>
+
+<Alert type="error">
+**오류 알림** (Exercise 스타일): darkred/lightred 색상을 사용합니다.
+</Alert>
+
+<Alert type="success">
+**성공 메시지** (Example 스타일): darkgreen/lightgreen 색상을 사용합니다.
+</Alert>
+
+## 모든 LaTeX 박스 타입들
+
+<Definition title="정의 1.1 (darkblue/lightblue)">
+LaTeX에서 정의된 **darkblue: #002366**, **lightblue: #E3F2FD** 색상을 사용합니다.
+
+$f: A \to B, \quad a \mapsto f(a)$
+</Definition>
+
+<Theorem title="정리 1.2 (darkcyan/lightcyan)">
+LaTeX에서 정의된 **darkcyan: #006666**, **lightcyan: #E0FFFF** 색상을 ---
+title: "커스텀 컴포넌트 스타일 가이드"
+description: "LaTeX 스타일로 꾸며진 모든 커스텀 컴포넌트들"
+date: "2024-08-04"
+author: "Siwon"
+keywords: ["LaTeX", "Components", "Styling", "MDX"]
+tags: ["latex", "components", "design"]
+---
+
+<div class="latex-chapter">
+  <div class="chapter-number">Guide 1</div>
+  <div class="chapter-title">커스텀 컴포넌트 스타일</div>
+</div>
+
+이 문서는 MDX에서 사용할 수 있는 모든 커스텀 컴포넌트들을 LaTeX 스타일로 보여줍니다.
+
+## Alert 컴포넌트들
+
+<Alert type="info">
+**정보 알림**: 이것은 정보를 전달하는 알림 박스입니다. 우측 상단에 정보 아이콘이 표시되며, 아름다운 그라디언트 배경을 가지고 있습니다.
+</Alert>
+
+<Alert type="warning">
+**주의사항**: 이것은 주의를 요하는 내용을 담은 경고 박스입니다. 노란색 계열의 따뜻한 색상으로 사용자의 주의를 끕니다.
+</Alert>
+
+<Alert type="error">
+**오류 알림**: 심각한 문제나 오류를 알리는 박스입니다. 빨간색 계열로 긴급함을 나타냅니다.
+</Alert>
+
+<Alert type="success">
+**성공 메시지**: 작업이 성공적으로 완료되었음을 알리는 박스입니다. 초록색으로 긍정적인 피드백을 제공합니다.
+</Alert>
+
+## LaTeX 스타일 수학 박스들
+
+<Definition title="정의 1.1 (벡터 공간)">
+집합 $V$가 **벡터 공간**이 되려면 다음 조건들을 만족해야 한다:
+
+1. 덧셈에 대한 교환법칙: $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$
+2. 덧셈에 대한 결합법칙: $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$
+3. 덧셈 항등원의 존재: $\mathbf{v} + \mathbf{0} = \mathbf{v}$
+4. 스칼라 곱셈의 분배법칙 등...
+
+이때 $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$이고 스칼라는 실수 또는 복수 체에서 가져온다.
+</Definition>
+
+<Theorem title="정리 1.2 (선형변환의 핵과 상)">
+선형변환 $T: V \to W$에 대해 다음이 성립한다:
+
+$\dim(V) = \dim(\ker(T)) + \dim(\text{Im}(T))$
+
+여기서 $\ker(T) = \{\mathbf{v} \in V : T(\mathbf{v}) = \mathbf{0}\}$는 핵(kernel)이고,
+$\text{Im}(T) = \{T(\mathbf{v}) : \mathbf{v} \in V\}$는 상(image)이다.
+</Theorem>
+
+<Proof>
+$V$가 유한차원이라고 하자. $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_k\}$를 $\ker(T)$의 기저라 하고, 이를 $V$의 기저로 확장하여 $\{\mathbf{v}_1, \ldots, \mathbf{v}_k, \mathbf{w}_1, \ldots, \mathbf{w}_m\}$을 얻는다.
+
+$\{T(\mathbf{w}_1), T(\mathbf{w}_2), \ldots, T(\mathbf{w}_m)\}$이 $\text{Im}(T)$의 기저임을 보일 수 있다.
+
+따라서 $\dim(V) = k + m = \dim(\ker(T)) + \dim(\text{Im}(T))$이다.
+</Proof>
+
+<Example title="예제 1.3 (행렬의 영공간과 열공간)">
+다음 행렬을 고려해보자:
+$A = \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & 6 \\
+1 & 2 & 3
+\end{pmatrix}$
+
+이 행렬의 **영공간(null space)**은:
+$\text{Null}(A) = \left\{\begin{pmatrix} x \\ y \\ z \end{pmatrix} : x + 2y + 3z = 0\right\}$
+
+**열공간(column space)**은:
+$\text{Col}(A) = \text{span}\left\{\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}\right\}$
+
+실제로 $\dim(\text{Null}(A)) = 2$, $\dim(\text{Col}(A)) = 1$이므로 $2 + 1 = 3 = \dim(\mathbb{R}^3)$이다.
+</Example>
+
+<Remark title="중요한 관찰">
+선형대수학에서 **차원 공식**은 매우 중요한 도구입니다. 이는 다음과 같은 응용을 가집니다:
+
+- 선형 시스템의 해의 개수 파악
+- 변환의 단사성과 전사성 판단
+- 부분공간들의 관계 이해
+
+특히 유한차원 벡터공간에서만 성립한다는 점을 주의해야 합니다.
+</Remark>
+
+## 개선된 코드 블록
+
+<CodeBlock language="python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+def linear_transformation(A, vectors):
+    """선형변환을 시각화하는 함수"""
+    transformed = []
+    for v in vectors:
+        transformed.append(A @ v)
+    return np.array(transformed)
+
+# 2x2 회전 행렬 예제
+theta = np.pi / 4  # 45도 회전
+rotation_matrix = np.array([
+    [np.cos(theta), -np.sin(theta)],
+    [np.sin(theta),  np.cos(theta)]
+])
+
+# 단위 벡터들
+unit_vectors = np.array([[1, 0], [0, 1]])
+rotated = linear_transformation(rotation_matrix, unit_vectors)
+
+print("원래 벡터들:", unit_vectors)
+print("회전된 벡터들:", rotated)
+</CodeBlock>
+
+<CodeBlock language="javascript">
+// 함수형 프로그래밍에서의 선형대수
+class Vector {
+    constructor(components) {
+        this.components = components;
+    }
+    
+    // 벡터 덧셈
+    add(other) {
+        const result = this.components.map((x, i) => 
+            x + other.components[i]
+        );
+        return new Vector(result);
+    }
+    
+    // 스칼라 곱
+    scale(scalar) {
+        const result = this.components.map(x => x * scalar);
+        return new Vector(result);
+    }
+    
+    // 내적
+    dot(other) {
+        return this.components.reduce((sum, x, i) => 
+            sum + x * other.components[i], 0
+        );
+    }
+}
+
+// 사용 예제
+const v1 = new Vector([1, 2, 3]);
+const v2 = new Vector([4, 5, 6]);
+
+console.log("v1 + v2 =", v1.add(v2).components);
+console.log("2 * v1 =", v1.scale(2).components);
+console.log("v1 · v2 =", v1.dot(v2));
+</CodeBlock>
+
+<CodeBlock language="haskell">
+-- Haskell에서의 벡터 연산
+module LinearAlgebra where
+
+type Vector = [Double]
+type Matrix = [[Double]]
+
+-- 벡터 덧셈
+addVectors :: Vector -> Vector -> Vector
+addVectors = zipWith (+)
+
+-- 스칼라 곱
+scaleVector :: Double -> Vector -> Vector
+scaleVector k = map (* k)
+
+-- 내적
+dotProduct :: Vector -> Vector -> Double
+dotProduct v1 v2 = sum $ zipWith (*) v1 v2
+
+-- 행렬-벡터 곱셈
+matrixVectorMult :: Matrix -> Vector -> Vector
+matrixVectorMult m v = map (dotProduct v) m
+
+-- 사용 예제
+main :: IO ()
+main = do
+    let v1 = [1, 2, 3]
+    let v2 = [4, 5, 6]
+    let matrix = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    
+    putStrLn $ "v1 + v2 = " ++ show (addVectors v1 v2)
+    putStrLn $ "2 * v1 = " ++ show (scaleVector 2 v1)
+    putStrLn $ "v1 · v2 = " ++ show (dotProduct v1 v2)
+    putStrLn $ "I * v1 = " ++ show (matrixVectorMult matrix v1)
+</CodeBlock>
+
+## 추가 수학 개념들
+
+<Lemma title="보조정리 1.4 (그람-슈미트 과정)">
+유한차원 내적공간에서 임의의 일차독립인 벡터들의 집합 $\{\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\}$에 대해, 이들과 같은 부분공간을 생성하는 정규직교 기저를 구성할 수 있다.
+</Lemma>
+
+<Corollary title="따름정리 1.5">
+모든 유한차원 내적공간은 정규직교 기저를 가진다.
+</Corollary>
+
+<Proposition title="명제 1.6 (베셀 부등식)">
+내적공간 $V$에서 정규직교 집합 $\{\mathbf{e}_1, \mathbf{e}_2, \ldots, \mathbf{e}_n\}$과 임의의 벡터 $\mathbf{v} \in V$에 대해:
+
+$\sum_{i=1}^n |\langle \mathbf{v}, \mathbf{e}_i \rangle|^2 \leq \|\mathbf{v}\|^2$
+</Proposition>
+
+---
+
+## 스타일 특징
+
+이 LaTeX 스타일 컴포넌트들의 주요 특징은 다음과 같습니다:
+
+1. **그라디언트 배경**: 각 박스마다 부드러운 그라디언트 효과
+2. **좌측 강조선**: 4px 두께의 색상별 구분선
+3. **다크 모드 완벽 지원**: 테마 변경 시 자동으로 색상 조정
+4. **아이콘 표시**: Alert 박스들의 우상단 아이콘
+5. **향상된 타이포그래피**: 제목의 대문자 변환과 간격 조정
+6. **그림자 효과**: 미묘한 box-shadow로 입체감 연출
+
+모든 컴포넌트들이 수학 논문의 품격을 유지하면서도 현대적인 웹 디자인 감각을 담고 있습니다.
