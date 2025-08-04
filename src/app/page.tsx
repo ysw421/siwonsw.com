@@ -1,38 +1,35 @@
-'use client'
+import { getMDXContent } from '@/lib/mdx-server'
+import { MDXHydrationBoundary } from '@/components/mdx-hydration-boundary'
+import Image from "next/image"
+import { Metadata } from 'next'
+import { getStaticMDXContent } from '@/lib/mdx-static'
 
-import { MDXRuntimeLoader, useMDXFileLoader } from '@/components/mdx-runtime-loader'
-import { useState, useEffect } from 'react'
+export const metadata: Metadata = {
+  title: "Siwon's Webpage",
+  description: "Welcome to Siwon's personal webpage",
+}
 
-
-
-import Image from "next/image";
-
-export default function Home() {
-  const [mdxContent, setMdxContent] = useState<string>('')
-  const { loadMDXFile } = useMDXFileLoader()
-
-  useEffect(() => {
-    const loadContent = async () => {
-      const content = await loadMDXFile('example')
-      if (content) {
-        setMdxContent(content)
-      }
-    }
-    
-    loadContent()
-  }, [loadMDXFile])
+export default async function Home() {
+  /* const mdxData = await getMDXContent('example') */
+  const mdxData = await getStaticMDXContent('example')
+  
+  if (!mdxData) {
+    return <div>콘텐츠를 찾을 수 없습니다.</div>
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        {mdxContent ? (
-          <MDXRuntimeLoader 
-            source={mdxContent}
-            className="prose prose-lg max-w-none"
-          />
-        ) : (
-          <div>로딩 중...</div>
-        )}
+        {/* {mdxData ? ( */}
+        {/*   <MDXHydrationBoundary  */}
+        {/*     source={mdxData.source} */}
+        {/*     className="prose prose-lg max-w-none" */}
+        {/*   /> */}
+        {/* ) : ( */}
+        {/*   <div>콘텐츠를 찾을 수 없습니다.</div> */}
+        {/* )} */}
+        {mdxData.content}
+        
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -41,6 +38,7 @@ export default function Home() {
           height={38}
           priority
         />
+        
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
@@ -80,6 +78,7 @@ export default function Home() {
           </a>
         </div>
       </main>
+      
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -128,5 +127,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
+  )
 }
+
