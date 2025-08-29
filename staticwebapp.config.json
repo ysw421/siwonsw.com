@@ -8,4 +8,11 @@
   "navigationFallback": {
     "rewrite": "/404.html"
   }
+  "routes": [
+    {
+      "route": "/*",
+      "redirect": "https://www.siwon.me.kr",
+      "statusCode": 301
+    }
+  ]
 }
