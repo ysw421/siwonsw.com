@@ -1,4 +1,11 @@
 {
+  "routes": [
+    {
+      "route": "/routeTypedIntoBrowser",
+      "redirect": "/redirectToMe",
+      "statusCode": 301
+    }
+  ]
   "responseOverrides": {
     "404": {
       "rewrite": "/index.html",
